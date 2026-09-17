@@ -1,0 +1,67 @@
+.section {
+  background: var(--surface);
+  padding: 96px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.intro {
+  font-size: 17px;
+  color: var(--ink-2);
+}
+
+.awards {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.awardsLabel {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.awardsGrid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.award {
+  width: 96px;
+  height: 96px;
+  font-size: 11px;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

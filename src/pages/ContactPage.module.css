@@ -1,0 +1,103 @@
+.page {
+  flex: 1;
+  background: var(--surface);
+}
+
+.grid {
+  padding-top: 88px;
+  padding-bottom: 96px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-size: clamp(36px, 4.2vw, 56px);
+}
+
+.lead {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.offices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.office {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid var(--line);
+}
+
+.officeCity {
+  font-weight: 800;
+  font-size: 17px;
+}
+
+.officeAddr {
+  font-size: 14px;
+  color: var(--ink-3);
+  line-height: 1.55;
+}
+
+.officeTel {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.support {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.supportLabel {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.supportLink {
+  font-size: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    padding-top: 56px;
+    padding-bottom: 64px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .offices {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,214 @@
+.hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 88px 0 96px;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.heroLead {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 520px;
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.features {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.featureReverse .featureImage {
+  order: 2;
+}
+
+.featureCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.featureTitle {
+  font-size: clamp(26px, 2.8vw, 38px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-wrap: pretty;
+}
+
+.points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.point {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 2px solid var(--green);
+  padding-top: 10px;
+}
+
+.pointTitle {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.pointBody {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.platform {
+  background: var(--surface);
+  padding: 96px 0;
+}
+
+.platformInner {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.platformGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.platformCard {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--ink);
+  transition: border-color 0.15s;
+}
+
+.platformCard:hover {
+  border-color: var(--green);
+  color: var(--ink);
+}
+
+.platformName {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.platformShort {
+  font-size: 14px;
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+
+.platformMore {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--green);
+  margin-top: 6px;
+}
+
+.ctaWrap {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.cta {
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 24px;
+  padding: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.ctaCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 560px;
+}
+
+.ctaText {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 56px 0 64px;
+  }
+
+  .heroGrid,
+  .feature {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .featureReverse .featureImage {
+    order: 0;
+  }
+
+  .features {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    gap: 64px;
+  }
+
+  .platform {
+    padding: 64px 0;
+  }
+
+  .ctaWrap {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .cta {
+    padding: 40px 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  .points {
+    grid-template-columns: 1fr;
+  }
+}

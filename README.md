@@ -1,32 +1,51 @@
-# React + TypeScript + Vite
+# Smartwatch Solutions website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Marketing site for Smartwatch Solutions, a Kampala-based fleet and mobile asset management company.
+Built from the Claude Design project "Smartwatch website redesign" (`Smartwatch Site.dc.html`).
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Vite 8, React 19, TypeScript, bun
+- `react-router-dom` for routing
+- CSS Modules per component; design tokens in `src/index.css`
+- vitest + Testing Library for behaviour tests
 
-## React Compiler
+## Commands
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+bun install        # once
+bun run dev        # http://localhost:5173
+bun run test       # vitest, single run
+bun run lint       # oxlint
+bun run build      # type-check + production build into dist/
+bun run preview    # serve dist/
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Pages
+
+| Path         | Page                                  |
+|--------------|---------------------------------------|
+| `/`          | Home                                  |
+| `/products`  | Products (Driver Safety Dash Cameras) |
+| `/solutions` | Solutions by industry                 |
+| `/company`   | Company                               |
+| `/contact`   | Contact and demo request              |
+
+## Where things live
+
+- `src/data/` — all copy and lists (products, industries, menu links, stats, news). Edit text here, not in components.
+- `src/components/` — shared UI: header with mega menus and mobile drawer, footer, forms, placeholders.
+- `src/components/home/` — the home page sections.
+- `src/pages/` — one file per route.
+- `src/lib/leads.ts` — `submitLead()`, the single place to wire the demo and contact forms to a real backend. It currently resolves immediately and logs in development.
+- `src/assets/` — brand logos (light and white variants).
+
+## Replacing placeholders
+
+Every image and video slot renders the `Placeholder` component with the label from the design
+(for example "hero video: fleet on the road"). Replace each one with real media when it is available.
+
+## Design spec
+
+See `docs/superpowers/specs/2026-09-17-smartwatch-site-design.md` for the implementation decisions
+(routing, styling, responsive rules, what was added beyond the design).
