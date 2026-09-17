@@ -424,3 +424,18 @@
     gap: 8px;
   }
 }
+
+@media (max-width: 520px) {
+  .bar {
+    gap: 12px;
+  }
+
+  .logo img {
+    height: 32px;
+  }
+
+  .cta {
+    font-size: 13px;
+    padding: 9px 14px;
+  }
+}

@@ -104,7 +104,11 @@ export default function Header() {
           <a href="#" className={s.login}>
             Login
           </a>
-          <Link to={routes.contact} className="btn btn--primary btn--sm" onClick={closeAll}>
+          <Link
+            to={routes.contact}
+            className={cx('btn', 'btn--primary', 'btn--sm', s.cta)}
+            onClick={closeAll}
+          >
             Get a demo
           </Link>
           <button
