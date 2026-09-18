@@ -1,0 +1,55 @@
+import type { CSSProperties, ReactNode } from 'react'
+import type { Img } from '../data/types'
+import { cx } from '../lib/cx'
+import Placeholder from './Placeholder'
+import s from './Media.module.css'
+
+type Props = {
+  image?: Img
+  /** Placeholder label used when no image exists yet. */
+  label?: string
+  ratio?: string
+  radius?: number
+  dark?: boolean
+  priority?: boolean
+  /** True when the surrounding text already describes the image (e.g. inside a linked card). */
+  decorative?: boolean
+  className?: string
+  children?: ReactNode
+}
+
+/** Renders a real image with reserved dimensions, or the design's striped placeholder. */
+export default function Media({
+  image,
+  label = 'image coming soon',
+  ratio,
+  radius = 20,
+  dark = false,
+  priority = false,
+  decorative = false,
+  className,
+  children,
+}: Props) {
+  if (!image) {
+    return (
+      <Placeholder label={label} ratio={ratio} radius={radius} dark={dark} className={className}>
+        {children}
+      </Placeholder>
+    )
+  }
+  const style = { aspectRatio: ratio, borderRadius: radius } as CSSProperties
+  return (
+    <div className={cx(s.frame, ratio && s.cover, className)} style={style}>
+      <img
+        src={image.src}
+        alt={decorative ? '' : image.alt}
+        width={image.width}
+        height={image.height}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        className={s.img}
+      />
+      {children}
+    </div>
+  )
+}

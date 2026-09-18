@@ -15,6 +15,24 @@ export const logos = [
   'NTV',
 ]
 
+/** The eight names shown in the customer credibility band and on solution pages. */
+export const customerLogos = [
+  'KLM',
+  'British Airways',
+  'Barclays',
+  'World Vision',
+  'CNOOC',
+  'KCB',
+  'Serena Hotels',
+  'Aramex',
+]
+
+export const proofLine = {
+  text: 'Recognised by KPMG as a Top 100 mid-sized company. Serving fleets across East Africa since 2011.',
+  linkLabel: 'Our awards →',
+  to: '/about#awards',
+}
+
 export const whys = [
   { title: 'All-in-one', body: 'SmartwatchFM is the single solution for all your fleet management needs.' },
   { title: 'Easy to use', body: 'Anyone with a mobile or desktop device can access the platform.' },
