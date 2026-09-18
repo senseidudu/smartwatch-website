@@ -1,23 +1,40 @@
+import { useLenis } from 'lenis/react'
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { HEADER_OFFSET, ScrollTrigger } from '../motion/gsap'
 import AnnouncementBar from './AnnouncementBar'
 import Footer from './Footer'
 import Header from './Header'
 import RegionToast from './RegionToast'
 import s from './Layout.module.css'
 
-function ScrollToTop() {
-  const { pathname } = useLocation()
+/** Jumps to the top on route change, or to the hash target, then lets ScrollTrigger re-measure. */
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
+  const lenis = useLenis()
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    if (hash) {
+      const id = setTimeout(() => {
+        if (lenis) lenis.scrollTo(hash, { offset: -HEADER_OFFSET })
+        else document.querySelector(hash)?.scrollIntoView()
+        ScrollTrigger.refresh()
+      }, 0)
+      return () => clearTimeout(id)
+    }
+    if (lenis) lenis.scrollTo(0, { immediate: true })
+    else window.scrollTo(0, 0)
+    const id = setTimeout(() => ScrollTrigger.refresh(), 0)
+    return () => clearTimeout(id)
+  }, [pathname, hash, lenis])
+
   return null
 }
 
 export default function Layout() {
   return (
     <>
-      <ScrollToTop />
+      <ScrollManager />
       <AnnouncementBar />
       <Header />
       <main className={s.main}>

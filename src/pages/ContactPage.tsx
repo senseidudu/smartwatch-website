@@ -18,11 +18,17 @@ export default function ContactPage() {
           <div className={s.offices}>
             {offices.map((office) => (
               <div key={office.city} className={s.office}>
-                <div className={s.officeCity}>{office.city}</div>
-                <div className={s.officeAddr}>{office.addr}</div>
-                <a href={office.telHref} className={s.officeTel}>
-                  {office.tel}
-                </a>
+                <div className={s.officeCity}>
+                  {office.city}, {office.country}
+                </div>
+                <div className={s.officeAddr}>
+                  {office.role} · {office.lines.join(', ')}
+                </div>
+                {office.phones.map((phone) => (
+                  <a key={phone.href} href={phone.href} className={s.officeTel}>
+                    {phone.label}
+                  </a>
+                ))}
               </div>
             ))}
           </div>

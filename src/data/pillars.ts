@@ -1,14 +1,27 @@
+import { img } from './images'
+import { routes } from './site'
+import type { IconName, Img } from './types'
+
 export type Pillar = {
+  slug: string
+  /** Detail page for this pillar. ECTS lives under solutions on the live site. */
+  to: string
+  icon: IconName
   name: string
   short: string
   headline: string
   body: string
   points: string[]
-  image: string
+  image?: Img
+  /** Placeholder label when no image exists yet. */
+  imageLabel: string
 }
 
 export const pillars: Pillar[] = [
   {
+    slug: 'compliance',
+    to: routes.product('compliance'),
+    icon: 'compliance',
     name: 'Compliance',
     short: 'Automated compliance management and driver scoring.',
     headline: 'Smartwatch gives you the power to manage compliance better.',
@@ -18,9 +31,13 @@ export const pillars: Pillar[] = [
       'Automated trip and driver matching',
       'Driver app for inspections and reports',
     ],
-    image: 'compliance dashboard screenshot',
+    image: img.laptop,
+    imageLabel: 'compliance dashboard screenshot',
   },
   {
+    slug: 'driver-safety-dash-cameras',
+    to: routes.product('driver-safety-dash-cameras'),
+    icon: 'dashcam',
     name: 'Driver Safety Dash Cameras',
     short: 'AI video, people counting, instant alerts.',
     headline: 'Protect your fleet and profits with an all-in-one safety solution.',
@@ -30,9 +47,13 @@ export const pillars: Pillar[] = [
       'Self-coaching tools and custom safety definitions',
       'Sound buzzer warns drivers before exceeding speed limits',
     ],
-    image: 'dash camera + in-cab footage',
+    image: img.dashcams,
+    imageLabel: 'dash camera + in-cab footage',
   },
   {
+    slug: 'tracking-and-telematics',
+    to: routes.product('tracking-and-telematics'),
+    icon: 'tracking',
     name: 'Tracking & Telematics',
     short: 'Real-time location, utilization and health.',
     headline:
@@ -43,9 +64,13 @@ export const pillars: Pillar[] = [
       'Geofence alerts and accurate GPS tracking to prevent theft',
       'Constant maintenance and performance reporting',
     ],
-    image: 'live map with vehicle pins',
+    image: img.device,
+    imageLabel: 'live map with vehicle pins',
   },
   {
+    slug: 'maintenance',
+    to: routes.product('maintenance'),
+    icon: 'maintenance',
     name: 'Maintenance',
     short: 'Preventive maintenance with electronic inspections.',
     headline: 'Maximize productivity and cut costs through preventive fleet maintenance.',
@@ -55,9 +80,13 @@ export const pillars: Pillar[] = [
       'Real-time fault alerts',
       'Thorough inspections increase driver accountability',
     ],
-    image: 'maintenance schedule view',
+    image: img.laptop,
+    imageLabel: 'maintenance schedule view',
   },
   {
+    slug: 'electronic-cargo-tracking',
+    to: routes.solution('electronic-cargo-tracking'),
+    icon: 'cargo',
     name: 'Electronic Cargo Tracking',
     short: 'Heavy-duty e-lock for secure cargo transit.',
     headline:
@@ -68,9 +97,13 @@ export const pillars: Pillar[] = [
       'Fewer errors, better resource allocation',
       'Less paperwork, safeguarded information',
     ],
-    image: 'e-lock on shipping container',
+    image: img.cargo,
+    imageLabel: 'e-lock on shipping container',
   },
   {
+    slug: 'sustainability',
+    to: routes.product('sustainability'),
+    icon: 'sustainability',
     name: 'Sustainability',
     short: 'Fuel management that cuts cost and emissions.',
     headline: 'Save on fuel and reduce your environmental impact with fleet fuel management.',
@@ -80,9 +113,12 @@ export const pillars: Pillar[] = [
       'Identify top and bottom performers',
       'Reduce fuel waste and environmental impact',
     ],
-    image: 'fuel performance chart',
+    imageLabel: 'fuel performance chart',
   },
   {
+    slug: 'insurance',
+    to: routes.product('insurance'),
+    icon: 'insurance',
     name: 'Insurance',
     short: 'Theft prevention, recovery and safer driving.',
     headline: 'Enhance operational efficiency and prevent fleet theft.',
@@ -92,6 +128,10 @@ export const pillars: Pillar[] = [
       'Driver behavior coaching',
       'Most efficient routes reduce wear and tear',
     ],
-    image: 'vehicle recovery map',
+    imageLabel: 'vehicle recovery map',
   },
 ]
+
+export function findPillar(slug: string): Pillar | undefined {
+  return pillars.find((p) => p.slug === slug)
+}

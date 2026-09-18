@@ -1,5 +1,5 @@
 import Placeholder from '../components/Placeholder'
-import { stats } from '../data/site'
+import { formatStat, stats } from '../data/site'
 import { cx } from '../lib/cx'
 import s from './CompanyPage.module.css'
 
@@ -17,7 +17,7 @@ export default function CompanyPage() {
         <div className={s.stats}>
           {stats.slice(0, 3).map((stat) => (
             <div key={stat.label} className={s.stat}>
-              <div className={s.statValue}>{stat.value}</div>
+              <div className={s.statValue}>{formatStat(stat)}</div>
               <div className={s.statLabel}>{stat.label}</div>
             </div>
           ))}

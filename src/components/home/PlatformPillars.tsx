@@ -70,7 +70,7 @@ export default function PlatformPillars() {
               </Link>
             </div>
           </div>
-          <Placeholder label={pillar.image} ratio="4 / 3" dark />
+          <Placeholder label={pillar.imageLabel} ratio="4 / 3" dark />
         </div>
       </div>
     </section>

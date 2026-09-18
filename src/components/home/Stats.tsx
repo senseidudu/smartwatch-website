@@ -1,4 +1,4 @@
-import { stats } from '../../data/site'
+import { formatStat, stats } from '../../data/site'
 import s from './Stats.module.css'
 
 export default function Stats() {
@@ -7,7 +7,7 @@ export default function Stats() {
       <div className={s.grid}>
         {stats.map((stat) => (
           <div key={stat.label} className={s.cell}>
-            <div className={s.value}>{stat.value}</div>
+            <div className={s.value}>{formatStat(stat)}</div>
             <div className={s.label}>{stat.label}</div>
           </div>
         ))}
