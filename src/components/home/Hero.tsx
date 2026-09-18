@@ -1,9 +1,11 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { img, video } from '../../data/images'
 import { routes } from '../../data/site'
 import type { Img } from '../../data/types'
 import { cx } from '../../lib/cx'
+import { prefersReducedMotion } from '../../motion/motion'
+import { useEntrance } from '../../motion/useEntrance'
 import VideoModal from '../VideoModal'
 import s from './Hero.module.css'
 
@@ -19,16 +21,14 @@ const slides: Slide[] = [
 
 const ADVANCE_MS = 4000
 
-function prefersReducedMotion(): boolean {
-  return typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-}
-
 export default function Hero() {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
   const [videoOpen, setVideoOpen] = useState(false)
   const baseId = useId()
   const reduced = prefersReducedMotion()
+  const ref = useRef<HTMLElement>(null)
+  useEntrance(ref)
 
   useEffect(() => {
     if (paused || reduced) return
@@ -37,11 +37,13 @@ export default function Hero() {
   }, [paused, reduced])
 
   return (
-    <section className={s.hero} data-band="dark">
+    <section className={s.hero} data-band="dark" ref={ref}>
       <div className={cx('container', s.inner)}>
         <div className={s.copy}>
-          <h1 className={cx('h-display', s.title)}>A decade of connecting and protecting fleets.</h1>
-          <p className={s.lead}>
+          <h1 className={cx('h-display', s.title)} data-enter>
+            A decade of connecting and protecting fleets.
+          </h1>
+          <p className={s.lead} data-enter>
             One platform to help improve the{' '}
             <span
               className={s.words}
@@ -69,7 +71,7 @@ export default function Hero() {
             </span>{' '}
             of your operations across East Africa.
           </p>
-          <div className={s.actions}>
+          <div className={s.actions} data-enter>
             <Link to={routes.contact} className="btn btn--primary">
               Get a demo
             </Link>
@@ -86,6 +88,7 @@ export default function Hero() {
           aria-labelledby={`${baseId}-word-${active}`}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
+          data-enter-media
         >
           {slides.map((slide, i) => (
             <div key={slide.word} className={cx(s.slide, i === active && s.slideOn)} aria-hidden={i !== active}>

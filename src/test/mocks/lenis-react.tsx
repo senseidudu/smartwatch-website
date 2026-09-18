@@ -1,11 +1,11 @@
-import { forwardRef, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { lenisStub } from './lenis'
 
-export const ReactLenis = forwardRef<unknown, { children?: ReactNode; root?: boolean; options?: unknown }>(
-  function ReactLenis({ children }) {
-    return <>{children}</>
-  },
-)
+type Props = { children?: ReactNode; root?: boolean; options?: unknown; ref?: unknown }
+
+export function ReactLenis({ children }: Props) {
+  return <>{children}</>
+}
 
 export function useLenis() {
   return lenisStub

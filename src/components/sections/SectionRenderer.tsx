@@ -1,4 +1,5 @@
 import type { Section } from '../../data/types'
+import Reveal from '../Reveal'
 import BeforeAfterSection from './BeforeAfterSection'
 import BulletsSection from './BulletsSection'
 import CardsSection from './CardsSection'
@@ -12,7 +13,7 @@ import StatsSection from './StatsSection'
 import StepsSection from './StepsSection'
 import TabsSection from './TabsSection'
 
-export default function SectionRenderer({ section }: { section: Section }) {
+function render(section: Section) {
   switch (section.kind) {
     case 'cards':
       return <CardsSection section={section} />
@@ -43,4 +44,9 @@ export default function SectionRenderer({ section }: { section: Section }) {
       return never
     }
   }
+}
+
+/** Picks the component for a section and reveals it as it scrolls into view. */
+export default function SectionRenderer({ section }: { section: Section }) {
+  return <Reveal>{render(section)}</Reveal>
 }

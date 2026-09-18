@@ -1,5 +1,7 @@
+import { useRef } from 'react'
 import type { DetailPage } from '../../data/types'
 import { cx } from '../../lib/cx'
+import { useEntrance } from '../../motion/useEntrance'
 import Media from '../Media'
 import SmartLink from '../SmartLink'
 import { btnClass, defaultHeroCtas } from './cta'
@@ -10,18 +12,27 @@ export default function DetailHero({ page }: { page: DetailPage }) {
   const tone = hero.tone ?? 'dark'
   const ctas = hero.ctas ?? defaultHeroCtas(page.kind)
   const photo = tone === 'photo' && hero.media
+  const ref = useRef<HTMLElement>(null)
+  useEntrance(ref)
   return (
     <section
+      ref={ref}
       className={cx(s.hero, photo && s.heroPhoto)}
       style={photo ? { backgroundImage: `url(${hero.media!.src})` } : undefined}
       data-band="dark"
     >
       <div className={cx('container', s.heroInner, photo && s.heroCentered)}>
         <div className={s.heroCopy}>
-          <div className="eyebrow eyebrow--bright">{hero.eyebrow}</div>
-          <h1 className="h-page">{hero.title}</h1>
-          <p className={s.heroLead}>{hero.intro}</p>
-          <div className={s.heroActions}>
+          <div className="eyebrow eyebrow--bright" data-enter>
+            {hero.eyebrow}
+          </div>
+          <h1 className="h-page" data-enter>
+            {hero.title}
+          </h1>
+          <p className={s.heroLead} data-enter>
+            {hero.intro}
+          </p>
+          <div className={s.heroActions} data-enter>
             {ctas.map((cta) => (
               <SmartLink key={cta.label} to={cta.to} className={btnClass(cta.variant)}>
                 {cta.label}
@@ -30,14 +41,16 @@ export default function DetailHero({ page }: { page: DetailPage }) {
           </div>
         </div>
         {!photo && (
-          <Media
-            image={hero.media}
-            label={hero.mediaLabel ?? `${page.name} image`}
-            ratio="4 / 3"
-            radius={24}
-            dark
-            priority
-          />
+          <div data-enter-media>
+            <Media
+              image={hero.media}
+              label={hero.mediaLabel ?? `${page.name} image`}
+              ratio="4 / 3"
+              radius={24}
+              dark
+              priority
+            />
+          </div>
         )}
       </div>
     </section>

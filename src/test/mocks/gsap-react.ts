@@ -12,6 +12,7 @@ function depsOf(config?: Config): DependencyList {
 /** Runs the callback once after mount (and on dependency change), like the real hook. */
 export function useGSAP(callback?: Callback, config?: Config) {
   const deps = depsOf(config)
+  // oxlint-disable-next-line react-hooks/exhaustive-deps -- mirrors the real hook's dynamic deps
   useEffect(() => {
     const cleanup = callback?.({ revert() {} }, (fn) => fn)
     return typeof cleanup === 'function' ? cleanup : undefined

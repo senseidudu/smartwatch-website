@@ -4,12 +4,13 @@ import { anchors } from '../../data/site'
 import { cx } from '../../lib/cx'
 import DemoForm from '../DemoForm'
 import Media from '../Media'
+import Reveal from '../Reveal'
 import s from './DemoSection.module.css'
 
 export default function DemoSection() {
   return (
     <section className={s.section} id={anchors.demo} data-band="dark">
-      <div className={cx('container', s.grid)}>
+      <Reveal stagger className={cx('container', s.grid)}>
         <div className={s.copy}>
           <div className="eyebrow eyebrow--bright">Connect with us</div>
           <h2 className={s.title}>We'd love to show you around.</h2>
@@ -27,7 +28,7 @@ export default function DemoSection() {
           </div>
         </div>
         <DemoForm />
-      </div>
+      </Reveal>
     </section>
   )
 }

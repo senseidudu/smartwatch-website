@@ -10,9 +10,9 @@ function chain(): Chain {
   return c
 }
 
+/** Runs the matchMedia callback immediately so component code paths execute under test. */
 export const matchMediaAdd = vi.fn((_query: unknown, fn?: (ctx: unknown) => unknown) => {
-  // Behave like a non-matching query: the callback never runs, so nothing is hidden in tests.
-  void fn
+  fn?.({ conditions: {}, add: vi.fn() })
   return undefined
 })
 
@@ -29,7 +29,10 @@ export const gsap = {
     return { revert: vi.fn(), kill: vi.fn(), add: vi.fn() }
   }),
   ticker: { add: vi.fn(), remove: vi.fn(), lagSmoothing: vi.fn() },
-  utils: { toArray: (v: unknown) => (Array.isArray(v) ? v : [v]), clamp: (a: number, b: number, v: number) => Math.min(b, Math.max(a, v)) },
+  utils: {
+    toArray: (v: unknown) => (Array.isArray(v) ? v : [v]),
+    clamp: (a: number, b: number, v: number) => Math.min(b, Math.max(a, v)),
+  },
   killTweensOf: vi.fn(),
 }
 

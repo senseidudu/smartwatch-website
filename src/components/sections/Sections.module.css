@@ -1,12 +1,8 @@
 /* Shared styles for the data-driven page sections. Colour and type come from src/index.css tokens. */
 
 .section {
-  padding-top: 72px;
-  padding-bottom: 8px;
-}
-
-.section + .section {
   padding-top: 64px;
+  padding-bottom: 8px;
 }
 
 .head {
@@ -443,6 +439,7 @@
 }
 
 .tabPanel {
+  animation: fade-in-up 0.25s ease both;
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 32px;
@@ -650,6 +647,7 @@
 }
 
 .faqPanel {
+  animation: fade-in-up 0.2s ease both;
   padding: 0 0 20px;
   font-size: 15px;
   line-height: 1.65;
@@ -733,10 +731,6 @@
 
 @media (max-width: 900px) {
   .section {
-    padding-top: 48px;
-  }
-
-  .section + .section {
     padding-top: 48px;
   }
 

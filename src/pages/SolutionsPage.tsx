@@ -1,5 +1,6 @@
 import Media from '../components/Media'
 import Panel from '../components/Panel'
+import Reveal from '../components/Reveal'
 import CtaBand from '../components/sections/CtaBand'
 import { defaultCta } from '../components/sections/cta'
 import SmartLink from '../components/SmartLink'
@@ -30,7 +31,7 @@ export default function SolutionsPage() {
 
       <Panel className={s.panel}>
         <section className={cx('container', s.gridWrap)} aria-label="Solutions by industry">
-          <div className={s.grid}>
+          <Reveal stagger className={s.grid}>
             {industries.map((industry) => (
               <SmartLink key={industry.to} to={industry.to} className={cx(s.card, 'lift')}>
                 <Media image={industry.image} label={industry.name} ratio="16 / 10" radius={0} decorative stripe={10} />
@@ -41,7 +42,7 @@ export default function SolutionsPage() {
                 </div>
               </SmartLink>
             ))}
-          </div>
+          </Reveal>
         </section>
         <CtaBand
           {...defaultCta}

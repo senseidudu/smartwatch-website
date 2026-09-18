@@ -1,40 +1,35 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { cx } from '../../lib/cx'
+import { ScrollTrigger, useGSAP } from '../../motion/gsap'
+import type { RailItem } from './rail'
 import s from './Sections.module.css'
 
-export type RailItem = { id: string; label: string }
-
-const labels: Record<string, string> = {
-  features: 'Features',
-  benefits: 'Benefits',
-  'how-it-works': 'How it works',
-  hardware: 'Hardware',
-  resources: 'Resources',
-  faq: 'FAQ',
-  devices: 'Devices',
-  accessories: 'Accessories',
-  specs: 'Specs',
-  industries: 'Industries',
-  related: 'Related',
-  stats: 'At a glance',
-  vision: 'Vision',
-  heritage: 'Heritage',
-  'why-us': 'Why us',
-  awards: 'Awards',
-  support: 'Support',
-  products: 'Products',
-  demo: 'Get a demo',
-}
-
-export function railLabel(id: string, fallback?: string): string {
-  return labels[id] ?? fallback ?? id
-}
-
-/** In-page anchor pills that stay under the header while the page scrolls. */
+/** In-page anchor pills that stay under the header and highlight the section in view. */
 export default function StickyRail({ items }: { items: RailItem[] }) {
   const [active, setActive] = useState(items[0]?.id)
+  const ref = useRef<HTMLElement>(null)
+
+  useGSAP(
+    () => {
+      const triggers = items.map((item) => {
+        const target = document.getElementById(item.id)
+        if (!target) return null
+        return ScrollTrigger.create({
+          trigger: target,
+          start: 'top 45%',
+          end: 'bottom 45%',
+          onToggle: (self) => {
+            if (self.isActive) setActive(item.id)
+          },
+        })
+      })
+      return () => triggers.forEach((t) => t?.kill())
+    },
+    { scope: ref, dependencies: [items] },
+  )
+
   return (
-    <nav className={s.rail} aria-label="On this page">
+    <nav className={s.rail} aria-label="On this page" ref={ref}>
       <div className={cx('container', s.railInner)}>
         {items.map((item) => (
           <a

@@ -3,11 +3,12 @@ import { featuredPost, posts } from '../../data/content'
 import { routes } from '../../data/site'
 import { cx } from '../../lib/cx'
 import Media from '../Media'
+import Reveal from '../Reveal'
 import s from './Resources.module.css'
 
 export default function Resources() {
   return (
-    <section className={cx('container', s.section)}>
+    <Reveal as="section" className={cx('container', s.section)}>
       <div className={s.head}>
         <h2 className="h-section">Discover what's new with Smartwatch.</h2>
         <Link to={routes.products} className="btn btn--outline btn--sm">
@@ -44,6 +45,6 @@ export default function Resources() {
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   )
 }

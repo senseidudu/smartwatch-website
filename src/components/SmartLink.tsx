@@ -1,13 +1,10 @@
 import type { AnchorHTMLAttributes, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { isExternal, isPlainAnchor } from '../lib/links'
 
 type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
   to: string
   children: ReactNode
-}
-
-export function isExternal(to: string): boolean {
-  return /^https?:\/\//i.test(to)
 }
 
 /**
@@ -22,7 +19,7 @@ export default function SmartLink({ to, children, ...rest }: Props) {
       </a>
     )
   }
-  if (/^(mailto:|tel:|#)/i.test(to)) {
+  if (isPlainAnchor(to)) {
     return (
       <a href={to} {...rest}>
         {children}

@@ -1,6 +1,7 @@
 import ContactForm from '../components/ContactForm'
 import Icon from '../components/Icon'
 import Panel from '../components/Panel'
+import Reveal from '../components/Reveal'
 import { anchors, mapEmbed, offices, site } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { cx } from '../lib/cx'
@@ -24,7 +25,7 @@ export default function ContactPage() {
       </section>
 
       <Panel className={s.panel}>
-        <section className={cx('container', s.router)} aria-label="How can we help">
+        <Reveal as="section" stagger className={cx('container', s.router)} aria-label="How can we help">
           <a href={`#${anchors.demo}`} className={cx(s.card, s.cardLink, 'lift')}>
             <span className={s.cardIcon}>
               <Icon name="sales" />
@@ -51,10 +52,10 @@ export default function ContactPage() {
               {site.email}
             </a>
           </div>
-        </section>
+        </Reveal>
 
         <section id={anchors.support} className={cx('container', s.support)}>
-          <div className={s.supportCopy}>
+          <Reveal className={s.supportCopy}>
             <div className="eyebrow">Customer support</div>
             <h2 className="h-section">Prompt, relevant help by phone, email, remote log-in or in person.</h2>
             <p className="lead">
@@ -69,7 +70,7 @@ export default function ContactPage() {
                 Office phone numbers
               </a>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <section id={anchors.offices} className={cx('container', s.officesSection)}>
@@ -86,7 +87,7 @@ export default function ContactPage() {
               allowFullScreen
             />
           </div>
-          <div className={s.offices}>
+          <Reveal stagger className={s.offices}>
             {offices.map((office) => (
               <div key={office.city} className={s.office}>
                 <div className={s.officeRole}>{office.role}</div>
@@ -107,7 +108,7 @@ export default function ContactPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </section>
       </Panel>
 

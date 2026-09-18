@@ -2,6 +2,7 @@ import type { CardItem, Section } from '../../data/types'
 import { cx } from '../../lib/cx'
 import Icon from '../Icon'
 import Media from '../Media'
+import Reveal from '../Reveal'
 import SmartLink from '../SmartLink'
 import SectionHead from './SectionHead'
 import s from './Sections.module.css'
@@ -45,11 +46,11 @@ export default function CardsSection({ section }: Props) {
   return (
     <section id={section.id} className={cx('container', s.section)}>
       <SectionHead eyebrow={section.eyebrow} title={section.title} intro={section.intro} />
-      <div className={cx(s.cards, s[`cols${columns}`])}>
+      <Reveal stagger className={cx(s.cards, s[`cols${columns}`])}>
         {section.items.map((item) => (
           <Card key={item.title} item={item} />
         ))}
-      </div>
+      </Reveal>
     </section>
   )
 }

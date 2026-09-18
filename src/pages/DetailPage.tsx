@@ -1,10 +1,13 @@
+import { useMemo } from 'react'
+import Reveal from '../components/Reveal'
 import CtaBand from '../components/sections/CtaBand'
 import { defaultCta } from '../components/sections/cta'
 import DetailHero from '../components/sections/DetailHero'
 import LogoWall from '../components/sections/LogoWall'
 import ProofStrip from '../components/sections/ProofStrip'
+import { railLabel } from '../components/sections/rail'
 import SectionRenderer from '../components/sections/SectionRenderer'
-import StickyRail, { railLabel } from '../components/sections/StickyRail'
+import StickyRail from '../components/sections/StickyRail'
 import { customerLogos } from '../data/content'
 import type { DetailPage as Page } from '../data/types'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -19,12 +22,15 @@ export default function DetailPage({ page }: { page: Page }) {
   usePageMeta(page.meta)
   const related = page.sections.filter((sec) => sec.kind === 'related')
   const main = page.sections.filter((sec) => sec.kind !== 'related')
-  const rail =
-    page.kind === 'product'
-      ? page.sections
-          .filter((sec) => sec.id)
-          .map((sec) => ({ id: sec.id!, label: railLabel(sec.id!, sec.title) }))
-      : []
+  const rail = useMemo(
+    () =>
+      page.kind === 'product'
+        ? page.sections
+            .filter((sec) => sec.id)
+            .map((sec) => ({ id: sec.id!, label: railLabel(sec.id!, sec.title) }))
+        : [],
+    [page],
+  )
 
   return (
     <div className={s.page}>
@@ -35,11 +41,19 @@ export default function DetailPage({ page }: { page: Page }) {
         {main.map((section, i) => (
           <SectionRenderer key={section.id ?? `${section.kind}-${i}`} section={section} />
         ))}
-        {page.kind === 'solution' && <LogoWall items={customerLogos} title="Trusted by" />}
+        {page.kind === 'solution' && (
+          <Reveal>
+            <LogoWall items={customerLogos} title="Trusted by" />
+          </Reveal>
+        )}
         {related.map((section, i) => (
           <SectionRenderer key={section.id ?? `related-${i}`} section={section} />
         ))}
-        {page.cta !== false && <CtaBand {...(page.cta ?? defaultCta)} />}
+        {page.cta !== false && (
+          <Reveal>
+            <CtaBand {...(page.cta ?? defaultCta)} />
+          </Reveal>
+        )}
       </div>
     </div>
   )

@@ -123,6 +123,7 @@
 }
 
 .phonePop {
+  animation: fade-in-down 0.2s ease both;
   position: absolute;
   top: 100%;
   right: 0;
@@ -250,6 +251,7 @@
 /* Mega menus */
 
 .menu {
+  animation: fade-in-down 0.2s ease both;
   position: absolute;
   left: 0;
   right: 0;
@@ -393,6 +395,7 @@
 /* Mobile drawer */
 
 .drawer {
+  animation: fade-in-down 0.22s ease both;
   position: absolute;
   left: 0;
   right: 0;

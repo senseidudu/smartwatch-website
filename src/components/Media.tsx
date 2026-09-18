@@ -14,6 +14,8 @@ type Props = {
   priority?: boolean
   /** True when the surrounding text already describes the image (e.g. inside a linked card). */
   decorative?: boolean
+  /** Placeholder stripe width in px. */
+  stripe?: number
   className?: string
   children?: ReactNode
 }
@@ -27,12 +29,13 @@ export default function Media({
   dark = false,
   priority = false,
   decorative = false,
+  stripe,
   className,
   children,
 }: Props) {
   if (!image) {
     return (
-      <Placeholder label={label} ratio={ratio} radius={radius} dark={dark} className={className}>
+      <Placeholder label={label} ratio={ratio} radius={radius} dark={dark} stripe={stripe} className={className}>
         {children}
       </Placeholder>
     )

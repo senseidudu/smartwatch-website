@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Media from '../components/Media'
 import Panel from '../components/Panel'
+import Reveal from '../components/Reveal'
 import CardsSection from '../components/sections/CardsSection'
 import StickyRail from '../components/sections/StickyRail'
 import DemoSection from '../components/home/DemoSection'
@@ -13,7 +14,9 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import { cx } from '../lib/cx'
 import s from './ProductsPage.module.css'
 
-const productCards: Section = {
+type CardsSectionData = Extract<Section, { kind: 'cards' }>
+
+const productCards: CardsSectionData = {
   kind: 'cards',
   id: 'products',
   title: 'Designed around your unique requirements.',
@@ -22,10 +25,11 @@ const productCards: Section = {
   items: pillars.map((p) => ({ title: p.name, body: p.short, icon: p.icon, href: p.to })),
 }
 
-function hardwareSection(id: string, title: string, intro: string): Section | undefined {
-  const source = hardware.sections.find((sec) => sec.kind === 'cards' && sec.id === id)
-  if (!source || source.kind !== 'cards') return undefined
-  return { ...source, title, intro, columns: 3 }
+function hardwareSection(id: string, title: string, intro: string): CardsSectionData | undefined {
+  const source = hardware.sections.find(
+    (sec): sec is CardsSectionData => sec.kind === 'cards' && sec.id === id,
+  )
+  return source ? { ...source, title, intro, columns: 3 } : undefined
 }
 
 const deviceCards = hardwareSection(
@@ -80,9 +84,19 @@ export default function ProductsPage() {
 
       <Panel className={s.panel}>
         <StickyRail items={rail} />
-        <CardsSection section={productCards} />
-        {deviceCards && <CardsSection section={deviceCards} />}
-        {accessoryCards && <CardsSection section={accessoryCards} />}
+        <Reveal>
+          <CardsSection section={productCards} />
+        </Reveal>
+        {deviceCards && (
+          <Reveal>
+            <CardsSection section={deviceCards} />
+          </Reveal>
+        )}
+        {accessoryCards && (
+          <Reveal>
+            <CardsSection section={accessoryCards} />
+          </Reveal>
+        )}
         <div className={cx('container', s.hardwareLink)}>
           <Link to={routes.hardware} className="btn btn--outline">
             Explore all hardware

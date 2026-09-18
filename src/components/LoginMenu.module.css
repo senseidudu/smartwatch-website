@@ -26,6 +26,7 @@
 }
 
 .menu {
+  animation: fade-in-down 0.2s ease both;
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
