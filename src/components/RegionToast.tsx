@@ -7,7 +7,7 @@ export default function RegionToast() {
   const close = () => setOpen(false)
   return (
     <aside className={s.toast} aria-label="Regional welcome">
-      <div className={s.title}>Welcome from Smartwatch!</div>
+      <div className={s.title}>Welcome to Smartwatch!</div>
       <div className={s.body}>
         Discover how Smartwatch can help your fleet operations in Kenya with our regional team in
         Nairobi.
