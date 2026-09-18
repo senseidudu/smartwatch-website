@@ -1,3 +1,6 @@
+import { img } from './images'
+import { routes } from './site'
+
 export const heroWords = ['safety', 'productivity', 'profitability']
 
 export const logos = [
@@ -41,24 +44,40 @@ export const whys = [
 ]
 
 export const featuredPost = {
-  kind: 'Product launch',
+  kind: 'Product',
   title: 'Driver Safety Dash Cameras: AI video, people counting and instant alerts.',
-  body: 'Everything announced in our latest hardware release for buses, trucks and light commercial fleets.',
-  image: 'feature image: dash camera launch',
+  body: 'Video surveillance, passenger information, AI analytics and people counting, dispatch system and terminal with ticket system.',
+  image: img.dashcams,
+  to: routes.product('driver-safety-dash-cameras'),
 }
 
 export const posts = [
-  { kind: 'Guide', title: 'How to take a proactive fleet maintenance strategy' },
-  { kind: 'Webinar', title: 'Eco-Drive: benchmarking fuel performance across your fleet' },
-  { kind: 'Industry news', title: 'Electronic cargo tracking arrives on the Northern Corridor' },
+  {
+    kind: 'Product',
+    title: 'Take a proactive fleet maintenance strategy',
+    image: img.laptop,
+    to: routes.product('maintenance'),
+  },
+  {
+    kind: 'Product',
+    title: 'Save up to 40% on fuel with fleet fuel management',
+    image: undefined,
+    to: routes.product('sustainability'),
+  },
+  {
+    kind: 'Solution',
+    title: 'Faster inspection and clearance on trading corridors',
+    image: img.cargo,
+    to: routes.solution('electronic-cargo-tracking'),
+  },
 ]
 
-export const awards = [
-  'KPMG Top 100 Mid-Sized Companies',
-  'Best Fleet Solution East Africa',
-  'Most Implementable',
-  'Best Estimated ROI',
-]
+export const award = {
+  name: 'KPMG Top 100 Mid-Sized Companies',
+  label: 'Recognised by KPMG',
+  image: img.kpmg,
+  to: '/about#awards',
+}
 
 export const demoBenefits = [
   'Comply with local and international fleet regulations.',

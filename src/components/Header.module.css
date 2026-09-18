@@ -1,10 +1,20 @@
+/* Transparent sticky header whose colours follow the band beneath it (data-theme). */
+
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  background: transparent;
+  --hdr-fg: var(--ink);
+  --hdr-fg-muted: var(--ink-3);
+  --hdr-hover: var(--surface);
+  transition: color 0.25s;
+}
+
+.header[data-theme='dark'] {
+  --hdr-fg: var(--white);
+  --hdr-fg-muted: var(--muted);
+  --hdr-hover: rgba(255, 255, 255, 0.12);
 }
 
 .bar {
@@ -40,29 +50,37 @@
   padding: 9px 14px;
   font-size: 15px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--hdr-fg);
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
   white-space: nowrap;
+  transition:
+    color 0.25s,
+    background 0.15s;
 }
 
 .navItem:hover,
 .navItemOpen {
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--hdr-hover);
+  color: var(--hdr-fg);
 }
 
 .caret {
   font-size: 10px;
   opacity: 0.6;
+  transition: transform 0.2s;
+}
+
+.caretOpen {
+  transform: rotate(180deg);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
   flex-shrink: 0;
   margin-left: auto;
 }
@@ -75,12 +93,16 @@
 .drawerPhone {
   font-size: 14px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--hdr-fg);
   display: flex;
   gap: 6px;
   align-items: center;
   padding: 8px 0;
   white-space: nowrap;
+}
+
+.drawerPhone {
+  color: var(--ink);
 }
 
 .dot {
@@ -92,8 +114,12 @@
 }
 
 .phoneRole {
-  color: var(--ink-3);
+  color: var(--hdr-fg-muted);
   font-weight: 500;
+}
+
+.drawerPhone .phoneRole {
+  color: var(--ink-3);
 }
 
 .phonePop {
@@ -110,6 +136,7 @@
   flex-direction: column;
   gap: 12px;
   z-index: 60;
+  color: var(--ink);
 }
 
 .popLabel {
@@ -158,16 +185,6 @@
   color: var(--ink);
 }
 
-.login {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.login:hover {
-  color: var(--green);
-}
-
 /* Mobile menu button */
 
 .burger {
@@ -183,7 +200,7 @@
 }
 
 .burger:hover {
-  background: var(--surface);
+  background: var(--hdr-hover);
 }
 
 .burgerLine,
@@ -192,9 +209,11 @@
   display: block;
   width: 20px;
   height: 2px;
-  background: var(--ink);
+  background: var(--hdr-fg);
   border-radius: 2px;
-  transition: transform 0.2s;
+  transition:
+    transform 0.2s,
+    background 0.25s;
 }
 
 .burgerLine {
@@ -236,6 +255,8 @@
   right: 0;
   top: var(--header-h);
   background: var(--white);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   box-shadow: var(--shadow-menu);
 }
@@ -348,6 +369,15 @@
   font-size: 12px;
 }
 
+.promoBadge {
+  background: var(--white);
+  padding: 10px;
+}
+
+.promoBadge img {
+  object-fit: contain;
+}
+
 .promoTitle {
   font-weight: 700;
   font-size: 16px;
@@ -368,12 +398,14 @@
   right: 0;
   top: var(--header-h);
   background: var(--white);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   box-shadow: var(--shadow-menu);
-  padding: 12px var(--gutter) 24px;
+  padding: 8px var(--gutter) 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   max-height: calc(100vh - var(--header-h));
   overflow-y: auto;
 }
@@ -383,12 +415,41 @@
   flex-direction: column;
 }
 
-.drawerLink {
+.drawerGroup {
+  border-bottom: 1px solid var(--line);
+}
+
+.drawerToggle {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
   color: var(--ink);
   font-size: 18px;
   font-weight: 700;
   padding: 14px 0;
-  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+}
+
+.drawerGroup .drawerToggle {
+  border-bottom: 0;
+}
+
+.drawerList {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 12px 12px;
+}
+
+.drawerLink {
+  color: var(--ink-2);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 0;
 }
 
 .drawerLink:hover {
@@ -397,10 +458,17 @@
 
 .drawerFooter {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   gap: 16px;
-  flex-wrap: wrap;
+}
+
+.drawerPortals {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerPortals .menuHeading {
+  margin-bottom: 6px;
 }
 
 @media (max-width: 1180px) {

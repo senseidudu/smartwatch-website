@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, test } from 'vitest'
@@ -86,5 +86,42 @@ describe('Header mobile drawer', () => {
     expect(drawer).toHaveTextContent('Contact')
     await user.click(screen.getByRole('button', { name: /close menu/i }))
     expect(screen.queryByRole('dialog', { name: /menu/i })).not.toBeInTheDocument()
+  })
+})
+
+describe('Header login menu', () => {
+  test('opens a menu with the three platform portals', async () => {
+    const user = userEvent.setup()
+    renderHeader()
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /^login$/i }))
+    const menu = screen.getByRole('menu')
+    const links = within(menu).getAllByRole('menuitem')
+    expect(links).toHaveLength(3)
+    expect(links[2]).toHaveAttribute('href', 'https://smartwatch.fm-track.com/login')
+    expect(links[2]).toHaveAttribute('target', '_blank')
+  })
+
+  test('closes on Escape', async () => {
+    const user = userEvent.setup()
+    renderHeader()
+    await user.click(screen.getByRole('button', { name: /^login$/i }))
+    await user.keyboard('{Escape}')
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+  })
+})
+
+describe('Header links and theme', () => {
+  test('solutions menu links resolve to detail routes', async () => {
+    const user = userEvent.setup()
+    renderHeader()
+    await user.hover(screen.getByRole('button', { name: /solutions/i }))
+    expect(screen.getByRole('link', { name: 'Oil and Gas' })).toHaveAttribute('href', '/solutions/oil-and-gas')
+    expect(screen.getByRole('link', { name: 'Devices' })).toHaveAttribute('href', '/hardware#devices')
+  })
+
+  test('exposes the band theme it sits over', () => {
+    renderHeader()
+    expect(screen.getByRole('banner')).toHaveAttribute('data-theme')
   })
 })

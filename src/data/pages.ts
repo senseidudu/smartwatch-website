@@ -1,40 +1,35 @@
+import { about } from './about'
+import { hardware } from './hardware'
 import { img } from './images'
-import { pillars } from './pillars'
+import { platforms } from './platforms'
+import { products } from './products'
 import { routes } from './site'
-import type { IconName, Img } from './types'
+import { solutions } from './solutions'
+import type { DetailPage, IconName, Img } from './types'
 
 /** Enough about a page to render a card or menu item that links to it. */
 export type PageRef = { to: string; name: string; short: string; image?: Img; icon?: IconName }
 
+function ref(page: DetailPage, to: string): PageRef {
+  return { to, name: page.name, short: page.short, image: page.hero.media, icon: page.icon }
+}
+
+export const productRefs: PageRef[] = products.map((p) => ref(p, routes.product(p.slug)))
+export const solutionRefs: PageRef[] = solutions.map((s) => ref(s, routes.solution(s.slug)))
+export const hardwareRef: PageRef = { ...ref(hardware, routes.hardware), image: hardware.hero.media ?? img.products }
+
 const staticPages: PageRef[] = [
-  {
-    to: routes.hardware,
-    name: 'Hardware & accessories',
-    short: 'Trackers, dash cameras, sensors and accessories built for Africa’s roads.',
-    image: img.products,
-    icon: 'hardware',
-  },
+  hardwareRef,
+  ref(about, routes.about),
+  ref(platforms, routes.platforms),
   { to: routes.products, name: 'All products', short: 'The full Smartwatch FM product suite.', icon: 'platform' },
   { to: routes.solutions, name: 'All solutions', short: 'Solutions for every industry we serve.', icon: 'tracking' },
-  { to: routes.about, name: 'About Smartwatch', short: 'A decade of connecting fleets across industries.', image: img.ngo },
   { to: routes.contact, name: 'Contact', short: 'Talk to sales or support, 24/7.', icon: 'sales' },
-  { to: routes.platforms, name: 'Platform logins', short: 'Log in to Smartwatch FM, VSS or Smart FM.', icon: 'platform' },
+  { to: routes.privacy, name: 'Privacy policy', short: 'How we handle your data and cookies.' },
+  { to: routes.terms, name: 'Terms and conditions', short: 'The terms for using this website.' },
 ]
 
-const pillarPages: PageRef[] = pillars.map((p) => ({
-  to: p.to,
-  name: p.name,
-  short: p.short,
-  image: p.image,
-  icon: p.icon,
-}))
-
-let registered: PageRef[] = []
-
-/** Data modules register their pages so `resolvePage` can describe any site path. */
-export function registerPages(refs: PageRef[]) {
-  registered = registered.concat(refs.filter((r) => !registered.some((x) => x.to === r.to)))
-}
+const all: PageRef[] = [...productRefs, ...solutionRefs, ...staticPages]
 
 function titleFromPath(path: string): string {
   const last = path.split('#')[0].split('/').filter(Boolean).pop() ?? ''
@@ -44,9 +39,5 @@ function titleFromPath(path: string): string {
 /** Describes a site path for cards and menus; falls back to a title derived from the slug. */
 export function resolvePage(path: string): PageRef {
   const base = path.split('#')[0]
-  return (
-    registered.find((p) => p.to === base) ??
-    pillarPages.find((p) => p.to === base) ??
-    staticPages.find((p) => p.to === base) ?? { to: path, name: titleFromPath(path), short: '' }
-  )
+  return all.find((p) => p.to === base) ?? { to: path, name: titleFromPath(path), short: '' }
 }

@@ -3,6 +3,12 @@ import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, test } from 'vitest'
 import App from './App'
+import { about } from './data/about'
+import { hardware } from './data/hardware'
+import { privacy, terms } from './data/legal'
+import { platforms } from './data/platforms'
+import { products } from './data/products'
+import { solutions } from './data/solutions'
 
 function renderAt(path: string) {
   return render(
@@ -12,56 +18,81 @@ function renderAt(path: string) {
   )
 }
 
+function expectH1(name: string | RegExp) {
+  expect(screen.getByRole('heading', { level: 1, name })).toBeInTheDocument()
+}
+
 describe('routing', () => {
   test('renders the home page at /', () => {
     renderAt('/')
-    expect(
-      screen.getByRole('heading', { level: 1, name: /a decade of connecting and protecting fleets/i }),
-    ).toBeInTheDocument()
+    expectH1(/a decade of connecting and protecting fleets/i)
   })
 
-  test('renders the products page at /products', () => {
+  test('renders the products index', () => {
     renderAt('/products')
-    expect(
-      screen.getByRole('heading', { level: 1, name: /protect your fleet and profits/i }),
-    ).toBeInTheDocument()
+    expectH1(/products tailored to your specific needs/i)
   })
 
-  test('renders the solutions page at /solutions', () => {
+  test('renders each product page from data', () => {
+    renderAt(`/products/${products[0].slug}`)
+    expectH1(products[0].hero.title)
+  })
+
+  test('renders the solutions index', () => {
     renderAt('/solutions')
-    expect(
-      screen.getByRole('heading', { level: 1, name: /built for the industries that keep east africa moving/i }),
-    ).toBeInTheDocument()
+    expectH1(/built for the industries that keep east africa moving/i)
   })
 
-  test('renders the company page at /company', () => {
+  test('renders each solution page from data', () => {
+    renderAt(`/solutions/${solutions[1].slug}`)
+    expectH1(solutions[1].hero.title)
+  })
+
+  test('renders hardware, platforms, about and legal pages', () => {
+    renderAt('/hardware')
+    expectH1(hardware.hero.title)
+  })
+
+  test('renders the platforms page', () => {
+    renderAt('/platforms')
+    expectH1(platforms.hero.title)
+  })
+
+  test('renders the about page and redirects the old company path', () => {
     renderAt('/company')
-    expect(
-      screen.getByRole('heading', { level: 1, name: /total peace of mind, since 2011/i }),
-    ).toBeInTheDocument()
+    expectH1(about.hero.title)
   })
 
-  test('renders the contact page at /contact', () => {
+  test('renders the contact page', () => {
     renderAt('/contact')
-    expect(
-      screen.getByRole('heading', { level: 1, name: /talk to sales or support, 24\/7/i }),
-    ).toBeInTheDocument()
+    expectH1(/talk to sales or support, 24\/7/i)
+  })
+
+  test('renders the privacy policy', () => {
+    renderAt('/privacy-policy')
+    expectH1(privacy.title)
+  })
+
+  test('renders the terms and redirects the long path', () => {
+    renderAt('/terms-and-conditions')
+    expectH1(terms.title)
   })
 
   test('sends unknown paths to the home page', () => {
     renderAt('/does-not-exist')
-    expect(
-      screen.getByRole('heading', { level: 1, name: /a decade of connecting and protecting fleets/i }),
-    ).toBeInTheDocument()
+    expectH1(/a decade of connecting and protecting fleets/i)
+  })
+
+  test('sends unknown product and solution slugs to their index', () => {
+    renderAt('/solutions/nope')
+    expectH1(/built for the industries that keep east africa moving/i)
   })
 
   test('header "Get a demo" navigates to the contact page', async () => {
     const user = userEvent.setup()
     renderAt('/')
     await user.click(screen.getByRole('banner').querySelector('a[href="/contact"]')!)
-    expect(
-      screen.getByRole('heading', { level: 1, name: /talk to sales or support, 24\/7/i }),
-    ).toBeInTheDocument()
+    expectH1(/talk to sales or support, 24\/7/i)
   })
 
   test('shows the shared header and footer on every page', () => {

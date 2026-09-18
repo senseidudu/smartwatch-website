@@ -1,85 +1,96 @@
 import { Link } from 'react-router-dom'
-import Placeholder from '../components/Placeholder'
-import { productFeatures } from '../data/content'
+import Media from '../components/Media'
+import Panel from '../components/Panel'
+import CardsSection from '../components/sections/CardsSection'
+import StickyRail from '../components/sections/StickyRail'
+import DemoSection from '../components/home/DemoSection'
+import { award } from '../data/content'
+import { hardware } from '../data/hardware'
 import { pillars } from '../data/pillars'
-import { routes } from '../data/site'
+import { anchors, routes } from '../data/site'
+import type { Section } from '../data/types'
+import { usePageMeta } from '../hooks/usePageMeta'
 import { cx } from '../lib/cx'
 import s from './ProductsPage.module.css'
 
+const productCards: Section = {
+  kind: 'cards',
+  id: 'products',
+  title: 'Designed around your unique requirements.',
+  intro: 'Software products that work together on one platform, powered by industry-leading AI.',
+  columns: 3,
+  items: pillars.map((p) => ({ title: p.name, body: p.short, icon: p.icon, href: p.to })),
+}
+
+function hardwareSection(id: string, title: string, intro: string): Section | undefined {
+  const source = hardware.sections.find((sec) => sec.kind === 'cards' && sec.id === id)
+  if (!source || source.kind !== 'cards') return undefined
+  return { ...source, title, intro, columns: 3 }
+}
+
+const deviceCards = hardwareSection(
+  anchors.devices,
+  'Smartwatch devices.',
+  'Dependable trackers, cameras and monitors, designed and built for Africa’s roads.',
+)
+const accessoryCards = hardwareSection(
+  anchors.accessories,
+  'Accessories.',
+  'Sensors, harnesses and in-cab devices that extend what your trackers can see.',
+)
+
+const rail = [
+  { id: 'products', label: 'Products' },
+  { id: anchors.devices, label: 'Devices' },
+  { id: anchors.accessories, label: 'Accessories' },
+  { id: anchors.demo, label: 'Get a demo' },
+]
+
 export default function ProductsPage() {
+  usePageMeta({
+    title: 'Products',
+    description:
+      'Smartwatch products tailored to your specific needs: compliance, dash cameras, tracking and telematics, maintenance, cargo tracking, sustainability and insurance.',
+  })
+
   return (
-    <>
-      <section className={s.hero}>
-        <div className={cx('container', s.heroGrid)}>
-          <div className={s.heroCopy}>
-            <div className="eyebrow eyebrow--bright">Products · Driver Safety</div>
-            <h1 className="h-page">
-              Protect your fleet and profits with an all-in-one safety solution.
-            </h1>
-            <p className={s.heroLead}>
-              Video surveillance, passenger information, AI analytics and people counting, dispatch
-              system and terminal with ticket system.
-            </p>
-            <div className={s.actions}>
-              <Link to={routes.contact} className="btn btn--primary">
-                Get a demo
-              </Link>
-              <a href="#" className="btn btn--outline-light">
-                Download spec sheet
-              </a>
-            </div>
+    <div className={s.page}>
+      <section className={s.hero} data-band="dark">
+        <div className={cx('container', s.heroInner)}>
+          <div className="eyebrow eyebrow--bright">Smartwatch products</div>
+          <h1 className="h-page">Products tailored to your specific needs.</h1>
+          <p className={s.lead}>
+            Comprehensive and customised solutions designed to fit your business operations, enhance
+            efficiency, and support long-term growth.
+          </p>
+          <div className={s.actions}>
+            <a href="#products" className="btn btn--primary">
+              Discover all products
+            </a>
+            <Link to={routes.contact} className="btn btn--outline-light">
+              Contact us
+            </Link>
           </div>
-          <Placeholder label="dash camera hardware, hero shot" ratio="4 / 3" dark />
-        </div>
-      </section>
-
-      <section className={cx('container', s.features)}>
-        {productFeatures.map((feature, i) => (
-          <div key={feature.label} className={cx(s.feature, i % 2 === 1 && s.featureReverse)}>
-            <Placeholder label={feature.image} ratio="4 / 3" className={s.featureImage} />
-            <div className={s.featureCopy}>
-              <div className="eyebrow">{feature.label}</div>
-              <h2 className={s.featureTitle}>{feature.headline}</h2>
-              <p className="lead">{feature.body}</p>
-              <div className={s.points}>
-                {feature.points.map((point) => (
-                  <div key={point.title} className={s.point}>
-                    <div className={s.pointTitle}>{point.title}</div>
-                    <div className={s.pointBody}>{point.body}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
-
-      <section className={s.platform}>
-        <div className={cx('container', s.platformInner)}>
-          <h2 className="h-section">Works with the rest of the platform.</h2>
-          <div className={s.platformGrid}>
-            {pillars.map((p) => (
-              <a key={p.name} href="#" className={s.platformCard}>
-                <div className={s.platformName}>{p.name}</div>
-                <div className={s.platformShort}>{p.short}</div>
-                <div className={s.platformMore}>Learn more →</div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={cx('container', s.ctaWrap)}>
-        <div className={s.cta}>
-          <div className={s.ctaCopy}>
-            <h2 className="h-section">See dash cameras in action.</h2>
-            <p className={s.ctaText}>A 30-minute walkthrough with our Kampala or Nairobi team.</p>
-          </div>
-          <Link to={routes.contact} className="btn btn--primary">
-            Get a demo
+          <Link to={award.to} className={s.badge} aria-label={award.name}>
+            <Media image={award.image} radius={10} decorative className={s.badgeImage} />
+            <span className={s.badgeLabel}>{award.label}</span>
           </Link>
         </div>
       </section>
-    </>
+
+      <Panel className={s.panel}>
+        <StickyRail items={rail} />
+        <CardsSection section={productCards} />
+        {deviceCards && <CardsSection section={deviceCards} />}
+        {accessoryCards && <CardsSection section={accessoryCards} />}
+        <div className={cx('container', s.hardwareLink)}>
+          <Link to={routes.hardware} className="btn btn--outline">
+            Explore all hardware
+          </Link>
+        </div>
+      </Panel>
+
+      <DemoSection />
+    </div>
   )
 }

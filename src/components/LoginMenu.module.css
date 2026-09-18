@@ -1,0 +1,67 @@
+.root {
+  position: relative;
+}
+
+.button {
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--hdr-fg, var(--ink));
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.button:hover {
+  background: var(--hdr-hover, var(--surface));
+}
+
+.caret {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 300px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: var(--shadow-pop);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 60;
+  color: var(--ink);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--ink);
+}
+
+.item:hover {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.itemName {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.itemShort {
+  font-size: 13px;
+  color: var(--ink-3);
+}

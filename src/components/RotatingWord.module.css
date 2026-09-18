@@ -1,7 +1,0 @@
-.word {
-  color: var(--green);
-  display: inline-block;
-  min-width: 150px;
-  transition-property: opacity;
-  transition-timing-function: ease;
-}

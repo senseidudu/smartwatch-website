@@ -22,6 +22,8 @@ const labels: Record<string, string> = {
   'why-us': 'Why us',
   awards: 'Awards',
   support: 'Support',
+  products: 'Products',
+  demo: 'Get a demo',
 }
 
 export function railLabel(id: string, fallback?: string): string {

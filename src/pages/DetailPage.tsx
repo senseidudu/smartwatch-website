@@ -1,4 +1,5 @@
-import CtaBand, { defaultCta } from '../components/sections/CtaBand'
+import CtaBand from '../components/sections/CtaBand'
+import { defaultCta } from '../components/sections/cta'
 import DetailHero from '../components/sections/DetailHero'
 import LogoWall from '../components/sections/LogoWall'
 import ProofStrip from '../components/sections/ProofStrip'

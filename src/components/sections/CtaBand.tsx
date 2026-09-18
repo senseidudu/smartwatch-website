@@ -1,25 +1,9 @@
-import { routes } from '../../data/site'
-import type { Cta } from '../../data/types'
 import { cx } from '../../lib/cx'
 import SmartLink from '../SmartLink'
+import { btnClass, type CtaBandProps } from './cta'
 import s from './Sections.module.css'
 
-type Props = { title: string; body: string; ctas: Cta[] }
-
-export const defaultCta: Props = {
-  title: 'See it in action.',
-  body: 'A 30-minute walkthrough with our Kampala or Nairobi team, on your fleet and your routes.',
-  ctas: [
-    { label: 'Get a demo', to: routes.contact, variant: 'primary' },
-    { label: 'Talk to support', to: `${routes.contact}#support`, variant: 'outline-light' },
-  ],
-}
-
-export function btnClass(variant: Cta['variant'] = 'primary'): string {
-  return cx('btn', `btn--${variant}`)
-}
-
-export default function CtaBand({ title, body, ctas }: Props) {
+export default function CtaBand({ title, body, ctas }: CtaBandProps) {
   return (
     <section className={cx('container', s.section)}>
       <div className={s.ctaBand}>

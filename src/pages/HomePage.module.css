@@ -1,0 +1,27 @@
+.home {
+  background: var(--navy);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  margin-top: -40px;
+}
+
+.panel + * {
+  margin-top: 0;
+}
+
+.disclaimer {
+  background: var(--navy);
+  color: var(--muted);
+  font-size: 12px;
+  padding: 0 0 24px;
+}
+
+@media (max-width: 900px) {
+  .panel {
+    margin-top: -28px;
+  }
+}

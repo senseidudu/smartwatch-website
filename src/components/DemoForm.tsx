@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { fleetSizes, leadSources } from '../data/content'
+import { routes } from '../data/site'
 import { submitLead } from '../lib/leads'
 import { cx } from '../lib/cx'
 import s from './DemoForm.module.css'
@@ -110,7 +112,7 @@ export default function DemoForm() {
       </button>
       <div className={s.finePrint}>
         By clicking "Get a demo", I acknowledge receipt of the{' '}
-        <a href="#">Smartwatch Privacy Policy</a>.
+        <Link to={routes.privacy}>Smartwatch Privacy Policy</Link>.
       </div>
     </form>
   )

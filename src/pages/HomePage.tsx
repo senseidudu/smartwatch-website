@@ -1,23 +1,36 @@
-import Customers from '../components/home/Customers'
+import Panel from '../components/Panel'
+import CustomersBand from '../components/home/CustomersBand'
 import DemoSection from '../components/home/DemoSection'
 import Hero from '../components/home/Hero'
-import IndustriesStrip from '../components/home/IndustriesStrip'
-import PlatformPillars from '../components/home/PlatformPillars'
+import PlatformIntro from '../components/home/PlatformIntro'
+import ProductRail from '../components/home/ProductRail'
+import ProductRows from '../components/home/ProductRows'
 import Resources from '../components/home/Resources'
-import Stats from '../components/home/Stats'
-import WhySmartwatch from '../components/home/WhySmartwatch'
+import { site } from '../data/site'
+import { usePageMeta } from '../hooks/usePageMeta'
+import s from './HomePage.module.css'
 
 export default function HomePage() {
+  usePageMeta({
+    description:
+      'Smartwatch Solutions: fleet and mobile asset management for East Africa since 2011. Tracking, telematics, dash cameras, compliance, maintenance and cargo security on one platform.',
+  })
   return (
-    <>
+    <div className={s.home}>
       <Hero />
-      <Stats />
-      <PlatformPillars />
-      <Customers />
-      <WhySmartwatch />
-      <IndustriesStrip />
-      <Resources />
+      <Panel className={s.panel}>
+        <PlatformIntro />
+        <ProductRail />
+        <ProductRows />
+      </Panel>
+      <CustomersBand />
+      <Panel className={s.panel}>
+        <Resources />
+      </Panel>
       <DemoSection />
-    </>
+      <div className={s.disclaimer}>
+        <div className="container">{site.disclaimer}</div>
+      </div>
+    </div>
   )
 }

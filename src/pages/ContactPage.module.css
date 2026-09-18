@@ -1,58 +1,165 @@
 .page {
   flex: 1;
-  background: var(--surface);
-}
-
-.grid {
-  padding-top: 88px;
-  padding-bottom: 96px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: 64px;
-  align-items: start;
-}
-
-.copy {
+  background: var(--navy);
   display: flex;
   flex-direction: column;
-  gap: 28px;
 }
 
-.intro {
+.band {
+  background:
+    radial-gradient(120% 90% at 100% 100%, #16386a 0%, var(--navy) 55%),
+    var(--navy);
+  color: var(--white);
+  padding: 88px 0 120px;
+}
+
+.bandInner {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 16px;
 }
 
-.title {
-  font-size: clamp(36px, 4.2vw, 56px);
+.bandInner h1 {
+  max-width: 760px;
 }
 
 .lead {
   font-size: 17px;
   line-height: 1.6;
-  color: var(--ink-2);
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.panel {
+  margin-top: -40px;
+}
+
+.router {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--ink);
+}
+
+.cardLink:hover {
+  border-color: var(--green);
+  color: var(--ink);
+}
+
+.cardIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardTitle {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.cardBody {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+.cardMore {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--green);
+  margin-top: auto;
+  overflow-wrap: anywhere;
+}
+
+.support {
+  padding-top: 80px;
+}
+
+.supportCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 720px;
+}
+
+.supportActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.officesSection {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.officesHead {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.map {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 21 / 8;
+  background: var(--surface);
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 .offices {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .office {
-  background: var(--white);
+  border: 1px solid var(--line);
   border-radius: 16px;
   padding: 22px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  border: 1px solid var(--line);
+  gap: 8px;
+}
+
+.officeRole {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
 }
 
 .officeCity {
   font-weight: 800;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .officeAddr {
@@ -61,43 +168,79 @@
   line-height: 1.55;
 }
 
-.officeTel {
-  font-size: 14px;
-  font-weight: 700;
+.officePhones {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   margin-top: 4px;
 }
 
-.support {
+.officeTel {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.demo {
+  background: var(--navy);
+  color: var(--white);
+  padding: 120px 0 96px;
+}
+
+.demoGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.demoCopy {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 16px;
 }
 
-.supportLabel {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-3);
+.demoTitle {
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 
-.supportLink {
-  font-size: 16px;
-  font-weight: 700;
-  overflow-wrap: anywhere;
+.demoLead {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
 }
 
 @media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
-    padding-top: 56px;
-    padding-bottom: 64px;
-    gap: 40px;
+  .band {
+    padding: 56px 0 88px;
   }
-}
 
-@media (max-width: 520px) {
+  .panel {
+    margin-top: -28px;
+  }
+
+  .router,
   .offices {
     grid-template-columns: 1fr;
+  }
+
+  .support,
+  .officesSection {
+    padding-top: 56px;
+  }
+
+  .map {
+    aspect-ratio: 4 / 3;
+  }
+
+  .demo {
+    padding: 72px 0 64px;
+  }
+
+  .demoGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }
