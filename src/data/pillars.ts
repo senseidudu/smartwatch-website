@@ -47,7 +47,7 @@ export const pillars: Pillar[] = [
       'Self-coaching tools and custom safety definitions',
       'Sound buzzer warns drivers before exceeding speed limits',
     ],
-    image: img.dashcams,
+    image: img.cargo,
     imageLabel: 'dash camera + in-cab footage',
   },
   {

@@ -37,7 +37,7 @@ export default function ProductRail() {
   return (
     <div className={cx('container', s.wrap)} ref={ref}>
       <div className={s.band}>
-        <Media image={img.products} ratio="21 / 9" radius={24} decorative className={s.bandMedia} />
+        <Media image={img.mrm} ratio="21 / 9" radius={24} decorative className={s.bandMedia} />
         <nav className={s.rail} aria-label="Products">
           {pillars.map((p) => (
             <a key={p.slug} href={`#row-${p.slug}`} className={cx(s.tile, 'lift')} data-tile>
