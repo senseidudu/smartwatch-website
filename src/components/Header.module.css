@@ -91,7 +91,7 @@
   bottom: 0;
   height: 2px;
   border-radius: 2px;
-  background: var(--accent);
+  background: var(--green);
 }
 
 .caret {
@@ -191,7 +191,7 @@
 }
 
 .popLink:hover {
-  color: var(--accent);
+  color: var(--green);
 }
 
 .popHelp {
@@ -360,19 +360,26 @@
 }
 
 .itemCompact {
-  padding: 7px 10px;
+  padding: 6px 10px;
+  align-items: center;
 }
 
 .itemIcon {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: var(--accent);
+  background: var(--green);
   color: var(--white);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.itemCompact .itemIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
 }
 
 .itemText {
@@ -413,7 +420,7 @@
 }
 
 .featuredLink:hover {
-  color: var(--accent);
+  color: var(--green);
 }
 
 .viewAll {
@@ -429,7 +436,7 @@
 
 .viewAll:hover {
   gap: 12px;
-  color: var(--accent);
+  color: var(--green);
 }
 
 /* Dark promo tile */
@@ -550,7 +557,7 @@
 }
 
 .drawerLink:hover {
-  color: var(--accent);
+  color: var(--green);
 }
 
 .drawerPortals {

@@ -38,11 +38,6 @@
   --green-dark: #0e7f3f;
   --green-bright: #3dd07c;
 
-  /* Action accent for calls to action near the logo, so the green mark stays the only green up top */
-  --accent: #1f6bff;
-  --accent-2: #14b0f5;
-  --cta-gradient: linear-gradient(95deg, var(--accent) 0%, var(--accent-2) 100%);
-
   --ink: #0b2447;
   --ink-2: #3e4c5a;
   --ink-3: #5b6b7a;
@@ -233,16 +228,6 @@ img {
 .btn--primary:hover {
   background: var(--green-dark);
   color: var(--white);
-}
-
-.btn--accent {
-  background: var(--cta-gradient);
-  color: var(--white);
-}
-
-.btn--accent:hover {
-  color: var(--white);
-  filter: brightness(1.08);
 }
 
 .btn--outline {

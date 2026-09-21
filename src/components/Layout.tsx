@@ -5,6 +5,7 @@ import { HEADER_OFFSET, ScrollTrigger } from '../motion/gsap'
 import Footer from './Footer'
 import Header from './Header'
 import RegionToast from './RegionToast'
+import WhatsAppButton from './WhatsAppButton'
 import s from './Layout.module.css'
 
 /** Jumps to the top on route change, or to the hash target, then lets ScrollTrigger re-measure. */
@@ -39,6 +40,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <RegionToast />
+      <WhatsAppButton />
       <Footer />
     </>
   )

@@ -153,7 +153,7 @@ export default function Header() {
               </div>
             )}
           </div>
-          <Link to={routes.contact} className={cx('btn', 'btn--accent', s.cta)} onClick={closeAll}>
+          <Link to={routes.contact} className={cx('btn', 'btn--primary', s.cta)} onClick={closeAll}>
             Get a demo
           </Link>
           <button
@@ -190,13 +190,13 @@ function MenuCard({ children, anchor }: { children: ReactNode; anchor?: number }
   )
 }
 
-/** Optional icon tile + title + one-line description. */
+/** Icon tile + title, plus a one-line description unless the row is compact. */
 function MenuItem({ link, onNavigate, compact = false }: { link: NavLink; onNavigate: () => void; compact?: boolean }) {
   return (
     <SmartLink to={link.to} className={cx(s.item, compact && s.itemCompact)} onClick={onNavigate}>
-      {!compact && link.icon && (
+      {link.icon && (
         <span className={s.itemIcon}>
-          <Icon name={link.icon} size={20} />
+          <Icon name={link.icon} size={compact ? 18 : 20} />
         </span>
       )}
       <span className={s.itemText}>
@@ -414,7 +414,7 @@ function Drawer({ onNavigate }: MenuProps) {
           <Icon name="phone" size={16} />
           Contact
         </Link>
-        <Link to={routes.contact} className={cx('btn', 'btn--accent', s.cta)} onClick={onNavigate}>
+        <Link to={routes.contact} className={cx('btn', 'btn--primary', s.cta)} onClick={onNavigate}>
           Get a demo
         </Link>
       </div>

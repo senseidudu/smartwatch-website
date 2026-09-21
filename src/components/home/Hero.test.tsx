@@ -1,7 +1,8 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, test } from 'vitest'
+import { heroWords } from '../../data/content'
 import Hero from './Hero'
 
 function renderHero() {
@@ -13,30 +14,25 @@ function renderHero() {
 }
 
 describe('Home hero', () => {
-  test('renders the headline and primary actions', () => {
+  test('renders the headline', () => {
     renderHero()
     expect(
       screen.getByRole('heading', { level: 1, name: /a decade of connecting and protecting fleets/i }),
     ).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /get a demo/i })).toHaveAttribute('href', '/contact')
   })
 
-  test('offers three word tabs with the first selected', () => {
+  test('cycles the three words through the morphing text', () => {
     renderHero()
-    const tabs = screen.getAllByRole('tab')
-    expect(tabs.map((t) => t.textContent)).toEqual(['safety', 'productivity', 'profitability'])
-    expect(tabs[0]).toHaveAttribute('aria-selected', 'true')
-    expect(screen.getByRole('tabpanel')).toHaveAttribute('aria-labelledby', tabs[0].id)
+    const lead = screen.getByText(/one platform to help improve the/i)
+    for (const word of heroWords) {
+      expect(within(lead).getAllByText(word).length).toBeGreaterThan(0)
+    }
   })
 
-  test('clicking a word selects its media slide', async () => {
-    const user = userEvent.setup()
+  test('offers only the watch demo action', () => {
     renderHero()
-    const productivity = screen.getByRole('tab', { name: 'productivity' })
-    await user.click(productivity)
-    expect(productivity).toHaveAttribute('aria-selected', 'true')
-    expect(screen.getByRole('tab', { name: 'safety' })).toHaveAttribute('aria-selected', 'false')
-    expect(screen.getByRole('tabpanel')).toHaveAttribute('aria-labelledby', productivity.id)
+    expect(screen.getByRole('button', { name: /watch demo/i })).toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /get a demo/i })).not.toBeInTheDocument()
   })
 
   test('"Watch demo" opens the video modal', async () => {

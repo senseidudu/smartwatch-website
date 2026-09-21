@@ -1,40 +1,37 @@
-import { useEffect, useId, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { heroWords } from '../../data/content'
 import { img, video } from '../../data/images'
-import { routes } from '../../data/site'
 import type { Img } from '../../data/types'
 import { cx } from '../../lib/cx'
 import { prefersReducedMotion } from '../../motion/motion'
 import { useEntrance } from '../../motion/useEntrance'
+import MorphText from '../ui/morph-text'
 import VideoModal from '../VideoModal'
 import s from './Hero.module.css'
 
-type Slide =
-  | { word: string; kind: 'video'; src: string; poster: string }
-  | { word: string; kind: 'image'; image: Img }
+type Slide = { kind: 'video'; src: string; poster: string } | { kind: 'image'; image: Img }
 
 const slides: Slide[] = [
-  { word: 'safety', kind: 'video', src: video.corporate.src, poster: video.corporate.poster },
-  { word: 'productivity', kind: 'image', image: img.dashcams },
-  { word: 'profitability', kind: 'image', image: img.laptop },
+  { kind: 'video', src: video.corporate.src, poster: video.corporate.poster },
+  { kind: 'image', image: img.dashcams },
+  { kind: 'image', image: img.laptop },
 ]
 
-const ADVANCE_MS = 4000
+/** Shared by the morphing word and the media carousel so the two stay in step. */
+const WORD_INTERVAL = 3000
 
 export default function Hero() {
   const [active, setActive] = useState(0)
-  const [paused, setPaused] = useState(false)
   const [videoOpen, setVideoOpen] = useState(false)
-  const baseId = useId()
   const reduced = prefersReducedMotion()
   const ref = useRef<HTMLElement>(null)
   useEntrance(ref)
 
   useEffect(() => {
-    if (paused || reduced) return
-    const timer = setInterval(() => setActive((i) => (i + 1) % slides.length), ADVANCE_MS)
+    if (reduced) return
+    const timer = setInterval(() => setActive((i) => (i + 1) % slides.length), WORD_INTERVAL)
     return () => clearInterval(timer)
-  }, [paused, reduced])
+  }, [reduced])
 
   return (
     <section className={s.hero} data-band="dark" ref={ref}>
@@ -45,53 +42,28 @@ export default function Hero() {
           </h1>
           <p className={s.lead} data-enter>
             One platform to help improve the{' '}
-            <span
-              className={s.words}
-              role="tablist"
-              aria-label="What Smartwatch improves"
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-            >
-              {slides.map((slide, i) => (
-                <button
-                  key={slide.word}
-                  type="button"
-                  role="tab"
-                  id={`${baseId}-word-${i}`}
-                  aria-selected={i === active}
-                  aria-controls={`${baseId}-media`}
-                  className={cx(s.word, i === active && s.wordOn)}
-                  onClick={() => setActive(i)}
-                  onFocus={() => setPaused(true)}
-                  onBlur={() => setPaused(false)}
-                >
-                  {slide.word}
-                </button>
-              ))}
-            </span>{' '}
+            <MorphText
+              words={heroWords}
+              interval={WORD_INTERVAL}
+              className={s.morph}
+              textClassName={s.morphText}
+            />{' '}
             of your operations across East Africa.
           </p>
           <div className={s.actions} data-enter>
-            <Link to={routes.contact} className="btn btn--accent">
-              Get a demo
-            </Link>
             <button type="button" className="btn btn--outline-light" onClick={() => setVideoOpen(true)}>
               <span aria-hidden="true">▶</span> Watch demo
             </button>
           </div>
         </div>
 
-        <div
-          className={s.media}
-          role="tabpanel"
-          id={`${baseId}-media`}
-          aria-labelledby={`${baseId}-word-${active}`}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          data-enter-media
-        >
+        <div className={s.media} data-enter-media>
           {slides.map((slide, i) => (
-            <div key={slide.word} className={cx(s.slide, i === active && s.slideOn)} aria-hidden={i !== active}>
+            <div
+              key={slide.kind === 'video' ? slide.src : slide.image.src}
+              className={cx(s.slide, i === active && s.slideOn)}
+              aria-hidden={i !== active}
+            >
               {slide.kind === 'video' ? (
                 <video
                   src={slide.src}

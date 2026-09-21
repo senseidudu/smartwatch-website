@@ -31,35 +31,16 @@
   text-wrap: pretty;
 }
 
-.words {
-  display: inline-flex;
-  gap: 14px;
-  vertical-align: baseline;
+/* Morphing word inside the hero sentence */
+
+.morph {
+  display: inline-block;
+  vertical-align: bottom;
 }
 
-/* Word tabs: the active word is white and underlined, the rest sit quietly in the sentence. */
-.word {
-  background: transparent;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  padding: 0 1px 2px;
-  font: inherit;
+.morphText {
+  color: var(--white);
   font-weight: 600;
-  color: var(--muted);
-  cursor: pointer;
-  transition:
-    color 0.2s,
-    border-color 0.2s;
-}
-
-.word:hover {
-  color: var(--white);
-}
-
-.wordOn,
-.wordOn:hover {
-  color: var(--white);
-  border-bottom-color: var(--white);
 }
 
 .actions {

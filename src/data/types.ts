@@ -12,6 +12,18 @@ export type IconName =
   | 'sales'
   | 'help'
   | 'phone'
+  | 'assets'
+  | 'fuel'
+  | 'bus'
+  | 'signal'
+  | 'government'
+  | 'food'
+  | 'field'
+  | 'satellite'
+  | 'truck'
+  | 'van'
+  | 'ev'
+  | 'site'
 
 export type Img = { src: string; alt: string; width: number; height: number }
 

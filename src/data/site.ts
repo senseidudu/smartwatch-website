@@ -79,6 +79,7 @@ export const site = {
   legalName: 'Smartwatch Solutions Ltd',
   phone: '+256 392 177 300',
   phoneHref: 'tel:+256392177300',
+  whatsapp: 'https://wa.me/256392177300',
   email: 'customersupport@smartwatchsolutions.com',
   regions: 'Uganda · Kenya',
   tagline:

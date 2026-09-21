@@ -14,8 +14,29 @@ function ref(page: DetailPage, to: string): PageRef {
   return { to, name: page.name, short: page.short, image: page.hero.media, icon: page.icon }
 }
 
+/** Icon per industry, used by the Solutions menu and the solutions index cards. */
+const solutionIcons: Record<string, IconName> = {
+  'mobile-resource-management': 'assets',
+  'oil-and-gas': 'fuel',
+  'electronic-cargo-tracking': 'cargo',
+  'bus-and-public-transport': 'bus',
+  'communications-technology': 'signal',
+  government: 'government',
+  'food-manufacturing': 'food',
+  'field-service': 'field',
+  'ngo-satellite-tracking': 'satellite',
+  'trucking-and-logistics': 'truck',
+  'eco-drive': 'sustainability',
+  'commercial-vehicle-tracking': 'van',
+  'ev-fleet-management': 'ev',
+  'site-management': 'site',
+}
+
 export const productRefs: PageRef[] = products.map((p) => ref(p, routes.product(p.slug)))
-export const solutionRefs: PageRef[] = solutions.map((s) => ref(s, routes.solution(s.slug)))
+export const solutionRefs: PageRef[] = solutions.map((s) => ({
+  ...ref(s, routes.solution(s.slug)),
+  icon: s.icon ?? solutionIcons[s.slug],
+}))
 export const hardwareRef: PageRef = { ...ref(hardware, routes.hardware), image: hardware.hero.media ?? img.products }
 
 const staticPages: PageRef[] = [
