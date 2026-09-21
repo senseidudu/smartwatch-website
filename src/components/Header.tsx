@@ -1,6 +1,5 @@
-import { useLenis } from 'lenis/react'
-import { useEffect, useRef, useState, type ReactNode, type SyntheticEvent } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useState, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/logo.svg'
 import logoWhite from '../assets/logo-white.svg'
 import { award } from '../data/content'
@@ -21,179 +20,19 @@ import {
 import { anchors, routes, site } from '../data/site'
 import type { Img } from '../data/types'
 import { cx } from '../lib/cx'
+import { useScrolled } from '../motion/useScrolled'
 import Icon from './Icon'
 import Media from './Media'
 import SmartLink from './SmartLink'
+import MegaMenuNavbar, { type MegaMenu, type MobileGroup } from './ui/mega-menu-navbar'
 import s from './Header.module.css'
 
-type MenuKey = 'products' | 'solutions' | 'resources' | 'company'
-
-const menuItems: { key: MenuKey; label: string; to: string }[] = [
-  { key: 'products', label: 'Products', to: routes.products },
-  { key: 'solutions', label: 'Solutions', to: routes.solutions },
-  { key: 'resources', label: 'Resources', to: routes.platforms },
-  { key: 'company', label: 'Company', to: routes.about },
-]
-
-const featuredProducts: NavLink[] = [
-  ...hardwareLinks,
-  { name: 'All products', short: '', to: routes.products },
-]
-
-const NARROW_CARD = 920
-
-function Chevron() {
-  return (
-    <svg className={s.caret} width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-/**
- * True once the page has scrolled past the top; the bar turns white at that point.
- * Lenis drives scrolling, so its scroll event is the primary source; the native
- * listener covers environments where Lenis is not running.
- */
-function useScrolled(threshold = 8): boolean {
-  const [scrolled, setScrolled] = useState(() => typeof window !== 'undefined' && window.scrollY > threshold)
-  useLenis((lenis) => setScrolled(lenis.scroll > threshold), [threshold])
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > threshold)
-    window.addEventListener('scroll', update, { passive: true })
-    return () => window.removeEventListener('scroll', update)
-  }, [threshold])
-  return scrolled
-}
-
-export default function Header() {
-  const [menu, setMenu] = useState<MenuKey | null>(null)
-  const [anchor, setAnchor] = useState(0)
-  const [contactOpen, setContactOpen] = useState(false)
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const headerRef = useRef<HTMLElement>(null)
-  const navigate = useNavigate()
-  const scrolled = useScrolled()
-  const theme = scrolled ? 'light' : 'dark'
-
-  const closeMenu = () => setMenu(null)
-  const closeAll = () => {
-    setMenu(null)
-    setDrawerOpen(false)
-  }
-  const go = (to: string) => () => {
-    closeAll()
-    navigate(to)
-  }
-  /** Opens a menu and remembers where its trigger sits so narrow cards can hang beneath it. */
-  const openMenu = (key: MenuKey) => (event: SyntheticEvent<HTMLButtonElement>) => {
-    const headerRect = headerRef.current?.getBoundingClientRect()
-    const rect = event.currentTarget.getBoundingClientRect()
-    const headerWidth = headerRect?.width ?? 0
-    const wanted = rect.left - (headerRect?.left ?? 0) - 32
-    const maxLeft = headerWidth - NARROW_CARD - 24
-    setAnchor(Math.max(24, Math.min(wanted, maxLeft)))
-    setMenu(key)
-  }
-
-  return (
-    <header ref={headerRef} className={s.header} data-theme={theme} onMouseLeave={closeMenu}>
-      <div className={cx('container', s.bar)}>
-        <Link to={routes.home} className={s.logo} onClick={closeAll}>
-          <img src={theme === 'dark' ? logoWhite : logo} alt={site.name} />
-        </Link>
-
-        <nav className={s.nav} aria-label="Primary">
-          {menuItems.map((item) => (
-            <button
-              key={item.key}
-              type="button"
-              className={cx(s.navItem, menu === item.key && s.navItemOpen)}
-              aria-haspopup="true"
-              aria-expanded={menu === item.key}
-              onMouseEnter={openMenu(item.key)}
-              onFocus={openMenu(item.key)}
-              onClick={go(item.to)}
-            >
-              {item.label}
-              <Chevron />
-            </button>
-          ))}
-        </nav>
-
-        <div className={s.actions}>
-          <div
-            className={s.contact}
-            onMouseEnter={() => setContactOpen(true)}
-            onMouseLeave={() => setContactOpen(false)}
-          >
-            <Link
-              to={routes.contact}
-              className={s.contactLink}
-              onMouseEnter={closeMenu}
-              onFocus={closeMenu}
-              onClick={closeAll}
-            >
-              <Icon name="phone" size={16} />
-              Contact
-            </Link>
-            {contactOpen && (
-              <div className={s.pop}>
-                <div className={s.popLabel}>Contact</div>
-                <div className={s.popTitle}>Talk to Sales or Support 24/7</div>
-                <a href={site.phoneHref} className={s.popCall}>
-                  {site.phone}
-                </a>
-                <a href={`mailto:${site.email}`} className={s.popLink}>
-                  {site.email}
-                </a>
-                <Link to={`${routes.contact}#${anchors.support}`} className={s.popHelp} onClick={closeAll}>
-                  Visit the help centre
-                </Link>
-              </div>
-            )}
-          </div>
-          <Link to={routes.contact} className={cx('btn', 'btn--primary', s.cta)} onClick={closeAll}>
-            Get a demo
-          </Link>
-          <button
-            type="button"
-            className={s.burger}
-            aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={drawerOpen}
-            onClick={() => setDrawerOpen((open) => !open)}
-          >
-            <span className={cx(s.burgerLine, drawerOpen && s.burgerOpen)} aria-hidden="true" />
-          </button>
-        </div>
-      </div>
-
-      {menu === 'products' && <ProductsMenu onNavigate={closeAll} />}
-      {menu === 'solutions' && <SolutionsMenu onNavigate={closeAll} anchor={anchor} />}
-      {menu === 'resources' && <ResourcesMenu onNavigate={closeAll} />}
-      {menu === 'company' && <CompanyMenu onNavigate={closeAll} />}
-
-      {drawerOpen && <Drawer onNavigate={closeAll} />}
-    </header>
-  )
-}
-
-type MenuProps = { onNavigate: () => void }
-
-/** Floating white card that hangs below the bar. Wide cards span the container; narrow ones sit under their trigger. */
-function MenuCard({ children, anchor }: { children: ReactNode; anchor?: number }) {
-  const narrow = anchor !== undefined
-  return (
-    <div className={cx(s.menu, narrow ? s.menuNarrow : s.menuWide)} style={narrow ? { left: anchor } : undefined}>
-      {children}
-    </div>
-  )
-}
+const featuredProducts: NavLink[] = [...hardwareLinks, { name: 'All products', short: '', to: routes.products }]
 
 /** Icon tile + title, plus a one-line description unless the row is compact. */
-function MenuItem({ link, onNavigate, compact = false }: { link: NavLink; onNavigate: () => void; compact?: boolean }) {
+function MenuItem({ link, compact = false }: { link: NavLink; compact?: boolean }) {
   return (
-    <SmartLink to={link.to} className={cx(s.item, compact && s.itemCompact)} onClick={onNavigate}>
+    <SmartLink to={link.to} className={cx(s.item, compact && s.itemCompact)}>
       {link.icon && (
         <span className={s.itemIcon}>
           <Icon name={link.icon} size={compact ? 18 : 20} />
@@ -207,11 +46,11 @@ function MenuItem({ link, onNavigate, compact = false }: { link: NavLink; onNavi
   )
 }
 
-function FeaturedList({ links, onNavigate }: { links: NavLink[]; onNavigate: () => void }) {
+function FeaturedList({ links }: { links: NavLink[] }) {
   return (
     <div className={s.featuredList}>
       {links.map((link) => (
-        <SmartLink key={link.to + link.name} to={link.to} className={s.featuredLink} onClick={onNavigate}>
+        <SmartLink key={link.to + link.name} to={link.to} className={s.featuredLink}>
           {link.name}
         </SmartLink>
       ))}
@@ -219,9 +58,9 @@ function FeaturedList({ links, onNavigate }: { links: NavLink[]; onNavigate: () 
   )
 }
 
-function ViewAll({ link, onNavigate }: { link: NavLink; onNavigate: () => void }) {
+function ViewAll({ link }: { link: NavLink }) {
   return (
-    <SmartLink to={link.to} className={s.viewAll} onClick={onNavigate}>
+    <SmartLink to={link.to} className={s.viewAll}>
       {link.name}
       <span aria-hidden="true">→</span>
     </SmartLink>
@@ -234,18 +73,16 @@ function Promo({
   title,
   body,
   to,
-  onNavigate,
   contain = false,
 }: {
   image: Img
   title: string
   body?: string
   to: string
-  onNavigate: () => void
   contain?: boolean
 }) {
   return (
-    <SmartLink to={to} className={s.promo} onClick={onNavigate}>
+    <SmartLink to={to} className={s.promo}>
       <Media image={image} ratio="16 / 10" radius={12} decorative className={cx(s.promoImage, contain && s.promoContain)} />
       <span className={s.promoTitle}>{title}</span>
       {body && <span className={s.promoText}>{body}</span>}
@@ -253,153 +90,183 @@ function Promo({
   )
 }
 
-function ProductsMenu({ onNavigate }: MenuProps) {
+function Column({ title, children, narrow = false }: { title: string; children: ReactNode; narrow?: boolean }) {
   return (
-    <MenuCard>
-      <div className={s.main}>
-        <div className={s.eyebrow}>Products</div>
-        <div className={s.grid}>
-          {productLinks.slice(0, 7).map((link) => (
-            <MenuItem key={link.to} link={link} onNavigate={onNavigate} />
-          ))}
-        </div>
-        <ViewAll link={viewAll.products} onNavigate={onNavigate} />
-      </div>
-      <div className={s.featured}>
-        <div className={s.eyebrow}>Featured</div>
-        <FeaturedList links={featuredProducts} onNavigate={onNavigate} />
-      </div>
-      <Promo
-        image={img.dashcams}
-        title="Driver Safety Dash Cameras are here."
-        body="AI video surveillance, people counting, and instant alerts on violations."
-        to={routes.product('driver-safety-dash-cameras')}
-        onNavigate={onNavigate}
-      />
-    </MenuCard>
+    <div className={narrow ? s.featured : s.main}>
+      <div className={s.eyebrow}>{title}</div>
+      {children}
+    </div>
   )
 }
 
-function SolutionsMenu({ onNavigate, anchor }: MenuProps & { anchor: number }) {
-  return (
-    <MenuCard anchor={anchor}>
-      <div className={s.main}>
-        <div className={s.eyebrow}>By industry</div>
-        <div className={s.grid}>
-          {solutionLinks.map((link) => (
-            <MenuItem key={link.to} link={link} onNavigate={onNavigate} compact />
-          ))}
-        </div>
-        <ViewAll link={viewAll.solutions} onNavigate={onNavigate} />
-      </div>
-      <Promo
-        image={img.cargo}
-        title="Smart Key demo: see cargo locking in action."
-        body="Book a 30-minute walkthrough with our Kampala or Nairobi team."
-        to={`${routes.contact}#${anchors.demo}`}
-        onNavigate={onNavigate}
-      />
-    </MenuCard>
-  )
-}
+const menus: MegaMenu[] = [
+  {
+    id: 'products',
+    label: 'Products',
+    href: routes.products,
+    content: (
+      <>
+        <Column title="Products">
+          <div className={s.grid}>
+            {productLinks.slice(0, 7).map((link) => (
+              <MenuItem key={link.to} link={link} />
+            ))}
+          </div>
+          <ViewAll link={viewAll.products} />
+        </Column>
+        <Column title="Featured" narrow>
+          <FeaturedList links={featuredProducts} />
+        </Column>
+        <Promo
+          image={img.dashcams}
+          title="Driver Safety Dash Cameras are here."
+          body="AI video surveillance, people counting, and instant alerts on violations."
+          to={routes.product('driver-safety-dash-cameras')}
+        />
+      </>
+    ),
+  },
+  {
+    id: 'solutions',
+    label: 'Solutions',
+    href: routes.solutions,
+    width: 'narrow',
+    content: (
+      <>
+        <Column title="By industry">
+          <div className={s.grid}>
+            {solutionLinks.map((link) => (
+              <MenuItem key={link.to} link={link} compact />
+            ))}
+          </div>
+          <ViewAll link={viewAll.solutions} />
+        </Column>
+        <Promo
+          image={img.cargo}
+          title="Smart Key demo: see cargo locking in action."
+          body="Book a 30-minute walkthrough with our Kampala or Nairobi team."
+          to={`${routes.contact}#${anchors.demo}`}
+        />
+      </>
+    ),
+  },
+  {
+    id: 'resources',
+    label: 'Resources',
+    href: routes.platforms,
+    content: (
+      <>
+        <Column title="Explore">
+          <div className={s.grid}>
+            {learnLinks.map((link) => (
+              <MenuItem key={link.to} link={link} />
+            ))}
+          </div>
+          <ViewAll link={viewAll.resources} />
+        </Column>
+        <Column title="Technical resources" narrow>
+          <div className={s.stack}>
+            {techLinks.map((link) => (
+              <MenuItem key={link.to} link={link} />
+            ))}
+          </div>
+        </Column>
+        <Promo
+          image={award.image}
+          title="Recognised by KPMG for fleet innovation in East Africa."
+          to={award.to}
+          contain
+        />
+      </>
+    ),
+  },
+  {
+    id: 'company',
+    label: 'Company',
+    href: routes.about,
+    content: (
+      <>
+        <Column title="Get to know Smartwatch">
+          <div className={s.grid}>
+            {companyLinks.map((link) => (
+              <MenuItem key={link.to} link={link} />
+            ))}
+          </div>
+          <ViewAll link={viewAll.company} />
+        </Column>
+        <Column title="Connect" narrow>
+          <div className={s.stack}>
+            {connectLinks.map((link) => (
+              <MenuItem key={link.to} link={link} />
+            ))}
+          </div>
+        </Column>
+        <Promo
+          image={img.ngo}
+          title="A decade of connecting and protecting fleets."
+          body="Founded in 2011. Offices in Kampala, Nairobi and the Netherlands."
+          to={routes.about}
+        />
+      </>
+    ),
+  },
+]
 
-function ResourcesMenu({ onNavigate }: MenuProps) {
-  return (
-    <MenuCard>
-      <div className={s.main}>
-        <div className={s.eyebrow}>Explore</div>
-        <div className={s.grid}>
-          {learnLinks.map((link) => (
-            <MenuItem key={link.to} link={link} onNavigate={onNavigate} />
-          ))}
-        </div>
-        <ViewAll link={viewAll.resources} onNavigate={onNavigate} />
-      </div>
-      <div className={s.featured}>
-        <div className={s.eyebrow}>Technical resources</div>
-        <div className={s.stack}>
-          {techLinks.map((link) => (
-            <MenuItem key={link.to} link={link} onNavigate={onNavigate} />
-          ))}
-        </div>
-      </div>
-      <Promo
-        image={award.image}
-        title="Recognised by KPMG for fleet innovation in East Africa."
-        to={award.to}
-        onNavigate={onNavigate}
-        contain
-      />
-    </MenuCard>
-  )
-}
+const mobileGroups: MobileGroup[] = drawerGroups.map((group) => ({
+  id: group.label.toLowerCase(),
+  title: group.label,
+  items: group.links.map((link) => ({ title: link.name, href: link.to })),
+}))
 
-function CompanyMenu({ onNavigate }: MenuProps) {
+/** Contact link with the sales and support popover, shown beside the demo button. */
+function ContactAction() {
+  const [open, setOpen] = useState(false)
   return (
-    <MenuCard>
-      <div className={s.main}>
-        <div className={s.eyebrow}>Get to know Smartwatch</div>
-        <div className={s.grid}>
-          {companyLinks.map((link) => (
-            <MenuItem key={link.to} link={link} onNavigate={onNavigate} />
-          ))}
-        </div>
-        <ViewAll link={viewAll.company} onNavigate={onNavigate} />
-      </div>
-      <div className={s.featured}>
-        <div className={s.eyebrow}>Connect</div>
-        <div className={s.stack}>
-          {connectLinks.map((link) => (
-            <MenuItem key={link.to} link={link} onNavigate={onNavigate} />
-          ))}
-        </div>
-      </div>
-      <Promo
-        image={img.ngo}
-        title="A decade of connecting and protecting fleets."
-        body="Founded in 2011. Offices in Kampala, Nairobi and the Netherlands."
-        to={routes.about}
-        onNavigate={onNavigate}
-      />
-    </MenuCard>
-  )
-}
-
-function Drawer({ onNavigate }: MenuProps) {
-  const [open, setOpen] = useState<string | null>(null)
-  return (
-    <div className={s.drawer} role="dialog" aria-label="Menu">
-      <div className={s.drawerScroll}>
-        <nav className={s.drawerNav} aria-label="Mobile">
-          {drawerGroups.map((group) => {
-            const isOpen = open === group.label
-            return (
-              <div key={group.label} className={s.drawerGroup}>
-                <button
-                  type="button"
-                  className={s.drawerToggle}
-                  aria-expanded={isOpen}
-                  onClick={() => setOpen(isOpen ? null : group.label)}
-                >
-                  {group.label}
-                  <Chevron />
-                </button>
-                {isOpen && (
-                  <div className={s.drawerList}>
-                    {group.links.map((link) => (
-                      <SmartLink key={link.to + link.name} to={link.to} className={s.drawerLink} onClick={onNavigate}>
-                        {link.name}
-                      </SmartLink>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )
-          })}
-          <Link to={routes.contact} className={s.drawerToggle} onClick={onNavigate}>
-            Contact
+    <div className={s.contact} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <Link to={routes.contact} className={s.contactLink}>
+        <Icon name="phone" size={16} />
+        Contact
+      </Link>
+      {open && (
+        <div className={s.pop}>
+          <div className={s.popLabel}>Contact</div>
+          <div className={s.popTitle}>Talk to Sales or Support 24/7</div>
+          <a href={site.phoneHref} className={s.popCall}>
+            {site.phone}
+          </a>
+          <a href={`mailto:${site.email}`} className={s.popLink}>
+            {site.email}
+          </a>
+          <Link to={`${routes.contact}#${anchors.support}`} className={s.popHelp}>
+            Visit the help centre
           </Link>
-        </nav>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default function Header() {
+  const scrolled = useScrolled()
+  const theme = scrolled ? 'light' : 'dark'
+
+  return (
+    <MegaMenuNavbar
+      theme={theme}
+      brandName={site.name}
+      logoHref={routes.home}
+      logo={<img src={theme === 'dark' ? logoWhite : logo} alt={site.name} />}
+      menus={menus}
+      mobileGroups={mobileGroups}
+      actions={
+        <>
+          <ContactAction />
+          <Link to={routes.contact} className={cx('btn', 'btn--primary', s.cta)}>
+            Get a demo
+          </Link>
+        </>
+      }
+      mobileExtra={
         <div className={s.drawerPortals}>
           <div className={s.eyebrow}>Platform logins</div>
           {portalLinks.map((link) => (
@@ -408,16 +275,18 @@ function Drawer({ onNavigate }: MenuProps) {
             </SmartLink>
           ))}
         </div>
-      </div>
-      <div className={s.drawerFooter}>
-        <Link to={routes.contact} className={s.drawerContact} onClick={onNavigate}>
-          <Icon name="phone" size={16} />
-          Contact
-        </Link>
-        <Link to={routes.contact} className={cx('btn', 'btn--primary', s.cta)} onClick={onNavigate}>
-          Get a demo
-        </Link>
-      </div>
-    </div>
+      }
+      mobileFooter={
+        <>
+          <Link to={routes.contact} className={s.drawerContact}>
+            <Icon name="phone" size={16} />
+            Contact
+          </Link>
+          <Link to={routes.contact} className={cx('btn', 'btn--primary', s.cta)}>
+            Get a demo
+          </Link>
+        </>
+      }
+    />
   )
 }
