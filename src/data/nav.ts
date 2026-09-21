@@ -1,8 +1,9 @@
 import { industries } from './industries'
 import { pillars } from './pillars'
 import { anchors, portals, routes } from './site'
+import type { IconName } from './types'
 
-export type NavLink = { name: string; short: string; to: string }
+export type NavLink = { name: string; short: string; to: string; icon?: IconName }
 
 /** Resources › Explore */
 export const learnLinks: NavLink[] = [
@@ -40,14 +41,27 @@ export const hardwareLinks: NavLink[] = [
   { name: 'Installation & support', short: '', to: `${routes.contact}#${anchors.support}` },
 ]
 
+/** "View all" link pinned to the bottom of each mega menu's main column. */
+export const viewAll = {
+  solutions: { name: 'View all solutions', short: '', to: routes.solutions },
+  products: { name: 'View all products', short: '', to: routes.products },
+  resources: { name: 'View all resources', short: '', to: routes.products },
+  company: { name: 'About Smartwatch', short: '', to: routes.about },
+} satisfies Record<string, NavLink>
+
 /** Products menu: the seven pillars plus the index. */
 export const productLinks: NavLink[] = [
-  ...pillars.map((p) => ({ name: p.name, short: p.short, to: p.to })),
-  { name: 'All products', short: 'Every product and device', to: routes.products },
+  ...pillars.map((p) => ({ name: p.name, short: p.short, to: p.to, icon: p.icon })),
+  { name: 'All products', short: 'Every product and device', to: routes.products, icon: 'platform' as const },
 ]
 
-/** Solutions menu: two columns of industries. */
-export const solutionLinks: NavLink[] = industries.map((i) => ({ name: i.name, short: i.short, to: i.to }))
+/** Solutions menu: every industry we serve, plus hardware. */
+export const solutionLinks: NavLink[] = industries.map((i) => ({
+  name: i.name,
+  short: i.short,
+  to: i.to,
+  icon: i.icon,
+}))
 
 /** Mobile drawer groups (click accordions) and its plain links. */
 export const drawerGroups: { label: string; links: NavLink[] }[] = [
