@@ -198,6 +198,20 @@
   gap: 32px;
 }
 
+/*
+ * Invisible bridge across the gap between the bar and the panel. Without it the pointer
+ * passes over the page on its way down, the header takes a mouseleave and the menu closes
+ * under the cursor. The panel only exists while open, so this never blocks the page.
+ */
+.menu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -16px;
+  height: 16px;
+}
+
 .menuWide {
   left: 50%;
   transform: translateX(-50%);

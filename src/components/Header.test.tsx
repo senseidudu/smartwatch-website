@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { afterEach, describe, expect, test } from 'vitest'
@@ -48,7 +48,7 @@ describe('Header mega menus', () => {
     await user.hover(screen.getByRole('button', { name: /company/i }))
     expect(screen.getByText('Get to know Smartwatch')).toBeInTheDocument()
     await user.hover(screen.getByRole('link', { name: /^contact$/i }))
-    expect(screen.queryByText('Get to know Smartwatch')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByText('Get to know Smartwatch')).not.toBeInTheDocument())
   })
 
   test('leaving the header closes the menu', async () => {
@@ -57,7 +57,19 @@ describe('Header mega menus', () => {
     await user.hover(screen.getByRole('button', { name: /resources/i }))
     expect(screen.getByText('Technical resources')).toBeInTheDocument()
     await user.unhover(screen.getByRole('banner'))
-    expect(screen.queryByText('Technical resources')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByText('Technical resources')).not.toBeInTheDocument())
+  })
+
+  test('a menu stays open while the pointer crosses the gap into its panel', async () => {
+    const user = userEvent.setup()
+    renderHeader()
+    await user.hover(screen.getByRole('button', { name: /resources/i }))
+    const panel = screen.getByText('Technical resources').closest('[id^="megamenu-"]')
+    // Leaving the bar schedules the close; reaching the panel has to cancel it.
+    await user.unhover(screen.getByRole('banner'))
+    await user.hover(panel as HTMLElement)
+    await new Promise((resolve) => setTimeout(resolve, 400))
+    expect(screen.getByText('Technical resources')).toBeInTheDocument()
   })
 
   test('menu buttons expose their open state', async () => {

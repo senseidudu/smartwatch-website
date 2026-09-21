@@ -26,6 +26,12 @@ import s from './mega-menu-navbar.module.css'
  * accordion keeps the component's always-mounted rows so its transition still runs.
  */
 
+/**
+ * How long an open menu survives the pointer leaving it. Long enough to cross the gap
+ * between the bar and the panel, or to clip a corner while moving diagonally into it.
+ */
+const CLOSE_DELAY = 260
+
 export interface MegaMenuItem {
   title: string
   href: string
@@ -121,12 +127,14 @@ function DesktopDropdown({
   wide,
   left,
   onLinkClick,
+  onPointerWithin,
   children,
 }: {
   id: string
   wide: boolean
   left?: number
   onLinkClick: () => void
+  onPointerWithin: () => void
   children: ReactNode
 }) {
   return (
@@ -135,6 +143,7 @@ function DesktopDropdown({
       className={cx(s.menu, wide ? s.menuWide : s.menuNarrow)}
       style={wide ? undefined : { left }}
       onClick={closeOnLink(onLinkClick)}
+      onMouseEnter={onPointerWithin}
     >
       {children}
     </div>
@@ -207,6 +216,26 @@ export function MegaMenuNavbar({
   const [mobileSection, setMobileSection] = useState<string | null>(null)
   const navRef = useRef<HTMLElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const closeTimer = useRef<number | null>(null)
+
+  /*
+   * Hover intent. The panel floats clear of the bar, so the pointer crosses dead space on
+   * its way down and `mouseleave` fires on the header. Closing on that directly meant the
+   * menu vanished before it could be reached; instead the close is deferred and any pointer
+   * landing on a trigger or inside the panel cancels it.
+   */
+  const cancelClose = () => {
+    if (closeTimer.current === null) return
+    window.clearTimeout(closeTimer.current)
+    closeTimer.current = null
+  }
+
+  const scheduleClose = () => {
+    cancelClose()
+    closeTimer.current = window.setTimeout(() => setOpenMenu(null), CLOSE_DELAY)
+  }
+
+  useEffect(() => cancelClose, [])
 
   useEffect(() => {
     const onPointerDown = (event: PointerEvent) => {
@@ -236,6 +265,7 @@ export function MegaMenuNavbar({
   }, [mobileOpen])
 
   const closeAll = () => {
+    cancelClose()
     setOpenMenu(null)
     setMobileOpen(false)
     setMobileSection(null)
@@ -243,6 +273,7 @@ export function MegaMenuNavbar({
 
   /** Opens a menu and records where its trigger sits, so narrow panels hang beneath it. */
   const openAt = (id: string) => (event: React.SyntheticEvent<HTMLButtonElement>) => {
+    cancelClose()
     const headerRect = navRef.current?.getBoundingClientRect()
     const rect = event.currentTarget.getBoundingClientRect()
     const wanted = rect.left - (headerRect?.left ?? 0) - 32
@@ -258,7 +289,7 @@ export function MegaMenuNavbar({
       ref={navRef}
       className={s.header}
       data-theme={theme}
-      onMouseLeave={() => setOpenMenu(null)}
+      onMouseLeave={scheduleClose}
     >
       <div className={cx('container', s.bar)}>
         <Brand logo={logo} href={logoHref} brandName={brandName} onNavigate={closeAll} />
@@ -279,7 +310,7 @@ export function MegaMenuNavbar({
               key={link.href}
               to={link.href}
               className={s.navItem}
-              onMouseEnter={() => setOpenMenu(null)}
+              onMouseEnter={scheduleClose}
               onFocus={() => setOpenMenu(null)}
               onClick={closeAll}
             >
@@ -288,7 +319,7 @@ export function MegaMenuNavbar({
           ))}
         </nav>
 
-        <div className={s.actions} onMouseEnter={() => setOpenMenu(null)}>
+        <div className={s.actions} onMouseEnter={scheduleClose}>
           {actions}
           <button
             ref={closeButtonRef}
@@ -309,6 +340,7 @@ export function MegaMenuNavbar({
           wide={active.width !== 'narrow'}
           left={anchor}
           onLinkClick={closeAll}
+          onPointerWithin={cancelClose}
         >
           {active.content}
         </DesktopDropdown>
