@@ -1,3 +1,4 @@
+import { img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -11,8 +12,8 @@ export const page: DetailPage = {
     title: 'The only solution you need for a safe and secure fleet.',
     intro:
       'Smartwatch FM helps our clients manage their assets remotely – improving fleet operational efficiency and productivity while reducing overall transportation costs.',
-    tone: 'dark',
-    mediaLabel: 'Smartwatch FM on desktop and the OnTrack app on a phone',
+    tone: 'photo',
+    media: img.highwayAerial,
   },
   sections: [
     {
@@ -79,7 +80,7 @@ export const page: DetailPage = {
         'Two-way messages to and from assets and drivers',
       ],
       reverse: true,
-      mediaLabel: 'web platform and OnTrack app showing vehicle location',
+      media: img.laptopTracking,
     },
     {
       kind: 'split',

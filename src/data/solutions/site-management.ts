@@ -1,3 +1,4 @@
+import { img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -11,7 +12,8 @@ export const page: DetailPage = {
     title: 'Centralizing remote infrastructure for sites looking to optimize operational costs.',
     intro:
       'Site Management gives you overarching visibility of every one of your sites and remote assets, including their performance and any potential malfunctions that might occur.',
-    tone: 'dark',
+    tone: 'photo',
+    media: img.portDusk,
   },
   sections: [
     {

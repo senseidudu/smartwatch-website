@@ -49,7 +49,7 @@ export const page: DetailPage = {
         'Localize to any region and highlight your brand.',
         'Bring in your favourite mobile devices, GPS, and IoT hardware.',
       ],
-      mediaLabel: 'fleet, field service and asset monitoring dashboard',
+      media: img.routePlanning,
     },
     {
       kind: 'split',

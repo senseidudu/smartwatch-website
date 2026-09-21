@@ -1,3 +1,4 @@
+import { img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -12,8 +13,8 @@ export const page: DetailPage = {
     title: 'Transforming oil & gas operations through automation.',
     intro:
       'Transform oil & gas operations through AI-powered automation that improves driver safety, asset tracking, cost control, and compliance management with ease.',
-    tone: 'dark',
-    mediaLabel: 'oil and gas fleet vehicles on site',
+    tone: 'photo',
+    media: img.fieldSupervisor,
   },
   sections: [
     {

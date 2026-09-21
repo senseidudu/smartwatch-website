@@ -14,7 +14,7 @@ export const page: DetailPage = {
     intro:
       'Reduce downtime, maximize productivity and reduce costs with preventive fleet maintenance.',
     tone: 'dark',
-    mediaLabel: 'maintenance schedule view',
+    media: img.fleetSunset,
   },
   sections: [
     {

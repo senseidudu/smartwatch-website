@@ -53,7 +53,7 @@ export const page: DetailPage = {
         'Wired or wireless trackers for movable assets',
         'OnTrack app tracks vehicles by phone with no hardware installation and no vehicle downtime',
       ],
-      mediaLabel: 'plug-and-play tracker with QR code activation',
+      media: img.gpsHandheld,
     },
     {
       kind: 'split',

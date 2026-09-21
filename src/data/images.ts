@@ -122,6 +122,81 @@ export const img = {
     height: 500,
     fit: 'contain',
   },
+  fieldSupervisor: {
+    src: '/images/field-supervisor.webp',
+    alt: 'Supervisor in a hard hat checking a tablet beside trucks on a highway',
+    width: 458,
+    height: 670,
+  },
+  yardMonitoring: {
+    src: '/images/yard-monitoring.webp',
+    alt: 'Manager reviewing a fleet yard from a tablet at dusk',
+    width: 654,
+    height: 468,
+  },
+  highwayAerial: {
+    src: '/images/highway-aerial.webp',
+    alt: 'Container truck tracked along a highway from above',
+    width: 736,
+    height: 552,
+  },
+  highwayPair: {
+    src: '/images/highway-pair.webp',
+    alt: 'Two haulage trucks travelling a highway at sunset',
+    width: 600,
+    height: 400,
+  },
+  freightHaul: {
+    src: '/images/freight-haul.webp',
+    alt: 'Container truck on a motorway seen from above',
+    width: 1200,
+    height: 800,
+  },
+  fleetSunset: {
+    src: '/images/fleet-sunset.webp',
+    alt: 'Row of haulage trucks parked at sunset',
+    width: 736,
+    height: 414,
+  },
+  portDusk: {
+    src: '/images/port-dusk.webp',
+    alt: 'Container trucks leaving a port terminal at dusk',
+    width: 735,
+    height: 420,
+  },
+  portContainerTruck: {
+    src: '/images/port-container-truck.webp',
+    alt: 'Container truck at a port beneath loading cranes',
+    width: 540,
+    height: 360,
+  },
+  fuelNozzle: {
+    src: '/images/fuel-nozzle.webp',
+    alt: 'Fuel nozzle with a drop of diesel',
+    width: 300,
+    height: 300,
+    fit: 'contain',
+  },
+  gpsHandheld: {
+    src: '/images/gps-handheld.webp',
+    alt: 'Handheld GPS navigation unit showing a street map',
+    width: 736,
+    height: 736,
+    fit: 'contain',
+  },
+  laptopTracking: {
+    src: '/images/laptop-tracking.webp',
+    alt: 'Laptop showing a tracked vehicle on a live map',
+    width: 500,
+    height: 500,
+    fit: 'contain',
+  },
+  routePlanning: {
+    src: '/images/route-planning.webp',
+    alt: 'Model truck and parcels laid out on a route map',
+    width: 667,
+    height: 1000,
+  },
 } satisfies Record<string, Img>
 
 export type ImgKey = keyof typeof img

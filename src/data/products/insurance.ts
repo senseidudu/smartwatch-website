@@ -14,7 +14,7 @@ export const page: DetailPage = {
     intro:
       'We have been working with insurance companies for over 10 years to deliver telematics solutions and services that solve business problems, automate processes, reduce customer churn, reduce risk, and add revenue through services.',
     tone: 'dark',
-    mediaLabel: 'vehicle recovery map',
+    media: img.portContainerTruck,
   },
   sections: [
     {

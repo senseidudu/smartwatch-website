@@ -14,7 +14,7 @@ export const page: DetailPage = {
     intro:
       'Save on fuel and reduce your environmental impact with Smartwatch FM fleet fuel management.',
     tone: 'dark',
-    mediaLabel: 'fuel performance chart',
+    media: img.fuelNozzle,
   },
   sections: [
     {

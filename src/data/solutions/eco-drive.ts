@@ -1,3 +1,4 @@
+import { img } from '../images'
 import { anchors, routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -11,7 +12,8 @@ export const page: DetailPage = {
     title: 'Educate drivers to cut fuel and wear.',
     intro:
       'Monitor driving risk, compare driver performance to spot improvements, and collect data from all vehicle brands. Eco-Drive educates drivers to lower fuel expenses and reduce vehicle wear and tear.',
-    tone: 'dark',
+    tone: 'photo',
+    media: img.highwayPair,
   },
   sections: [
     {

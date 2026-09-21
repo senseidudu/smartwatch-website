@@ -1,3 +1,4 @@
+import { img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -11,8 +12,8 @@ export const page: DetailPage = {
     title: 'Solutions for the public sector.',
     intro:
       'With our telematics technology at your disposal, you can stay within strict budget requirements, track utilisation, meet green goals, manage vehicles, and much more.',
-    tone: 'dark',
-    mediaLabel: 'government fleet vehicles in a depot',
+    tone: 'photo',
+    media: img.yardMonitoring,
   },
   sections: [
     {
