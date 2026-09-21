@@ -1,14 +1,12 @@
 .page {
   flex: 1;
-  background: var(--navy);
+  background: var(--white);
   display: flex;
   flex-direction: column;
 }
 
 .band {
-  background: var(--navy);
-  color: var(--white);
-  padding: 88px 0 120px;
+  padding: 88px 0 40px;
 }
 
 .bandInner {
@@ -21,11 +19,13 @@
 .lead {
   font-size: 17px;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--ink-2);
 }
 
-.panel {
-  margin-top: -40px;
+.body {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 56px;
 }
 
 .article {

@@ -1,8 +1,8 @@
 # Smartwatch Solutions website
 
 Marketing site for Smartwatch Solutions, a Kampala-based fleet and mobile asset management company.
-Visual design from the Claude Design project "Smartwatch website redesign"; section structure benchmarked
-on gomotive.com (layout only); copy migrated from the client's live site.
+Visual design and layout from the Claude Design project "Smartwatch website redesign" (the exported
+`Smartwatch Site.html`); copy migrated from the client's live site.
 
 ## Stack
 
@@ -44,10 +44,11 @@ bun run preview    # serve dist/
 - `src/data/types.ts` — the `DetailPage` / `Section` types every page is written against.
 - `src/pages/DetailPage.tsx` + `src/components/sections/` — the single template that renders any page.
 - `src/components/home/` — the homepage sections.
-- `src/components/Header.tsx` — transparent colour-inverting header, mega menus, login menu, drawer.
+- `src/components/Header.tsx` — transparent colour-inverting header (VengeanceUI mega-menu-navbar), mega
+  menus, contact popover, drawer; `AnnouncementBar.tsx` sits above it.
 - `src/motion/` and `src/components/Reveal.tsx` — GSAP setup, reveal-on-scroll, hero entrances.
 - `src/lib/leads.ts` — `submitLead()`, the single place to wire the demo and contact forms to a backend.
-- `public/images/`, `public/video/` — the client's approved imagery (WebP) and corporate video.
+- `public/images/` — the client's approved imagery (WebP).
 
 ## Adding a page
 

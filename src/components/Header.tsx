@@ -119,7 +119,7 @@ const menus: MegaMenu[] = [
           <FeaturedList links={featuredProducts} />
         </Column>
         <Promo
-          image={img.dashcams}
+          image={img.inCabDevice}
           title="Driver Safety Dash Cameras are here."
           body="AI video surveillance, people counting, and instant alerts on violations."
           to={routes.product('driver-safety-dash-cameras')}

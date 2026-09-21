@@ -1,5 +1,12 @@
 # Addendum: real content, Motive-shaped structure, GSAP + Lenis motion
 
+> **Superseded on 2026-09-21 for layout.** The Motive-shaped structure (navy page base, white rounded
+> panels, inverting header, pinned hero, video bands) was reverted to the Claude Design layout described
+> in the 2026-09-17 spec: white base, announcement bar, sticky white header, and the home sequence
+> hero → stats → platform pillars → customers → why → industries → resources → demo form. The landing
+> page no longer plays any video. Content, images, routes, the `DetailPage` template and the motion
+> helpers below still apply.
+
 **Date:** 2026-09-18. Extends the 2026-09-17 spec. Approved plan: `~/.claude/plans/1-now-copy-word-generic-matsumoto.md`.
 
 ## What changed

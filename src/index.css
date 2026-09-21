@@ -72,8 +72,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  /* Navy is the page base; content sits on white rounded panels (see Panel). */
-  background: var(--navy);
+  background: var(--white);
   color: var(--ink);
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;

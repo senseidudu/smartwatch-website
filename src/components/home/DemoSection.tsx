@@ -9,13 +9,13 @@ import s from './DemoSection.module.css'
 
 export default function DemoSection() {
   return (
-    <section className={s.section} id={anchors.demo} data-band="dark">
+    <section className={s.section} id={anchors.demo}>
       <Reveal stagger className={cx('container', s.grid)}>
         <div className={s.copy}>
-          <div className="eyebrow eyebrow--bright">Connect with us</div>
+          <div className="eyebrow">Connect with us</div>
           <h2 className={s.title}>We'd love to show you around.</h2>
           <p className={s.intro}>With Smartwatch you can:</p>
-          <ul className={cx('checklist', 'checklist--lg', s.benefits)}>
+          <ul className="checklist checklist--lg">
             {demoBenefits.map((benefit) => (
               <li key={benefit}>{benefit}</li>
             ))}

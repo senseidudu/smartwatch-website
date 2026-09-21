@@ -31,7 +31,16 @@
     radial-gradient(120% 90% at 100% 100%, #16386a 0%, var(--navy) 55%),
     var(--navy);
   color: var(--white);
-  padding: 88px 0 128px;
+  padding: 88px 0 96px;
+}
+
+.heroLight {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.heroLight .heroLead {
+  color: var(--ink-2);
 }
 
 .heroPhoto {
@@ -95,7 +104,6 @@
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
-  border-radius: 40px 40px 0 0;
 }
 
 .railInner {
@@ -737,7 +745,7 @@ ul.bullets {
   }
 
   .hero {
-    padding: 56px 0 96px;
+    padding: 56px 0 64px;
   }
 
   .heroInner,

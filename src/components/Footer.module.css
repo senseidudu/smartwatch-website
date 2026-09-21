@@ -4,13 +4,10 @@
   padding: 72px 0 32px;
 }
 
-.brandRow {
+.grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr auto;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 40px;
-  align-items: start;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .brand {
@@ -29,13 +26,13 @@
   font-size: 14px;
   color: var(--muted);
   line-height: 1.6;
-  max-width: 360px;
+  max-width: 320px;
 }
 
 .contact {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   font-size: 14px;
 }
 
@@ -54,45 +51,6 @@
 
 a.muted:hover {
   color: var(--green-bright);
-}
-
-.whatsapp {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.social {
-  display: flex;
-  gap: 16px;
-  margin-top: 10px;
-}
-
-.socialLink {
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.socialLink:hover {
-  color: var(--green-bright);
-}
-
-.regionPill {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 999px;
-  padding: 6px 14px;
-  font-weight: 600;
-  font-size: 13px;
-  color: var(--white);
-  white-space: nowrap;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 40px;
-  padding-top: 48px;
 }
 
 .col {
@@ -121,8 +79,35 @@ a.muted:hover {
   color: var(--green-bright);
 }
 
+.news {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.news .colHeading {
+  margin-bottom: 0;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px 32px;
+}
+
+.newsItem {
+  color: var(--white);
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+
 .legal {
-  margin-top: 48px;
+  margin-top: 40px;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
@@ -134,10 +119,11 @@ a.muted:hover {
   align-items: center;
 }
 
-.legalLinks {
+.legalLeft {
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .legalLink {
@@ -148,14 +134,26 @@ a.muted:hover {
   color: var(--green-bright);
 }
 
-@media (max-width: 900px) {
-  .brandRow {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
+.region {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-weight: 600;
+  color: var(--white);
+}
 
+.social {
+  display: flex;
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
   }
 }
 

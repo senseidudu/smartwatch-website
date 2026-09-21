@@ -12,18 +12,19 @@ export default function DetailHero({ page }: { page: DetailPage }) {
   const tone = hero.tone ?? 'dark'
   const ctas = hero.ctas ?? defaultHeroCtas(page.kind)
   const photo = tone === 'photo' && hero.media
+  const light = tone === 'light'
   const ref = useRef<HTMLElement>(null)
   useEntrance(ref)
   return (
     <section
       ref={ref}
-      className={cx(s.hero, photo && s.heroPhoto)}
+      className={cx(s.hero, photo && s.heroPhoto, light && s.heroLight)}
       style={photo ? { backgroundImage: `url(${hero.media!.src})` } : undefined}
-      data-band="dark"
+      data-band={light ? 'light' : 'dark'}
     >
       <div className={cx('container', s.heroInner, photo && s.heroCentered)}>
         <div className={s.heroCopy}>
-          <div className="eyebrow eyebrow--bright" data-enter>
+          <div className={cx('eyebrow', !light && 'eyebrow--bright')} data-enter>
             {hero.eyebrow}
           </div>
           <h1 className="h-page" data-enter>
@@ -32,13 +33,19 @@ export default function DetailHero({ page }: { page: DetailPage }) {
           <p className={s.heroLead} data-enter>
             {hero.intro}
           </p>
-          <div className={s.heroActions} data-enter>
-            {ctas.map((cta) => (
-              <SmartLink key={cta.label} to={cta.to} className={btnClass(cta.variant)}>
-                {cta.label}
-              </SmartLink>
-            ))}
-          </div>
+          {ctas.length > 0 && (
+            <div className={s.heroActions} data-enter>
+              {ctas.map((cta) => (
+                <SmartLink
+                  key={cta.label}
+                  to={cta.to}
+                  className={btnClass(light && cta.variant === 'outline-light' ? 'outline' : cta.variant)}
+                >
+                  {cta.label}
+                </SmartLink>
+              ))}
+            </div>
+          )}
         </div>
         {!photo && (
           <div data-enter-media>
@@ -47,7 +54,7 @@ export default function DetailHero({ page }: { page: DetailPage }) {
               label={hero.mediaLabel ?? `${page.name} image`}
               ratio="4 / 3"
               radius={24}
-              dark
+              dark={!light}
               priority
             />
           </div>

@@ -33,7 +33,7 @@ export default function DetailPage({ page }: { page: Page }) {
   return (
     <div className={s.page}>
       <DetailHero page={page} />
-      <div className={s.panel} data-band="light">
+      <div className={s.body}>
         {rail.length > 0 && <StickyRail items={rail} />}
         {page.kind === 'solution' && <ProofStrip />}
         {main.map((section, i) => (

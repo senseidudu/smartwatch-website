@@ -1,9 +1,7 @@
 .hero {
-  background:
-    radial-gradient(120% 90% at 100% 100%, #16386a 0%, var(--navy) 55%),
-    var(--navy);
-  color: var(--white);
-  padding: 96px 0 136px;
+  background: var(--white);
+  color: var(--ink);
+  padding: 88px 0 128px;
 }
 
 .inner {
@@ -20,13 +18,13 @@
 }
 
 .title {
-  color: var(--white);
+  color: var(--ink);
 }
 
 .lead {
   font-size: 20px;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--ink-2);
   max-width: 540px;
   text-wrap: pretty;
 }
@@ -38,8 +36,8 @@
 .word {
   position: relative;
   white-space: nowrap;
-  color: var(--white);
-  font-weight: 600;
+  color: var(--ink);
+  font-weight: 700;
 }
 
 /* The underline collapses to the right as a word goes inactive and grows from the
@@ -52,7 +50,7 @@
   bottom: -0.12em;
   height: 2px;
   border-radius: 2px;
-  background: var(--green-bright);
+  background: var(--green);
   opacity: 0;
   transform: scaleX(0);
   transform-origin: right center;
@@ -84,7 +82,7 @@
   aspect-ratio: 4 / 3;
   border-radius: 24px;
   overflow: hidden;
-  background: var(--navy-2);
+  background: var(--surface);
   /* Keeps the rounded clip honest in Safari while the slides move inside it. */
   isolation: isolate;
 }

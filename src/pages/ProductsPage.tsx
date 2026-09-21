@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import Media from '../components/Media'
-import Panel from '../components/Panel'
 import Reveal from '../components/Reveal'
 import CardsSection from '../components/sections/CardsSection'
 import StickyRail from '../components/sections/StickyRail'
@@ -82,7 +81,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <Panel className={s.panel}>
+      <div className={s.body}>
         <StickyRail items={rail} />
         <Reveal>
           <CardsSection section={productCards} />
@@ -102,7 +101,7 @@ export default function ProductsPage() {
             Explore all hardware
           </Link>
         </div>
-      </Panel>
+      </div>
 
       <DemoSection />
     </div>

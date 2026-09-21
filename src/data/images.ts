@@ -29,12 +29,6 @@ export const img = {
     width: 1024,
     height: 498,
   },
-  dashcams: {
-    src: '/images/dash-cams.webp',
-    alt: 'In-cab dash camera view through a truck windscreen',
-    width: 700,
-    height: 440,
-  },
   ngo: {
     src: '/images/ngo.webp',
     alt: 'Fleet of white NGO Land Cruisers',
@@ -518,16 +512,3 @@ export const hw = {
 } satisfies Record<string, Img>
 
 export type HwKey = keyof typeof hw
-
-export const video = {
-  corporate: {
-    src: '/video/Smartvideo.mp4',
-    poster: '/images/laptop.webp',
-    title: 'Smartwatch Solutions corporate video',
-  },
-  platform: {
-    src: '/video/smart-ai.mp4',
-    poster: '/images/platform-video-poster.webp',
-    title: 'Smartwatch AI dash cameras for commercial fleets',
-  },
-}

@@ -14,7 +14,7 @@ export const page: DetailPage = {
     intro:
       'Proactively manage fleet safety, deliver documented results, and free up more time in your day. Prevent accidents and exonerate drivers with our most accurate dash cams.',
     tone: 'dark',
-    media: img.dashcams,
+    media: hw.dashboardCamera,
   },
   sections: [
     {

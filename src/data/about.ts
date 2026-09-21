@@ -16,7 +16,7 @@ export const about: DetailPage = {
     title: 'A decade of connecting fleets across industries.',
     intro:
       "With strategic partners across six countries in Africa and Europe, Smartwatch Solutions is pioneering Africa's telematics industry, achieving the highest quality standards for fleet management.",
-    tone: 'dark',
+    tone: 'light',
     media: img.ngo,
     ctas: [
       { label: 'Learn about our platforms', to: '/platforms' },

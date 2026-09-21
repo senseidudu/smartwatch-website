@@ -1,38 +1,31 @@
 .home {
-  background: var(--navy);
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* Hero plus first panel. The hero sticks inside this wrapper (see Hero.module.css) while the panel
-   rises over it, and the wrapper's end releases the hero, so nothing further down sits behind it.
-   Isolating keeps the two layers' z-indexes from reaching anything else on the page. */
+/* Hero plus the platform band. The hero sticks inside this wrapper (see Hero.module.css) while the
+   band rises over it with a flat top edge, and the wrapper's end releases the hero so nothing
+   further down sits behind it. Isolating keeps the two layers' z-indexes from reaching the page. */
 .stage {
   isolation: isolate;
 }
 
-.stage > .panel {
+.stage > :last-child {
+  position: relative;
   z-index: 1;
-}
-
-.panel {
   margin-top: -40px;
 }
 
-.panel + * {
-  margin-top: 0;
-}
-
 .disclaimer {
-  background: var(--navy);
-  color: var(--muted);
+  background: var(--surface);
+  color: var(--ink-3);
   font-size: 12px;
   padding: 0 0 24px;
 }
 
 @media (max-width: 900px) {
-  .panel {
+  .stage > :last-child {
     margin-top: -28px;
   }
 }

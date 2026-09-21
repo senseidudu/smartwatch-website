@@ -1,13 +1,12 @@
 .section {
-  background: var(--navy);
-  color: var(--white);
-  padding: 120px 0 96px;
+  background: var(--surface);
+  padding: 96px 0;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 80px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
   align-items: start;
 }
 
@@ -26,11 +25,7 @@
 
 .intro {
   font-size: 17px;
-  color: var(--muted);
-}
-
-.benefits li {
-  color: var(--white);
+  color: var(--ink-2);
 }
 
 .awards {
@@ -45,13 +40,14 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink-3);
 }
 
 .awardTile {
   display: inline-block;
   width: 120px;
   background: var(--white);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 8px;
 }
@@ -62,7 +58,7 @@
 
 @media (max-width: 900px) {
   .section {
-    padding: 72px 0 64px;
+    padding: 64px 0;
   }
 
   .grid {

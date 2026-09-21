@@ -1,16 +1,12 @@
 .page {
   flex: 1;
-  background: var(--navy);
+  background: var(--white);
   display: flex;
   flex-direction: column;
 }
 
 .band {
-  background:
-    radial-gradient(120% 90% at 100% 100%, #16386a 0%, var(--navy) 55%),
-    var(--navy);
-  color: var(--white);
-  padding: 88px 0 120px;
+  padding: 88px 0 56px;
 }
 
 .bandInner {
@@ -23,13 +19,15 @@
 .lead {
   font-size: 18px;
   line-height: 1.55;
-  color: var(--muted);
+  color: var(--ink-2);
   max-width: 640px;
   text-wrap: pretty;
 }
 
-.panel {
-  margin-top: -40px;
+.body {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 56px;
 }
 
 .gridWrap {
