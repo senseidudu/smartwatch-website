@@ -1,9 +1,11 @@
+/* Sits well clear of the panel's top edge, so the hero has settled before it reads. */
 .intro {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 14px;
+  padding-top: 168px;
   padding-bottom: 40px;
 }
 
@@ -11,11 +13,11 @@
   max-width: 640px;
 }
 
+/* Runs the full width of the container, like the product rows beneath it. */
 .frame {
   position: relative;
   width: 100%;
-  max-width: 880px;
-  margin-top: 14px;
+  margin-top: 28px;
   aspect-ratio: 16 / 9;
   border-radius: 24px;
   overflow: hidden;
@@ -63,6 +65,12 @@
   align-items: center;
   justify-content: center;
   font-size: 11px;
+}
+
+@media (max-width: 900px) {
+  .intro {
+    padding-top: 72px;
+  }
 }
 
 @media (max-width: 640px) {

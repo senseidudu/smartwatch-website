@@ -18,18 +18,6 @@ export const logos = [
   'NTV',
 ]
 
-/** The eight names shown in the customer credibility band and on solution pages. */
-export const customerLogos = [
-  'KLM',
-  'British Airways',
-  'Barclays',
-  'World Vision',
-  'CNOOC',
-  'KCB',
-  'Serena Hotels',
-  'Aramex',
-]
-
 export const proofLine = {
   text: 'Recognised by KPMG as a Top 100 mid-sized company. Serving fleets across East Africa since 2011.',
   linkLabel: 'Our awards →',
@@ -61,7 +49,7 @@ export const posts = [
   {
     kind: 'Product',
     title: 'Save up to 40% on fuel with fleet fuel management',
-    image: undefined,
+    image: img.fuelTankCheck,
     to: routes.product('sustainability'),
   },
   {

@@ -81,9 +81,6 @@
 
 .logos {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
   margin-top: 88px;
 }
 
@@ -94,7 +91,6 @@
   }
 
   .logos {
-    gap: 10px;
     margin-top: 56px;
   }
 }

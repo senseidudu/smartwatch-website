@@ -5,9 +5,9 @@ import s from './LogoMarquee.module.css'
 
 type Props = {
   logos: Img[]
-  /** Which way the row travels. The two rows of the band run opposite each other. */
+  /** Which way the row travels. */
   direction?: 'left' | 'right'
-  /** Seconds for one full pass. Give each row its own so they never march in lockstep. */
+  /** Seconds for one full pass. Scale it with the number of logos to hold the travel speed. */
   duration?: number
 }
 
