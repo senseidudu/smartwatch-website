@@ -49,7 +49,8 @@ export const page: DetailPage = {
         'Localize to any region and highlight your brand.',
         'Bring in your favourite mobile devices, GPS, and IoT hardware.',
       ],
-      media: img.routePlanning,
+      mediaLabel: 'the Smartwatch GPS and IoT hardware range',
+      media: img.products,
     },
     {
       kind: 'split',
@@ -57,7 +58,8 @@ export const page: DetailPage = {
       body: 'Introduce innovations with our community of experts and implement the groundbreaking ideas first.',
       points: ['Upgrade your expertise with trainings, private tours, and innovative insights.'],
       reverse: true,
-      mediaLabel: 'training session with Smartwatch experts',
+      mediaLabel: 'the Smartwatch partner ecosystem',
+      media: img.partnerEcosystem,
     },
     {
       kind: 'related',

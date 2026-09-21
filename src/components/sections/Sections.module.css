@@ -239,7 +239,9 @@
 
 /* Bullets */
 
-.bullets {
+/* Outranks the global .checklist flex column, which would otherwise
+   leave grid-template-columns inert and stack every list one-up. */
+ul.bullets {
   display: grid;
   gap: 12px 32px;
 }

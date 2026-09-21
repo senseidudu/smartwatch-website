@@ -9,8 +9,11 @@ import { useHeroScroll } from '../../motion/useHeroScroll'
 import VideoModal from '../VideoModal'
 import s from './Hero.module.css'
 
-/** One image per hero word: safety, productivity, profitability. */
-const slides: Img[] = [img.inCabDevice, img.fleetDashboard, img.routeMap]
+/**
+ * One photograph per hero word: the hi-vis supervisor for safety, the van fleet lined up and
+ * ready for productivity, and container loads rolling out of the port for profitability.
+ */
+const slides: Img[] = [img.fleetManager, img.vanFleetYard, img.portDusk]
 
 /** Shared by the underlined word and the media carousel so the two stay in step. */
 const WORD_INTERVAL = 3000

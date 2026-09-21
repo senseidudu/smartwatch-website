@@ -39,7 +39,7 @@ export const page: DetailPage = {
       body: 'Get data from your fleet vehicles on speeding, rapid acceleration, harsh braking, and sharp cornering. This data can be used to coach your drivers on safer driving behaviours, which reduces insurance costs while at the same time reducing fuel costs for fleet owners.',
       points: ['Speeding', 'Rapid acceleration', 'Harsh braking', 'Sharp cornering'],
       mediaLabel: 'driver behaviour score card',
-      media: img.insuranceCosts,
+      media: img.driverLeaderboard,
       reverse: true,
     },
     {
@@ -54,7 +54,8 @@ export const page: DetailPage = {
         'Notice when several trucks are due for maintenance within the next number of days',
         'Quality control data that makes the fleet easier to manage',
       ],
-      mediaLabel: 'maintenance alert notification',
+      mediaLabel: 'service required warning on the dashboard',
+      media: img.serviceRequiredCluster,
     },
     {
       kind: 'split',

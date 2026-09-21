@@ -30,7 +30,7 @@ export const page: DetailPage = {
         'Short alarm video sent to the platform when an alert triggers',
         'MDVR keeps an eye on moving vehicles and tracks their real-time GPS location',
       ],
-      media: img.dashcams,
+      media: hw.aiDashcam,
     },
     {
       kind: 'split',
@@ -64,7 +64,8 @@ export const page: DetailPage = {
         'Dispatch system and terminal with ticket system',
         'Mobile DVR multi-channel video surveillance for buses',
       ],
-      mediaLabel: 'people counting overlay at a bus door',
+      mediaLabel: 'weatherproof on-board camera for passenger monitoring',
+      media: hw.snapshotCamera,
       reverse: true,
       cta: {
         label: 'See the bus & public transport solution',

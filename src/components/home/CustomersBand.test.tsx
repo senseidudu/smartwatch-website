@@ -14,10 +14,10 @@ function renderBand() {
 }
 
 describe('CustomersBand', () => {
-  test('shows every partner logo once to assistive tech, split across two rows', () => {
+  test('shows every partner logo once to assistive tech, in a single row', () => {
     const region = renderBand()
     const rows = within(region).getAllByRole('list')
-    expect(rows).toHaveLength(2)
+    expect(rows).toHaveLength(1)
 
     const named = within(region).getAllByRole('img')
     expect(named).toHaveLength(partnerLogos.length)

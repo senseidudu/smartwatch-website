@@ -31,7 +31,8 @@ export const page: DetailPage = {
         'Expired vehicle service alerts',
         'Vehicle device disconnection alerts',
       ],
-      media: img.laptop,
+      mediaLabel: 'supervisor checking fleet compliance in the yard',
+      media: img.fleetManager,
     },
     {
       kind: 'split',
@@ -42,8 +43,8 @@ export const page: DetailPage = {
         'Avoid HSE violations, road penalties and fines',
         'Sound buzzer alerts drivers before exceeding the speed limit',
       ],
-      mediaLabel: 'OnTrack driver app on a phone',
-      media: img.platformDevices,
+      mediaLabel: 'driver working through the OnTrack app in the cab',
+      media: img.inCabDevice,
       reverse: true,
     },
     {

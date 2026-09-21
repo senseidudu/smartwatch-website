@@ -18,6 +18,16 @@ describe('ProductRail', () => {
     expect(links.map((a) => a.getAttribute('href'))).toEqual(pillars.map((p) => `#row-${p.slug}`))
     expect(within(nav).getByText('Compliance')).toBeInTheDocument()
   })
+
+  test('shows the tiles on their own, with no image band behind them', () => {
+    render(
+      <MemoryRouter>
+        <ProductRail />
+      </MemoryRouter>,
+    )
+    const nav = screen.getByRole('navigation', { name: /products/i })
+    expect(nav.parentElement?.querySelector('img')).toBeNull()
+  })
 })
 
 describe('ProductRows', () => {

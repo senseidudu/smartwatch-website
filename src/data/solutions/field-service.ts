@@ -13,7 +13,7 @@ export const page: DetailPage = {
     intro:
       'Automate field service operations to increase team productivity, reduce expenses and refine customer experience.',
     tone: 'photo',
-    media: img.mrm,
+    media: img.fieldSupervisor,
   },
   sections: [
     {
@@ -74,7 +74,7 @@ export const page: DetailPage = {
       body: 'Improve productivity no matter what vertical you are in. Discover the most cutting-edge solutions for retail and distribution, utilities, medicine, machinery and more.',
       points: ['Retail and distribution', 'Utilities', 'Medicine', 'Machinery'],
       mediaLabel: 'field team job board on a tablet',
-      media: img.fieldSupervisor,
+      media: img.fieldDataTablet,
       cta: { label: 'Request a demo', to: `${routes.contact}#${anchors.demo}` },
     },
     {

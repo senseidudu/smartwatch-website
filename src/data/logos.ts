@@ -3,8 +3,8 @@ import type { Img } from './types'
 /**
  * The partner logos from the "Trusted by local and international partners"
  * carousels on smartwatchsolutions.com, trimmed of their baked-in white margins
- * and converted to WebP in public/images/logos. The band splits them across two
- * rows, so the order here only decides which row a logo lands in.
+ * and converted to WebP in public/images/logos. The band runs them as one row,
+ * so the order here is the order they scroll past in.
  */
 export const partnerLogos = [
   {

@@ -13,7 +13,8 @@ export const page: DetailPage = {
     intro:
       'Real-time bus tracking, driver behaviour monitoring, multi-channel video surveillance and high-accuracy people counting for bus and coach fleets.',
     tone: 'dark',
-    mediaLabel: 'city bus with on-board camera and passenger counter',
+    mediaLabel: 'passengers boarding a bus with automatic people counting',
+    media: img.busPassengerCounting,
   },
   sections: [
     {
@@ -48,8 +49,8 @@ export const page: DetailPage = {
           body: 'Get a real-time view of each bus and the responsible driver behind the wheel. Fleet leaders also have access to trip data with a full view of each event on a trip.',
         },
       ],
-      mediaLabel: 'live map showing bus locations and drivers',
-      media: img.laptopTracking,
+      mediaLabel: 'city bus at a shelter on a tracked route',
+      media: img.busShelterBoarding,
     },
     {
       kind: 'split',
@@ -75,7 +76,8 @@ export const page: DetailPage = {
           body: 'Getting the most from your bus and coach fleet is a major concern. Activity timelines are a great way to illustrate usage patterns and help boost fleet efficiency.',
         },
       ],
-      mediaLabel: 'fuel and activity timeline report',
+      mediaLabel: 'fuel level timeline with refill and drain events',
+      media: img.fuelFillDrainChart,
     },
     {
       kind: 'related',

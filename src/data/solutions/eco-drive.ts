@@ -48,7 +48,7 @@ export const page: DetailPage = {
       title: 'Over 90 parameters to monitor and analyze.',
       intro:
         'Choose from over 90 parameters to closely monitor and analyze Eco-Drive outcomes, encompassing aspects such as fuel efficiency and safe driving, including:',
-      columns: 3,
+      columns: 2,
       items: [
         'Average speed',
         'Cruise control use (% of available)',
@@ -101,7 +101,8 @@ export const page: DetailPage = {
         'Optimized vehicle wear and tear, including tires',
         'Lower unnecessary CO2 emissions',
       ],
-      mediaLabel: 'fuel consumption trend chart',
+      mediaLabel: 'van fleet parked in a depot yard',
+      media: img.vanFleetYard,
       reverse: true,
     },
     {
@@ -112,7 +113,8 @@ export const page: DetailPage = {
         'Internal education and motivation systems',
         'Recognize and reward the highest-scoring drivers',
       ],
-      mediaLabel: 'driver ranking leaderboard',
+      mediaLabel: 'driver leaderboard ranked by score',
+      media: img.driverLeaderboard,
       cta: { label: 'See the Eco-Drive panel', to: `${routes.hardware}#${anchors.accessories}` },
     },
     {

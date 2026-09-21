@@ -1,12 +1,14 @@
 /*
  * Chrome for the vendored mega-menu navbar: the sticky bar, triggers, floating panel and
- * mobile drawer. Transparent over the dark hero, white once the page scrolls (data-theme).
+ * mobile drawer. The bar takes the colour of the section under it (data-theme): navy over
+ * dark bands, white over the light panels. It is transparent until the page scrolls
+ * (data-solid), so at the top the hero shows through.
  * The panels' columns, promo card and contact popover live in Header.module.css.
  */
 
 /*
- * Sticky header: transparent over the dark hero, white once the page scrolls (data-theme).
- * Menus are floating white cards that hang beneath the bar; the open item is underlined.
+ * Sticky header. Menus are floating white cards that hang beneath the bar; the open item
+ * is underlined.
  */
 
 .header {
@@ -27,6 +29,11 @@
   --hdr-fg: var(--white);
   --hdr-fg-muted: var(--muted);
   --hdr-hover: rgba(255, 255, 255, 0.12);
+}
+
+.header[data-theme='dark'][data-solid] {
+  background: var(--navy);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .header[data-theme='light'] {

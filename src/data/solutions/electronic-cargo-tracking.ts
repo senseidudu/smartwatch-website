@@ -1,4 +1,4 @@
-import { hw, img } from '../images'
+import { img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -14,7 +14,7 @@ export const page: DetailPage = {
     intro:
       'A heavy-duty electromagnetic lock integrated with comprehensive commercial vehicle operation services to enable seamless automation of cargo, security, carrier and support operations.',
     tone: 'photo',
-    media: img.cargo,
+    media: img.cargoConvoyTracking,
   },
   sections: [
     {
@@ -107,8 +107,8 @@ export const page: DetailPage = {
         'Up to seven secondary e-Locks per primary e-Lock',
       ],
       reverse: true,
-      mediaLabel: 'e-lock fitted to a shipping container door',
-      media: hw.smartKey,
+      mediaLabel: 'e-lock fitted to a cargo trailer door',
+      media: img.cargoElockTrailer,
     },
     {
       kind: 'related',

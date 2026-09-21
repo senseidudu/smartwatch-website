@@ -11,10 +11,6 @@ import VideoModal from '../VideoModal'
 import s from './CustomersBand.module.css'
 import LogoMarquee from './LogoMarquee'
 
-// Alternate logos between the rows so neither reads as one alphabetical block.
-const topRow = partnerLogos.filter((_, i) => i % 2 === 0)
-const bottomRow = partnerLogos.filter((_, i) => i % 2 === 1)
-
 /** Full-bleed navy band with the corporate video behind it and the partner logos scrolling along its base. */
 export default function CustomersBand() {
   const [open, setOpen] = useState(false)
@@ -76,8 +72,8 @@ export default function CustomersBand() {
         </Reveal>
       </div>
       <Reveal as="section" className={s.logos} aria-label="Customer logos">
-        <LogoMarquee logos={topRow} direction="left" duration={78} />
-        <LogoMarquee logos={bottomRow} direction="right" duration={92} />
+        {/* One pass covers the whole set, so it runs twice as long as a half-length row to travel at the same speed. */}
+        <LogoMarquee logos={partnerLogos} direction="left" duration={156} />
       </Reveal>
       <VideoModal
         open={open}

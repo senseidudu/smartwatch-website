@@ -132,10 +132,10 @@ describe('DetailPage hero and chrome', () => {
     expect(screen.queryByRole('heading', { level: 2, name: /see it in action/i })).not.toBeInTheDocument()
   })
 
-  test('solution pages get the proof strip and customer logos automatically', () => {
+  test('solution pages get the proof strip automatically, but no logo wall', () => {
     renderPage({ ...fixture, kind: 'solution', sections: [] })
     expect(screen.getByText(/recognised by kpmg/i)).toBeInTheDocument()
-    expect(screen.getByRole('region', { name: /customer logos/i })).toBeInTheDocument()
+    expect(screen.queryByRole('region', { name: /customer logos/i })).not.toBeInTheDocument()
     expect(screen.queryByRole('navigation', { name: /on this page/i })).not.toBeInTheDocument()
   })
 })
