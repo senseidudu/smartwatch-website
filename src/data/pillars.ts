@@ -31,7 +31,7 @@ export const pillars: Pillar[] = [
       'Automated trip and driver matching',
       'Driver app for inspections and reports',
     ],
-    image: img.laptop,
+    image: img.tmsDashboard,
     imageLabel: 'compliance dashboard screenshot',
   },
   {
@@ -80,7 +80,7 @@ export const pillars: Pillar[] = [
       'Real-time fault alerts',
       'Thorough inspections increase driver accountability',
     ],
-    image: img.laptop,
+    image: img.fleetManager,
     imageLabel: 'maintenance schedule view',
   },
   {
@@ -97,7 +97,7 @@ export const pillars: Pillar[] = [
       'Fewer errors, better resource allocation',
       'Less paperwork, safeguarded information',
     ],
-    image: img.cargo,
+    image: img.truckRefrigerated,
     imageLabel: 'e-lock on shipping container',
   },
   {
@@ -113,6 +113,7 @@ export const pillars: Pillar[] = [
       'Identify top and bottom performers',
       'Reduce fuel waste and environmental impact',
     ],
+    image: img.deliveryTruck3d,
     imageLabel: 'fuel performance chart',
   },
   {
@@ -128,6 +129,7 @@ export const pillars: Pillar[] = [
       'Driver behavior coaching',
       'Most efficient routes reduce wear and tear',
     ],
+    image: img.truckTipper,
     imageLabel: 'vehicle recovery map',
   },
 ]

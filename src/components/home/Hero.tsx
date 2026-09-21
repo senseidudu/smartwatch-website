@@ -9,13 +9,8 @@ import MorphText from '../ui/morph-text'
 import VideoModal from '../VideoModal'
 import s from './Hero.module.css'
 
-type Slide = { kind: 'video'; src: string; poster: string } | { kind: 'image'; image: Img }
-
-const slides: Slide[] = [
-  { kind: 'video', src: video.corporate.src, poster: video.corporate.poster },
-  { kind: 'image', image: img.dashcams },
-  { kind: 'image', image: img.laptop },
-]
+/** One image per hero word: safety, productivity, profitability. */
+const slides: Img[] = [img.inCabDevice, img.fleetDashboard, img.routeMap]
 
 /** Shared by the morphing word and the media carousel so the two stay in step. */
 const WORD_INTERVAL = 3000
@@ -59,32 +54,15 @@ export default function Hero() {
 
         <div className={s.media} data-enter-media>
           {slides.map((slide, i) => (
-            <div
-              key={slide.kind === 'video' ? slide.src : slide.image.src}
-              className={cx(s.slide, i === active && s.slideOn)}
-              aria-hidden={i !== active}
-            >
-              {slide.kind === 'video' ? (
-                <video
-                  src={slide.src}
-                  poster={slide.poster}
-                  muted
-                  loop
-                  playsInline
-                  autoPlay={!reduced}
-                  preload="metadata"
-                  className={s.slideMedia}
-                />
-              ) : (
-                <img
-                  src={slide.image.src}
-                  alt={slide.image.alt}
-                  width={slide.image.width}
-                  height={slide.image.height}
-                  className={s.slideMedia}
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                />
-              )}
+            <div key={slide.src} className={cx(s.slide, i === active && s.slideOn)} aria-hidden={i !== active}>
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                width={slide.width}
+                height={slide.height}
+                className={s.slideMedia}
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
             </div>
           ))}
           <div className={s.alert}>

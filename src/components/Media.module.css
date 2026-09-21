@@ -14,3 +14,13 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* Cut-out product shots: show the whole vehicle rather than cropping it */
+.contain {
+  background: var(--surface);
+}
+
+.contain .img {
+  object-fit: contain;
+  padding: 6%;
+}

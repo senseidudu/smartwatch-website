@@ -71,6 +71,57 @@ export const img = {
     width: 835,
     height: 665,
   },
+  routeMap: {
+    src: '/images/route-map.webp',
+    alt: 'Fleet routes and delivery stops plotted across a map',
+    width: 735,
+    height: 367,
+  },
+  fleetDashboard: {
+    src: '/images/fleet-dashboard.webp',
+    alt: 'Fleet manager reviewing vehicle analytics on a tablet in front of a truck fleet',
+    width: 736,
+    height: 407,
+  },
+  tmsDashboard: {
+    src: '/images/tms-dashboard.webp',
+    alt: 'Transport management dashboard on a monitor in a warehouse',
+    width: 734,
+    height: 418,
+  },
+  inCabDevice: {
+    src: '/images/in-cab-device.webp',
+    alt: 'Driver using an in-cab navigation and telematics device',
+    width: 1200,
+    height: 800,
+  },
+  fleetManager: {
+    src: '/images/fleet-manager.webp',
+    alt: 'Fleet supervisor with an inspection clipboard in front of parked trucks',
+    width: 735,
+    height: 490,
+  },
+  truckRefrigerated: {
+    src: '/images/truck-refrigerated.webp',
+    alt: 'Refrigerated box truck for temperature-controlled cargo',
+    width: 628,
+    height: 397,
+    fit: 'contain',
+  },
+  truckTipper: {
+    src: '/images/truck-tipper.webp',
+    alt: 'Light commercial cargo truck',
+    width: 665,
+    height: 375,
+    fit: 'contain',
+  },
+  deliveryTruck3d: {
+    src: '/images/delivery-truck-3d.webp',
+    alt: 'Illustration of a delivery truck loaded with parcels',
+    width: 500,
+    height: 500,
+    fit: 'contain',
+  },
 } satisfies Record<string, Img>
 
 export type ImgKey = keyof typeof img

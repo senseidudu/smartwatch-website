@@ -25,7 +25,14 @@ export type IconName =
   | 'ev'
   | 'site'
 
-export type Img = { src: string; alt: string; width: number; height: number }
+export type Img = {
+  src: string
+  alt: string
+  width: number
+  height: number
+  /** 'contain' keeps cut-out product shots whole instead of cropping them to the frame. */
+  fit?: 'cover' | 'contain'
+}
 
 export type Cta = { label: string; to: string; variant?: 'primary' | 'outline' | 'outline-light' }
 

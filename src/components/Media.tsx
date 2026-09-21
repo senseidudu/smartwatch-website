@@ -41,8 +41,9 @@ export default function Media({
     )
   }
   const style = { aspectRatio: ratio, borderRadius: radius } as CSSProperties
+  const contain = image.fit === 'contain'
   return (
-    <div className={cx(s.frame, ratio && s.cover, className)} style={style}>
+    <div className={cx(s.frame, ratio && s.cover, contain && s.contain, className)} style={style}>
       <img
         src={image.src}
         alt={decorative ? '' : image.alt}
