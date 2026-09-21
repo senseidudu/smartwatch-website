@@ -31,16 +31,40 @@
   text-wrap: pretty;
 }
 
-/* Morphing word inside the hero sentence */
+/* The three key words inside the hero sentence; the active one is underlined. */
 
-.morph {
-  display: inline-block;
-  vertical-align: bottom;
-}
-
-.morphText {
+/* Only the words themselves are emphasised; the commas and the "and" stay in the
+   lead's own weight and colour, as punctuation should. */
+.word {
+  position: relative;
+  white-space: nowrap;
   color: var(--white);
   font-weight: 600;
+}
+
+/* The underline collapses to the right as a word goes inactive and grows from the
+   left as the next one takes over, so the line reads as one stroke moving along. */
+.word::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.12em;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--green-bright);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease;
+}
+
+.wordOn::after {
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: left center;
 }
 
 .actions {
@@ -49,12 +73,26 @@
   flex-wrap: wrap;
 }
 
+/* Scroll-linked wrapper (see useHeroScroll): it sinks and dims as the page scrolls on, while the
+   entrance tween owns .media itself, so the two never fight over one element's transform. */
+.mediaWrap {
+  min-width: 0;
+}
+
 .media {
   position: relative;
   aspect-ratio: 4 / 3;
   border-radius: 24px;
   overflow: hidden;
   background: var(--navy-2);
+  /* Keeps the rounded clip honest in Safari while the slides move inside it. */
+  isolation: isolate;
+}
+
+/* Taller than the frame so the picture can drift a few percent without showing an edge. */
+.slides {
+  position: absolute;
+  inset: -7% 0;
 }
 
 .slide {
@@ -111,6 +149,17 @@
 .alertMeta {
   font-size: 12px;
   color: var(--ink-3);
+}
+
+/* On desktop the hero pins under the header while the next panel scrolls up over it; HomePage
+   bounds the pin with a wrapper. Phones keep the hero in flow: there it is taller than the
+   viewport, and a pinned hero would hide its own bottom for good. */
+@media (min-width: 901px) {
+  .hero {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 0;
+  }
 }
 
 @media (max-width: 900px) {

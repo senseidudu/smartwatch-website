@@ -1,19 +1,25 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { heroWords } from '../../data/content'
 import { img, video } from '../../data/images'
 import type { Img } from '../../data/types'
 import { cx } from '../../lib/cx'
 import { prefersReducedMotion } from '../../motion/motion'
 import { useEntrance } from '../../motion/useEntrance'
-import MorphText from '../ui/morph-text'
+import { useHeroScroll } from '../../motion/useHeroScroll'
 import VideoModal from '../VideoModal'
 import s from './Hero.module.css'
 
 /** One image per hero word: safety, productivity, profitability. */
 const slides: Img[] = [img.inCabDevice, img.fleetDashboard, img.routeMap]
 
-/** Shared by the morphing word and the media carousel so the two stay in step. */
+/** Shared by the underlined word and the media carousel so the two stay in step. */
 const WORD_INTERVAL = 3000
+
+/** ", " between words, ", and " before the last one. */
+function separator(index: number, total: number) {
+  if (index >= total - 1) return ''
+  return index === total - 2 ? ', and ' : ', '
+}
 
 export default function Hero() {
   const [active, setActive] = useState(0)
@@ -21,6 +27,7 @@ export default function Hero() {
   const reduced = prefersReducedMotion()
   const ref = useRef<HTMLElement>(null)
   useEntrance(ref)
+  useHeroScroll(ref)
 
   useEffect(() => {
     if (reduced) return
@@ -31,18 +38,18 @@ export default function Hero() {
   return (
     <section className={s.hero} data-band="dark" ref={ref}>
       <div className={cx('container', s.inner)}>
-        <div className={s.copy}>
+        <div className={s.copy} data-scroll-copy>
           <h1 className={cx('h-display', s.title)} data-enter>
             A decade of connecting and protecting fleets.
           </h1>
           <p className={s.lead} data-enter>
             One platform to help improve the{' '}
-            <MorphText
-              words={heroWords}
-              interval={WORD_INTERVAL}
-              className={s.morph}
-              textClassName={s.morphText}
-            />{' '}
+            {heroWords.map((word, i) => (
+              <Fragment key={word}>
+                <span className={cx(s.word, i === active && s.wordOn)}>{word}</span>
+                {separator(i, heroWords.length)}
+              </Fragment>
+            ))}{' '}
             of your operations across East Africa.
           </p>
           <div className={s.actions} data-enter>
@@ -52,24 +59,28 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className={s.media} data-enter-media>
-          {slides.map((slide, i) => (
-            <div key={slide.src} className={cx(s.slide, i === active && s.slideOn)} aria-hidden={i !== active}>
-              <img
-                src={slide.src}
-                alt={slide.alt}
-                width={slide.width}
-                height={slide.height}
-                className={s.slideMedia}
-                loading={i === 0 ? 'eager' : 'lazy'}
-              />
+        <div className={s.mediaWrap} data-scroll-media>
+          <div className={s.media} data-enter-media>
+            <div className={s.slides} data-scroll-slides>
+              {slides.map((slide, i) => (
+                <div key={slide.src} className={cx(s.slide, i === active && s.slideOn)} aria-hidden={i !== active}>
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    width={slide.width}
+                    height={slide.height}
+                    className={s.slideMedia}
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-          <div className={s.alert}>
-            <span className={s.alertDot} aria-hidden="true" />
-            <div className={s.alertText}>
-              <span className={s.alertTitle}>Speed alert cleared</span>
-              <span className={s.alertMeta}>UBH 412K · Jinja Rd · 2 min ago</span>
+            <div className={s.alert} data-scroll-float>
+              <span className={s.alertDot} aria-hidden="true" />
+              <div className={s.alertText}>
+                <span className={s.alertTitle}>Speed alert cleared</span>
+                <span className={s.alertMeta}>UBH 412K · Jinja Rd · 2 min ago</span>
+              </div>
             </div>
           </div>
         </div>

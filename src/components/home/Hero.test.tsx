@@ -21,12 +21,13 @@ describe('Home hero', () => {
     ).toBeInTheDocument()
   })
 
-  test('cycles the three words through the morphing text', () => {
+  test('lists all three words in the lead sentence', () => {
     renderHero()
     const lead = screen.getByText(/one platform to help improve the/i)
     for (const word of heroWords) {
-      expect(within(lead).getAllByText(word).length).toBeGreaterThan(0)
+      expect(within(lead).getAllByText(word)).toHaveLength(1)
     }
+    expect(lead).toHaveTextContent('safety, productivity, and profitability')
   })
 
   test('offers only the watch demo action', () => {

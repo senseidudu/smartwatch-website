@@ -17,12 +17,15 @@ export default function HomePage() {
   })
   return (
     <div className={s.home}>
-      <Hero />
-      <Panel className={s.panel}>
-        <PlatformIntro />
-        <ProductRail />
-        <ProductRows />
-      </Panel>
+      {/* The hero pins while this first panel scrolls up over it; the wrapper bounds the pin. */}
+      <div className={s.stage}>
+        <Hero />
+        <Panel className={s.panel}>
+          <PlatformIntro />
+          <ProductRail />
+          <ProductRows />
+        </Panel>
+      </div>
       <CustomersBand />
       <Panel className={s.panel}>
         <Resources />

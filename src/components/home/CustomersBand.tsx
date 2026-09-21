@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { customerLogos } from '../../data/content'
 import { video } from '../../data/images'
+import { partnerLogos } from '../../data/logos'
 import { routes } from '../../data/site'
 import { cx } from '../../lib/cx'
 import { ScrollTrigger, useGSAP } from '../../motion/gsap'
@@ -9,8 +9,13 @@ import { prefersReducedMotion } from '../../motion/motion'
 import Reveal from '../Reveal'
 import VideoModal from '../VideoModal'
 import s from './CustomersBand.module.css'
+import LogoMarquee from './LogoMarquee'
 
-/** Full-bleed navy band with the corporate video behind it and the customer row along its base. */
+// Alternate logos between the rows so neither reads as one alphabetical block.
+const topRow = partnerLogos.filter((_, i) => i % 2 === 0)
+const bottomRow = partnerLogos.filter((_, i) => i % 2 === 1)
+
+/** Full-bleed navy band with the corporate video behind it and the partner logos scrolling along its base. */
 export default function CustomersBand() {
   const [open, setOpen] = useState(false)
   const bandRef = useRef<HTMLElement>(null)
@@ -69,14 +74,11 @@ export default function CustomersBand() {
             </button>
           </div>
         </Reveal>
-        <Reveal stagger className={s.logos} role="list" aria-label="Customer logos">
-          {customerLogos.map((name) => (
-            <div key={name} role="listitem" className={s.logo}>
-              {name}
-            </div>
-          ))}
-        </Reveal>
       </div>
+      <Reveal as="section" className={s.logos} aria-label="Customer logos">
+        <LogoMarquee logos={topRow} direction="left" duration={78} />
+        <LogoMarquee logos={bottomRow} direction="right" duration={92} />
+      </Reveal>
       <VideoModal
         open={open}
         onClose={() => setOpen(false)}
