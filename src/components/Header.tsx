@@ -1,3 +1,4 @@
+import { useLenis } from 'lenis/react'
 import { useEffect, useRef, useState, type ReactNode, type SyntheticEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.svg'
@@ -49,9 +50,14 @@ function Chevron() {
   )
 }
 
-/** True once the page has scrolled past the top; the bar turns white at that point. */
+/**
+ * True once the page has scrolled past the top; the bar turns white at that point.
+ * Lenis drives scrolling, so its scroll event is the primary source; the native
+ * listener covers environments where Lenis is not running.
+ */
 function useScrolled(threshold = 8): boolean {
   const [scrolled, setScrolled] = useState(() => typeof window !== 'undefined' && window.scrollY > threshold)
+  useLenis((lenis) => setScrolled(lenis.scroll > threshold), [threshold])
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > threshold)
     window.addEventListener('scroll', update, { passive: true })
