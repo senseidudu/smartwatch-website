@@ -30,7 +30,7 @@ export const page: DetailPage = {
         'Automated fleet maintenance schedules',
         'Electronic notifications of upcoming maintenance requirements',
       ],
-      media: img.laptop,
+      media: img.vehicleServiceCheck,
     },
     {
       kind: 'split',
@@ -44,7 +44,8 @@ export const page: DetailPage = {
         'Drivers complete inspection reports faster in the OnTrack app',
         'Thorough assessment of vehicle or asset status',
       ],
-      mediaLabel: 'electronic inspection checklist on a phone',
+      mediaLabel: 'preventive maintenance checks scheduled in the app',
+      media: img.maintenanceAppSchedule,
       reverse: true,
     },
     {
@@ -59,7 +60,8 @@ export const page: DetailPage = {
         'Reminders for upcoming vehicle services and licence renewals',
         'Engine diagnostics: oil pressure, battery voltage, accelerometer stats and filters',
       ],
-      mediaLabel: 'vehicle service history with engine diagnostics',
+      mediaLabel: 'engine diagnostics reviewed on a tablet',
+      media: img.engineDiagnosticsTablet,
     },
     {
       kind: 'cards',

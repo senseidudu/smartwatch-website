@@ -1,4 +1,4 @@
-import { hw, img } from '../images'
+import { img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -49,8 +49,8 @@ export const page: DetailPage = {
         'Long-life back-up batteries',
         'Driver ID and more',
       ],
-      mediaLabel: 'vehicle on a remote road with its live position on the map',
-      media: img.highwayAerial,
+      mediaLabel: 'vehicle tracked on a remote road',
+      media: img.forestRoadAerial,
     },
     {
       kind: 'split',
@@ -62,7 +62,8 @@ export const page: DetailPage = {
         'Notifications to operators on important events',
         'No hardware installation, no vehicle downtime',
       ],
-      mediaLabel: 'OnTrack app on a phone',
+      mediaLabel: 'live vehicle position on a phone map',
+      media: img.phoneVehicleLocator,
       reverse: true,
     },
     {
@@ -76,7 +77,7 @@ export const page: DetailPage = {
         'Instant mobile and web notifications',
       ],
       mediaLabel: 'plug-and-play GPS tracker',
-      media: hw.gpsTracker,
+      media: img.device,
       cta: { label: 'View hardware', to: routes.hardware },
     },
     {

@@ -56,7 +56,8 @@ export const page: DetailPage = {
       body: 'Tracking your drivers as they deliver time-sensitive goods is now super simple with the OnTrack app. Drivers simply download the app, verify their identity and then get moving!',
       points: ['Download the OnTrack app', 'Verify your identity', 'Get moving'],
       reverse: true,
-      mediaLabel: 'OnTrack app showing a driver on a delivery run',
+      mediaLabel: 'field vehicle tracked to its live position on a phone map',
+      media: img.fieldVehicleGps,
     },
     {
       kind: 'split',

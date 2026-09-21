@@ -59,6 +59,7 @@ export const page: DetailPage = {
         'Direct CANbus connection as an alternative',
       ],
       mediaLabel: 'OBDII splitter harness',
+      media: hw.splitterHarness,
       reverse: true,
       cta: { label: 'View hardware', to: `${routes.hardware}#${anchors.devices}` },
     },

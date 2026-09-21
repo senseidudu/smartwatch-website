@@ -81,7 +81,8 @@ export const page: DetailPage = {
         'Two-way messages to and from assets and drivers',
       ],
       reverse: true,
-      media: img.laptopTracking,
+      mediaLabel: 'the web platform on a desktop and the app on a phone',
+      media: img.platformDevices,
     },
     {
       kind: 'split',

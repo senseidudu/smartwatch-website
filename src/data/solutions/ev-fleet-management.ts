@@ -47,8 +47,8 @@ export const page: DetailPage = {
         'Track the exact battery level in kilowatt-hours (kWh)',
         'Stay ahead in energy consumption calculations',
       ],
-      mediaLabel: 'EV charging overview dashboard',
-      media: img.charging,
+      mediaLabel: 'the charging module in the Smartwatch FM dashboard',
+      media: img.laptop,
     },
     {
       kind: 'split',
@@ -59,7 +59,8 @@ export const page: DetailPage = {
         'Cost implications per 100 km',
         'Best charging stations and optimal charging times',
       ],
-      mediaLabel: 'charging cost per 100 km chart',
+      mediaLabel: 'EV connected at a charging station',
+      media: img.evChargingCost,
       reverse: true,
     },
     {
@@ -71,7 +72,8 @@ export const page: DetailPage = {
         'Charging anomalies and station downtimes',
         'Deviations from recommended charging schedules',
       ],
-      mediaLabel: 'low battery alert on a phone',
+      mediaLabel: 'charging alert checked on a phone at the charge point',
+      media: img.evChargeAlert,
     },
     {
       kind: 'related',

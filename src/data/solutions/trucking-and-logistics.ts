@@ -67,7 +67,8 @@ export const page: DetailPage = {
         'Notifications to drivers on important events',
         'No hardware installation, no vehicle downtime',
       ],
-      mediaLabel: 'OnTrack app on a phone',
+      mediaLabel: 'tracked trucks followed from the OnTrack app',
+      media: img.phoneTruckConvoy,
       reverse: true,
     },
     {
@@ -79,8 +80,8 @@ export const page: DetailPage = {
         'Movement and geographic boundary alerts',
         'Operating hours and fuel usage',
       ],
-      mediaLabel: 'trailer fitted with an asset tracker',
-      media: hw.gpsTracker,
+      mediaLabel: 'trailers and containers tracked as movable assets',
+      media: img.portContainerTruck,
     },
     {
       kind: 'split',

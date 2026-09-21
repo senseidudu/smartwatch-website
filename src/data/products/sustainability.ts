@@ -32,6 +32,7 @@ export const page: DetailPage = {
         'Fuel refills or drains',
       ],
       mediaLabel: 'fuel level graph with refill and drain events',
+      media: img.fuelFillDrainChart,
     },
     {
       kind: 'split',
@@ -43,7 +44,8 @@ export const page: DetailPage = {
         'Wireless battery-powered fuel level sensor with 5 to 10 years of battery time',
         'Fuel sensors also fit stationary tanks at gas stations, generators, locomotives and ships',
       ],
-      mediaLabel: 'abnormal fuel drop alert',
+      mediaLabel: 'fuel theft alerts and consumption reporting',
+      media: img.fuelTheftAlerts,
       reverse: true,
     },
     {
@@ -59,6 +61,7 @@ export const page: DetailPage = {
         'Gather data from all vehicle brands',
       ],
       mediaLabel: 'driver ranking leaderboard',
+      media: img.driverLeaderboard,
       cta: {
         label: 'Explore the Eco-Drive solution',
         to: routes.solution('eco-drive'),

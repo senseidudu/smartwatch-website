@@ -41,13 +41,15 @@ export const page: DetailPage = {
       ],
       reverse: true,
       mediaLabel: 'fuel usage report by vehicle and driver',
+      media: img.fleetFuelDashboard,
     },
     {
       kind: 'split',
       title: 'Maintain vehicles',
       body: 'Proper and regular maintenance of vehicles can extend their lifespan and save you repair and replacement costs. Telematics offers electronic notifications of upcoming maintenance requirements and data on engine diagnostics, which could help with maintaining proper upkeep.',
       points: ['Oil pressure', 'Battery voltage', 'Accelerometer stats', 'Filters'],
-      mediaLabel: 'maintenance schedule and engine diagnostics view',
+      mediaLabel: 'maintenance checklist by service interval',
+      media: img.maintenanceChecklist,
     },
     {
       kind: 'bullets',

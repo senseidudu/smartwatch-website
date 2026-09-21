@@ -14,7 +14,8 @@ export const page: DetailPage = {
     intro:
       'Live visibility into your operational health, utilization, location, equipment, and assets.',
     tone: 'dark',
-    media: img.device,
+    mediaLabel: 'tracked vehicle pinned on a live map',
+    media: img.phoneVehicleLocator,
   },
   sections: [
     {

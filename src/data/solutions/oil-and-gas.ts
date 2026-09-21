@@ -1,4 +1,4 @@
-import { hw, img } from '../images'
+import { img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -14,7 +14,7 @@ export const page: DetailPage = {
     intro:
       'Transform oil & gas operations through AI-powered automation that improves driver safety, asset tracking, cost control, and compliance management with ease.',
     tone: 'photo',
-    media: img.fieldSupervisor,
+    media: img.oilPumpjackSunset,
   },
   sections: [
     {
@@ -43,8 +43,8 @@ export const page: DetailPage = {
       title: 'Fleet management for the oil & gas sector',
       body: 'Smartwatch FM connects the vehicle, protects the operator and provides actionable insights for fleet managers.',
       points: ['Driver safety', 'Asset tracking', 'Cost control', 'Compliance management'],
-      mediaLabel: 'in-vehicle monitoring system on an oil and gas site',
-      media: hw.monitor,
+      mediaLabel: 'in-vehicle monitoring system in use on site',
+      media: img.inCabDevice,
     },
     {
       kind: 'tabs',
@@ -78,7 +78,8 @@ export const page: DetailPage = {
       title: 'Intelligent fuel monitoring',
       body: 'Fuel level change detection, with an alert sent to the central server whenever an abnormal change is triggered.',
       reverse: true,
-      mediaLabel: 'fuel level chart with refuel and drain events',
+      mediaLabel: 'fuel tank checked during a site inspection',
+      media: img.fuelTankCheck,
     },
     {
       kind: 'related',
