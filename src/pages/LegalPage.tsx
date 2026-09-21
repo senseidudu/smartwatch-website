@@ -1,4 +1,3 @@
-import Panel from '../components/Panel'
 import type { LegalDoc } from '../data/legal'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { cx } from '../lib/cx'
@@ -8,14 +7,14 @@ export default function LegalPage({ doc }: { doc: LegalDoc }) {
   usePageMeta(doc.meta)
   return (
     <div className={s.page}>
-      <section className={s.band} data-band="dark">
+      <section className={s.band}>
         <div className={cx('container', s.bandInner)}>
-          <div className="eyebrow eyebrow--bright">Legal</div>
+          <div className="eyebrow">Legal</div>
           <h1 className="h-page">{doc.title}</h1>
           <p className={s.lead}>{doc.intro}</p>
         </div>
       </section>
-      <Panel className={s.panel}>
+      <div className={s.body}>
         <article className={cx('container', s.article)}>
           {doc.sections.map((section) => (
             <section key={section.heading} className={s.section}>
@@ -35,7 +34,7 @@ export default function LegalPage({ doc }: { doc: LegalDoc }) {
             </section>
           ))}
         </article>
-      </Panel>
+      </div>
     </div>
   )
 }

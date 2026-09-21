@@ -1,6 +1,5 @@
 import ContactForm from '../components/ContactForm'
 import Icon from '../components/Icon'
-import Panel from '../components/Panel'
 import Reveal from '../components/Reveal'
 import { WhatsAppMark } from '../components/WhatsAppButton'
 import { anchors, mapEmbed, offices, site } from '../data/site'
@@ -17,15 +16,15 @@ export default function ContactPage() {
 
   return (
     <div className={s.page}>
-      <section className={s.band} data-band="dark">
+      <section className={s.band}>
         <div className={cx('container', s.bandInner)}>
-          <div className="eyebrow eyebrow--bright">Contact</div>
+          <div className="eyebrow">Contact</div>
           <h1 className="h-page">Talk to sales or support, 24/7.</h1>
           <p className={s.lead}>Request a demo, ask about pricing, or get help with an installed device.</p>
         </div>
       </section>
 
-      <Panel className={s.panel}>
+      <div className={s.body}>
         <Reveal as="section" stagger className={cx('container', s.router)} aria-label="How can we help">
           <a href={`#${anchors.demo}`} className={cx(s.card, s.cardLink, 'lift')}>
             <span className={s.cardIcon}>
@@ -122,7 +121,7 @@ export default function ContactPage() {
             ))}
           </Reveal>
         </section>
-      </Panel>
+      </div>
 
       <section id={anchors.demo} className={s.demo} data-band="dark">
         <div className={cx('container', s.demoGrid)}>

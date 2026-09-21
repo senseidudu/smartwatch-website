@@ -17,13 +17,9 @@ export function btnClass(variant: Cta['variant'] = 'primary'): string {
   return cx('btn', `btn--${variant}`)
 }
 
+/** Hero buttons when a page defines none. No demo button here: the closing band carries it. */
 export function defaultHeroCtas(kind: DetailPage['kind']): Cta[] {
-  const primary: Cta = { label: 'Get a demo', to: routes.contact, variant: 'primary' }
-  if (kind === 'product') {
-    return [primary, { label: 'View hardware', to: routes.hardware, variant: 'outline-light' }]
-  }
-  if (kind === 'solution') {
-    return [primary, { label: 'All solutions', to: routes.solutions, variant: 'outline-light' }]
-  }
-  return [primary]
+  if (kind === 'product') return [{ label: 'View hardware', to: routes.hardware, variant: 'outline-light' }]
+  if (kind === 'solution') return [{ label: 'All solutions', to: routes.solutions, variant: 'outline-light' }]
+  return []
 }

@@ -1,5 +1,4 @@
 import { render, screen, within } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, test } from 'vitest'
 import { heroWords } from '../../data/content'
@@ -30,19 +29,20 @@ describe('Home hero', () => {
     expect(lead).toHaveTextContent('safety, productivity, and profitability')
   })
 
-  test('offers only the watch demo action', () => {
+  test('offers only the products link, with no demo button or video', () => {
     renderHero()
-    expect(screen.getByRole('button', { name: /watch demo/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /explore products/i })).toHaveAttribute('href', '/products')
     expect(screen.queryByRole('link', { name: /get a demo/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /watch/i })).not.toBeInTheDocument()
+    expect(document.querySelector('video')).toBeNull()
   })
 
-  test('"Watch demo" opens the video modal', async () => {
-    const user = userEvent.setup()
+  test('carries one photograph per word, with the first one showing', () => {
     renderHero()
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: /watch demo/i }))
-    const dialog = screen.getByRole('dialog')
-    expect(dialog).toHaveAttribute('aria-modal', 'true')
-    expect(dialog.querySelector('video')?.getAttribute('src')).toBe('/video/Smartvideo.mp4')
+    const slides = document.querySelectorAll('[data-scroll-slides] img')
+    expect(slides).toHaveLength(heroWords.length)
+    expect(slides[0].closest('[aria-hidden]')).toHaveAttribute('aria-hidden', 'false')
+    expect(slides[1].closest('[aria-hidden]')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('Speed alert cleared')).toBeInTheDocument()
   })
 })

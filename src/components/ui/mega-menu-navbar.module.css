@@ -1,14 +1,14 @@
 /*
  * Chrome for the vendored mega-menu navbar: the sticky bar, triggers, floating panel and
  * mobile drawer. The bar takes the colour of the section under it (data-theme): navy over
- * dark bands, white over the light panels. It is transparent until the page scrolls
- * (data-solid), so at the top the hero shows through.
+ * dark bands, white over light ones. data-solid marks a scrolled page and adds the hairline.
  * The panels' columns, promo card and contact popover live in Header.module.css.
  */
 
 /*
  * Sticky header. Menus are floating white cards that hang beneath the bar; the open item
- * is underlined.
+ * is underlined. The bar is white over light bands and navy over dark ones; data-solid only adds
+ * the hairline once the page has scrolled.
  */
 
 .header {
@@ -20,19 +20,20 @@
   --hdr-fg: var(--ink);
   --hdr-fg-muted: var(--ink-3);
   --hdr-hover: var(--surface);
-  transition:
-    background 0.25s ease,
-    box-shadow 0.25s ease;
+  /* No transition: the text colour and the logo swap the instant the theme changes, so the
+     background must change with them, or white text sits on a still-white bar mid-fade. */
 }
 
+/* Dark bands paint the bar navy outright: the bar sits above the hero in the flow, over the page's
+   white body, so a transparent bar would put white text on white at the top of a navy-hero page. */
 .header[data-theme='dark'] {
   --hdr-fg: var(--white);
   --hdr-fg-muted: var(--muted);
   --hdr-hover: rgba(255, 255, 255, 0.12);
+  background: var(--navy);
 }
 
 .header[data-theme='dark'][data-solid] {
-  background: var(--navy);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 

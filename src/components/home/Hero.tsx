@@ -1,12 +1,13 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { heroWords } from '../../data/content'
-import { img, video } from '../../data/images'
+import { img } from '../../data/images'
+import { routes } from '../../data/site'
 import type { Img } from '../../data/types'
 import { cx } from '../../lib/cx'
 import { prefersReducedMotion } from '../../motion/motion'
 import { useEntrance } from '../../motion/useEntrance'
 import { useHeroScroll } from '../../motion/useHeroScroll'
-import VideoModal from '../VideoModal'
 import s from './Hero.module.css'
 
 /**
@@ -26,7 +27,6 @@ function separator(index: number, total: number) {
 
 export default function Hero() {
   const [active, setActive] = useState(0)
-  const [videoOpen, setVideoOpen] = useState(false)
   const reduced = prefersReducedMotion()
   const ref = useRef<HTMLElement>(null)
   useEntrance(ref)
@@ -39,7 +39,7 @@ export default function Hero() {
   }, [reduced])
 
   return (
-    <section className={s.hero} data-band="dark" ref={ref}>
+    <section className={s.hero} data-band="light" ref={ref}>
       <div className={cx('container', s.inner)}>
         <div className={s.copy} data-scroll-copy>
           <h1 className={cx('h-display', s.title)} data-enter>
@@ -56,9 +56,9 @@ export default function Hero() {
             of your operations across East Africa.
           </p>
           <div className={s.actions} data-enter>
-            <button type="button" className="btn btn--outline-light" onClick={() => setVideoOpen(true)}>
-              <span aria-hidden="true">▶</span> Watch demo
-            </button>
+            <Link to={routes.products} className="btn btn--outline">
+              Explore products
+            </Link>
           </div>
         </div>
 
@@ -88,14 +88,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <VideoModal
-        open={videoOpen}
-        onClose={() => setVideoOpen(false)}
-        src={video.corporate.src}
-        poster={video.corporate.poster}
-        title={video.corporate.title}
-      />
     </section>
   )
 }

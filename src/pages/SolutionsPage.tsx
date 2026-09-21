@@ -1,5 +1,4 @@
 import Media from '../components/Media'
-import Panel from '../components/Panel'
 import Reveal from '../components/Reveal'
 import CtaBand from '../components/sections/CtaBand'
 import { defaultCta } from '../components/sections/cta'
@@ -18,9 +17,9 @@ export default function SolutionsPage() {
 
   return (
     <div className={s.page}>
-      <section className={s.band} data-band="dark">
+      <section className={s.band}>
         <div className={cx('container', s.bandInner)}>
-          <div className="eyebrow eyebrow--bright">Solutions</div>
+          <div className="eyebrow">Solutions</div>
           <h1 className="h-page">Built for the industries that keep East Africa moving.</h1>
           <p className={s.lead}>
             From oil and gas convoys to city buses and NGO field teams, Smartwatch adapts to how your
@@ -29,7 +28,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <Panel className={s.panel}>
+      <div className={s.body}>
         <section className={cx('container', s.gridWrap)} aria-label="Solutions by industry">
           <Reveal stagger className={s.grid}>
             {industries.map((industry) => (
@@ -49,7 +48,7 @@ export default function SolutionsPage() {
           title="Not sure which solution fits?"
           body="Tell us about your fleet and we will map the platform to the way your operation runs."
         />
-      </Panel>
+      </div>
     </div>
   )
 }

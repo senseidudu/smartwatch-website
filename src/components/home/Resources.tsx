@@ -11,13 +11,13 @@ export default function Resources() {
     <Reveal as="section" className={cx('container', s.section)}>
       <div className={s.head}>
         <h2 className="h-section">Discover what's new with Smartwatch.</h2>
-        <Link to={routes.products} className="btn btn--outline btn--sm">
-          View all products
+        <Link to={routes.products} className="link-arrow">
+          View all resources →
         </Link>
       </div>
       <div className={s.grid}>
-        <Link to={featuredPost.to} className={cx(s.feature, 'lift')}>
-          <Media image={featuredPost.image} ratio="16 / 9" radius={10} decorative />
+        <Link to={featuredPost.to} className={s.feature}>
+          <Media image={featuredPost.image} ratio="16 / 9" radius={0} decorative />
           <div className={s.featureBody}>
             <div className="eyebrow">{featuredPost.kind}</div>
             <div className={s.featureTitle}>{featuredPost.title}</div>
@@ -31,8 +31,8 @@ export default function Resources() {
               <Media
                 image={post.image}
                 label="image coming soon"
-                ratio="16 / 9"
-                radius={10}
+                ratio="4 / 3"
+                radius={12}
                 stripe={8}
                 decorative
                 className={s.thumb}

@@ -133,10 +133,10 @@ describe('Header utilities', () => {
 describe('Header theme', () => {
   afterEach(() => setScroll(0))
 
-  test('starts transparent over the dark hero', () => {
+  test('starts transparent over the light hero', () => {
     renderHeader()
     const banner = screen.getByRole('banner')
-    expect(banner).toHaveAttribute('data-theme', 'dark')
+    expect(banner).toHaveAttribute('data-theme', 'light')
     expect(banner).not.toHaveAttribute('data-solid')
   })
 
@@ -164,6 +164,25 @@ describe('Header theme', () => {
     placeBand(light, 700, 1400)
     setScroll(0)
     expect(banner).toHaveAttribute('data-theme', 'dark')
+    placeBand(dark, -900, -200)
+    placeBand(light, -200, 600)
+    setScroll(900)
+    expect(banner).toHaveAttribute('data-theme', 'light')
+  })
+
+  test('returns to light at the top, where the announcement bar holds the header lower', () => {
+    const { dark, light } = renderHeaderOverBands()
+    const banner = screen.getByRole('banner')
+    placeBand(light, -900, 0)
+    placeBand(dark, 0, 900)
+    setScroll(600)
+    expect(banner).toHaveAttribute('data-theme', 'dark')
+    // Back at the top the header sits under the 34px announcement bar, so its edge is at 98, not 64.
+    placeBand(banner, 34, 98)
+    placeBand(light, 98, 700)
+    placeBand(dark, 700, 1500)
+    setScroll(0)
+    expect(banner).toHaveAttribute('data-theme', 'light')
   })
 
   test('a later band wins where it overlaps the pinned hero', () => {

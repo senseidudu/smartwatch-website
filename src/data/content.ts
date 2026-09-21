@@ -3,21 +3,6 @@ import { routes } from './site'
 
 export const heroWords = ['safety', 'productivity', 'profitability']
 
-export const logos = [
-  'Aramex',
-  'KLM',
-  'British Airways',
-  'Barclays',
-  'World Vision',
-  'CNOOC',
-  'KIA',
-  'Rubis',
-  'KCB',
-  'Serena Hotels',
-  'Posta Uganda',
-  'NTV',
-]
-
 export const proofLine = {
   text: 'Recognised by KPMG as a Top 100 mid-sized company. Serving fleets across East Africa since 2011.',
   linkLabel: 'Our awards →',
@@ -35,7 +20,7 @@ export const featuredPost = {
   kind: 'Product',
   title: 'Driver Safety Dash Cameras: AI video, people counting and instant alerts.',
   body: 'Video surveillance, passenger information, AI analytics and people counting, dispatch system and terminal with ticket system.',
-  image: img.dashcams,
+  image: img.inCabDevice,
   to: routes.product('driver-safety-dash-cameras'),
 }
 

@@ -101,10 +101,10 @@ describe('DetailPage hero and chrome', () => {
     expect(screen.getByAltText(img.device.alt)).toBeInTheDocument()
   })
 
-  test('product pages get default demo and hardware calls to action', () => {
+  test('product pages get the hardware call to action and no demo button', () => {
     renderPage()
     const hero = screen.getByRole('heading', { level: 1 }).closest('section')!
-    expect(within(hero).getByRole('link', { name: /get a demo/i })).toHaveAttribute('href', '/contact')
+    expect(within(hero).queryByRole('link', { name: /get a demo/i })).not.toBeInTheDocument()
     expect(within(hero).getByRole('link', { name: /view hardware/i })).toHaveAttribute('href', '/hardware')
   })
 

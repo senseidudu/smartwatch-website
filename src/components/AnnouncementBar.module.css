@@ -1,0 +1,28 @@
+.bar {
+  background: var(--navy);
+  color: var(--white);
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 20px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.text {
+  font-weight: 600;
+}
+
+.link {
+  color: var(--green-bright);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link:hover {
+  color: var(--white);
+}

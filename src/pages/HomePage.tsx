@@ -1,11 +1,11 @@
-import Panel from '../components/Panel'
-import CustomersBand from '../components/home/CustomersBand'
+import Customers from '../components/home/Customers'
 import DemoSection from '../components/home/DemoSection'
 import Hero from '../components/home/Hero'
-import PlatformIntro from '../components/home/PlatformIntro'
-import ProductRail from '../components/home/ProductRail'
-import ProductRows from '../components/home/ProductRows'
+import IndustriesStrip from '../components/home/IndustriesStrip'
+import PlatformPillars from '../components/home/PlatformPillars'
 import Resources from '../components/home/Resources'
+import Stats from '../components/home/Stats'
+import WhySmartwatch from '../components/home/WhySmartwatch'
 import { site } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
 import s from './HomePage.module.css'
@@ -17,19 +17,16 @@ export default function HomePage() {
   })
   return (
     <div className={s.home}>
-      {/* The hero pins while this first panel scrolls up over it; the wrapper bounds the pin. */}
+      {/* The hero pins while the platform band scrolls up over it; the wrapper bounds the pin. */}
       <div className={s.stage}>
         <Hero />
-        <Panel className={s.panel}>
-          <PlatformIntro />
-          <ProductRail />
-          <ProductRows />
-        </Panel>
+        <PlatformPillars />
       </div>
-      <CustomersBand />
-      <Panel className={s.panel}>
-        <Resources />
-      </Panel>
+      <Stats />
+      <Customers />
+      <WhySmartwatch />
+      <IndustriesStrip />
+      <Resources />
       <DemoSection />
       <div className={s.disclaimer}>
         <div className="container">{site.disclaimer}</div>
