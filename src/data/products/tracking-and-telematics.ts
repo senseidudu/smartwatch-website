@@ -39,6 +39,7 @@ export const page: DetailPage = {
         'Accurate GPS fleet tracking',
       ],
       mediaLabel: 'geofence alert on a live map',
+      media: img.platformDevices,
       reverse: true,
     },
     {
@@ -69,6 +70,7 @@ export const page: DetailPage = {
         'Data and reports available 24/7 from any internet-enabled computer, smartphone or tablet',
       ],
       mediaLabel: 'trip replay and utilisation report',
+      media: img.tmsDashboard,
       reverse: true,
     },
     {

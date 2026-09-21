@@ -197,6 +197,43 @@ export const img = {
     width: 667,
     height: 1000,
   },
+  complianceTablet: {
+    src: '/images/compliance-tablet.webp',
+    alt: 'Compliance overview with logs, violations and inspections open on a tablet',
+    width: 700,
+    height: 440,
+  },
+  highwayInterchange: {
+    src: '/images/highway-interchange.webp',
+    alt: 'Haulage truck crossing a highway interchange, seen from above',
+    width: 380,
+    height: 380,
+  },
+  portContainerYard: {
+    src: '/images/port-container-yard.webp',
+    alt: 'Container trucks queued between stacked containers at a port terminal',
+    width: 700,
+    height: 541,
+  },
+  platformDevices: {
+    src: '/images/platform-devices.webp',
+    alt: 'SmartwatchFM live map on a desktop with trip list and driver alert on a phone',
+    width: 545,
+    height: 444,
+    fit: 'contain',
+  },
+  truckParkAerial: {
+    src: '/images/truck-park-aerial.webp',
+    alt: 'Rows of parked articulated trucks in a depot yard, seen from directly above',
+    width: 800,
+    height: 900,
+  },
+  insuranceCosts: {
+    src: '/images/insurance-costs.webp',
+    alt: 'Model car, cash and coins beside a laptop showing running cost charts',
+    width: 700,
+    height: 440,
+  },
 } satisfies Record<string, Img>
 
 export type ImgKey = keyof typeof img
@@ -335,5 +372,10 @@ export const video = {
     src: '/video/Smartvideo.mp4',
     poster: '/images/laptop.webp',
     title: 'Smartwatch Solutions corporate video',
+  },
+  platform: {
+    src: '/video/smart-ai.mp4',
+    poster: '/images/platform-video-poster.webp',
+    title: 'Smartwatch AI dash cameras for commercial fleets',
   },
 }

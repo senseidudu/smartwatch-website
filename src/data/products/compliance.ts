@@ -43,6 +43,7 @@ export const page: DetailPage = {
         'Sound buzzer alerts drivers before exceeding the speed limit',
       ],
       mediaLabel: 'OnTrack driver app on a phone',
+      media: img.platformDevices,
       reverse: true,
     },
     {
@@ -58,6 +59,7 @@ export const page: DetailPage = {
         'Share predicted scores with your insurer for premium discounts',
       ],
       mediaLabel: 'driver rating score card',
+      media: img.complianceTablet,
     },
     {
       kind: 'cards',

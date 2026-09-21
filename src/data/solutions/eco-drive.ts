@@ -90,6 +90,7 @@ export const page: DetailPage = {
         'Extreme acceleration events',
       ],
       mediaLabel: 'driver safety score dashboard',
+      media: img.fleetDashboard,
     },
     {
       kind: 'split',
@@ -124,6 +125,7 @@ export const page: DetailPage = {
         'Custom selection of vehicles, drivers and parameters',
       ],
       mediaLabel: 'mixed fleet of different vehicle brands',
+      media: img.fleetSunset,
       reverse: true,
     },
     {

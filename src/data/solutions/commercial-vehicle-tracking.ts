@@ -1,4 +1,4 @@
-import { img } from '../images'
+import { hw, img } from '../images'
 import { anchors, routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -47,6 +47,7 @@ export const page: DetailPage = {
       ],
       points: ['RPM', 'Speed', 'Fuel level', 'Odometer', 'VIN and other parameters'],
       mediaLabel: 'OBDII tracker plugged into a delivery van',
+      media: hw.gpsTracker,
     },
     {
       kind: 'split',

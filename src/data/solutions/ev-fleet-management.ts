@@ -48,6 +48,7 @@ export const page: DetailPage = {
         'Stay ahead in energy consumption calculations',
       ],
       mediaLabel: 'EV charging overview dashboard',
+      media: img.charging,
     },
     {
       kind: 'split',

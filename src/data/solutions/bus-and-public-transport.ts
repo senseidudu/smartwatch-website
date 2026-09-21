@@ -1,3 +1,4 @@
+import { hw, img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -48,6 +49,7 @@ export const page: DetailPage = {
         },
       ],
       mediaLabel: 'live map showing bus locations and drivers',
+      media: img.laptopTracking,
     },
     {
       kind: 'split',
@@ -61,6 +63,7 @@ export const page: DetailPage = {
       ],
       reverse: true,
       mediaLabel: 'multi-channel mobile DVR footage from inside a bus',
+      media: hw.mdvr,
     },
     {
       kind: 'split',

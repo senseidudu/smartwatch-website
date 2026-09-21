@@ -1,4 +1,4 @@
-import { img } from '../images'
+import { hw, img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -56,6 +56,7 @@ export const page: DetailPage = {
         'Daily notifications about fleet performance',
       ],
       mediaLabel: 'live fleet map with truck positions',
+      media: img.highwayInterchange,
     },
     {
       kind: 'split',
@@ -79,6 +80,7 @@ export const page: DetailPage = {
         'Operating hours and fuel usage',
       ],
       mediaLabel: 'trailer fitted with an asset tracker',
+      media: hw.gpsTracker,
     },
     {
       kind: 'split',
@@ -90,6 +92,7 @@ export const page: DetailPage = {
         'Driver coach device for real-time communication',
       ],
       mediaLabel: 'in-cab dash camera view',
+      media: hw.dashboardCamera,
       reverse: true,
       cta: { label: 'See dash cameras', to: routes.product('driver-safety-dash-cameras') },
     },

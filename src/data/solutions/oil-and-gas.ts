@@ -1,4 +1,4 @@
-import { img } from '../images'
+import { hw, img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -44,6 +44,7 @@ export const page: DetailPage = {
       body: 'Smartwatch FM connects the vehicle, protects the operator and provides actionable insights for fleet managers.',
       points: ['Driver safety', 'Asset tracking', 'Cost control', 'Compliance management'],
       mediaLabel: 'in-vehicle monitoring system on an oil and gas site',
+      media: hw.monitor,
     },
     {
       kind: 'tabs',

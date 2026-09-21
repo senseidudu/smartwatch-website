@@ -31,6 +31,7 @@ export const page: DetailPage = {
         'Engine block relay activated remotely through the platform or by SMS',
       ],
       mediaLabel: 'vehicle recovery map',
+      media: img.laptopTracking,
     },
     {
       kind: 'split',
@@ -38,6 +39,7 @@ export const page: DetailPage = {
       body: 'Get data from your fleet vehicles on speeding, rapid acceleration, harsh braking, and sharp cornering. This data can be used to coach your drivers on safer driving behaviours, which reduces insurance costs while at the same time reducing fuel costs for fleet owners.',
       points: ['Speeding', 'Rapid acceleration', 'Harsh braking', 'Sharp cornering'],
       mediaLabel: 'driver behaviour score card',
+      media: img.insuranceCosts,
       reverse: true,
     },
     {
@@ -67,6 +69,7 @@ export const page: DetailPage = {
         'Monitor vehicle locations and movements at any time',
       ],
       mediaLabel: 'route map with traffic overlay',
+      media: img.routeMap,
       reverse: true,
     },
     {

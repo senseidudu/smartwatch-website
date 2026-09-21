@@ -1,4 +1,4 @@
-import { img } from '../images'
+import { hw, img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -64,6 +64,7 @@ export const page: DetailPage = {
         'Data and reports available 24/7',
       ],
       mediaLabel: 'on-board computer installed in a vehicle',
+      media: hw.monitor,
     },
     {
       kind: 'split',
@@ -95,6 +96,7 @@ export const page: DetailPage = {
         'Generate movement, event, trip and utilisation reports',
       ],
       mediaLabel: 'activity timeline and reports dashboard',
+      media: img.tmsDashboard,
     },
     {
       kind: 'related',

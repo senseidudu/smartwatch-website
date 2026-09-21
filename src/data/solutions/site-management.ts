@@ -69,6 +69,7 @@ export const page: DetailPage = {
         },
       ],
       mediaLabel: 'remote site map with asset status',
+      media: img.truckParkAerial,
     },
     {
       kind: 'beforeAfter',

@@ -1,4 +1,4 @@
-import { img } from '../images'
+import { hw, img } from '../images'
 import { anchors, routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -38,6 +38,7 @@ export const page: DetailPage = {
       body: "Manage driver safety with Smartwatch's all-in-one platform and reduce your safety department's workload through automation. Eliminate repetitive or time-consuming tasks with self-coaching tools, prioritized footage, and custom safety definitions.",
       points: ['Self-coaching tools for drivers', 'Prioritized footage', 'Custom safety definitions'],
       mediaLabel: 'safety dashboard with prioritized event footage',
+      media: img.fleetDashboard,
       reverse: true,
     },
     {
@@ -51,6 +52,7 @@ export const page: DetailPage = {
         'Fatigue detection and alert with seat vibration',
       ],
       mediaLabel: 'in-cab driver alert on the vehicle monitor',
+      media: hw.monitor,
     },
     {
       kind: 'split',

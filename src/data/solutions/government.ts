@@ -28,6 +28,7 @@ export const page: DetailPage = {
         'Full visibility of the routes they take',
       ],
       mediaLabel: 'live map of public-sector vehicles',
+      media: img.routeMap,
     },
     {
       kind: 'split',

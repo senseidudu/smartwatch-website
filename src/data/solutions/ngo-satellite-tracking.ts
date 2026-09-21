@@ -1,4 +1,4 @@
-import { img } from '../images'
+import { hw, img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -50,6 +50,7 @@ export const page: DetailPage = {
         'Driver ID and more',
       ],
       mediaLabel: 'vehicle on a remote road with its live position on the map',
+      media: img.highwayAerial,
     },
     {
       kind: 'split',
@@ -75,6 +76,7 @@ export const page: DetailPage = {
         'Instant mobile and web notifications',
       ],
       mediaLabel: 'plug-and-play GPS tracker',
+      media: hw.gpsTracker,
       cta: { label: 'View hardware', to: routes.hardware },
     },
     {

@@ -74,6 +74,7 @@ export const page: DetailPage = {
       body: 'Improve productivity no matter what vertical you are in. Discover the most cutting-edge solutions for retail and distribution, utilities, medicine, machinery and more.',
       points: ['Retail and distribution', 'Utilities', 'Medicine', 'Machinery'],
       mediaLabel: 'field team job board on a tablet',
+      media: img.fieldSupervisor,
       cta: { label: 'Request a demo', to: `${routes.contact}#${anchors.demo}` },
     },
     {

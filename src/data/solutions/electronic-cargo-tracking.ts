@@ -1,4 +1,4 @@
-import { img } from '../images'
+import { hw, img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -64,6 +64,7 @@ export const page: DetailPage = {
         'Goods monitored from border entry points to inland bonded warehouses',
       ],
       mediaLabel: 'live map of cargo in transit along a trading corridor',
+      media: img.portContainerYard,
     },
     {
       kind: 'cards',
@@ -107,6 +108,7 @@ export const page: DetailPage = {
       ],
       reverse: true,
       mediaLabel: 'e-lock fitted to a shipping container door',
+      media: hw.smartKey,
     },
     {
       kind: 'related',

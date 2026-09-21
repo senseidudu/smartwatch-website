@@ -48,6 +48,7 @@ export const page: DetailPage = {
       title: 'Route optimisation',
       body: 'This electronic journey planning solution does away with error-prone manual route management and has been found to be ideal for cargo-carrying fleets.',
       mediaLabel: 'planned delivery route on a map',
+      media: img.routePlanning,
     },
     {
       kind: 'split',
@@ -67,6 +68,7 @@ export const page: DetailPage = {
         'Reminders for licence renewals',
       ],
       mediaLabel: 'onboard computer fitted to a refrigerated truck',
+      media: img.truckRefrigerated,
     },
     {
       kind: 'related',
