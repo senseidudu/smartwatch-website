@@ -65,8 +65,8 @@ export const solutionLinks: NavLink[] = industries.map((i) => ({
 
 /** Mobile drawer groups (click accordions) and its plain links. */
 export const drawerGroups: { label: string; links: NavLink[] }[] = [
-  { label: 'Solutions', links: solutionLinks },
   { label: 'Products', links: productLinks },
+  { label: 'Solutions', links: solutionLinks },
   { label: 'Resources', links: [...learnLinks, ...techLinks] },
   { label: 'Company', links: [...companyLinks, ...connectLinks] },
 ]

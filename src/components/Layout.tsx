@@ -2,7 +2,6 @@ import { useLenis } from 'lenis/react'
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { HEADER_OFFSET, ScrollTrigger } from '../motion/gsap'
-import AnnouncementBar from './AnnouncementBar'
 import Footer from './Footer'
 import Header from './Header'
 import RegionToast from './RegionToast'
@@ -35,7 +34,6 @@ export default function Layout() {
   return (
     <>
       <ScrollManager />
-      <AnnouncementBar />
       <Header />
       <main className={s.main}>
         <Outlet />

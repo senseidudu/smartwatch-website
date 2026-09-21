@@ -72,7 +72,7 @@ export default function Hero() {
             of your operations across East Africa.
           </p>
           <div className={s.actions} data-enter>
-            <Link to={routes.contact} className="btn btn--primary">
+            <Link to={routes.contact} className="btn btn--accent">
               Get a demo
             </Link>
             <button type="button" className="btn btn--outline-light" onClick={() => setVideoOpen(true)}>

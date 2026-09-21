@@ -80,6 +80,9 @@ const paths: Record<IconName, ReactNode> = {
       <path d="M12 17h.01" />
     </>
   ),
+  phone: (
+    <path d="M5.5 3.5h3.2l1.8 4.6-2.3 1.6a12.5 12.5 0 0 0 6.1 6.1l1.6-2.3 4.6 1.8v3.2a2 2 0 0 1-2.1 2A16.5 16.5 0 0 1 3.5 5.6a2 2 0 0 1 2-2.1z" />
+  ),
 }
 
 type Props = { name: IconName; size?: number; className?: string }

@@ -1,7 +1,7 @@
-import { render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
-import { describe, expect, test } from 'vitest'
+import { afterEach, describe, expect, test } from 'vitest'
 import Header from './Header'
 
 function renderHeader() {
@@ -12,27 +12,34 @@ function renderHeader() {
   )
 }
 
+function setScroll(y: number) {
+  Object.defineProperty(window, 'scrollY', { value: y, configurable: true })
+  fireEvent.scroll(window)
+}
+
 describe('Header mega menus', () => {
   test('no menu is open initially', () => {
     renderHeader()
     expect(screen.queryByText('By industry')).not.toBeInTheDocument()
   })
 
-  test('hovering Solutions opens the Solutions menu', async () => {
+  test('hovering Solutions opens the industry card', async () => {
     const user = userEvent.setup()
     renderHeader()
     await user.hover(screen.getByRole('button', { name: /solutions/i }))
     expect(screen.getByText('By industry')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Oil and Gas' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Oil and Gas' })).toHaveAttribute('href', '/solutions/oil-and-gas')
   })
 
-  test('hovering Products swaps the open menu', async () => {
+  test('hovering Products swaps the open menu and lists hardware in the featured column', async () => {
     const user = userEvent.setup()
     renderHeader()
     await user.hover(screen.getByRole('button', { name: /solutions/i }))
     await user.hover(screen.getByRole('button', { name: /products/i }))
     expect(screen.queryByText('By industry')).not.toBeInTheDocument()
     expect(screen.getByText('Driver Safety Dash Cameras are here.')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Devices' })).toHaveAttribute('href', '/hardware#devices')
+    expect(screen.getByRole('link', { name: /view all products/i })).toHaveAttribute('href', '/products')
   })
 
   test('hovering Contact closes any open menu', async () => {
@@ -61,15 +68,53 @@ describe('Header mega menus', () => {
     await user.hover(button)
     expect(button).toHaveAttribute('aria-expanded', 'true')
   })
+
+  test('nav order is Products, Solutions, Resources, Company', () => {
+    renderHeader()
+    const nav = screen.getByRole('navigation', { name: /primary/i })
+    expect(within(nav).getAllByRole('button').map((b) => b.textContent?.trim())).toEqual([
+      'Products',
+      'Solutions',
+      'Resources',
+      'Company',
+    ])
+  })
 })
 
-describe('Header phone popover', () => {
-  test('hovering the phone number shows the contact popover', async () => {
+describe('Header utilities', () => {
+  test('shows Contact and the demo button, with no phone number or login', () => {
+    renderHeader()
+    const banner = screen.getByRole('banner')
+    expect(within(banner).getByRole('link', { name: /^contact$/i })).toHaveAttribute('href', '/contact')
+    expect(within(banner).getByRole('link', { name: /get a demo/i })).toHaveAttribute('href', '/contact')
+    expect(screen.queryByRole('link', { name: /\+256 392 177 300/ })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /^login$/i })).not.toBeInTheDocument()
+  })
+
+  test('hovering Contact reveals the sales and support popover', async () => {
     const user = userEvent.setup()
     renderHeader()
     expect(screen.queryByText('Talk to Sales or Support 24/7')).not.toBeInTheDocument()
-    await user.hover(screen.getByRole('link', { name: /\+256 392 177 300 sales/i }))
+    await user.hover(screen.getByRole('link', { name: /^contact$/i }))
     expect(screen.getByText('Talk to Sales or Support 24/7')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: '+256 392 177 300' })).toHaveAttribute('href', 'tel:+256392177300')
+  })
+})
+
+describe('Header theme', () => {
+  afterEach(() => setScroll(0))
+
+  test('starts transparent over the dark hero', () => {
+    renderHeader()
+    expect(screen.getByRole('banner')).toHaveAttribute('data-theme', 'dark')
+  })
+
+  test('turns white once the page has scrolled', () => {
+    renderHeader()
+    setScroll(120)
+    expect(screen.getByRole('banner')).toHaveAttribute('data-theme', 'light')
+    setScroll(0)
+    expect(screen.getByRole('banner')).toHaveAttribute('data-theme', 'dark')
   })
 })
 
@@ -86,42 +131,5 @@ describe('Header mobile drawer', () => {
     expect(drawer).toHaveTextContent('Contact')
     await user.click(screen.getByRole('button', { name: /close menu/i }))
     expect(screen.queryByRole('dialog', { name: /menu/i })).not.toBeInTheDocument()
-  })
-})
-
-describe('Header login menu', () => {
-  test('opens a menu with the three platform portals', async () => {
-    const user = userEvent.setup()
-    renderHeader()
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: /^login$/i }))
-    const menu = screen.getByRole('menu')
-    const links = within(menu).getAllByRole('menuitem')
-    expect(links).toHaveLength(3)
-    expect(links[2]).toHaveAttribute('href', 'https://smartwatch.fm-track.com/login')
-    expect(links[2]).toHaveAttribute('target', '_blank')
-  })
-
-  test('closes on Escape', async () => {
-    const user = userEvent.setup()
-    renderHeader()
-    await user.click(screen.getByRole('button', { name: /^login$/i }))
-    await user.keyboard('{Escape}')
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument()
-  })
-})
-
-describe('Header links and theme', () => {
-  test('solutions menu links resolve to detail routes', async () => {
-    const user = userEvent.setup()
-    renderHeader()
-    await user.hover(screen.getByRole('button', { name: /solutions/i }))
-    expect(screen.getByRole('link', { name: 'Oil and Gas' })).toHaveAttribute('href', '/solutions/oil-and-gas')
-    expect(screen.getByRole('link', { name: 'Devices' })).toHaveAttribute('href', '/hardware#devices')
-  })
-
-  test('exposes the band theme it sits over', () => {
-    renderHeader()
-    expect(screen.getByRole('banner')).toHaveAttribute('data-theme')
   })
 })

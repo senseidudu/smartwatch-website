@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, test } from 'vitest'
@@ -11,8 +11,8 @@ async function openEverything(user: ReturnType<typeof userEvent.setup>) {
   for (const name of [/solutions/i, /products/i, /resources/i, /company/i]) {
     await user.hover(screen.getAllByRole('button', { name })[0])
   }
+  await user.hover(within(screen.getByRole('banner')).getByRole('link', { name: /^contact$/i }))
   await user.click(screen.getByRole('button', { name: /open menu/i }))
-  await user.click(screen.getByRole('button', { name: /^login$/i }))
 }
 
 describe('every link on the site resolves', () => {
