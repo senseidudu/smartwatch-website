@@ -32,6 +32,13 @@ export default function Footer() {
           <a href={`mailto:${site.email}`} className={s.muted}>
             {site.email}
           </a>
+          <div className={s.whatsapp}>
+            {site.whatsapp.map((line) => (
+              <SmartLink key={line.href} to={line.href} className={s.muted}>
+                WhatsApp {line.country} · {line.label}
+              </SmartLink>
+            ))}
+          </div>
           <div className={s.social}>
             {site.social.map((item) => (
               <SmartLink key={item.name} to={item.href} className={s.socialLink}>

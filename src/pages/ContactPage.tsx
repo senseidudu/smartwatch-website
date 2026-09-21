@@ -2,6 +2,7 @@ import ContactForm from '../components/ContactForm'
 import Icon from '../components/Icon'
 import Panel from '../components/Panel'
 import Reveal from '../components/Reveal'
+import { WhatsAppMark } from '../components/WhatsAppButton'
 import { anchors, mapEmbed, offices, site } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { cx } from '../lib/cx'
@@ -106,6 +107,17 @@ export default function ContactPage() {
                     </a>
                   ))}
                 </div>
+                {office.whatsapp && (
+                  <a
+                    href={office.whatsapp.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={s.officeWhatsApp}
+                  >
+                    <WhatsAppMark size={16} />
+                    WhatsApp {office.whatsapp.label}
+                  </a>
+                )}
               </div>
             ))}
           </Reveal>

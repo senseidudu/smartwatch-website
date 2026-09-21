@@ -361,6 +361,7 @@
 
 .itemCompact {
   padding: 6px 10px;
+  gap: 10px;
   align-items: center;
 }
 
@@ -376,10 +377,13 @@
   flex-shrink: 0;
 }
 
+/* Industry rows use a bare glyph; only the product rows get the filled tile. */
 .itemCompact .itemIcon {
-  width: 30px;
-  height: 30px;
-  border-radius: 7px;
+  width: 22px;
+  height: 22px;
+  border-radius: 0;
+  background: transparent;
+  color: var(--green);
 }
 
 .itemText {

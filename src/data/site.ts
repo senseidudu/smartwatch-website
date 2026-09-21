@@ -74,12 +74,18 @@ export function allPaths(): string[] {
   ]
 }
 
+export type WhatsAppLine = { country: string; label: string; href: string }
+
 export const site = {
   name: 'Smartwatch Solutions',
   legalName: 'Smartwatch Solutions Ltd',
   phone: '+256 392 177 300',
   phoneHref: 'tel:+256392177300',
-  whatsapp: 'https://wa.me/256392177300',
+  /** One line per region. wa.me needs the number in full international form, digits only. */
+  whatsapp: [
+    { country: 'Uganda', label: '+256 759 786 255', href: 'https://wa.me/256759786255' },
+    { country: 'Kenya', label: '+254 118 319 547', href: 'https://wa.me/254118319547' },
+  ] as WhatsAppLine[],
   email: 'customersupport@smartwatchsolutions.com',
   regions: 'Uganda · Kenya',
   tagline:
@@ -93,6 +99,11 @@ export const site = {
     { name: 'X', href: 'https://x.com/SWSolutionsUG' },
     { name: 'LinkedIn', href: 'https://ug.linkedin.com/company/smartwatch-solutions-ug' },
   ],
+}
+
+/** The WhatsApp line for a country, so offices and the floating button stay in sync. */
+export function whatsappFor(country: string): WhatsAppLine | undefined {
+  return site.whatsapp.find((line) => line.country === country)
 }
 
 /** Customer-facing platform logins (external). */
@@ -120,6 +131,7 @@ export type Office = {
   role: string
   lines: string[]
   phones: { label: string; href: string }[]
+  whatsapp?: WhatsAppLine
 }
 
 export const offices: Office[] = [
@@ -132,6 +144,7 @@ export const offices: Office[] = [
       { label: '+256 392 177 300', href: 'tel:+256392177300' },
       { label: '+256 414 580 632', href: 'tel:+256414580632' },
     ],
+    whatsapp: whatsappFor('Uganda'),
   },
   {
     city: 'Nairobi',
@@ -142,6 +155,7 @@ export const offices: Office[] = [
       { label: '+254 118 319 547', href: 'tel:+254118319547' },
       { label: '+254 741 520 518', href: 'tel:+254741520518' },
     ],
+    whatsapp: whatsappFor('Kenya'),
   },
   {
     city: 'Giessenburg',

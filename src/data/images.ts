@@ -201,6 +201,135 @@ export const img = {
 
 export type ImgKey = keyof typeof img
 
+/**
+ * Hardware & accessories product shots, from the client's own
+ * smartwatchsolutions.com/hardware-and-accessories/ page. Each backdrop is
+ * normalised to --surface so the cut-outs sit flush in their card frames.
+ */
+export const hw = {
+  aiDashcam: {
+    src: '/images/hardware/ai-dashcam.webp',
+    alt: 'Driver-facing AI dash cam on an adjustable windscreen mount',
+    width: 380,
+    height: 240,
+    fit: 'contain',
+  },
+  dashboardCamera: {
+    src: '/images/hardware/dashboard-camera.webp',
+    alt: 'Dashboard camera with a road-facing lens on a windscreen mount',
+    width: 380,
+    height: 240,
+    fit: 'contain',
+  },
+  mdvr: {
+    src: '/images/hardware/mdvr.webp',
+    alt: 'Mobile digital video recorder with a card slot and camera channels',
+    width: 380,
+    height: 240,
+    fit: 'contain',
+  },
+  gpsTracker: {
+    src: '/images/hardware/gps-tracker.webp',
+    alt: 'Compact GNSS vehicle tracker with a wiring socket',
+    width: 380,
+    height: 240,
+    fit: 'contain',
+  },
+  axleWeightSensors: {
+    src: '/images/hardware/axle-weight-sensors.webp',
+    alt: 'Axle weight monitoring sensors beside an in-cab load display',
+    width: 380,
+    height: 240,
+    fit: 'contain',
+  },
+  monitor: {
+    src: '/images/hardware/monitor.webp',
+    alt: 'In-cab Android touch screen monitor with a camera',
+    width: 380,
+    height: 240,
+    fit: 'contain',
+  },
+  fatigueSensor: {
+    src: '/images/hardware/fatigue-sensor.webp',
+    alt: 'In-cab fatigue and distraction sensor on a ball mount',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+  snapshotCamera: {
+    src: '/images/hardware/snapshot-camera.webp',
+    alt: 'Weatherproof vehicle snapshot camera on a bracket',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+  smartKey: {
+    src: '/images/hardware/smart-key.webp',
+    alt: 'Smart key fob with five numbered buttons',
+    width: 500,
+    height: 200,
+    fit: 'contain',
+  },
+  rfidSensor: {
+    src: '/images/hardware/rfid-sensor.webp',
+    alt: '1-Wire RFID card reader with a lit indicator',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+  pushToTalk: {
+    src: '/images/hardware/push-to-talk.webp',
+    alt: 'Handheld push-to-talk transceiver microphone',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+  fuelLevelSensor: {
+    src: '/images/hardware/fuel-level-sensor.webp',
+    alt: 'Wireless fuel level sensor probe with a mounting plate',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+  splitterHarness: {
+    src: '/images/hardware/splitter-harness.webp',
+    alt: '9-pin Y splitter harness with a Deutsch socket',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+  fmsHarness: {
+    src: '/images/hardware/fms-harness.webp',
+    alt: 'FMS harness with a green tracker connector',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+  externalAntenna: {
+    src: '/images/hardware/external-antenna.webp',
+    alt: 'External GNSS antenna with a magnetic puck and cable',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+  engineBlockRelay: {
+    src: '/images/hardware/engine-block-relay.webp',
+    alt: 'Automotive engine block relay for remote immobilisation',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+  ecoPanel: {
+    src: '/images/hardware/eco-panel.webp',
+    alt: 'Eco-Drive panel with backlit driver feedback icons',
+    width: 180,
+    height: 180,
+    fit: 'contain',
+  },
+} satisfies Record<string, Img>
+
+export type HwKey = keyof typeof hw
+
 export const video = {
   corporate: {
     src: '/video/Smartvideo.mp4',

@@ -1,4 +1,4 @@
-import { img } from './images'
+import { hw, img } from './images'
 import type { DetailPage } from './types'
 
 /**
@@ -54,32 +54,32 @@ export const hardware: DetailPage = {
       items: [
         {
           title: 'AI Dashcam',
-          icon: 'hardware',
+          image: hw.aiDashcam,
           body: 'Driver-facing, in-cab AI dash cams detect risky driver behaviour and alert the driver and fleet manager to fatigue, phone usage, smoking and distracted driving to prevent accidents and keep your drivers safe on the road.',
         },
         {
           title: 'Dashboard Camera',
-          icon: 'hardware',
+          image: hw.dashboardCamera,
           body: 'The driver-facing camera detects driver events including seat belt, fatigue, phone use, distraction and smoking.',
         },
         {
           title: 'MDVR',
-          icon: 'hardware',
+          image: hw.mdvr,
           body: 'MDVR stands for Mobile Digital Video Recorder. It is a sturdy digital video recorder that allows our customers to keep an eye on moving vehicles and track their real-time GPS location.',
         },
         {
           title: 'GPS Tracker',
-          icon: 'hardware',
+          image: hw.gpsTracker,
           body: 'Our tracker is a compact GNSS-based Automatic Vehicle Location (AVL) tracker with all the essential features for vehicle tracking and fleet management. It uses 4G (GSM) connectivity and a premium GPS module, and suits logistics, delivery, utility services, car rental and vehicle financing use cases.',
         },
         {
           title: 'Axle Weight Monitoring Sensors',
-          icon: 'hardware',
+          image: hw.axleWeightSensors,
           body: 'Axle weight monitoring sensors determine the axle load of a heavy commercial vehicle. They let the people in charge know the exact weight of the vehicle with or without cargo, help avoid possible fines for overloading, and reduce maintenance costs related to continuous overloading.',
         },
         {
           title: 'Monitor',
-          icon: 'hardware',
+          image: hw.monitor,
           body: 'This 10.36-inch vehicle smart monitor is an Android touch screen that works with the vehicle MDVR and displays up to 5 channels of AHD cameras on screen. It supports map navigation, vehicle status information, camera video, driver driving records, Bluetooth phone, mobile screen mirroring, multimedia player, FM launch, assistant apps and other functions.',
         },
       ],
@@ -106,34 +106,42 @@ export const hardware: DetailPage = {
       items: [
         {
           title: 'Fatigue Sensor',
+          image: hw.fatigueSensor,
           body: "The device alarms the driver upon detection of fatigue or distraction. It also provides on-demand image output to the fleet management system when either alarm is triggered. These images serve as evidence to check the driver's real state and other data, helping management centres further improve driver safety and performance.",
         },
         {
           title: 'Snapshot Camera',
+          image: hw.snapshotCamera,
           body: 'Snapshot cameras let you get snapshots of what was happening at a particular time or event with the vehicle and driver. Indoor or outdoor cameras can automatically take snapshots on set events, such as harsh braking or accelerating, GSM jamming, vehicle towing and others. They help ensure vehicle security and provide essential evidence in case of an accident.',
         },
         {
           title: 'Smart Key',
+          image: hw.smartKey,
           body: 'A car smart key is an advanced iteration of a conventional car key, which leverages technology to help you manage the locks on your car, start your engine or perform other functions.',
         },
         {
           title: 'RFID Sensor',
+          image: hw.rfidSensor,
           body: "The 1-Wire RFID reader is a small card reader for UNIQUE standard 125 kHz cards that identifies the driver. It shows who is using the vehicle, at what time, and who is in charge of it. If any discrepancies arise during identification, it is possible to block the vehicle's engine, notify the driver with an audio signal and send a warning to the monitoring and control system.",
         },
         {
           title: 'Push to Talk',
+          image: hw.pushToTalk,
           body: 'The handheld transceiver is designed for maintaining voice communication between the driver and the manager. The device does not require an additional SIM card and simply plugs into the GPS device.',
         },
         {
           title: 'Wireless Fuel Level Sensor',
+          image: hw.fuelLevelSensor,
           body: 'A wireless, battery-powered fuel level sensor with 5 to 10 years of battery life guarantees accurate and reliable fuel level monitoring, with no messing with wires.',
         },
         {
           title: 'Splitter Harness',
+          image: hw.splitterHarness,
           body: 'The 9-pin Y splitter harness is used to install advanced trackers in trucks with a 9-pin Deutsch socket. CANbus data reading is available using the harness, the connection can also be used as a power source, and the spare socket stays available for vehicle diagnostics.',
         },
         {
           title: 'FMS Harness',
+          image: hw.fmsHarness,
           body: 'Install GPS trackers faster and easier with the FMS harness, used to fit our advanced tracker family to trucks. CANbus and tachograph data is available using the FMS harness.',
         },
         {
@@ -142,14 +150,17 @@ export const hardware: DetailPage = {
         },
         {
           title: 'External Antenna',
+          image: hw.externalAntenna,
           body: 'An external GNSS antenna can be connected to our 5th-generation advanced tracker family for more accurate fleet location, especially when the tracker needs to be hidden under metal construction in the vehicle. If the external antenna is damaged or disconnected, the internal one takes over and you are notified that someone is trying to interrupt fleet monitoring or damage the device.',
         },
         {
           title: 'Engine Block Relay',
+          image: hw.engineBlockRelay,
           body: 'The engine relay is designed for blocking the engine of a vehicle, offering protection against unauthorised use. Remote activation of the relay is possible through the monitoring and control system or by SMS.',
         },
         {
           title: 'Eco Panel',
+          image: hw.ecoPanel,
           body: 'The Eco-Drive panel monitors and educates drivers in real time. It informs the driver when their driving actions are causing fuel wastage and accelerating vehicle depreciation. Driving information is also sent to the real-time monitoring and control system, which analyses driver behaviour and provides data for driver performance evaluation.',
         },
       ],

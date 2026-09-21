@@ -29,6 +29,15 @@ describe('ContactPage', () => {
     }
   })
 
+  test('links the regional offices to their WhatsApp lines', () => {
+    renderContact()
+    for (const office of offices.filter((item) => item.whatsapp)) {
+      const link = screen.getByRole('link', { name: `WhatsApp ${office.whatsapp?.label}` })
+      expect(link).toHaveAttribute('href', office.whatsapp?.href)
+      expect(link).toHaveAttribute('target', '_blank')
+    }
+  })
+
   test('embeds the Kampala map with a title', () => {
     renderContact()
     expect(screen.getByTitle(mapEmbed.title)).toHaveAttribute('src', mapEmbed.src)

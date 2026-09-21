@@ -180,6 +180,26 @@
   font-weight: 700;
 }
 
+.officeWhatsApp {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 7px 14px;
+  border: 1.5px solid var(--line-2);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+.officeWhatsApp:hover {
+  color: var(--green-dark);
+  border-color: var(--green);
+  background: var(--surface);
+}
+
 .demo {
   background: var(--navy);
   color: var(--white);

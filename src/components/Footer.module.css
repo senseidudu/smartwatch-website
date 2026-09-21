@@ -56,6 +56,12 @@ a.muted:hover {
   color: var(--green-bright);
 }
 
+.whatsapp {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .social {
   display: flex;
   gap: 16px;
