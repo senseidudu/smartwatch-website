@@ -17,6 +17,23 @@ function setScroll(y: number) {
   fireEvent.scroll(window)
 }
 
+/** Stands a band at the given viewport rows; jsdom has no layout, so the rect is supplied. */
+function placeBand(el: HTMLElement, top: number, bottom: number) {
+  el.getBoundingClientRect = () =>
+    ({ top, bottom, left: 0, right: 1000, width: 1000, height: bottom - top, x: 0, y: top, toJSON: () => ({}) }) as DOMRect
+}
+
+function renderHeaderOverBands() {
+  render(
+    <MemoryRouter>
+      <Header />
+      <section data-band="dark" data-testid="dark" />
+      <section data-band="light" data-testid="light" />
+    </MemoryRouter>,
+  )
+  return { dark: screen.getByTestId('dark'), light: screen.getByTestId('light') }
+}
+
 describe('Header mega menus', () => {
   test('no menu is open initially', () => {
     renderHeader()
@@ -118,15 +135,44 @@ describe('Header theme', () => {
 
   test('starts transparent over the dark hero', () => {
     renderHeader()
-    expect(screen.getByRole('banner')).toHaveAttribute('data-theme', 'dark')
+    const banner = screen.getByRole('banner')
+    expect(banner).toHaveAttribute('data-theme', 'dark')
+    expect(banner).not.toHaveAttribute('data-solid')
   })
 
-  test('turns white once the page has scrolled', () => {
+  test('turns solid once the page has scrolled', () => {
     renderHeader()
     setScroll(120)
-    expect(screen.getByRole('banner')).toHaveAttribute('data-theme', 'light')
+    expect(screen.getByRole('banner')).toHaveAttribute('data-solid')
     setScroll(0)
-    expect(screen.getByRole('banner')).toHaveAttribute('data-theme', 'dark')
+    expect(screen.getByRole('banner')).not.toHaveAttribute('data-solid')
+  })
+
+  test('takes the colour of the band under its bottom edge', () => {
+    const { dark, light } = renderHeaderOverBands()
+    const banner = screen.getByRole('banner')
+    placeBand(dark, 0, 700)
+    placeBand(light, 700, 1400)
+    setScroll(120)
+    expect(banner).toHaveAttribute('data-theme', 'dark')
+    // The light panel climbs up under the bar.
+    placeBand(dark, -650, 50)
+    placeBand(light, 50, 750)
+    setScroll(650)
+    expect(banner).toHaveAttribute('data-theme', 'light')
+    placeBand(dark, 0, 700)
+    placeBand(light, 700, 1400)
+    setScroll(0)
+    expect(banner).toHaveAttribute('data-theme', 'dark')
+  })
+
+  test('a later band wins where it overlaps the pinned hero', () => {
+    const { dark, light } = renderHeaderOverBands()
+    // The sticky hero still spans the header line while the first panel has risen over it.
+    placeBand(dark, 64, 900)
+    placeBand(light, 40, 1200)
+    setScroll(400)
+    expect(screen.getByRole('banner')).toHaveAttribute('data-theme', 'light')
   })
 })
 

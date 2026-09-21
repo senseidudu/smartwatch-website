@@ -66,6 +66,8 @@ export interface MegaMenuNavbarProps {
   mobileExtra?: ReactNode
   mobileFooter?: ReactNode
   theme?: 'dark' | 'light'
+  /** Paint the bar's own background; off, it is transparent over whatever it starts on. */
+  solid?: boolean
   /** Width of a narrow panel, used to keep it inside the viewport. */
   narrowWidth?: number
 }
@@ -208,6 +210,7 @@ export function MegaMenuNavbar({
   mobileExtra,
   mobileFooter,
   theme = 'light',
+  solid = false,
   narrowWidth = 920,
 }: MegaMenuNavbarProps) {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
@@ -289,6 +292,7 @@ export function MegaMenuNavbar({
       ref={navRef}
       className={s.header}
       data-theme={theme}
+      data-solid={solid || undefined}
       onMouseLeave={scheduleClose}
     >
       <div className={cx('container', s.bar)}>

@@ -20,6 +20,7 @@ import {
 import { anchors, routes, site } from '../data/site'
 import type { Img } from '../data/types'
 import { cx } from '../lib/cx'
+import { useBandTheme } from '../motion/useBandTheme'
 import { useScrolled } from '../motion/useScrolled'
 import Icon from './Icon'
 import Media from './Media'
@@ -247,12 +248,14 @@ function ContactAction() {
 }
 
 export default function Header() {
-  const scrolled = useScrolled()
-  const theme = scrolled ? 'light' : 'dark'
+  // The bar takes the colour of the section under it; at the very top it stays transparent over the hero.
+  const theme = useBandTheme()
+  const solid = useScrolled()
 
   return (
     <MegaMenuNavbar
       theme={theme}
+      solid={solid}
       brandName={site.name}
       logoHref={routes.home}
       logo={<img src={theme === 'dark' ? logoWhite : logo} alt={site.name} />}
