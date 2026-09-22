@@ -2,16 +2,15 @@ import { Link } from 'react-router-dom'
 import logoWhite from '../assets/logo-white.svg'
 import { news } from '../data/content'
 import { industriesA } from '../data/industries'
-import { companyLinks } from '../data/nav'
 import { pillars } from '../data/pillars'
-import { routes, site } from '../data/site'
+import { anchors, routes, site } from '../data/site'
 import { cx } from '../lib/cx'
 import SmartLink from './SmartLink'
 import s from './Footer.module.css'
 
 const company = [
   { name: 'About Smartwatch', to: routes.about },
-  companyLinks[1],
+  { name: 'Our heritage', to: `${routes.about}#${anchors.heritage}` },
   { name: 'Platform logins', to: routes.platforms },
   { name: 'Contact', to: routes.contact },
   { name: 'Privacy policy', to: routes.privacy },

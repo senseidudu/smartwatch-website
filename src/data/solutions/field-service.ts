@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'Effective mobile workforce management.',
     intro:
       'Automate field service operations to increase team productivity, reduce expenses and refine customer experience.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.fieldSupervisor,
   },
   sections: [

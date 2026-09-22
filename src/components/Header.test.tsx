@@ -59,6 +59,37 @@ describe('Header mega menus', () => {
     expect(screen.getByRole('link', { name: /view all products/i })).toHaveAttribute('href', '/products')
   })
 
+  test('the Solutions menu also lists the hardware column', async () => {
+    const user = userEvent.setup()
+    renderHeader()
+    await user.hover(screen.getByRole('button', { name: /solutions/i }))
+    expect(screen.getByText('Hardware')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Devices' })).toHaveAttribute('href', '/hardware#devices')
+    expect(screen.getByRole('link', { name: /installation & support/i })).toHaveAttribute('href', '/contact#support')
+  })
+
+  test('Resources lists every entry from the design, each with its own page', async () => {
+    const user = userEvent.setup()
+    renderHeader()
+    await user.hover(screen.getByRole('button', { name: /resources/i }))
+    expect(screen.getByRole('link', { name: /content library/i })).toHaveAttribute('href', '/products')
+    expect(screen.getByRole('link', { name: /^webinars/i })).toHaveAttribute('href', '/resources/webinars')
+    expect(screen.getByRole('link', { name: /^blog/i })).toHaveAttribute('href', '/resources/blog')
+    expect(screen.getByRole('link', { name: /^guides/i })).toHaveAttribute('href', '/resources/guides')
+    expect(screen.getByRole('link', { name: /developer portal/i })).toHaveAttribute('href', '/resources/developer-portal')
+    expect(screen.getByRole('link', { name: /platform logins/i })).toHaveAttribute('href', '/platforms')
+  })
+
+  test('Company lists leadership, newsroom, careers and partners with their pages', async () => {
+    const user = userEvent.setup()
+    renderHeader()
+    await user.hover(screen.getByRole('button', { name: /company/i }))
+    expect(screen.getByRole('link', { name: /^leadership/i })).toHaveAttribute('href', '/company/leadership')
+    expect(screen.getByRole('link', { name: /^newsroom/i })).toHaveAttribute('href', '/company/newsroom')
+    expect(screen.getByRole('link', { name: /^careers/i })).toHaveAttribute('href', '/company/careers')
+    expect(screen.getByRole('link', { name: /^partners/i })).toHaveAttribute('href', '/company/partners')
+  })
+
   test('hovering Contact closes any open menu', async () => {
     const user = userEvent.setup()
     renderHeader()

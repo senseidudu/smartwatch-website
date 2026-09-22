@@ -5,17 +5,19 @@ import type { IconName } from './types'
 
 export type NavLink = { name: string; short: string; to: string; icon?: IconName }
 
-/** Resources › Explore */
+/** Resources › Learn, the design's five entries. */
 export const learnLinks: NavLink[] = [
-  { name: 'Products overview', short: 'The full Smartwatch FM suite', to: routes.products },
-  { name: 'Solutions by industry', short: 'Fleets we serve across East Africa', to: routes.solutions },
-  { name: 'Hardware & accessories', short: 'Trackers, cameras, sensors', to: routes.hardware },
-  { name: 'Our heritage', short: 'Connecting fleets since 2011', to: `${routes.about}#${anchors.heritage}` },
+  { name: 'Content library', short: 'Product overviews and spec sheets', to: routes.products },
+  { name: 'Customer stories', short: 'Fleets succeeding with Smartwatch', to: routes.solutions },
+  { name: 'Webinars', short: 'Tune in for actionable insights', to: routes.webinars },
+  { name: 'Blog', short: 'Stay up to date with Smartwatch news', to: routes.blog },
+  { name: 'Guides', short: 'A deep dive into fleet management', to: routes.guides },
 ]
 
 /** Resources › Technical resources */
 export const techLinks: NavLink[] = [
-  { name: 'Help centre', short: 'Talk to support, 24/7', to: `${routes.contact}#${anchors.support}` },
+  { name: 'Developer portal', short: 'Integrate with Smartwatch APIs', to: routes.developers },
+  { name: 'Help centre', short: 'Install, set up and use Smartwatch', to: `${routes.contact}#${anchors.support}` },
   { name: 'Platform logins', short: 'Smartwatch FM, VSS and Smart FM', to: routes.platforms },
 ]
 
@@ -23,14 +25,18 @@ export const techLinks: NavLink[] = [
 export const companyLinks: NavLink[] = [
   { name: 'About Smartwatch', short: 'Who we are and what we build', to: routes.about },
   { name: 'Our heritage', short: 'A decade of connected fleets', to: `${routes.about}#${anchors.heritage}` },
-  { name: 'Reviews & awards', short: 'Recognised by KPMG', to: `${routes.about}#${anchors.awards}` },
   { name: 'Why Smartwatch', short: 'Our trade, our promise, our support', to: `${routes.about}#${anchors.whyUs}` },
+  { name: 'Reviews & awards', short: 'Recognised by KPMG', to: `${routes.about}#${anchors.awards}` },
+  { name: 'Leadership', short: 'Smartwatch executives and board', to: routes.leadership },
+  { name: 'Newsroom', short: 'Press releases and articles', to: routes.newsroom },
+  { name: 'Careers', short: 'Join our team in Kampala or Nairobi', to: routes.careers },
 ]
 
 /** Company › Connect */
 export const connectLinks: NavLink[] = [
   { name: 'Contact us', short: 'Connect with sales or support', to: routes.contact },
   { name: 'Customer support', short: 'Help with an installed device', to: `${routes.contact}#${anchors.support}` },
+  { name: 'Partners', short: 'Join our partner program', to: routes.partners },
   { name: 'Schedule a demo', short: 'See Smartwatch solutions in action', to: `${routes.contact}#${anchors.demo}` },
 ]
 

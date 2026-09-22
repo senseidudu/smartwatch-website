@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'Drive your EV fleet forward with confidence.',
     intro:
       'An advanced charging module with state-of-charge overview, cost analysis and optimization, and real-time notifications and alerts.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.charging,
   },
   sections: [

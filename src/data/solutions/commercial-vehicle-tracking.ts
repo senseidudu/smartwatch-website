@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'Easy-to-use, safe and reliable tracking for light commercial vehicles.',
     intro:
       'Our light commercial vehicle solution reads manufacturer-specific CANbus data via the OBDII port, making tracking reports, the Eco-Drive module and other features highly accurate.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.vans,
   },
   sections: [

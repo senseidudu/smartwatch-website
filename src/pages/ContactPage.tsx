@@ -123,10 +123,10 @@ export default function ContactPage() {
         </section>
       </div>
 
-      <section id={anchors.demo} className={s.demo} data-band="dark">
+      <section id={anchors.demo} className={s.demo}>
         <div className={cx('container', s.demoGrid)}>
           <div className={s.demoCopy}>
-            <div className="eyebrow eyebrow--bright">Request a demo</div>
+            <div className="eyebrow">Request a demo</div>
             <h2 className={s.demoTitle}>We'd love to show you around.</h2>
             <p className={s.demoLead}>
               Tell us about your fleet and a specialist from our Kampala or Nairobi team will get back to

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { solutionRefs } from '../../data/pages'
 import { routes } from '../../data/site'
 import { cx } from '../../lib/cx'
-import Icon from '../Icon'
+import SolutionCard from '../SolutionCard'
 import s from './IndustriesStrip.module.css'
 
 /** The eight industries the design shows on the home page, in its order. */
@@ -32,12 +32,7 @@ export default function IndustriesStrip() {
       </div>
       <div className={s.grid}>
         {homeIndustries.map((industry) => (
-          <Link key={industry!.to} to={industry!.to} className={s.card}>
-            <span className={s.icon} aria-hidden="true">
-              {industry!.icon && <Icon name={industry!.icon} size={20} />}
-            </span>
-            <div className={s.name}>{industry!.name}</div>
-          </Link>
+          <SolutionCard key={industry!.to} page={industry!} />
         ))}
       </div>
     </section>

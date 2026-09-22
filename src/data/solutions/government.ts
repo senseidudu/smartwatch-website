@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'Solutions for the public sector.',
     intro:
       'With our telematics technology at your disposal, you can stay within strict budget requirements, track utilisation, meet green goals, manage vehicles, and much more.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.yardMonitoring,
   },
   sections: [

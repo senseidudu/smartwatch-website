@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'Eliminate spoiled and damaged goods while providing fast and safe delivery, every time.',
     intro:
       'Moving the world forward by connecting & protecting fleet operations with solutions that achieve safety, sustainability, compliance and efficiency.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.food,
   },
   sections: [

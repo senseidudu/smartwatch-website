@@ -1,10 +1,11 @@
-import { act, fireEvent, render, screen, within } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { partnerLogos } from '../../data/logos'
-import Customers, { PER_SLIDE, ROTATE_INTERVAL } from './Customers'
+import Customers from './Customers'
 
-const slides = { length: Math.ceil(partnerLogos.length / PER_SLIDE) }
+const half = Math.ceil(partnerLogos.length / 2)
+const rows = [partnerLogos.slice(0, half), partnerLogos.slice(half)]
 
 function renderCustomers() {
   render(
@@ -15,67 +16,26 @@ function renderCustomers() {
   return screen.getByRole('region', { name: /customer logos/i })
 }
 
-function activeSlide(region: HTMLElement) {
-  return region.querySelector('[aria-roledescription="slide"][aria-hidden="false"]') as HTMLElement
-}
-
-describe('Customers carousel', () => {
-  test('shows every partner logo once, twelve to a slide', () => {
+describe('Customers marquee', () => {
+  test('runs two rows that together hold every partner logo once', () => {
     const region = renderCustomers()
-    const groups = region.querySelectorAll('[aria-roledescription="slide"]')
-    expect(groups).toHaveLength(slides.length)
-    Array.from(groups)
-      .slice(0, -1)
-      .forEach((group) => expect(group.querySelectorAll('img')).toHaveLength(PER_SLIDE))
-    const imgs = region.querySelectorAll('img')
-    expect(imgs).toHaveLength(partnerLogos.length)
-    expect(Array.from(imgs).map((img) => img.getAttribute('src'))).toEqual(partnerLogos.map((logo) => logo.src))
+    const lists = within(region).getAllByRole('list')
+    expect(lists).toHaveLength(2)
+    expect(rows[0].length + rows[1].length).toBe(partnerLogos.length)
+
+    const named = within(region).getAllByRole('img')
+    expect(named).toHaveLength(partnerLogos.length)
+    expect(named.map((el) => el.getAttribute('src')).sort()).toEqual(partnerLogos.map((logo) => logo.src).sort())
   })
 
-  test('starts on the first slide and the arrows move through the set', () => {
+  test('repeats each row a second time, hidden, so the loop is seamless', () => {
     const region = renderCustomers()
-    expect(activeSlide(region)).toHaveAttribute('aria-label', `1 of ${slides.length}`)
-    fireEvent.click(within(region).getByRole('button', { name: /next logos/i }))
-    expect(activeSlide(region)).toHaveAttribute('aria-label', `2 of ${slides.length}`)
-    fireEvent.click(within(region).getByRole('button', { name: /previous logos/i }))
-    fireEvent.click(within(region).getByRole('button', { name: /previous logos/i }))
-    expect(activeSlide(region)).toHaveAttribute('aria-label', `${slides.length} of ${slides.length}`)
-  })
-
-  test('the dots jump to a slide and mark the current one', () => {
-    const region = renderCustomers()
-    fireEvent.click(within(region).getByRole('button', { name: /show logos 3 of/i }))
-    expect(activeSlide(region)).toHaveAttribute('aria-label', `3 of ${slides.length}`)
-    expect(within(region).getByRole('button', { name: /show logos 3 of/i })).toHaveAttribute('aria-current', 'true')
-  })
-})
-
-describe('Customers carousel timing', () => {
-  beforeEach(() => {
-    vi.useFakeTimers()
-  })
-  afterEach(() => {
-    vi.useRealTimers()
-  })
-
-  test('advances on its own and wraps around', () => {
-    const region = renderCustomers()
-    act(() => {
-      vi.advanceTimersByTime(ROTATE_INTERVAL)
+    const lists = within(region).getAllByRole('list')
+    lists.forEach((list, i) => {
+      const items = list.querySelectorAll('li')
+      expect(items).toHaveLength(rows[i].length * 2)
+      const hidden = list.querySelectorAll('li[aria-hidden="true"]')
+      expect(hidden).toHaveLength(rows[i].length)
     })
-    expect(activeSlide(region)).toHaveAttribute('aria-label', `2 of ${slides.length}`)
-    act(() => {
-      vi.advanceTimersByTime(ROTATE_INTERVAL * (slides.length - 1))
-    })
-    expect(activeSlide(region)).toHaveAttribute('aria-label', `1 of ${slides.length}`)
-  })
-
-  test('holds still while the pointer is over it', () => {
-    const region = renderCustomers()
-    fireEvent.mouseEnter(region)
-    act(() => {
-      vi.advanceTimersByTime(ROTATE_INTERVAL * 2)
-    })
-    expect(activeSlide(region)).toHaveAttribute('aria-label', `1 of ${slides.length}`)
   })
 })

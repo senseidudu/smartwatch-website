@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'The fleet management platform for trucking and logistics.',
     intro:
       'Total visibility into every aspect of fleet management from safety and tracking to compliance and fuel costs.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.cargo,
   },
   sections: [

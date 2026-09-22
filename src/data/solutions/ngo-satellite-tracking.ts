@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'Get trusted telematics solutions for the NGO industry.',
     intro:
       'Propel your staff’s safety and efficiency today. Your vehicles and operators are constantly on the move from one job to another. With Smartwatch telematics you can identify where these vehicles are at all times, determine wasteful or unsafe driving, better manage routes and raise red flags when vehicles encounter mechanical problems.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.ngo,
   },
   sections: [

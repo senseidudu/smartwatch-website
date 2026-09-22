@@ -1,12 +1,16 @@
+import { Link } from 'react-router-dom'
 import Media from '../components/Media'
 import Reveal from '../components/Reveal'
-import CtaBand from '../components/sections/CtaBand'
-import { defaultCta } from '../components/sections/cta'
-import SmartLink from '../components/SmartLink'
+import SolutionCard from '../components/SolutionCard'
+import { img } from '../data/images'
 import { industries } from '../data/industries'
+import { findPillar } from '../data/pillars'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { cx } from '../lib/cx'
 import s from './SolutionsPage.module.css'
+
+/** The design closes the page with a customer story band; the dash camera result is the one we can stand behind. */
+const story = findPillar('driver-safety-dash-cameras')!
 
 export default function SolutionsPage() {
   usePageMeta({
@@ -32,22 +36,26 @@ export default function SolutionsPage() {
         <section className={cx('container', s.gridWrap)} aria-label="Solutions by industry">
           <Reveal stagger className={s.grid}>
             {industries.map((industry) => (
-              <SmartLink key={industry.to} to={industry.to} className={cx(s.card, 'lift')}>
-                <Media image={industry.image} label={industry.name} ratio="16 / 10" radius={0} decorative stripe={10} />
-                <div className={s.cardBody}>
-                  <div className={s.cardName}>{industry.name}</div>
-                  <div className={s.cardText}>{industry.short}</div>
-                  <div className={s.cardMore}>Explore →</div>
-                </div>
-              </SmartLink>
+              <SolutionCard key={industry.to} page={industry} />
             ))}
           </Reveal>
         </section>
-        <CtaBand
-          {...defaultCta}
-          title="Not sure which solution fits?"
-          body="Tell us about your fleet and we will map the platform to the way your operation runs."
-        />
+
+        <section className={s.story}>
+          <div className={cx('container', s.storyGrid)}>
+            <Reveal className={s.storyCopy}>
+              <div className="eyebrow">Driver safety</div>
+              <h2 className="h-section">{story.points[0]}.</h2>
+              <p className="lead">{story.body}</p>
+              <div>
+                <Link to={story.to} className="link-arrow">
+                  See dash cameras →
+                </Link>
+              </div>
+            </Reveal>
+            <Media image={img.busPassengerCounting} ratio="4 / 3" radius={20} />
+          </div>
+        </section>
       </div>
     </div>
   )

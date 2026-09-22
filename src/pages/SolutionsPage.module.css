@@ -27,11 +27,29 @@
 .body {
   display: flex;
   flex-direction: column;
-  padding-bottom: 56px;
 }
 
 .gridWrap {
-  padding-bottom: 24px;
+  padding-bottom: 96px;
+}
+
+/* Customer story band, as the design closes the page. */
+.story {
+  background: var(--surface);
+  padding: 96px 0;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.storyCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .grid {
@@ -40,60 +58,27 @@
   gap: 20px;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  overflow: hidden;
-  color: var(--ink);
-  background: var(--white);
-}
-
-.card:hover {
-  border-color: var(--green);
-  color: var(--ink);
-}
-
-.cardBody {
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-}
-
-.cardName {
-  font-weight: 800;
-  font-size: 19px;
-  letter-spacing: -0.01em;
-}
-
-.cardText {
-  font-size: 14px;
-  color: var(--ink-3);
-  line-height: 1.5;
-}
-
-.cardMore {
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--green);
-  margin-top: auto;
-  padding-top: 6px;
-}
 
 @media (max-width: 900px) {
   .band {
     padding: 56px 0 88px;
   }
 
-  .panel {
-    margin-top: -28px;
-  }
-
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gridWrap {
+    padding-bottom: 64px;
+  }
+
+  .story {
+    padding: 64px 0;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }
 

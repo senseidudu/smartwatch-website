@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'Educate drivers to cut fuel and wear.',
     intro:
       'Monitor driving risk, compare driver performance to spot improvements, and collect data from all vehicle brands. Eco-Drive educates drivers to lower fuel expenses and reduce vehicle wear and tear.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.highwayPair,
   },
   sections: [
