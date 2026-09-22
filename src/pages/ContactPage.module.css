@@ -199,9 +199,7 @@
 }
 
 .demo {
-  background: var(--navy);
-  color: var(--white);
-  padding: 120px 0 96px;
+  padding: 32px 0 96px;
 }
 
 .demoGrid {
@@ -227,7 +225,7 @@
 .demoLead {
   font-size: 17px;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--ink-2);
 }
 
 @media (max-width: 900px) {
@@ -254,7 +252,7 @@
   }
 
   .demo {
-    padding: 72px 0 64px;
+    padding: 16px 0 64px;
   }
 
   .demoGrid {

@@ -5,6 +5,17 @@
   padding-bottom: 8px;
 }
 
+/* Card and logo sections sit on the light band, as in the design; touching bands merge. */
+.bandSurface {
+  background: var(--surface);
+  margin-top: 56px;
+  padding-bottom: 56px;
+}
+
+.bandSurface + .bandSurface {
+  margin-top: 0;
+}
+
 .head {
   display: flex;
   flex-direction: column;
@@ -742,6 +753,11 @@ ul.bullets {
 @media (max-width: 900px) {
   .section {
     padding-top: 48px;
+  }
+
+  .bandSurface {
+    margin-top: 40px;
+    padding-bottom: 40px;
   }
 
   .hero {

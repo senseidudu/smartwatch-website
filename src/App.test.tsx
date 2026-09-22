@@ -4,10 +4,12 @@ import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, test } from 'vitest'
 import App from './App'
 import { about } from './data/about'
+import { careers, leadership, newsroom, partners } from './data/company'
 import { hardware } from './data/hardware'
 import { privacy, terms } from './data/legal'
 import { platforms } from './data/platforms'
 import { products } from './data/products'
+import { blog, developerPortal, guides, webinars } from './data/resources'
 import { solutions } from './data/solutions'
 
 function renderAt(path: string) {
@@ -61,6 +63,20 @@ describe('routing', () => {
   test('renders the about page and redirects the old company path', () => {
     renderAt('/company')
     expectH1(about.hero.title)
+  })
+
+  test.each([
+    ['/resources/webinars', webinars],
+    ['/resources/blog', blog],
+    ['/resources/guides', guides],
+    ['/resources/developer-portal', developerPortal],
+    ['/company/leadership', leadership],
+    ['/company/newsroom', newsroom],
+    ['/company/careers', careers],
+    ['/company/partners', partners],
+  ])('renders the %s page', (path, page) => {
+    renderAt(path)
+    expectH1(page.hero.title)
   })
 
   test('renders the contact page', () => {

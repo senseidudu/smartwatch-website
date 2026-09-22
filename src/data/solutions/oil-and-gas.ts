@@ -13,7 +13,7 @@ export const page: DetailPage = {
     title: 'Transforming oil & gas operations through automation.',
     intro:
       'Transform oil & gas operations through AI-powered automation that improves driver safety, asset tracking, cost control, and compliance management with ease.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.oilPumpjackSunset,
   },
   sections: [

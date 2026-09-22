@@ -1,0 +1,89 @@
+.row {
+  overflow: hidden;
+  /* Dissolve the ends into the page instead of cutting logos off mid-stroke. */
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation-name: slide;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+
+.row:hover .track,
+.row:focus-within .track {
+  animation-play-state: paused;
+}
+
+.item {
+  /* The gap is a margin, not a flex gap, so the two copies measure exactly 50% each. */
+  margin-right: 14px;
+  flex: 0 0 auto;
+  width: 180px;
+  height: 86px;
+  border-radius: 14px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+}
+
+.logo {
+  max-width: 100%;
+  /* Roomy enough that a two-line lockup still sets at a readable size. */
+  max-height: 50px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+@keyframes slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .item {
+    width: 146px;
+    height: 72px;
+    padding: 0 14px;
+  }
+
+  .logo {
+    max-height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .repeat {
+    display: none;
+  }
+
+  .row {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .row::-webkit-scrollbar {
+    display: none;
+  }
+}

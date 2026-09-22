@@ -1,8 +1,10 @@
 import { about } from './about'
+import { careers, leadership, newsroom, partners } from './company'
 import { hardware } from './hardware'
 import { img } from './images'
 import { platforms } from './platforms'
 import { products } from './products'
+import { blog, developerPortal, guides, webinars } from './resources'
 import { routes } from './site'
 import { solutions } from './solutions'
 import type { DetailPage, IconName, Img } from './types'
@@ -43,6 +45,14 @@ const staticPages: PageRef[] = [
   hardwareRef,
   ref(about, routes.about),
   ref(platforms, routes.platforms),
+  ref(webinars, routes.webinars),
+  ref(blog, routes.blog),
+  ref(guides, routes.guides),
+  ref(developerPortal, routes.developers),
+  ref(leadership, routes.leadership),
+  ref(newsroom, routes.newsroom),
+  ref(careers, routes.careers),
+  ref(partners, routes.partners),
   { to: routes.products, name: 'All products', short: 'The full Smartwatch FM product suite.', icon: 'platform' },
   { to: routes.solutions, name: 'All solutions', short: 'Solutions for every industry we serve.', icon: 'tracking' },
   { to: routes.contact, name: 'Contact', short: 'Talk to sales or support, 24/7.', icon: 'sales' },

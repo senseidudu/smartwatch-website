@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'The only solution you need for a safe and secure fleet.',
     intro:
       'Smartwatch FM helps our clients manage their assets remotely – improving fleet operational efficiency and productivity while reducing overall transportation costs.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.highwayAerial,
   },
   sections: [

@@ -1,10 +1,12 @@
 import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import Layout from './components/Layout'
 import { about } from './data/about'
+import { careers, leadership, newsroom, partners } from './data/company'
 import { hardware } from './data/hardware'
 import { privacy, terms } from './data/legal'
 import { platforms } from './data/platforms'
 import { findProduct } from './data/products'
+import { blog, developerPortal, guides, webinars } from './data/resources'
 import { routes } from './data/site'
 import { findSolution } from './data/solutions'
 import ContactPage from './pages/ContactPage'
@@ -40,6 +42,14 @@ export default function App() {
         <Route path={routes.about} element={<DetailPage page={about} />} />
         <Route path={routes.company} element={<Navigate to={routes.about} replace />} />
         <Route path={routes.contact} element={<ContactPage />} />
+        <Route path={routes.webinars} element={<DetailPage page={webinars} />} />
+        <Route path={routes.blog} element={<DetailPage page={blog} />} />
+        <Route path={routes.guides} element={<DetailPage page={guides} />} />
+        <Route path={routes.developers} element={<DetailPage page={developerPortal} />} />
+        <Route path={routes.leadership} element={<DetailPage page={leadership} />} />
+        <Route path={routes.newsroom} element={<DetailPage page={newsroom} />} />
+        <Route path={routes.careers} element={<DetailPage page={careers} />} />
+        <Route path={routes.partners} element={<DetailPage page={partners} />} />
         <Route path={routes.privacy} element={<LegalPage doc={privacy} />} />
         <Route path={routes.terms} element={<LegalPage doc={terms} />} />
         <Route path="/terms-and-conditions" element={<Navigate to={routes.terms} replace />} />

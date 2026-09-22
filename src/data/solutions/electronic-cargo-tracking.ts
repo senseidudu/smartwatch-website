@@ -13,7 +13,7 @@ export const page: DetailPage = {
     title: 'Giving cargo transporters and government authorities visibility.',
     intro:
       'A heavy-duty electromagnetic lock integrated with comprehensive commercial vehicle operation services to enable seamless automation of cargo, security, carrier and support operations.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.cargoConvoyTracking,
   },
   sections: [

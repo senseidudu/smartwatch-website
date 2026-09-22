@@ -1,4 +1,5 @@
-import type { Section } from '../../data/types'
+import type { Section, SectionKind } from '../../data/types'
+import { cx } from '../../lib/cx'
 import Reveal from '../Reveal'
 import BeforeAfterSection from './BeforeAfterSection'
 import BulletsSection from './BulletsSection'
@@ -12,6 +13,10 @@ import SpotlightSection from './SpotlightSection'
 import StatsSection from './StatsSection'
 import StepsSection from './StepsSection'
 import TabsSection from './TabsSection'
+import s from './Sections.module.css'
+
+/** Section kinds that sit on the light band; the rest run on white. */
+const ON_SURFACE: SectionKind[] = ['cards', 'related', 'logos']
 
 function render(section: Section) {
   switch (section.kind) {
@@ -48,5 +53,6 @@ function render(section: Section) {
 
 /** Picks the component for a section and reveals it as it scrolls into view. */
 export default function SectionRenderer({ section }: { section: Section }) {
-  return <Reveal>{render(section)}</Reveal>
+  const surface = ON_SURFACE.includes(section.kind)
+  return <Reveal className={cx(surface && s.bandSurface)}>{render(section)}</Reveal>
 }

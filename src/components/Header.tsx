@@ -131,7 +131,6 @@ const menus: MegaMenu[] = [
     id: 'solutions',
     label: 'Solutions',
     href: routes.solutions,
-    width: 'narrow',
     content: (
       <>
         <Column title="By industry">
@@ -141,6 +140,9 @@ const menus: MegaMenu[] = [
             ))}
           </div>
           <ViewAll link={viewAll.solutions} />
+        </Column>
+        <Column title="Hardware" narrow>
+          <FeaturedList links={hardwareLinks} />
         </Column>
         <Promo
           image={img.cargo}
@@ -157,10 +159,10 @@ const menus: MegaMenu[] = [
     href: routes.platforms,
     content: (
       <>
-        <Column title="Explore">
+        <Column title="Learn">
           <div className={s.grid}>
             {learnLinks.map((link) => (
-              <MenuItem key={link.to} link={link} />
+              <MenuItem key={link.name} link={link} />
             ))}
           </div>
           <ViewAll link={viewAll.resources} />
@@ -168,7 +170,7 @@ const menus: MegaMenu[] = [
         <Column title="Technical resources" narrow>
           <div className={s.stack}>
             {techLinks.map((link) => (
-              <MenuItem key={link.to} link={link} />
+              <MenuItem key={link.name} link={link} />
             ))}
           </div>
         </Column>
@@ -190,7 +192,7 @@ const menus: MegaMenu[] = [
         <Column title="Get to know Smartwatch">
           <div className={s.grid}>
             {companyLinks.map((link) => (
-              <MenuItem key={link.to} link={link} />
+              <MenuItem key={link.name} link={link} />
             ))}
           </div>
           <ViewAll link={viewAll.company} />
@@ -198,7 +200,7 @@ const menus: MegaMenu[] = [
         <Column title="Connect" narrow>
           <div className={s.stack}>
             {connectLinks.map((link) => (
-              <MenuItem key={link.to} link={link} />
+              <MenuItem key={link.name} link={link} />
             ))}
           </div>
         </Column>

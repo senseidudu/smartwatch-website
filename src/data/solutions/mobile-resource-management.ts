@@ -12,7 +12,7 @@ export const page: DetailPage = {
     title: 'View reefer, fleet, and equipment status in one dashboard.',
     intro:
       'Manage your vehicles, assets, drivers, and equipment with Smartwatch’s integrated fleet management system.',
-    tone: 'photo',
+    tone: 'dark',
     media: img.mrm,
   },
   sections: [
