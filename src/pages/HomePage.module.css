@@ -4,19 +4,6 @@
   flex-direction: column;
 }
 
-/* Hero plus the platform band. The hero sticks inside this wrapper (see Hero.module.css) while the
-   band rises over it with a flat top edge, and the wrapper's end releases the hero so nothing
-   further down sits behind it. Isolating keeps the two layers' z-indexes from reaching the page. */
-.stage {
-  isolation: isolate;
-}
-
-.stage > :last-child {
-  position: relative;
-  z-index: 1;
-  margin-top: -40px;
-}
-
 .disclaimer {
   background: var(--surface);
   color: var(--ink-3);
@@ -24,8 +11,3 @@
   padding: 0 0 24px;
 }
 
-@media (max-width: 900px) {
-  .stage > :last-child {
-    margin-top: -28px;
-  }
-}

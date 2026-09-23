@@ -13,6 +13,11 @@ export const defaultCta: CtaBandProps = {
   ],
 }
 
+/** The demo CTA gets the animated corner button everywhere it appears. */
+export function isDemoCta(cta: Cta): boolean {
+  return /get a demo/i.test(cta.label)
+}
+
 export function btnClass(variant: Cta['variant'] = 'primary'): string {
   return cx('btn', `btn--${variant}`)
 }

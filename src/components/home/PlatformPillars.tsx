@@ -5,6 +5,8 @@ import { routes } from '../../data/site'
 import { cx } from '../../lib/cx'
 import { prefersReducedMotion } from '../../motion/motion'
 import Media from '../Media'
+import AgentBentoGrid from '../ui/agent-bento-grid'
+import HighlightGrid from '../ui/highlight-grid'
 import s from './PlatformPillars.module.css'
 
 /** How long each product stays up before the carousel moves on. */
@@ -40,7 +42,15 @@ export default function PlatformPillars() {
           <h2 className="h-section h-section--lg">A fully integrated suite of products, powered by industry-leading AI.</h2>
         </div>
 
-        <div className={s.tabs} role="tablist" aria-label="Platform products">
+        <AgentBentoGrid dark className={s.infra} />
+
+        <HighlightGrid
+          active={active}
+          className={s.tabs}
+          highlightClassName={s.tabGlow}
+          role="tablist"
+          aria-label="Platform products"
+        >
           {pillars.map((p, i) => (
             <button
               key={p.slug}
@@ -50,6 +60,7 @@ export default function PlatformPillars() {
               aria-selected={i === active}
               aria-controls="pillar-panel"
               className={cx(s.tab, i === active && s.tabOn)}
+              data-highlight-cell
               onClick={() => pick(i)}
             >
               <span className={s.tabNum} aria-hidden="true">
@@ -58,7 +69,7 @@ export default function PlatformPillars() {
               <span className={s.tabName}>{p.name}</span>
             </button>
           ))}
-        </div>
+        </HighlightGrid>
 
         <div className={s.strap}>
           <div className={s.strapText}>Your operations. One platform. With AI-powered automation at its core.</div>

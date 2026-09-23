@@ -205,15 +205,28 @@ describe('DetailPage sections', () => {
     renderPage()
     const q1 = screen.getByRole('button', { name: 'First question?' })
     const q2 = screen.getByRole('button', { name: 'Second question?' })
+    // Answers stay mounted so the panel can animate shut, but a closed one is out of the
+    // accessibility tree and the tab order.
+    const panel = (answer: string) => screen.getByText(answer).closest('[aria-hidden]')
     expect(q1).toHaveAttribute('aria-expanded', 'false')
-    expect(screen.queryByText('First answer.')).not.toBeInTheDocument()
+    expect(panel('First answer.')).toHaveAttribute('aria-hidden', 'true')
+    expect(panel('First answer.')).toHaveAttribute('inert')
     await user.click(q1)
     expect(q1).toHaveAttribute('aria-expanded', 'true')
-    expect(screen.getByText('First answer.')).toBeInTheDocument()
+    expect(panel('First answer.')).toHaveAttribute('aria-hidden', 'false')
+    expect(panel('First answer.')).not.toHaveAttribute('inert')
+    expect(q1).toHaveAttribute('aria-controls', panel('First answer.')!.id)
     await user.click(q2)
     expect(q1).toHaveAttribute('aria-expanded', 'false')
-    expect(screen.queryByText('First answer.')).not.toBeInTheDocument()
-    expect(screen.getByText('Second answer.')).toBeInTheDocument()
+    expect(panel('First answer.')).toHaveAttribute('aria-hidden', 'true')
+    expect(panel('Second answer.')).toHaveAttribute('aria-hidden', 'false')
+  })
+
+  test('the hero headline is split into word masks that rise into view', () => {
+    renderPage()
+    const words = document.querySelectorAll('h1 [data-word]')
+    expect(Array.from(words, (word) => word.textContent)).toEqual(['Fixture', 'headline.'])
+    expect(screen.getByRole('heading', { level: 1, name: 'Fixture headline.' })).toBeInTheDocument()
   })
 
   test('logos and related pages render', () => {

@@ -29,6 +29,12 @@
   max-width: 760px;
 }
 
+/* The infrastructure bento sits between the intro and the product tabs; extra room below it
+   marks the step from the shared stack to the products built on it. */
+.infra {
+  margin-bottom: 24px;
+}
+
 .tabs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -36,6 +42,9 @@
 }
 
 .tab {
+  /* Above the gliding highlight, which sits at the strip's origin. */
+  position: relative;
+  z-index: 1;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
@@ -46,17 +55,26 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  transition: background 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
 }
 
 .tab:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* The selected tab paints nothing of its own: the green pane glides in underneath it. */
 .tabOn,
 .tabOn:hover {
-  background: var(--green);
-  border-color: var(--green);
+  background: transparent;
+  border-color: transparent;
+}
+
+.tabGlow {
+  border-radius: 14px;
+  background-color: var(--green);
+  background-image: radial-gradient(120% 120% at 50% 0%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 55%);
 }
 
 .tabNum {

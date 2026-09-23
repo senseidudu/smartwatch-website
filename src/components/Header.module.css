@@ -101,14 +101,11 @@
   color: var(--ink);
 }
 
-/*
- * The nav pill is smaller than a page .btn. Doubling the class lifts it past the global
- * .btn padding and font-size, which the bundler emits after this module's rules.
- */
-.cta.cta {
-  height: 40px;
-  padding: 0 20px;
-  font-size: 15px;
+/* The corner frame sits outside the pill; its side padding is cancelled so the bar's row
+   lays out as it did around the plain pill. */
+.cta {
+  flex-shrink: 0;
+  margin: 0 -8px;
 }
 
 .main {
@@ -345,9 +342,9 @@
 }
 
 @media (max-width: 520px) {
-  .cta.cta {
-    height: 36px;
-    font-size: 13px;
-    padding: 0 14px;
+  .cta {
+    --cb-height: 36px;
+    --cb-font: 13px;
+    --cb-pad: 14px;
   }
 }

@@ -4,7 +4,9 @@ import { cx } from '../../lib/cx'
 import { useEntrance } from '../../motion/useEntrance'
 import Media from '../Media'
 import SmartLink from '../SmartLink'
-import { btnClass, defaultHeroCtas } from './cta'
+import CornerButton from '../ui/corner-button'
+import StaggerText from '../ui/stagger-text'
+import { btnClass, defaultHeroCtas, isDemoCta } from './cta'
 import s from './Sections.module.css'
 
 export default function DetailHero({ page }: { page: DetailPage }) {
@@ -14,7 +16,8 @@ export default function DetailHero({ page }: { page: DetailPage }) {
   const photo = tone === 'photo' && hero.media
   const light = tone === 'light'
   const ref = useRef<HTMLElement>(null)
-  useEntrance(ref)
+  // The eyebrow sits still as a label; the headline rises word by word, then the rest follows.
+  useEntrance(ref, { delay: 0.3 })
   return (
     <section
       ref={ref}
@@ -24,26 +27,30 @@ export default function DetailHero({ page }: { page: DetailPage }) {
     >
       <div className={cx('container', s.heroInner, photo && s.heroCentered)}>
         <div className={s.heroCopy}>
-          <div className={cx('eyebrow', !light && 'eyebrow--bright')} data-enter>
-            {hero.eyebrow}
-          </div>
-          <h1 className="h-page" data-enter>
-            {hero.title}
+          <div className={cx('eyebrow', !light && 'eyebrow--bright')}>{hero.eyebrow}</div>
+          <h1 className="h-page">
+            <StaggerText>{hero.title}</StaggerText>
           </h1>
           <p className={s.heroLead} data-enter>
             {hero.intro}
           </p>
           {ctas.length > 0 && (
             <div className={s.heroActions} data-enter>
-              {ctas.map((cta) => (
-                <SmartLink
-                  key={cta.label}
-                  to={cta.to}
-                  className={btnClass(light && cta.variant === 'outline-light' ? 'outline' : cta.variant)}
-                >
-                  {cta.label}
-                </SmartLink>
-              ))}
+              {ctas.map((cta) =>
+                isDemoCta(cta) ? (
+                  <CornerButton key={cta.label} to={cta.to} onDark={!light}>
+                    {cta.label}
+                  </CornerButton>
+                ) : (
+                  <SmartLink
+                    key={cta.label}
+                    to={cta.to}
+                    className={btnClass(light && cta.variant === 'outline-light' ? 'outline' : cta.variant)}
+                  >
+                    {cta.label}
+                  </SmartLink>
+                ),
+              )}
             </div>
           )}
         </div>
