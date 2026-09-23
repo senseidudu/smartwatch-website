@@ -32,8 +32,10 @@
 /* The three key words inside the hero sentence; the active one is underlined. */
 
 /* Only the words themselves are emphasised; the commas and the "and" stay in the
-   lead's own weight and colour, as punctuation should. */
-.word {
+   lead's own weight and colour, as punctuation should. Each word links to its product, but
+   keeps the ink colour on hover: the cursor card and its green wash already say so. */
+.word,
+.word:hover {
   position: relative;
   white-space: nowrap;
   color: var(--ink);

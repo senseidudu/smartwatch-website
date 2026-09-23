@@ -5,13 +5,14 @@ import { cx } from '../../lib/cx'
 import { prefersReducedMotion } from '../../motion/motion'
 import { useEntrance } from '../../motion/useEntrance'
 import CornerButton from '../ui/corner-button'
+import CursorCard from '../ui/cursor-card'
 import StaggerText from '../ui/stagger-text'
 import s from './Hero.module.css'
 
 /** A muted, looping clip of a car on a city street; the poster stands in until it plays. */
 const video = { src: '/videos/hero.mp4', poster: '/videos/hero-poster.webp' }
 
-/** How long each key word in the lead stays underlined. */
+/** How long each key word in the lead stays underlined; hovering one previews its product. */
 const WORD_INTERVAL = 3000
 
 /** The headline rises word by word on its own; the lead, button and photo follow it. */
@@ -44,9 +45,16 @@ export default function Hero() {
           </h1>
           <p className={s.lead} data-enter>
             One platform to help improve the{' '}
-            {heroWords.map((word, i) => (
+            {heroWords.map(({ word, image, description, to }, i) => (
               <Fragment key={word}>
-                <span className={cx(s.word, i === active && s.wordOn)}>{word}</span>
+                <CursorCard
+                  to={to}
+                  image={image}
+                  description={description}
+                  className={cx(s.word, i === active && s.wordOn)}
+                >
+                  {word}
+                </CursorCard>
                 {separator(i, heroWords.length)}
               </Fragment>
             ))}{' '}

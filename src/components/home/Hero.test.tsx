@@ -31,10 +31,20 @@ describe('Home hero', () => {
   test('lists all three words in the lead sentence', () => {
     renderHero()
     const lead = screen.getByText(/one platform to help improve the/i)
-    for (const word of heroWords) {
+    for (const { word } of heroWords) {
       expect(within(lead).getAllByText(word)).toHaveLength(1)
     }
     expect(lead).toHaveTextContent('safety, productivity, and profitability')
+  })
+
+  test('links each key word to its product and previews it in a cursor card', () => {
+    renderHero()
+    for (const { word, to, description } of heroWords) {
+      expect(screen.getByRole('link', { name: word })).toHaveAttribute('href', to)
+      const card = screen.getByText(description).closest('[aria-hidden]')!
+      expect(card).toHaveAttribute('aria-hidden', 'true')
+      expect(card).not.toHaveAttribute('data-open')
+    }
   })
 
   test('offers only the products link, as a corner button, with no demo button', () => {
