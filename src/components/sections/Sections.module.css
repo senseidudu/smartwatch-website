@@ -633,11 +633,17 @@ ul.bullets {
   color: var(--green);
 }
 
+/* The plus makes a quarter turn into a minus as the answer opens. */
 .faqIcon {
   position: relative;
   width: 20px;
   height: 20px;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faqIconOpen {
+  transform: rotate(90deg);
 }
 
 .faqIcon::before,
@@ -663,17 +669,47 @@ ul.bullets {
   width: 2px;
 }
 
-.faqIconOpen::after {
-  transform: scaleY(0);
+.faqIconOpen::before {
+  transform: scaleX(0);
 }
 
+/*
+ * The answer eases open and shut on the grid-template-rows transition the VengeanceUI
+ * faq-accordion uses (registry: .../public/r/faq-accordion.json), the same trick as the
+ * header's mobile accordion. The clip row is what actually grows; the copy fades in a beat later.
+ */
 .faqPanel {
-  animation: fade-in-up 0.2s ease both;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faqPanelOpen {
+  grid-template-rows: 1fr;
+}
+
+.faqPanelClip {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.faqPanelBody {
   padding: 0 0 20px;
   font-size: 15px;
   line-height: 1.65;
   color: var(--ink-2);
   max-width: 720px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.faqPanelOpen .faqPanelBody {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.06s;
 }
 
 /* Logos */
@@ -746,6 +782,12 @@ ul.bullets {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+/* The corner frame sits outside the pill; cancel it so the pill lines up with its neighbour. */
+.ctaCorner {
+  margin: -14px -18px;
 }
 
 /* Responsive */

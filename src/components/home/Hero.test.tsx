@@ -20,29 +20,49 @@ describe('Home hero', () => {
     ).toBeInTheDocument()
   })
 
+  test('splits the headline into word masks that rise into view', () => {
+    renderHero()
+    const words = document.querySelectorAll('h1 [data-word]')
+    expect(words).toHaveLength(7)
+    expect(words[0]).toHaveTextContent('A')
+    expect(words[6]).toHaveTextContent('fleets.')
+  })
+
   test('lists all three words in the lead sentence', () => {
     renderHero()
     const lead = screen.getByText(/one platform to help improve the/i)
-    for (const word of heroWords) {
+    for (const { word } of heroWords) {
       expect(within(lead).getAllByText(word)).toHaveLength(1)
     }
     expect(lead).toHaveTextContent('safety, productivity, and profitability')
   })
 
-  test('offers only the products link, with no demo button or video', () => {
+  test('links each key word to its product and previews it in a cursor card', () => {
     renderHero()
-    expect(screen.getByRole('link', { name: /explore products/i })).toHaveAttribute('href', '/products')
-    expect(screen.queryByRole('link', { name: /get a demo/i })).not.toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: /watch/i })).not.toBeInTheDocument()
-    expect(document.querySelector('video')).toBeNull()
+    for (const { word, to, description } of heroWords) {
+      expect(screen.getByRole('link', { name: word })).toHaveAttribute('href', to)
+      const card = screen.getByText(description).closest('[aria-hidden]')!
+      expect(card).toHaveAttribute('aria-hidden', 'true')
+      expect(card).not.toHaveAttribute('data-open')
+    }
   })
 
-  test('carries one photograph per word, with the first one showing', () => {
+  test('offers only the products link, as a corner button, with no demo button', () => {
     renderHero()
-    const slides = document.querySelectorAll('[data-scroll-slides] img')
-    expect(slides).toHaveLength(heroWords.length)
-    expect(slides[0].closest('[aria-hidden]')).toHaveAttribute('aria-hidden', 'false')
-    expect(slides[1].closest('[aria-hidden]')).toHaveAttribute('aria-hidden', 'true')
+    const link = screen.getByRole('link', { name: /explore products/i })
+    expect(link).toHaveAttribute('href', '/products')
+    expect(link.parentElement?.querySelectorAll('[aria-hidden="true"]')).toHaveLength(8)
+    expect(screen.queryByRole('link', { name: /get a demo/i })).not.toBeInTheDocument()
+  })
+
+  test('plays the muted hero video in place of the photographs', () => {
+    renderHero()
+    const video = document.querySelector('video')!
+    expect(video).toHaveAttribute('src', '/videos/hero.mp4')
+    expect(video).toHaveAttribute('poster', '/videos/hero-poster.webp')
+    expect(video.muted).toBe(true)
+    expect(video.loop).toBe(true)
+    expect(document.querySelector('[data-slides]')).toBeNull()
     expect(screen.getByText('Speed alert cleared')).toBeInTheDocument()
   })
 })

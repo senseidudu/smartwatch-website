@@ -17,11 +17,8 @@ export default function HomePage() {
   })
   return (
     <div className={s.home}>
-      {/* The hero pins while the platform band scrolls up over it; the wrapper bounds the pin. */}
-      <div className={s.stage}>
-        <Hero />
-        <PlatformPillars />
-      </div>
+      <Hero />
+      <PlatformPillars />
       <Stats />
       <Customers />
       <WhySmartwatch />

@@ -34,6 +34,7 @@ export const gsap = {
     clamp: (a: number, b: number, v: number) => Math.min(b, Math.max(a, v)),
   },
   killTweensOf: vi.fn(),
+  quickTo: vi.fn(() => Object.assign(vi.fn(), { tween: chain() })),
 }
 
 export default gsap

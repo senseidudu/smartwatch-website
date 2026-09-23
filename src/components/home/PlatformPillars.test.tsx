@@ -41,6 +41,14 @@ describe('PlatformPillars tabs', () => {
     renderPillars()
     expect(screen.getAllByRole('tab')).toHaveLength(pillars.length)
   })
+
+  test('runs one gliding highlight behind the tab strip instead of painting each tab', () => {
+    renderPillars()
+    const strip = screen.getByRole('tablist', { name: /platform products/i })
+    const highlight = strip.querySelector('[data-highlight]')
+    expect(highlight).toHaveAttribute('aria-hidden', 'true')
+    for (const tab of screen.getAllByRole('tab')) expect(tab).toHaveAttribute('data-highlight-cell')
+  })
 })
 
 describe('PlatformPillars carousel', () => {

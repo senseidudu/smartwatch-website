@@ -26,6 +26,7 @@ import Icon from './Icon'
 import Media from './Media'
 import SmartLink from './SmartLink'
 import MegaMenuNavbar, { type MegaMenu, type MobileGroup } from './ui/mega-menu-navbar'
+import CornerButton from './ui/corner-button'
 import s from './Header.module.css'
 
 const featuredProducts: NavLink[] = [...hardwareLinks, { name: 'All products', short: '', to: routes.products }]
@@ -266,9 +267,9 @@ export default function Header() {
       actions={
         <>
           <ContactAction />
-          <Link to={routes.contact} className={cx('btn', 'btn--primary', s.cta)}>
+          <CornerButton to={routes.contact} size="sm" className={s.cta}>
             Get a demo
-          </Link>
+          </CornerButton>
         </>
       }
       mobileExtra={
@@ -287,9 +288,9 @@ export default function Header() {
             <Icon name="phone" size={16} />
             Contact
           </Link>
-          <Link to={routes.contact} className={cx('btn', 'btn--primary', s.cta)}>
+          <CornerButton to={routes.contact} size="sm" className={s.cta}>
             Get a demo
-          </Link>
+          </CornerButton>
         </>
       }
     />

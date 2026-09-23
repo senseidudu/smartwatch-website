@@ -31,11 +31,17 @@ export default function FaqSection({ section }: Props) {
                 <span>{item.q}</span>
                 <span className={cx(s.faqIcon, isOpen && s.faqIconOpen)} aria-hidden="true" />
               </button>
-              {isOpen && (
-                <div id={`${baseId}-a-${i}`} className={s.faqPanel}>
-                  <p>{item.a}</p>
+              {/* Always mounted so the panel can ease shut; closed ones leave the a11y tree and tab order. */}
+              <div
+                id={`${baseId}-a-${i}`}
+                className={cx(s.faqPanel, isOpen && s.faqPanelOpen)}
+                aria-hidden={!isOpen}
+                inert={!isOpen}
+              >
+                <div className={s.faqPanelClip}>
+                  <p className={s.faqPanelBody}>{item.a}</p>
                 </div>
-              )}
+              </div>
             </div>
           )
         })}

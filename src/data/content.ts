@@ -1,7 +1,27 @@
 import { img } from './images'
 import { routes } from './site'
 
-export const heroWords = ['safety', 'productivity', 'profitability']
+/** The key words in the hero lead; hovering one shows a card previewing the product behind it. */
+export const heroWords = [
+  {
+    word: 'safety',
+    image: img.inCabDevice,
+    description: 'AI dash cams and driver scoring flag speeding, harsh braking and fatigue before they turn into incidents.',
+    to: routes.product('driver-safety-dash-cameras'),
+  },
+  {
+    word: 'productivity',
+    image: img.fleetDashboard,
+    description: 'Live tracking, trip history and utilisation reports keep every vehicle and driver on the job.',
+    to: routes.product('tracking-and-telematics'),
+  },
+  {
+    word: 'profitability',
+    image: img.fuelTheftAlerts,
+    description: 'Fuel monitoring and theft alerts can cut what your fleet spends on fuel by up to 40%.',
+    to: routes.product('sustainability'),
+  },
+]
 
 export const proofLine = {
   text: 'Recognised by KPMG as a Top 100 mid-sized company. Serving fleets across East Africa since 2011.',

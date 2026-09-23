@@ -4,6 +4,7 @@ import { fleetSizes, leadSources } from '../data/content'
 import { routes } from '../data/site'
 import { submitLead } from '../lib/leads'
 import { cx } from '../lib/cx'
+import CornerButton from './ui/corner-button'
 import s from './DemoForm.module.css'
 
 export default function DemoForm() {
@@ -107,9 +108,9 @@ export default function DemoForm() {
         Yes, I would like to receive communications about Smartwatch products, services, and events
         and understand that I can unsubscribe at any time.
       </label>
-      <button type="submit" className={cx('btn', 'btn--primary', s.submit)}>
+      <CornerButton type="submit" className={s.submit}>
         Get a demo
-      </button>
+      </CornerButton>
       <div className={s.finePrint}>
         By clicking "Get a demo", I acknowledge receipt of the{' '}
         <Link to={routes.privacy}>Smartwatch Privacy Policy</Link>.

@@ -1,7 +1,7 @@
 .hero {
   background: var(--white);
   color: var(--ink);
-  padding: 88px 0 128px;
+  padding: 88px 0 96px;
 }
 
 .inner {
@@ -32,8 +32,10 @@
 /* The three key words inside the hero sentence; the active one is underlined. */
 
 /* Only the words themselves are emphasised; the commas and the "and" stay in the
-   lead's own weight and colour, as punctuation should. */
-.word {
+   lead's own weight and colour, as punctuation should. Each word links to its product, but
+   keeps the ink colour on hover: the cursor card and its green wash already say so. */
+.word,
+.word:hover {
   position: relative;
   white-space: nowrap;
   color: var(--ink);
@@ -71,8 +73,11 @@
   flex-wrap: wrap;
 }
 
-/* Scroll-linked wrapper (see useHeroScroll): it sinks and dims as the page scrolls on, while the
-   entrance tween owns .media itself, so the two never fight over one element's transform. */
+/* The corner frame sits outside the pill; pull it back so the pill lines up with the copy. */
+.cta {
+  margin: -14px -18px;
+}
+
 .mediaWrap {
   min-width: 0;
 }
@@ -83,28 +88,13 @@
   border-radius: 24px;
   overflow: hidden;
   background: var(--surface);
-  /* Keeps the rounded clip honest in Safari while the slides move inside it. */
+  /* Keeps the rounded clip honest in Safari over the playing video. */
   isolation: isolate;
 }
 
-/* Taller than the frame so the picture can drift a few percent without showing an edge. */
-.slides {
-  position: absolute;
-  inset: -7% 0;
-}
-
-.slide {
+.video {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.slideOn {
-  opacity: 1;
-}
-
-.slideMedia {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -147,17 +137,6 @@
 .alertMeta {
   font-size: 12px;
   color: var(--ink-3);
-}
-
-/* On desktop the hero pins under the header while the next panel scrolls up over it; HomePage
-   bounds the pin with a wrapper. Phones keep the hero in flow: there it is taller than the
-   viewport, and a pinned hero would hide its own bottom for good. */
-@media (min-width: 901px) {
-  .hero {
-    position: sticky;
-    top: var(--header-h);
-    z-index: 0;
-  }
 }
 
 @media (max-width: 900px) {

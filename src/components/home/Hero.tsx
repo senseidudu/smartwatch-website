@@ -1,23 +1,22 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { heroWords } from '../../data/content'
-import { img } from '../../data/images'
 import { routes } from '../../data/site'
-import type { Img } from '../../data/types'
 import { cx } from '../../lib/cx'
 import { prefersReducedMotion } from '../../motion/motion'
 import { useEntrance } from '../../motion/useEntrance'
-import { useHeroScroll } from '../../motion/useHeroScroll'
+import CornerButton from '../ui/corner-button'
+import CursorCard from '../ui/cursor-card'
+import StaggerText from '../ui/stagger-text'
 import s from './Hero.module.css'
 
-/**
- * One photograph per hero word: the hi-vis supervisor for safety, the van fleet lined up and
- * ready for productivity, and container loads rolling out of the port for profitability.
- */
-const slides: Img[] = [img.fleetManager, img.vanFleetYard, img.portDusk]
+/** A muted, looping clip of a car on a city street; the poster stands in until it plays. */
+const video = { src: '/videos/hero.mp4', poster: '/videos/hero-poster.webp' }
 
-/** Shared by the underlined word and the media carousel so the two stay in step. */
+/** How long each key word in the lead stays underlined; hovering one previews its product. */
 const WORD_INTERVAL = 3000
+
+/** The headline rises word by word on its own; the lead, button and photo follow it. */
+const ENTRANCE_DELAY = 0.3
 
 /** ", " between words, ", and " before the last one. */
 function separator(index: number, total: number) {
@@ -29,56 +28,57 @@ export default function Hero() {
   const [active, setActive] = useState(0)
   const reduced = prefersReducedMotion()
   const ref = useRef<HTMLElement>(null)
-  useEntrance(ref)
-  useHeroScroll(ref)
+  useEntrance(ref, { delay: ENTRANCE_DELAY })
 
   useEffect(() => {
     if (reduced) return
-    const timer = setInterval(() => setActive((i) => (i + 1) % slides.length), WORD_INTERVAL)
+    const timer = setInterval(() => setActive((i) => (i + 1) % heroWords.length), WORD_INTERVAL)
     return () => clearInterval(timer)
   }, [reduced])
 
   return (
     <section className={s.hero} data-band="light" ref={ref}>
       <div className={cx('container', s.inner)}>
-        <div className={s.copy} data-scroll-copy>
-          <h1 className={cx('h-display', s.title)} data-enter>
-            A decade of connecting and protecting fleets.
+        <div className={s.copy}>
+          <h1 className={cx('h-display', s.title)}>
+            <StaggerText>A decade of connecting and protecting fleets.</StaggerText>
           </h1>
           <p className={s.lead} data-enter>
             One platform to help improve the{' '}
-            {heroWords.map((word, i) => (
+            {heroWords.map(({ word, image, description, to }, i) => (
               <Fragment key={word}>
-                <span className={cx(s.word, i === active && s.wordOn)}>{word}</span>
+                <CursorCard
+                  to={to}
+                  image={image}
+                  description={description}
+                  className={cx(s.word, i === active && s.wordOn)}
+                >
+                  {word}
+                </CursorCard>
                 {separator(i, heroWords.length)}
               </Fragment>
             ))}{' '}
             of your operations across East Africa.
           </p>
           <div className={s.actions} data-enter>
-            <Link to={routes.products} className="btn btn--outline">
-              Explore products
-            </Link>
+            <CornerButton to={routes.products} tone="navy" className={s.cta}>Explore products</CornerButton>
           </div>
         </div>
 
-        <div className={s.mediaWrap} data-scroll-media>
+        <div className={s.mediaWrap}>
           <div className={s.media} data-enter-media>
-            <div className={s.slides} data-scroll-slides>
-              {slides.map((slide, i) => (
-                <div key={slide.src} className={cx(s.slide, i === active && s.slideOn)} aria-hidden={i !== active}>
-                  <img
-                    src={slide.src}
-                    alt={slide.alt}
-                    width={slide.width}
-                    height={slide.height}
-                    className={s.slideMedia}
-                    loading={i === 0 ? 'eager' : 'lazy'}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className={s.alert} data-scroll-float>
+            <video
+              className={s.video}
+              src={video.src}
+              poster={video.poster}
+              autoPlay={!reduced}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+            />
+            <div className={s.alert}>
               <span className={s.alertDot} aria-hidden="true" />
               <div className={s.alertText}>
                 <span className={s.alertTitle}>Speed alert cleared</span>
