@@ -51,8 +51,8 @@ export const page: DetailPage = {
         'Overspeed detection with speed control system',
         'Fatigue detection and alert with seat vibration',
       ],
-      mediaLabel: 'in-cab driver alert on the vehicle monitor',
-      media: hw.monitor,
+      mediaLabel: 'speeding vehicles flagged by AI detection',
+      media: img.speedViolationDetection,
     },
     {
       kind: 'split',
@@ -64,8 +64,8 @@ export const page: DetailPage = {
         'Dispatch system and terminal with ticket system',
         'Mobile DVR multi-channel video surveillance for buses',
       ],
-      mediaLabel: 'weatherproof on-board camera for passenger monitoring',
-      media: hw.snapshotCamera,
+      mediaLabel: 'passenger counters and mobile DVR fitted to a bus',
+      media: img.busPeopleCounterDiagram,
       reverse: true,
       cta: {
         label: 'See the bus & public transport solution',

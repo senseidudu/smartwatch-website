@@ -13,7 +13,7 @@ export const page: DetailPage = {
     intro:
       'Propel your staff’s safety and efficiency today. Your vehicles and operators are constantly on the move from one job to another. With Smartwatch telematics you can identify where these vehicles are at all times, determine wasteful or unsafe driving, better manage routes and raise red flags when vehicles encounter mechanical problems.',
     tone: 'dark',
-    media: img.ngoConvoy,
+    media: img.ngoFleetYard,
   },
   sections: [
     {
@@ -49,8 +49,8 @@ export const page: DetailPage = {
         'Long-life back-up batteries',
         'Driver ID and more',
       ],
-      mediaLabel: 'vehicle tracked on a remote road',
-      media: img.forestRoadAerial,
+      mediaLabel: 'driver at the wheel, seen in the cab mirror',
+      media: img.driverMirror,
     },
     {
       kind: 'split',

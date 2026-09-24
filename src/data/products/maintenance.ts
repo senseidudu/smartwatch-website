@@ -61,7 +61,8 @@ export const page: DetailPage = {
         'Reminders for upcoming vehicle services and licence renewals',
         'Engine diagnostics: oil pressure, battery voltage, accelerometer stats and filters',
       ],
-      mediaLabel: 'engine diagnostics reviewed on a tablet',
+      mediaLabel: 'service checklist over an open engine bay',
+      media: img.engineChecklist,
     },
     {
       kind: 'cards',

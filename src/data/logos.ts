@@ -182,6 +182,12 @@ export const partnerLogos = [
     height: 95,
   },
   {
+    src: '/images/logos/kenya-revenue-authority.webp',
+    alt: 'Kenya Revenue Authority',
+    width: 420,
+    height: 109,
+  },
+  {
     src: '/images/logos/kia.webp',
     alt: 'Kia',
     width: 234,

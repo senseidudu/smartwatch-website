@@ -14,6 +14,7 @@ export const page: DetailPage = {
       'With our telematics technology at your disposal, you can stay within strict budget requirements, track utilisation, meet green goals, manage vehicles, and much more.',
     tone: 'dark',
     mediaLabel: 'public-sector fleet',
+    media: img.governmentFleetParked,
   },
   sections: [
     {
@@ -27,8 +28,8 @@ export const page: DetailPage = {
         'How long it takes them to get from point A to point B',
         'Full visibility of the routes they take',
       ],
-      mediaLabel: 'live map of public-sector vehicles',
-      media: img.routeMap,
+      mediaLabel: 'public-sector vehicles seen from above',
+      media: img.taxiParkAerial,
     },
     {
       kind: 'split',

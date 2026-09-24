@@ -14,7 +14,7 @@ export const page: DetailPage = {
     intro:
       'A heavy-duty electromagnetic lock integrated with comprehensive commercial vehicle operation services to enable seamless automation of cargo, security, carrier and support operations.',
     tone: 'dark',
-    media: img.cargoConvoyTracking,
+    media: img.cargoPortGantry,
   },
   sections: [
     {

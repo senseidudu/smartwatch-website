@@ -14,7 +14,7 @@ export const page: DetailPage = {
     intro:
       'Optimize drive time, minimize violations, and improve driver scores with automated compliance management.',
     tone: 'dark',
-    media: img.freightHaul,
+    media: img.complianceTrackedTrucks,
   },
   sections: [
     {
