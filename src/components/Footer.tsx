@@ -91,7 +91,7 @@ function ParticleWordmark() {
         <Suspense fallback={null}>
           <InteractiveParticles
             src={src}
-            color="#3dd07c"
+            color="#d6e086"
             maxDimension={420}
             size={2.1}
             randomness={1.6}
@@ -123,7 +123,12 @@ export default function Footer() {
             Get a demo
           </CornerButton>
           <a href={site.phoneHref} className={s.phone}>
+            <span className={s.phoneCountry}>UG</span>
             {site.phone}
+          </a>
+          <a href={site.phoneKenyaHref} className={s.phone}>
+            <span className={s.phoneCountry}>KE</span>
+            {site.phoneKenya}
           </a>
           <a href={`mailto:${site.email}`} className={s.muted}>
             {site.email}

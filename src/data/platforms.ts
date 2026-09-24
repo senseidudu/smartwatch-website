@@ -43,7 +43,7 @@ export const platforms: DetailPage = {
         "If you have forgotten your password or cannot reach your platform, contact our support team and we'll get you back in.",
       ],
       points: [`Call ${site.phone}`, `Email ${site.email}`],
-      media: img.mrm,
+      mediaLabel: 'Smartwatch FM on phone, tablet and desktop',
       cta: { label: 'Contact support', to: '/contact#support' },
     },
   ],

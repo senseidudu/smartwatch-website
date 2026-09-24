@@ -56,7 +56,7 @@
 }
 
 .logo img {
-  height: 52px;
+  height: 44px;
   width: auto;
 }
 
@@ -200,7 +200,7 @@
   color: var(--ink);
   border-radius: 32px;
   padding: 32px;
-  box-shadow: 0 30px 80px -20px rgba(4, 14, 30, 0.45);
+  box-shadow: 0 30px 80px -20px rgba(10, 24, 48, 0.45);
   display: flex;
   align-items: stretch;
   gap: 32px;
@@ -304,7 +304,7 @@
 }
 
 .drawerLink:hover {
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 .drawerFooter {
@@ -381,6 +381,6 @@
 
 @media (max-width: 520px) {
   .logo img {
-    height: 42px;
+    height: 38px;
   }
 }

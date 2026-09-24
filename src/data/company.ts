@@ -28,7 +28,7 @@ export const leadership: DetailPage = {
     intro:
       'Our team combines industry expertise in information technology and mobile resource management with extensive hands-on experience in their respective fields. The people who run Smartwatch still spend their weeks with customers, vehicles and installers.',
     tone: 'light',
-    media: img.fieldSupervisor,
+    mediaLabel: 'field supervisor on site',
     ctas: [
       { label: 'About Smartwatch', to: routes.about },
       { label: 'Meet the team', to: routes.contact, variant: 'outline-light' },
@@ -126,7 +126,7 @@ export const careers: DetailPage = {
     intro:
       'Smartwatch builds and supports fleet management for operators across East Africa. We hire engineers, installers, support staff and account managers who like working close to customers and their vehicles.',
     tone: 'light',
-    media: img.fleetManager,
+    mediaLabel: 'engine diagnostics on a tablet',
     ctas: [{ label: 'Send your application', to: `mailto:${site.email}` }],
   },
   sections: [

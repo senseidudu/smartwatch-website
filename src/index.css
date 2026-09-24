@@ -1,65 +1,52 @@
 /*
- * Maison Neue is the target typeface. Drop the licensed .woff2 files into public/fonts/
- * (see the README there) and these rules pick them up automatically. Until the files
- * exist the @font-face sources fail to load and the stack falls through to Hanken Grotesk,
- * which is metrically close and free to ship.
+ * Tokens follow the Smartwatch Solutions Brand Guidelines v1.0 (July 2022).
+ * Blue #17315b is the base colour; green #4d9734 is used with restraint as an accent.
+ * Secondary colours (sky, yellow, lime) are complementary and used sparingly.
+ * Headings: Century Gothic (falls back to Questrial where it is not installed). Body: Open Sans.
  */
 
-@font-face {
-  font-family: 'Maison Neue';
-  src: url('/fonts/MaisonNeueWEB-Book.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Maison Neue';
-  src: url('/fonts/MaisonNeueWEB-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Maison Neue';
-  src: url('/fonts/MaisonNeueWEB-Demi.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  /* Brand palette, taken from the design */
-  --navy: #0b2447;
-  --navy-2: #143259;
-  --navy-3: #183a66;
-  --green: #12a150;
-  --green-dark: #0e7f3f;
-  --green-bright: #3dd07c;
+  /* Primary */
+  --navy: #17315b;
+  --navy-2: #10254a;
+  --navy-3: #22406f;
+  --green: #4d9734;
+  --green-dark: #3e7a2a;
 
-  --ink: #0b2447;
-  --ink-2: #3e4c5a;
-  --ink-3: #5b6b7a;
-  --muted: #b8c4ce;
-  --line: #e6ece8;
-  --line-2: #cbd5d0;
-  --surface: #f1f5f2;
-  --surface-2: #fafbfa;
-  --stripe-a: #e2eae5;
-  --stripe-b: #ebf1ed;
+  /* Secondary (complementary) */
+  --sky: #03b0dd;
+  --yellow: #fccd03;
+  --lime: #d6e086;
+  /* Accent on blue backgrounds, where the primary green lacks contrast */
+  --green-bright: var(--lime);
+
+  /* Universal */
+  --black: #000000;
+  --grey: #636363;
   --white: #ffffff;
 
-  --font: 'Maison Neue', 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif;
+  --ink: var(--navy);
+  --ink-2: #4d4d4d;
+  --ink-3: var(--grey);
+  --muted: #b9c1cc;
+  --line: #e4e8ee;
+  --line-2: #cdd3dc;
+  --surface: #f3f5f8;
+  --surface-2: #fafbfc;
+  --stripe-a: #e3e7ed;
+  --stripe-b: #eceff4;
+
+  --font: 'Open Sans', system-ui, Helvetica, Arial, sans-serif;
+  --font-heading: 'Century Gothic', CenturyGothic, 'Questrial', AppleGothic, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --container: 1240px;
   --gutter: 24px;
   --header-h: 64px;
 
-  --shadow-menu: 0 24px 48px -24px rgba(11, 36, 71, 0.25);
-  --shadow-card: 0 24px 60px -32px rgba(11, 36, 71, 0.25);
-  --shadow-pop: 0 24px 48px -24px rgba(11, 36, 71, 0.3);
+  --shadow-menu: 0 24px 48px -24px rgba(23, 49, 91, 0.25);
+  --shadow-card: 0 24px 60px -32px rgba(23, 49, 91, 0.25);
+  --shadow-pop: 0 24px 48px -24px rgba(23, 49, 91, 0.3);
 }
 
 *,
@@ -91,12 +78,24 @@ body {
 }
 
 a {
-  color: var(--green);
+  color: var(--green-dark);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--green-dark);
+  color: var(--navy);
+}
+
+h1,
+h2,
+h3,
+h4,
+.h-display,
+.h-page,
+.h-section,
+.eyebrow {
+  font-family: var(--font-heading);
+  font-synthesis: none;
 }
 
 input,
@@ -148,7 +147,7 @@ img {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 .eyebrow--bright {
@@ -163,7 +162,7 @@ img {
   font-size: clamp(40px, 4.6vw, 64px);
   line-height: 1.04;
   letter-spacing: -0.025em;
-  font-weight: 800;
+  font-weight: 700;
   text-wrap: pretty;
 }
 
@@ -171,7 +170,7 @@ img {
   font-size: clamp(36px, 4.2vw, 58px);
   line-height: 1.05;
   letter-spacing: -0.025em;
-  font-weight: 800;
+  font-weight: 700;
   text-wrap: pretty;
 }
 
@@ -179,7 +178,7 @@ img {
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.1;
   letter-spacing: -0.02em;
-  font-weight: 800;
+  font-weight: 700;
   text-wrap: pretty;
 }
 
@@ -220,12 +219,12 @@ img {
 }
 
 .btn--primary {
-  background: var(--green);
+  background: var(--navy);
   color: var(--white);
 }
 
 .btn--primary:hover {
-  background: var(--green-dark);
+  background: var(--navy-2);
   color: var(--white);
 }
 

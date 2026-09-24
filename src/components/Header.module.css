@@ -82,7 +82,7 @@
 }
 
 .popLink:hover {
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 .popHelp {
@@ -171,7 +171,7 @@
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: var(--green);
+  background: var(--navy);
   color: var(--white);
   display: inline-flex;
   align-items: center;
@@ -185,7 +185,7 @@
   height: 22px;
   border-radius: 0;
   background: transparent;
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 .itemText {
@@ -204,7 +204,7 @@
 .itemDesc {
   font-size: 14px;
   font-weight: 400;
-  color: #666;
+  color: var(--grey);
   letter-spacing: -0.02rem;
   line-height: 1.5;
 }
@@ -226,7 +226,7 @@
 }
 
 .featuredLink:hover {
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 .viewAll {
@@ -242,7 +242,7 @@
 
 .viewAll:hover {
   gap: 12px;
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 /* Dark promo tile */
@@ -321,7 +321,7 @@
 }
 
 .drawerLink:hover {
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 @media (max-width: 1240px) {

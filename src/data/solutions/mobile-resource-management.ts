@@ -13,7 +13,7 @@ export const page: DetailPage = {
     intro:
       'Manage your vehicles, assets, drivers, and equipment with Smartwatch’s integrated fleet management system.',
     tone: 'dark',
-    media: img.mrm,
+    mediaLabel: 'Smartwatch FM on phone, tablet and desktop',
   },
   sections: [
     {

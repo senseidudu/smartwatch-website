@@ -1,6 +1,6 @@
 .wrapper {
-  --accent: var(--green);
-  --accent-glow: rgba(18, 161, 80, 0.14);
+  --accent: var(--green-dark);
+  --accent-glow: rgba(62, 122, 42, 0.14);
   --dot-size: 6px;
   --line-weight: 1px;
   --speed: 0.35s;
@@ -21,10 +21,10 @@
   padding: 6px 8px;
 }
 
-/* Navy pill for secondary actions, so green stays reserved for the demo CTA. */
+/* Navy pill for secondary actions. Green, used with restraint per the brand guide, is kept for the demo CTA. */
 .navy {
   --accent: var(--navy);
-  --accent-glow: rgba(11, 36, 71, 0.08);
+  --accent-glow: rgba(23, 49, 91, 0.08);
 }
 
 .wrapper:has(.button:hover) {
@@ -280,7 +280,7 @@
 .onDark {
   --dot-color: rgba(255, 255, 255, 0.7);
   --line-color: rgba(255, 255, 255, 0.45);
-  --accent-glow: rgba(61, 208, 124, 0.18);
+  --accent-glow: rgba(214, 224, 134, 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {

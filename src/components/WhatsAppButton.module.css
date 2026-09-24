@@ -9,25 +9,17 @@
   gap: 12px;
 }
 
-.button {
+.badge {
   width: 56px;
   height: 56px;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
   border-radius: 50%;
   background: #25d366;
   color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 28px -8px rgba(4, 14, 30, 0.45);
+  box-shadow: 0 12px 28px -8px rgba(10, 24, 48, 0.45);
   animation: fade-in-up 0.25s ease both;
-}
-
-.button:hover {
-  color: var(--white);
-  background: #1fbe5a;
 }
 
 .card {
@@ -69,7 +61,7 @@
 }
 
 .line:hover {
-  color: var(--green);
+  color: var(--green-dark);
   border-color: var(--green);
 }
 
@@ -95,12 +87,15 @@
     gap: 10px;
   }
 
-  .button {
-    width: 52px;
-    height: 52px;
+  .badge {
+    width: 48px;
+    height: 48px;
   }
 
   .card {
+    width: 232px;
     max-width: calc(100vw - 32px);
+    padding: 14px;
+    gap: 8px;
   }
 }

@@ -97,6 +97,8 @@ export const site = {
   legalName: 'Smartwatch Solutions Ltd',
   phone: '+256 392 177 300',
   phoneHref: 'tel:+256392177300',
+  phoneKenya: '+254 118 319 547',
+  phoneKenyaHref: 'tel:+254118319547',
   /** One line per region. wa.me needs the number in full international form, digits only. */
   whatsapp: [
     { country: 'Uganda', label: '+256 759 786 255', href: 'https://wa.me/256759786255' },

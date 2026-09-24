@@ -72,12 +72,14 @@ function ViewAll({ link }: { link: NavLink }) {
 /** Dark promo tile pinned to the right of every menu; the whole card is the link. */
 function Promo({
   image,
+  imageLabel,
   title,
   body,
   to,
   contain = false,
 }: {
-  image: Img
+  image?: Img
+  imageLabel?: string
   title: string
   body?: string
   to: string
@@ -85,7 +87,7 @@ function Promo({
 }) {
   return (
     <SmartLink to={to} className={s.promo}>
-      <Media image={image} ratio="16 / 10" radius={12} decorative className={cx(s.promoImage, contain && s.promoContain)} />
+      <Media image={image} label={imageLabel} ratio="16 / 10" radius={12} decorative className={cx(s.promoImage, contain && s.promoContain)} />
       <span className={s.promoTitle}>{title}</span>
       {body && <span className={s.promoText}>{body}</span>}
     </SmartLink>
@@ -120,7 +122,7 @@ const menus: MegaMenu[] = [
           <FeaturedList links={featuredProducts} />
         </Column>
         <Promo
-          image={img.inCabDevice}
+          imageLabel="dash camera in use"
           title="Driver Safety Dash Cameras are here."
           body="AI video surveillance, people counting, and instant alerts on violations."
           to={routes.product('driver-safety-dash-cameras')}
@@ -251,7 +253,7 @@ function ContactAction() {
 }
 
 export default function Header() {
-  // The bar takes the colour of the section under it; at the very top it stays transparent over the hero.
+  // The bar takes the colour of the section under it and is always solid, so the logo never sits on the hero video.
   const theme = useBandTheme()
   const solid = useScrolled()
 

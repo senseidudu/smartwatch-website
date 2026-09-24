@@ -97,7 +97,6 @@ export const page: DetailPage = {
         'Generate movement, event, trip and utilisation reports',
       ],
       mediaLabel: 'activity timeline and reports dashboard',
-      media: img.tmsDashboard,
     },
     {
       kind: 'related',

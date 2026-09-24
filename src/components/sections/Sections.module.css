@@ -39,7 +39,7 @@
 
 .hero {
   background:
-    radial-gradient(120% 90% at 100% 100%, #16386a 0%, var(--navy) 55%),
+    radial-gradient(120% 90% at 100% 100%, var(--navy-3) 0%, var(--navy) 55%),
     var(--navy);
   color: var(--white);
   padding: 88px 0 96px;
@@ -64,7 +64,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 36, 71, 0.72), rgba(11, 36, 71, 0.9));
+  background: linear-gradient(180deg, rgba(23, 49, 91, 0.72), rgba(23, 49, 91, 0.9));
 }
 
 .heroInner {
@@ -207,7 +207,7 @@
   height: 40px;
   border-radius: 10px;
   background: var(--surface);
-  color: var(--green);
+  color: var(--green-dark);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -233,7 +233,7 @@
 }
 
 .cardTitle {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 18px;
   letter-spacing: -0.01em;
 }
@@ -251,7 +251,7 @@
 .cardMore {
   font-weight: 700;
   font-size: 14px;
-  color: var(--green);
+  color: var(--green-dark);
   margin-top: auto;
   padding-top: 6px;
 }
@@ -296,7 +296,7 @@ ul.bullets {
   font-size: clamp(26px, 2.8vw, 36px);
   line-height: 1.12;
   letter-spacing: -0.02em;
-  font-weight: 800;
+  font-weight: 700;
   text-wrap: pretty;
 }
 
@@ -348,7 +348,7 @@ ul.bullets {
 
 .statValue {
   font-size: 40px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
   color: var(--navy);
@@ -472,7 +472,7 @@ ul.bullets {
 
 .tabTitle {
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
@@ -508,7 +508,7 @@ ul.bullets {
 }
 
 .stepTitle {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 18px;
 }
 
@@ -559,7 +559,7 @@ ul.bullets {
 
 .specValue {
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--green-bright);
 }
@@ -599,7 +599,7 @@ ul.bullets {
 }
 
 .link:hover {
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 /* FAQ */
@@ -630,7 +630,7 @@ ul.bullets {
 }
 
 .faqBtn:hover {
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 /* The plus makes a quarter turn into a minus as the answer opens. */

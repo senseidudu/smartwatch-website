@@ -63,7 +63,6 @@ export const page: DetailPage = {
         'No hardware installation, no vehicle downtime',
       ],
       mediaLabel: 'live vehicle position on a phone map',
-      media: img.phoneVehicleLocator,
       reverse: true,
     },
     {

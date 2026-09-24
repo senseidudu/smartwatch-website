@@ -31,7 +31,6 @@ export const pillars: Pillar[] = [
       'Automated trip and driver matching',
       'Driver app for inspections and reports',
     ],
-    image: img.tmsDashboard,
     imageLabel: 'compliance dashboard screenshot',
   },
   {
@@ -80,7 +79,6 @@ export const pillars: Pillar[] = [
       'Real-time fault alerts',
       'Thorough inspections increase driver accountability',
     ],
-    image: img.fleetManager,
     imageLabel: 'maintenance schedule view',
   },
   {

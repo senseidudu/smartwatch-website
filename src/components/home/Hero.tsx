@@ -45,11 +45,12 @@ export default function Hero() {
           </h1>
           <p className={s.lead} data-enter>
             One platform to help improve the{' '}
-            {heroWords.map(({ word, image, description, to }, i) => (
+            {heroWords.map(({ word, image, imageLabel, description, to }, i) => (
               <Fragment key={word}>
                 <CursorCard
                   to={to}
                   image={image}
+                  imageLabel={imageLabel}
                   description={description}
                   className={cx(s.word, i === active && s.wordOn)}
                 >

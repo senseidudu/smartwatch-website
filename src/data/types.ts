@@ -45,6 +45,8 @@ export type CardItem = {
   body?: string
   points?: string[]
   image?: Img
+  /** Placeholder label shown when a card's image has been withdrawn and not yet replaced. */
+  imageLabel?: string
   icon?: IconName
   href?: string
 }

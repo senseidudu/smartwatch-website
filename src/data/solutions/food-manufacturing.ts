@@ -57,7 +57,6 @@ export const page: DetailPage = {
       points: ['Download the OnTrack app', 'Verify your identity', 'Get moving'],
       reverse: true,
       mediaLabel: 'field vehicle tracked to its live position on a phone map',
-      media: img.fieldVehicleGps,
     },
     {
       kind: 'split',

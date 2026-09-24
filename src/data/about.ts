@@ -66,7 +66,7 @@ export const about: DetailPage = {
         'With a strong commitment to excellence, Smartwatch Solutions continues to deliver cutting-edge fleet management solutions, enabling organisations to optimise their mobile assets and enhance operational efficiency.',
       ],
       points: ['Schlumberger', 'Baker Hughes', 'Total Energies', 'British Gas Group', 'CNOOC', 'MTN'],
-      media: img.mrm,
+      mediaLabel: 'Smartwatch FM on phone, tablet and desktop',
       cta: { label: 'View our products and services', to: '/products' },
     },
     {

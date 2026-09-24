@@ -73,7 +73,7 @@
 
 .tabGlow {
   border-radius: 14px;
-  background-color: var(--green);
+  background-color: var(--navy);
   background-image: radial-gradient(120% 120% at 50% 0%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 55%);
 }
 
@@ -131,7 +131,7 @@
   font-size: clamp(26px, 2.6vw, 36px);
   line-height: 1.15;
   letter-spacing: -0.015em;
-  font-weight: 800;
+  font-weight: 700;
   text-wrap: pretty;
 }
 

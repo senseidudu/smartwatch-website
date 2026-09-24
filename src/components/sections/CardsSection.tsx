@@ -17,8 +17,15 @@ export function Card({ item }: { item: CardItem }) {
           <Icon name={item.icon} size={22} />
         </span>
       )}
-      {item.image && (
-        <Media image={item.image} ratio="16 / 10" radius={12} decorative className={s.cardImage} />
+      {(item.image || item.imageLabel) && (
+        <Media
+          image={item.image}
+          label={item.imageLabel}
+          ratio="16 / 10"
+          radius={12}
+          decorative
+          className={s.cardImage}
+        />
       )}
       <div className={s.cardTitle}>{item.title}</div>
       {item.body && <p className={s.cardBody}>{item.body}</p>}

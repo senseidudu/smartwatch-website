@@ -23,12 +23,6 @@ export const img = {
     width: 700,
     height: 440,
   },
-  mrm: {
-    src: '/images/mrm-b1-1024x498.webp',
-    alt: 'Smartwatch FM on phone, tablet and desktop showing a live fleet map',
-    width: 1024,
-    height: 498,
-  },
   ngo: {
     src: '/images/ngo.webp',
     alt: 'Fleet of white NGO Land Cruisers',
@@ -71,30 +65,6 @@ export const img = {
     width: 735,
     height: 367,
   },
-  fleetDashboard: {
-    src: '/images/fleet-dashboard.webp',
-    alt: 'Fleet manager reviewing vehicle analytics on a tablet in front of a truck fleet',
-    width: 736,
-    height: 407,
-  },
-  tmsDashboard: {
-    src: '/images/tms-dashboard.webp',
-    alt: 'Transport management dashboard on a monitor in a warehouse',
-    width: 734,
-    height: 418,
-  },
-  inCabDevice: {
-    src: '/images/in-cab-device.webp',
-    alt: 'Driver using an in-cab navigation and telematics device',
-    width: 1200,
-    height: 800,
-  },
-  fleetManager: {
-    src: '/images/fleet-manager.webp',
-    alt: 'Fleet supervisor with an inspection clipboard in front of parked trucks',
-    width: 735,
-    height: 490,
-  },
   truckRefrigerated: {
     src: '/images/truck-refrigerated.webp',
     alt: 'Refrigerated box truck for temperature-controlled cargo',
@@ -115,12 +85,6 @@ export const img = {
     width: 500,
     height: 500,
     fit: 'contain',
-  },
-  fieldSupervisor: {
-    src: '/images/field-supervisor.webp',
-    alt: 'Supervisor in a hard hat checking a tablet beside trucks on a highway',
-    width: 458,
-    height: 670,
   },
   yardMonitoring: {
     src: '/images/yard-monitoring.webp',
@@ -222,12 +186,6 @@ export const img = {
     width: 800,
     height: 900,
   },
-  insuranceCosts: {
-    src: '/images/insurance-costs.webp',
-    alt: 'Model car, cash and coins beside a laptop showing running cost charts',
-    width: 700,
-    height: 440,
-  },
   evChargingCost: {
     src: '/images/ev-charging-cost.webp',
     alt: 'Charging cable plugged into the port of a white electric car',
@@ -251,12 +209,6 @@ export const img = {
     alt: 'Truck on a winding road through dense forest, seen from above',
     width: 900,
     height: 792,
-  },
-  fuelTankCheck: {
-    src: '/images/fuel-tank-check.webp',
-    alt: 'Technician with a clipboard inspecting a truck’s fuel tank',
-    width: 900,
-    height: 732,
   },
   busShelterBoarding: {
     src: '/images/bus-shelter-boarding.webp',
@@ -282,18 +234,6 @@ export const img = {
     width: 505,
     height: 572,
     fit: 'contain',
-  },
-  engineDiagnosticsTablet: {
-    src: '/images/engine-diagnostics-tablet.webp',
-    alt: 'Technician reviewing vehicle diagnostics on a tablet over an open engine bay',
-    width: 612,
-    height: 408,
-  },
-  vehicleServiceCheck: {
-    src: '/images/vehicle-service-check.webp',
-    alt: 'Technician holding a vehicle service checklist above an open engine bay',
-    width: 447,
-    height: 447,
   },
   maintenanceChecklist: {
     src: '/images/maintenance-checklist.webp',
@@ -330,30 +270,12 @@ export const img = {
     height: 695,
     fit: 'contain',
   },
-  phoneVehicleLocator: {
-    src: '/images/phone-vehicle-locator.webp',
-    alt: 'Phone showing a tracked vehicle pinned on a street map above a parked fleet',
-    width: 1024,
-    height: 720,
-  },
   phoneTruckConvoy: {
     src: '/images/phone-truck-convoy.webp',
     alt: 'Phone showing a convoy of tracked trucks on an open road',
     width: 817,
     height: 1074,
     fit: 'contain',
-  },
-  fieldVehicleGps: {
-    src: '/images/field-vehicle-gps.webp',
-    alt: 'Field vehicle tracked by satellite with its live position on a phone map',
-    width: 1300,
-    height: 731,
-  },
-  fieldDataTablet: {
-    src: '/images/field-data-tablet.webp',
-    alt: 'Field operator reviewing live machine and job data on a tablet',
-    width: 576,
-    height: 384,
   },
   cargoElockTrailer: {
     src: '/images/cargo-elock-trailer.webp',
