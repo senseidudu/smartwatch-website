@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import type { Img } from '../../data/types'
+import Placeholder from '../Placeholder'
 import { cx } from '../../lib/cx'
 import { gsap } from '../../motion/gsap'
 import { prefersReducedMotion } from '../../motion/motion'
@@ -33,12 +34,14 @@ const EDGE = 12
 type Props = {
   children: ReactNode
   to: string
-  image: Img
+  /** Omitted while a photo is withdrawn; the card shows the striped placeholder instead. */
+  image?: Img
+  imageLabel?: string
   description: string
   className?: string
 }
 
-export default function CursorCard({ children, to, image, description, className }: Props) {
+export default function CursorCard({ children, to, image, imageLabel, description, className }: Props) {
   const [open, setOpen] = useState(false)
   const card = useRef<HTMLDivElement>(null)
   const moveX = useRef<gsap.QuickToFunc | null>(null)
@@ -94,15 +97,19 @@ export default function CursorCard({ children, to, image, description, className
         createPortal(
           <div ref={card} className={s.card} data-open={open || undefined} aria-hidden="true">
             <div className={s.panel}>
+              {image ? (
                 <img
-                className={s.image}
-                src={image.src}
-                alt=""
-                width={image.width}
-                height={image.height}
-                loading="lazy"
-                decoding="async"
-              />
+                  className={s.image}
+                  src={image.src}
+                  alt=""
+                  width={image.width}
+                  height={image.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <Placeholder label={imageLabel ?? 'image coming soon'} ratio="16 / 10" radius={8} stripe={8} className={s.image} />
+              )}
               <p className={s.description}>{description}</p>
             </div>
           </div>,

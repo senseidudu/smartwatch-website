@@ -38,7 +38,7 @@ export const page: DetailPage = {
       body: "Manage driver safety with Smartwatch's all-in-one platform and reduce your safety department's workload through automation. Eliminate repetitive or time-consuming tasks with self-coaching tools, prioritized footage, and custom safety definitions.",
       points: ['Self-coaching tools for drivers', 'Prioritized footage', 'Custom safety definitions'],
       mediaLabel: 'safety dashboard with prioritized event footage',
-      media: img.fleetDashboard,
+      media: img.aiRoadDetection,
       reverse: true,
     },
     {

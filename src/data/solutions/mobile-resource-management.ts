@@ -13,7 +13,8 @@ export const page: DetailPage = {
     intro:
       'Manage your vehicles, assets, drivers, and equipment with Smartwatch’s integrated fleet management system.',
     tone: 'dark',
-    media: img.mrm,
+    mediaLabel: 'Smartwatch FM on phone, tablet and desktop',
+    media: img.reeferFleetDocks,
   },
   sections: [
     {
@@ -59,7 +60,7 @@ export const page: DetailPage = {
       points: ['Upgrade your expertise with trainings, private tours, and innovative insights.'],
       reverse: true,
       mediaLabel: 'the Smartwatch partner ecosystem',
-      media: img.partnerEcosystem,
+      media: img.partnerFistBump,
     },
     {
       kind: 'related',

@@ -68,7 +68,7 @@ export const page: DetailPage = {
         'No hardware installation, no vehicle downtime',
       ],
       mediaLabel: 'tracked trucks followed from the OnTrack app',
-      media: img.phoneTruckConvoy,
+      media: img.phoneTruckMap,
       reverse: true,
     },
     {

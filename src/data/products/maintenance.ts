@@ -30,7 +30,8 @@ export const page: DetailPage = {
         'Automated fleet maintenance schedules',
         'Electronic notifications of upcoming maintenance requirements',
       ],
-      media: img.vehicleServiceCheck,
+      mediaLabel: 'vehicle service check',
+      media: img.vehicleServiceCrew,
     },
     {
       kind: 'split',
@@ -61,7 +62,6 @@ export const page: DetailPage = {
         'Engine diagnostics: oil pressure, battery voltage, accelerometer stats and filters',
       ],
       mediaLabel: 'engine diagnostics reviewed on a tablet',
-      media: img.engineDiagnosticsTablet,
     },
     {
       kind: 'cards',

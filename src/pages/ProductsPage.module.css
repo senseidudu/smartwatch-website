@@ -5,15 +5,29 @@
   flex-direction: column;
 }
 
+/* White, with the sphere's soft green glow at the right edge, as on every other hero. */
 .hero {
-  background:
-    radial-gradient(120% 90% at 100% 100%, #16386a 0%, var(--navy) 55%),
-    var(--navy);
-  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  color: var(--ink);
   padding: 88px 0 96px;
 }
 
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -14vw;
+  width: 62vw;
+  height: 160%;
+  background: radial-gradient(closest-side, var(--green-200) 0%, var(--green-100) 42%, transparent 100%);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
 .heroInner {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +42,7 @@
 .lead {
   font-size: 18px;
   line-height: 1.55;
-  color: var(--muted);
+  color: var(--ink-2);
   max-width: 640px;
   text-wrap: pretty;
 }
@@ -45,13 +59,13 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  color: var(--muted);
+  color: var(--ink-3);
   font-size: 13px;
   font-weight: 600;
 }
 
 .badge:hover {
-  color: var(--white);
+  color: var(--ink);
 }
 
 .badgeImage {

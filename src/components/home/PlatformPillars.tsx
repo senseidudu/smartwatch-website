@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { pillars } from '../../data/pillars'
 import { routes } from '../../data/site'
@@ -11,6 +11,17 @@ import s from './PlatformPillars.module.css'
 
 /** How long each product stays up before the carousel moves on. */
 export const ROTATE_INTERVAL = 5000
+
+/** Each product carries one shade of the brand green, in turn; the section takes the selected one. */
+const ACCENTS = [s.accentGreen, s.accentLight, s.accentDeep, s.accentPale]
+const accentOf = (index: number) => ACCENTS[index % ACCENTS.length]
+
+/** Points the tab's glow at the pointer. */
+function trackGlow(event: MouseEvent<HTMLButtonElement>) {
+  const box = event.currentTarget.getBoundingClientRect()
+  event.currentTarget.style.setProperty('--mx', `${event.clientX - box.left}px`)
+  event.currentTarget.style.setProperty('--my', `${event.clientY - box.top}px`)
+}
 
 export default function PlatformPillars() {
   const [active, setActive] = useState(0)
@@ -31,18 +42,18 @@ export default function PlatformPillars() {
   }
 
   return (
-    <section className={s.section} data-band="dark">
+    <section className={cx(s.section, accentOf(active))}>
       <div
         className={cx('container', s.inner)}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
         <div className={s.intro}>
-          <div className="eyebrow eyebrow--bright">Integrated fleet platform</div>
+          <div className="eyebrow eyebrow--rule">Integrated fleet platform</div>
           <h2 className="h-section h-section--lg">A fully integrated suite of products, powered by industry-leading AI.</h2>
         </div>
 
-        <AgentBentoGrid dark className={s.infra} />
+        <AgentBentoGrid className={s.infra} />
 
         <HighlightGrid
           active={active}
@@ -59,9 +70,10 @@ export default function PlatformPillars() {
               id={`pillar-tab-${i}`}
               aria-selected={i === active}
               aria-controls="pillar-panel"
-              className={cx(s.tab, i === active && s.tabOn)}
+              className={cx(s.tab, accentOf(i), i === active && s.tabOn)}
               data-highlight-cell
               onClick={() => pick(i)}
+              onMouseMove={trackGlow}
             >
               <span className={s.tabNum} aria-hidden="true">
                 {String(i + 1).padStart(2, '0')}
@@ -73,7 +85,7 @@ export default function PlatformPillars() {
 
         <div className={s.strap}>
           <div className={s.strapText}>Your operations. One platform. With AI-powered automation at its core.</div>
-          <Link to={routes.products} className="link-arrow link-arrow--sm link-arrow--bright">
+          <Link to={routes.products} className="link-arrow link-arrow--sm">
             Platform overview →
           </Link>
         </div>
@@ -96,12 +108,12 @@ export default function PlatformPillars() {
               ))}
             </ul>
             <div>
-              <Link to={pillar.to} className="link-arrow link-arrow--bright">
+              <Link to={pillar.to} className="link-arrow">
                 Learn more →
               </Link>
             </div>
           </div>
-          <Media image={pillar.image} label={pillar.imageLabel} ratio="4 / 3" radius={20} dark decorative />
+          <Media image={pillar.image} label={pillar.imageLabel} ratio="4 / 3" radius={20} decorative className={s.detailMedia} />
         </div>
       </div>
     </section>

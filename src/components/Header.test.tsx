@@ -28,10 +28,11 @@ function renderHeaderOverBands() {
     <MemoryRouter>
       <Header />
       <section data-band="dark" data-testid="dark" />
+      <section data-band="dark" data-band-tone="deep" data-testid="deep" />
       <section data-band="light" data-testid="light" />
     </MemoryRouter>,
   )
-  return { dark: screen.getByTestId('dark'), light: screen.getByTestId('light') }
+  return { dark: screen.getByTestId('dark'), deep: screen.getByTestId('deep'), light: screen.getByTestId('light') }
 }
 
 describe('Header mega menus', () => {
@@ -168,6 +169,7 @@ describe('Header theme', () => {
     renderHeader()
     const banner = screen.getByRole('banner')
     expect(banner).toHaveAttribute('data-theme', 'light')
+    expect(banner).toHaveAttribute('data-tone', 'green')
     expect(banner).not.toHaveAttribute('data-solid')
   })
 
@@ -223,6 +225,21 @@ describe('Header theme', () => {
     placeBand(light, 40, 1200)
     setScroll(400)
     expect(screen.getByRole('banner')).toHaveAttribute('data-theme', 'light')
+  })
+
+  test('carries the band tone, so the bar paints deep green over the footer and brand green over other dark bands', () => {
+    const { dark, deep, light } = renderHeaderOverBands()
+    const banner = screen.getByRole('banner')
+    placeBand(deep, 0, 700)
+    placeBand(light, 700, 1400)
+    setScroll(120)
+    expect(banner).toHaveAttribute('data-theme', 'dark')
+    expect(banner).toHaveAttribute('data-tone', 'deep')
+    placeBand(deep, -900, -200)
+    placeBand(dark, 0, 700)
+    setScroll(300)
+    expect(banner).toHaveAttribute('data-theme', 'dark')
+    expect(banner).toHaveAttribute('data-tone', 'green')
   })
 })
 

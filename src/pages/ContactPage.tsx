@@ -18,7 +18,7 @@ export default function ContactPage() {
     <div className={s.page}>
       <section className={s.band}>
         <div className={cx('container', s.bandInner)}>
-          <div className="eyebrow">Contact</div>
+          <div className="eyebrow eyebrow--rule">Contact</div>
           <h1 className="h-page">Talk to sales or support, 24/7.</h1>
           <p className={s.lead}>Request a demo, ask about pricing, or get help with an installed device.</p>
         </div>

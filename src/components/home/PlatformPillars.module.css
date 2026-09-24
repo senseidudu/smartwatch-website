@@ -1,7 +1,42 @@
+/*
+ * The platform band is the palest step of the guide's green tint ladder, with white cards on it.
+ * Colour moves with the visitor, in shades of green only: each tab glows in its own shade where the
+ * pointer is, and the selected product's shade runs through the ring, the number tile, the ticks and
+ * the panel's wash.
+ */
 .section {
-  background: var(--navy);
-  color: var(--white);
+  --accent: var(--green);
+  --accent-rgb: var(--green-rgb);
+  --accent-fg: var(--white);
+  --check-bg: var(--accent);
+  --check-fg: var(--accent-fg);
+  background: var(--green-100);
+  color: var(--ink);
   padding: 96px 0;
+}
+
+.accentGreen {
+  --accent: var(--green);
+  --accent-rgb: var(--green-rgb);
+  --accent-fg: var(--white);
+}
+
+.accentLight {
+  --accent: var(--green-400);
+  --accent-rgb: var(--green-400-rgb);
+  --accent-fg: var(--ink);
+}
+
+.accentDeep {
+  --accent: var(--green-dark);
+  --accent-rgb: var(--green-dark-rgb);
+  --accent-fg: var(--white);
+}
+
+.accentPale {
+  --accent: var(--green-300);
+  --accent-rgb: var(--green-300-rgb);
+  --accent-fg: var(--ink);
 }
 
 /* Each product fades in as the carousel moves on. */
@@ -29,6 +64,11 @@
   max-width: 760px;
 }
 
+/* The platform headline is set in the wordmark's navy. */
+.intro h2 {
+  color: var(--navy);
+}
+
 /* The infrastructure bento sits between the intro and the product tabs; extra room below it
    marks the step from the shared stack to the products built on it. */
 .infra {
@@ -45,11 +85,11 @@
   /* Above the gliding highlight, which sits at the strip's origin. */
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--white);
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: 18px 16px;
-  color: var(--white);
+  color: var(--ink);
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -57,11 +97,38 @@
   gap: 10px;
   transition:
     background 0.2s,
-    border-color 0.2s;
+    border-color 0.25s;
+}
+
+/* A glow in the tab's own accent follows the pointer across it; the tab is its own stacking
+   context (z-index above), so the glow sits between the white card and its text. */
+.tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    180px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(var(--accent-rgb), 0.2),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
 }
 
 .tab:hover {
-  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(var(--accent-rgb), 0.55);
+}
+
+.tab:hover::before {
+  opacity: 1;
+}
+
+.tab:hover .tabNum {
+  background: var(--accent);
+  color: var(--accent-fg);
 }
 
 /* The selected tab paints nothing of its own: the green pane glides in underneath it. */
@@ -73,24 +140,39 @@
 
 .tabGlow {
   border-radius: 14px;
-  background-color: var(--green);
-  background-image: radial-gradient(120% 120% at 50% 0%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 55%);
+  background-color: var(--white);
+  box-shadow: var(--shadow-card);
+}
+
+/* The ring takes the selected product's accent and cross-fades as the selection moves. */
+.tabGlow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 1.5px var(--accent);
+  transition: box-shadow 0.5s;
 }
 
 .tabNum {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--green-100);
+  color: var(--green-dark);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--mono);
   font-size: 10px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .tabOn .tabNum {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--accent);
+  color: var(--accent-fg);
 }
 
 .tabName {
@@ -110,15 +192,36 @@
 
 .strapText {
   font-size: 14px;
-  color: var(--muted);
+  color: var(--ink-3);
 }
 
+/* The panel sits in a soft wash of the selected accent, and its image carries the accent as a frame. */
 .detail {
+  position: relative;
+  isolation: isolate;
   animation: swap 0.5s ease both;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   gap: 56px;
   align-items: center;
+}
+
+.detail::before {
+  content: '';
+  position: absolute;
+  inset: -32px -24px;
+  z-index: -1;
+  border-radius: 32px;
+  background: radial-gradient(70% 90% at 85% 50%, rgba(var(--accent-rgb), 0.16), transparent 70%);
+  pointer-events: none;
+}
+
+.detailMedia {
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(var(--accent-rgb), 0.4),
+    0 28px 60px -30px rgba(var(--accent-rgb), 0.5);
+  transition: box-shadow 0.5s;
 }
 
 .detailCopy {
@@ -131,14 +234,14 @@
   font-size: clamp(26px, 2.6vw, 36px);
   line-height: 1.15;
   letter-spacing: -0.015em;
-  font-weight: 800;
+  font-weight: 700;
   text-wrap: pretty;
 }
 
 .detailBody {
   font-size: 17px;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--ink-2);
   text-wrap: pretty;
 }
 

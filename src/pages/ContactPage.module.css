@@ -61,14 +61,14 @@
   height: 40px;
   border-radius: 10px;
   background: var(--surface);
-  color: var(--green);
+  color: var(--green-dark);
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
 .cardTitle {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 18px;
 }
 
@@ -81,7 +81,7 @@
 .cardMore {
   font-weight: 700;
   font-size: 14px;
-  color: var(--green);
+  color: var(--green-dark);
   margin-top: auto;
   overflow-wrap: anywhere;
 }
@@ -156,7 +156,7 @@
 }
 
 .officeCity {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 18px;
 }
 
@@ -219,7 +219,8 @@
   font-size: clamp(32px, 3.6vw, 48px);
   line-height: 1.08;
   letter-spacing: -0.02em;
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--heading);
 }
 
 .demoLead {

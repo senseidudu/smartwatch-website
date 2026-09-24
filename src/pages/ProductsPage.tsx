@@ -58,9 +58,9 @@ export default function ProductsPage() {
 
   return (
     <div className={s.page}>
-      <section className={s.hero} data-band="dark">
+      <section className={s.hero} data-band="light">
         <div className={cx('container', s.heroInner)}>
-          <div className="eyebrow eyebrow--bright">Smartwatch products</div>
+          <div className="eyebrow eyebrow--rule">Smartwatch products</div>
           <h1 className="h-page">Products tailored to your specific needs.</h1>
           <p className={s.lead}>
             Comprehensive and customised solutions designed to fit your business operations, enhance
@@ -70,7 +70,7 @@ export default function ProductsPage() {
             <a href="#products" className="btn btn--primary">
               Discover all products
             </a>
-            <Link to={routes.contact} className="btn btn--outline-light">
+            <Link to={routes.contact} className="btn btn--outline">
               Contact us
             </Link>
           </div>

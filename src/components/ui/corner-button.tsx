@@ -14,9 +14,9 @@ import s from './corner-button.module.css'
  *   - with `to` it renders a SmartLink (router link or external anchor); without, a <button>
  *     so forms can submit through it
  *   - the inline <style> tag becomes a CSS module, and the lime accent the site's green (or
- *     navy, via `tone`), with white text on the pill instead of the original's translucent black
+ *     forest green, via `tone`), with white text on the pill instead of the original's translucent black
  *   - the default pencil icon is dropped; an icon can still be passed
- *   - a compact size fits the 64px header, `onDark` lightens the frame on navy surfaces, and
+ *   - a compact size fits the 64px header, `onDark` lightens the frame on dark surfaces, and
  *     reduced motion keeps only the colour change
  */
 
@@ -27,8 +27,8 @@ type Props = {
   type?: 'button' | 'submit'
   icon?: ReactNode
   size?: 'md' | 'sm'
-  tone?: 'green' | 'navy'
-  /** The button sits on a navy surface: the dots and dashed frame turn light. */
+  tone?: 'green' | 'deep'
+  /** The button sits on a dark surface: the dots and dashed frame turn light. */
   onDark?: boolean
   className?: string
 }
@@ -52,7 +52,7 @@ export default function CornerButton({
 
   return (
     <span
-      className={cx(s.wrapper, size === 'sm' && s.sm, tone === 'navy' && s.navy, onDark && s.onDark, className)}
+      className={cx(s.wrapper, size === 'sm' && s.sm, tone === 'deep' && s.deep, onDark && s.onDark, className)}
     >
       <span className={cx(s.line, s.horizontal, s.top)} aria-hidden="true" />
       <span className={cx(s.line, s.vertical, s.right)} aria-hidden="true" />

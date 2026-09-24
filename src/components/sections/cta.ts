@@ -9,7 +9,7 @@ export const defaultCta: CtaBandProps = {
   body: 'A 30-minute walkthrough with our Kampala or Nairobi team, on your fleet and your routes.',
   ctas: [
     { label: 'Get a demo', to: routes.contact, variant: 'primary' },
-    { label: 'Talk to support', to: `${routes.contact}#support`, variant: 'outline-light' },
+    { label: 'Talk to support', to: `${routes.contact}#support`, variant: 'outline' },
   ],
 }
 
@@ -20,6 +20,14 @@ export function isDemoCta(cta: Cta): boolean {
 
 export function btnClass(variant: Cta['variant'] = 'primary'): string {
   return cx('btn', `btn--${variant}`)
+}
+
+/**
+ * The white outline was drawn for dark bands; on a light surface (every hero and the closing panel
+ * now) it would vanish, so it becomes the ordinary outline there.
+ */
+export function onLight(variant: Cta['variant'] = 'primary'): Cta['variant'] {
+  return variant === 'outline-light' ? 'outline' : variant
 }
 
 /** Hero buttons when a page defines none. No demo button here: the closing band carries it. */

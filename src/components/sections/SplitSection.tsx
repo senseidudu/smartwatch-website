@@ -19,7 +19,7 @@ export default function SplitSection({ section }: Props) {
           className={s.splitMedia}
         />
         <div className={s.splitCopy}>
-          {section.eyebrow && <div className="eyebrow">{section.eyebrow}</div>}
+          {section.eyebrow && <div className="eyebrow eyebrow--rule">{section.eyebrow}</div>}
           <h2 className={s.splitTitle}>{section.title}</h2>
           {paragraphs.map((p) => (
             <p key={p} className="lead">

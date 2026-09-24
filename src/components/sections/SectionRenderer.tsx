@@ -12,6 +12,7 @@ import SplitSection from './SplitSection'
 import SpotlightSection from './SpotlightSection'
 import StatsSection from './StatsSection'
 import StepsSection from './StepsSection'
+import StorySection from './StorySection'
 import TabsSection from './TabsSection'
 import s from './Sections.module.css'
 
@@ -26,6 +27,8 @@ function render(section: Section) {
       return <BulletsSection section={section} />
     case 'split':
       return <SplitSection section={section} />
+    case 'story':
+      return <StorySection section={section} />
     case 'stats':
       return <StatsSection section={section} />
     case 'beforeAfter':

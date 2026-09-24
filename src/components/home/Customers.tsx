@@ -17,7 +17,7 @@ export default function Customers() {
   return (
     <section className={cx('container', s.section)}>
       <div className={s.copy}>
-        <div className="eyebrow">Our customers</div>
+        <div className="eyebrow eyebrow--rule">Our customers</div>
         <h2 className="h-section">Trusted by local and international partners.</h2>
         <p className={s.body}>800+ companies, from small businesses to large enterprises, run their fleets on Smartwatch.</p>
         <div className={s.links}>

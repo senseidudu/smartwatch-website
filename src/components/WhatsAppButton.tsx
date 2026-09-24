@@ -1,7 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
 import { site } from '../data/site'
-import { cx } from '../lib/cx'
-import { useScrolled } from '../motion/useScrolled'
 import s from './WhatsAppButton.module.css'
 
 /**
@@ -28,70 +25,26 @@ export function WhatsAppMark({ size = 26 }: { size?: number }) {
 }
 
 /**
- * Floating WhatsApp launcher that appears once the visitor starts scrolling.
- * The launcher unmounts back at the top of the page, which also closes its card.
+ * Floating WhatsApp card, pinned open on every page from first load. We run a line
+ * per region, so both numbers stay in view rather than guessing which team the
+ * visitor wants.
  */
 export default function WhatsAppButton() {
-  const scrolled = useScrolled(200)
-  if (!scrolled) return null
-  return <Launcher />
-}
-
-/**
- * We run a line per region, so the button opens a small card to pick one rather
- * than guessing which team the visitor wants.
- */
-function Launcher() {
-  const [open, setOpen] = useState(false)
-  const rootRef = useRef<HTMLDivElement>(null)
-
-  /** Escape, or a click anywhere else on the page, closes the card. */
-  useEffect(() => {
-    if (!open) return
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
-    }
-    const onPointer = (event: Event) => {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false)
-    }
-    document.addEventListener('keydown', onKey)
-    document.addEventListener('pointerdown', onPointer)
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.removeEventListener('pointerdown', onPointer)
-    }
-  }, [open])
-
   return (
-    <div ref={rootRef} className={s.root}>
-      {open && (
-        <div className={s.card}>
-          <div className={s.cardTitle}>Chat with us on WhatsApp</div>
-          <p className={s.cardBody}>Pick the line nearest to you.</p>
-          {site.whatsapp.map((line) => (
-            <a
-              key={line.href}
-              href={line.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={s.line}
-              onClick={() => setOpen(false)}
-            >
-              <span className={s.lineCountry}>{line.country}</span>
-              <span className={s.lineNumber}>{line.label}</span>
-            </a>
-          ))}
-        </div>
-      )}
-      <button
-        type="button"
-        className={cx(s.button, 'lift')}
-        aria-expanded={open}
-        aria-label={open ? 'Close the WhatsApp numbers' : 'Chat with Smartwatch on WhatsApp'}
-        onClick={() => setOpen((wasOpen) => !wasOpen)}
-      >
+    <aside className={s.root} aria-label="Chat with Smartwatch on WhatsApp">
+      <div className={s.card}>
+        <div className={s.cardTitle}>Chat with us on WhatsApp</div>
+        <p className={s.cardBody}>Pick the line nearest to you.</p>
+        {site.whatsapp.map((line) => (
+          <a key={line.href} href={line.href} target="_blank" rel="noopener noreferrer" className={s.line}>
+            <span className={s.lineCountry}>{line.country}</span>
+            <span className={s.lineNumber}>{line.label}</span>
+          </a>
+        ))}
+      </div>
+      <div className={s.badge} aria-hidden="true">
         <WhatsAppMark />
-      </button>
-    </div>
+      </div>
+    </aside>
   )
 }

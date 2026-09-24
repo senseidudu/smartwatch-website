@@ -12,7 +12,7 @@ export default function DemoSection() {
     <section className={s.section} id={anchors.demo}>
       <Reveal stagger className={cx('container', s.grid)}>
         <div className={s.copy}>
-          <div className="eyebrow">Connect with us</div>
+          <div className="eyebrow eyebrow--rule">Connect with us</div>
           <h2 className={s.title}>We'd love to show you around.</h2>
           <p className={s.intro}>With Smartwatch you can:</p>
           <ul className="checklist checklist--lg">

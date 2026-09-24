@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import logoWhite from '../assets/logo-white.svg'
+import logo from '../assets/logo.svg'
 import { news } from '../data/content'
 import { industriesA } from '../data/industries'
 import { pillars } from '../data/pillars'
@@ -91,9 +91,9 @@ function ParticleWordmark() {
         <Suspense fallback={null}>
           <InteractiveParticles
             src={src}
-            color="#3dd07c"
-            maxDimension={420}
-            size={2.1}
+            color="#4d9734" /* --green: the WebGL tint cannot read a CSS token */
+            maxDimension={960}
+            size={1.4}
             randomness={1.6}
             depth={4}
             touchRadius={0.12}
@@ -111,19 +111,24 @@ function ParticleWordmark() {
 
 export default function Footer() {
   return (
-    <footer className={s.footer} data-band="dark">
+    <footer className={s.footer} data-band="light">
       <div className={cx('container', s.top)}>
         <div className={s.pitch}>
-          <img src={logoWhite} alt={site.name} className={s.logo} />
+          <img src={logo} alt={site.name} className={s.logo} />
           <h2 className={s.statement}>Total peace of mind for every fleet on the road.</h2>
           <p className={s.tagline}>{site.tagline}</p>
         </div>
         <div className={s.reach}>
-          <CornerButton to={routes.contact} onDark className={s.demo}>
+          <CornerButton to={routes.contact} className={s.demo}>
             Get a demo
           </CornerButton>
           <a href={site.phoneHref} className={s.phone}>
+            <span className={s.phoneCountry}>UG</span>
             {site.phone}
+          </a>
+          <a href={site.phoneKenyaHref} className={s.phone}>
+            <span className={s.phoneCountry}>KE</span>
+            {site.phoneKenya}
           </a>
           <a href={`mailto:${site.email}`} className={s.muted}>
             {site.email}

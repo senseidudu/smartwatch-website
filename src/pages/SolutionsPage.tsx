@@ -23,7 +23,7 @@ export default function SolutionsPage() {
     <div className={s.page}>
       <section className={s.band}>
         <div className={cx('container', s.bandInner)}>
-          <div className="eyebrow">Solutions</div>
+          <div className="eyebrow eyebrow--rule">Solutions</div>
           <h1 className="h-page">Built for the industries that keep East Africa moving.</h1>
           <p className={s.lead}>
             From oil and gas convoys to city buses and NGO field teams, Smartwatch adapts to how your

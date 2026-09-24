@@ -26,23 +26,22 @@
 
 .item {
   /* The gap is a margin, not a flex gap, so the two copies measure exactly 50% each. */
-  margin-right: 14px;
+  margin-right: 8px;
   flex: 0 0 auto;
-  width: 180px;
-  height: 86px;
-  border-radius: 14px;
+  width: 300px;
+  height: 140px;
+  border-radius: 16px;
   background: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 18px;
-  border: 1px solid var(--line);
+  padding: 0 16px;
 }
 
 .logo {
   max-width: 100%;
   /* Roomy enough that a two-line lockup still sets at a readable size. */
-  max-height: 50px;
+  max-height: 92px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -59,13 +58,13 @@
 
 @media (max-width: 900px) {
   .item {
-    width: 146px;
-    height: 72px;
-    padding: 0 14px;
+    width: 220px;
+    height: 104px;
+    padding: 0 16px;
   }
 
   .logo {
-    max-height: 40px;
+    max-height: 66px;
   }
 }
 

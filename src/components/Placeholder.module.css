@@ -20,10 +20,10 @@
 .dark {
   background: repeating-linear-gradient(
     135deg,
-    var(--navy-2) 0 var(--stripe),
-    var(--navy-3) var(--stripe) calc(var(--stripe) * 2)
+    var(--band-2) 0 var(--stripe),
+    var(--band-3) var(--stripe) calc(var(--stripe) * 2)
   );
-  color: var(--muted);
+  color: var(--on-band-muted);
 }
 
 .label {

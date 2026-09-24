@@ -118,7 +118,8 @@ export const blog: DetailPage = {
     intro:
       'Product launches, field notes and the numbers behind them, from the team connecting and protecting fleets across East Africa since 2011.',
     tone: 'dark',
-    media: img.fleetDashboard,
+    mediaLabel: 'fleet dashboard in use',
+    media: img.aiRoadDetection,
     ctas: [{ label: 'Latest launch', to: featuredPost.to }],
   },
   sections: [
@@ -130,7 +131,12 @@ export const blog: DetailPage = {
       columns: 3,
       items: [
         { title: featuredPost.title, body: featuredPost.body, image: featuredPost.image, href: featuredPost.to },
-        ...posts.map((post) => ({ title: post.title, body: `${post.kind} spotlight`, image: post.image, href: post.to })),
+        ...posts.map((post) => ({
+          title: post.title,
+          body: `${post.kind} spotlight`,
+          image: post.image,
+          href: post.to,
+        })),
         {
           title: 'Charge status, range and utilisation for electric fleets',
           body: 'Solution spotlight',
@@ -140,7 +146,7 @@ export const blog: DetailPage = {
         {
           title: 'Staying connected beyond cellular coverage',
           body: 'Solution spotlight',
-          image: img.fieldVehicleGps,
+          image: img.ngoConvoy,
           href: routes.solution('ngo-satellite-tracking'),
         },
       ],
@@ -177,7 +183,8 @@ export const guides: DetailPage = {
     intro:
       'Longer reads on each part of running a fleet well, built from what the platform does and what operators across the region have learned with it.',
     tone: 'dark',
-    media: img.fieldDataTablet,
+    mediaLabel: 'field team data on a tablet',
+    media: img.fleetFeatureRoad,
     ctas: [{ label: 'Start with compliance', to: routes.product('compliance') }],
   },
   sections: [

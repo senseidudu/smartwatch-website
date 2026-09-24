@@ -9,7 +9,7 @@ export default function LegalPage({ doc }: { doc: LegalDoc }) {
     <div className={s.page}>
       <section className={s.band}>
         <div className={cx('container', s.bandInner)}>
-          <div className="eyebrow">Legal</div>
+          <div className="eyebrow eyebrow--rule">Legal</div>
           <h1 className="h-page">{doc.title}</h1>
           <p className={s.lead}>{doc.intro}</p>
         </div>

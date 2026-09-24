@@ -44,7 +44,6 @@ export const page: DetailPage = {
       body: 'Smartwatch FM connects the vehicle, protects the operator and provides actionable insights for fleet managers.',
       points: ['Driver safety', 'Asset tracking', 'Cost control', 'Compliance management'],
       mediaLabel: 'in-vehicle monitoring system in use on site',
-      media: img.inCabDevice,
     },
     {
       kind: 'tabs',
@@ -79,7 +78,6 @@ export const page: DetailPage = {
       body: 'Fuel level change detection, with an alert sent to the central server whenever an abnormal change is triggered.',
       reverse: true,
       mediaLabel: 'fuel tank checked during a site inspection',
-      media: img.fuelTankCheck,
     },
     {
       kind: 'related',

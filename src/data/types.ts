@@ -45,6 +45,8 @@ export type CardItem = {
   body?: string
   points?: string[]
   image?: Img
+  /** Placeholder label shown when a card's image has been withdrawn and not yet replaced. */
+  imageLabel?: string
   icon?: IconName
   href?: string
 }
@@ -62,6 +64,19 @@ export type Section =
       media?: Img
       mediaLabel?: string
       reverse?: boolean
+      cta?: Cta
+    })
+  | (Base & {
+      /** A long company story broken into a lede with key facts, themed cards and a named-client row. */
+      kind: 'story'
+      title: string
+      lede: string
+      facts?: { value: string; label: string }[]
+      media?: Img
+      mediaLabel?: string
+      themes: CardItem[]
+      clients?: { title: string; items: string[] }
+      closing?: string
       cta?: Cta
     })
   | (Base & { kind: 'stats'; items: Stat[] })
