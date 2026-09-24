@@ -260,9 +260,44 @@ a.muted:hover {
   }
 }
 
+/* Phones keep two link columns: the labels are short, and one long column would double the scroll. */
 @media (max-width: 520px) {
+  .footer {
+    padding-top: 56px;
+  }
+
+  .top {
+    gap: 32px;
+    padding-bottom: 40px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 20px;
+    padding: 40px 0;
+  }
+
+  .wordmark {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 360px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+  }
+}
+
+@media (pointer: coarse) {
+  .phone,
+  a.muted {
+    padding: 6px 0;
+    margin: -6px 0;
+  }
+
+  /* Single-letter social links ("X") widen sideways too. */
+  .social .legalLink {
+    padding-inline: 8px;
+    margin-inline: -8px;
   }
 }

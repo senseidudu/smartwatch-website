@@ -41,6 +41,15 @@ export default function PlatformPillars() {
     setAuto(false)
   }
 
+  // On phones the tabs are one scrolling row: keep the selected one in view as the carousel moves.
+  useEffect(() => {
+    const tab = document.getElementById(`pillar-tab-${active}`)
+    const strip = tab?.parentElement
+    if (!tab || !strip || strip.scrollWidth <= strip.clientWidth || typeof strip.scrollTo !== 'function') return
+    const left = tab.getBoundingClientRect().left - strip.getBoundingClientRect().left + strip.scrollLeft
+    strip.scrollTo({ left: left - (strip.clientWidth - tab.offsetWidth) / 2, behavior: prefersReducedMotion() ? 'auto' : 'smooth' })
+  }, [active])
+
   return (
     <section className={cx(s.section, accentOf(active))}>
       <div

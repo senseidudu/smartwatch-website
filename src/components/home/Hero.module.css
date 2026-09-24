@@ -154,9 +154,38 @@
     grid-template-columns: 1fr;
     gap: 36px;
   }
+}
 
-  .actions .btn,
-  .actions > * {
-    flex: 1 1 100%;
+@media (max-width: 520px) {
+  .hero {
+    padding: 40px 0 64px;
+  }
+
+  .copy {
+    gap: 22px;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
+
+  /* The one call to action spans the column, as a phone's primary button does. */
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta {
+    display: flex;
+  }
+
+  .cta > a {
+    flex: 1;
+  }
+
+  .alert {
+    left: 12px;
+    bottom: 12px;
+    padding: 10px 12px;
   }
 }

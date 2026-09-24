@@ -43,3 +43,10 @@
     gap: 32px;
   }
 }
+
+@media (max-width: 520px) {
+  .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+}

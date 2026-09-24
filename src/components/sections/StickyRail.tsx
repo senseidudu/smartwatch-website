@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { cx } from '../../lib/cx'
 import { ScrollTrigger, useGSAP } from '../../motion/gsap'
+import { prefersReducedMotion } from '../../motion/motion'
 import type { RailItem } from './rail'
 import s from './Sections.module.css'
 
@@ -8,6 +9,34 @@ import s from './Sections.module.css'
 export default function StickyRail({ items }: { items: RailItem[] }) {
   const [active, setActive] = useState(items[0]?.id)
   const ref = useRef<HTMLElement>(null)
+  const stripRef = useRef<HTMLDivElement>(null)
+
+  // On narrow screens the pills scroll sideways; data-more fades the right edge while there is more to see.
+  useEffect(() => {
+    const strip = stripRef.current
+    if (!strip) return
+    const update = () => {
+      const more = strip.scrollWidth - strip.clientWidth - strip.scrollLeft > 8
+      if (more) strip.dataset.more = ''
+      else delete strip.dataset.more
+    }
+    update()
+    strip.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      strip.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [items])
+
+  // Keep the pill for the section in view centred in the strip as the page scrolls past it.
+  useEffect(() => {
+    const strip = stripRef.current
+    const pill = strip?.querySelector<HTMLElement>('[aria-current="location"]')
+    if (!strip || !pill || strip.scrollWidth <= strip.clientWidth || typeof strip.scrollTo !== 'function') return
+    const left = pill.getBoundingClientRect().left - strip.getBoundingClientRect().left + strip.scrollLeft
+    strip.scrollTo({ left: left - (strip.clientWidth - pill.offsetWidth) / 2, behavior: prefersReducedMotion() ? 'auto' : 'smooth' })
+  }, [active])
 
   useGSAP(
     () => {
@@ -30,7 +59,7 @@ export default function StickyRail({ items }: { items: RailItem[] }) {
 
   return (
     <nav className={s.rail} aria-label="On this page" ref={ref}>
-      <div className={cx('container', s.railInner)}>
+      <div className={cx('container', s.railInner)} ref={stripRef}>
         {items.map((item) => (
           <a
             key={item.id}

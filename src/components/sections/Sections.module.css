@@ -157,14 +157,25 @@
   padding-bottom: 14px;
   overflow-x: auto;
   scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--gutter);
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .railInner::-webkit-scrollbar {
   display: none;
 }
 
+/* While more pills sit off to the right (data-more, set by the component) the edge dissolves as a cue. */
+.railInner[data-more] {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 56px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 56px), transparent);
+}
+
 .railPill {
   flex-shrink: 0;
+  scroll-snap-align: start;
   font-size: 14px;
   font-weight: 600;
   color: var(--ink-2);
@@ -411,9 +422,20 @@ ul.bullets {
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
+/* Taller than the name tiles so a wordmark sets at a legible size. */
 .storyLogos .logo {
+  height: 84px;
+  padding: 0 18px;
   background: var(--white);
   border-color: var(--green-200);
+}
+
+.logoImg {
+  max-width: 100%;
+  max-height: 44px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .storyClosing {
@@ -617,6 +639,10 @@ ul.bullets {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   counter-reset: step;
+  /* An ordered list: the global reset only clears <ul>, and the browser's own indent overflowed phones. */
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .step {
@@ -1012,7 +1038,152 @@ ul.bullets {
     padding: 20px;
   }
 
+  .storyThemes {
+    margin-top: 32px;
+  }
+
   .tabPanel {
     padding: 20px;
+  }
+
+  .hero {
+    padding: 40px 0 56px;
+  }
+
+  .heroCopy {
+    gap: 18px;
+  }
+
+  .heroLead {
+    font-size: 17px;
+  }
+
+  .card,
+  .step,
+  .baCol,
+  .stat {
+    padding: 20px;
+  }
+
+  .statValue {
+    font-size: 32px;
+  }
+
+  .spotlight {
+    padding: 24px 20px;
+    gap: 24px;
+  }
+
+  .ctaBand {
+    padding: 32px 20px;
+    gap: 24px;
+  }
+
+  .ctaActions {
+    width: 100%;
+  }
+}
+
+@media (pointer: coarse) {
+  .link {
+    display: inline-block;
+    padding: 6px 0;
+    margin: -6px 0;
+  }
+
+  .faqBtn {
+    padding: 20px 0;
+  }
+}
+
+/* Product cards */
+
+/*
+ * The Products page's platform grid. Seven products wrap four to a row and the short last row sits
+ * centred, so no card is left alone at the left edge. Each card leads with a large icon tile that
+ * takes the guide's lime-to-green sweep on hover, and closes on the page-label hairline and dot.
+ */
+.cards.cardsProduct {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card.cardProduct {
+  flex: 0 1 calc(25% - 15px);
+  min-width: 0;
+  gap: 0;
+  padding: 28px 28px 24px;
+  border-radius: 20px;
+}
+
+.cardProduct .cardIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  margin-bottom: 22px;
+  background: var(--green-100);
+  color: var(--green-dark);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.cardProduct:hover .cardIcon {
+  background: var(--gradient-brand);
+  color: var(--white);
+}
+
+.cardProduct .cardTitle {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--heading-plain);
+  margin-bottom: 10px;
+  text-wrap: pretty;
+}
+
+.cardProduct .cardBody {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.cardProduct .cardMore {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* The guide's page-label hairline, ending in its green dot, leads into the link. */
+.cardProduct .cardMore::before {
+  content: '';
+  flex: 1;
+  height: 7px;
+  background:
+    radial-gradient(circle, var(--green) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
+    linear-gradient(var(--line-2), var(--line-2)) left center / calc(100% - 9px) 1px no-repeat;
+}
+
+@media (max-width: 1100px) {
+  .card.cardProduct {
+    flex-basis: calc(33.333% - 13.334px);
+  }
+}
+
+@media (max-width: 900px) {
+  .card.cardProduct {
+    flex-basis: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 520px) {
+  .card.cardProduct {
+    flex-basis: 100%;
+    padding: 24px 24px 20px;
   }
 }

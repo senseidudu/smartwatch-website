@@ -1,4 +1,5 @@
 import { img } from './images'
+import { partnerLogo } from './logos'
 import { site } from './site'
 import type { DetailPage } from './types'
 
@@ -91,7 +92,16 @@ export const about: DetailPage = {
       ],
       clients: {
         title: 'Trusted by',
-        items: ['Schlumberger', 'Baker Hughes', 'Total Energies', 'British Gas Group', 'CNOOC', 'MTN'],
+        items: [
+          { name: 'Schlumberger', logo: partnerLogo('Schlumberger') },
+          { name: 'Baker Hughes', logo: partnerLogo('Baker Hughes') },
+          { name: 'Total Energies', logo: partnerLogo('TotalEnergies') },
+          { name: 'British Gas Group', logo: partnerLogo('British Gas') },
+          { name: 'CNOOC', logo: partnerLogo('CNOOC') },
+          // The source site names MTN without ever showing its mark. Give it a logo
+          // in partnerLogos and this tile picks it up.
+          { name: 'MTN' },
+        ],
       },
       closing:
         'Our team pairs expertise in information technology and mobile resource management with hands-on field experience, and a record of exceeding industry benchmarks for customer satisfaction.',

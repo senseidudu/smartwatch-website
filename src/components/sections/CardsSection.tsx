@@ -7,14 +7,18 @@ import SmartLink from '../SmartLink'
 import SectionHead from './SectionHead'
 import s from './Sections.module.css'
 
-type Props = { section: Extract<Section, { kind: 'cards' }> }
+/** 'product' is the Products page's platform grid: large icon tiles, heading-face titles, a centred last row. */
+export type CardVariant = 'default' | 'product'
 
-export function Card({ item }: { item: CardItem }) {
+type Props = { section: Extract<Section, { kind: 'cards' }>; variant?: CardVariant }
+
+export function Card({ item, variant = 'default' }: { item: CardItem; variant?: CardVariant }) {
+  const product = variant === 'product'
   const inner = (
     <>
       {item.icon && (
         <span className={s.cardIcon}>
-          <Icon name={item.icon} size={22} />
+          <Icon name={item.icon} size={product ? 32 : 22} />
         </span>
       )}
       {(item.image || item.imageLabel) && (
@@ -39,23 +43,25 @@ export function Card({ item }: { item: CardItem }) {
       {item.href && <span className={s.cardMore}>Learn more →</span>}
     </>
   )
+  const className = cx(s.card, product && s.cardProduct)
   return item.href ? (
-    <SmartLink to={item.href} className={cx(s.card, s.cardLink, 'lift')}>
+    <SmartLink to={item.href} className={cx(className, s.cardLink, 'lift')}>
       {inner}
     </SmartLink>
   ) : (
-    <div className={s.card}>{inner}</div>
+    <div className={className}>{inner}</div>
   )
 }
 
-export default function CardsSection({ section }: Props) {
+export default function CardsSection({ section, variant = 'default' }: Props) {
   const columns = section.columns ?? (section.items.length === 4 ? 2 : 3)
+  const grid = variant === 'product' ? s.cardsProduct : s[`cols${columns}`]
   return (
     <section id={section.id} className={cx('container', s.section)}>
       <SectionHead eyebrow={section.eyebrow} title={section.title} intro={section.intro} />
-      <Reveal stagger className={cx(s.cards, s[`cols${columns}`])}>
+      <Reveal stagger className={cx(s.cards, grid)}>
         {section.items.map((item) => (
-          <Card key={item.title} item={item} />
+          <Card key={item.title} item={item} variant={variant} />
         ))}
       </Reveal>
     </section>

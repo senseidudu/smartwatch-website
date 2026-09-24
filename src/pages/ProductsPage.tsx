@@ -20,7 +20,6 @@ const productCards: CardsSectionData = {
   id: 'products',
   title: 'Designed around your unique requirements.',
   intro: 'Software products that work together on one platform, powered by industry-leading AI.',
-  columns: 3,
   items: pillars.map((p) => ({ title: p.name, body: p.short, icon: p.icon, href: p.to })),
 }
 
@@ -84,7 +83,7 @@ export default function ProductsPage() {
       <div className={s.body}>
         <StickyRail items={rail} />
         <Reveal>
-          <CardsSection section={productCards} />
+          <CardsSection section={productCards} variant="product" />
         </Reveal>
         {deviceCards && (
           <Reveal>

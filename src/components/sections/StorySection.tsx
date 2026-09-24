@@ -48,9 +48,21 @@ export default function StorySection({ section }: Props) {
             <>
               <div className={cx('eyebrow', s.logosTitle)}>{section.clients.title}</div>
               <div className={cx(s.logos, s.storyLogos)}>
-                {section.clients.items.map((name) => (
+                {section.clients.items.map(({ name, logo }) => (
                   <div key={name} className={s.logo}>
-                    {name}
+                    {logo ? (
+                      <img
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={logo.width}
+                        height={logo.height}
+                        loading="lazy"
+                        decoding="async"
+                        className={s.logoImg}
+                      />
+                    ) : (
+                      name
+                    )}
                   </div>
                 ))}
               </div>

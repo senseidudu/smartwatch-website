@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import { site } from '../data/site'
+import { useMediaQuery } from '../hooks/useMediaQuery'
+import { cx } from '../lib/cx'
 import s from './WhatsAppButton.module.css'
 
 /**
@@ -24,27 +27,65 @@ export function WhatsAppMark({ size = 26 }: { size?: number }) {
   )
 }
 
+/** Below this width the card folds into the badge and opens on a tap: pinned open, it covers a third of a phone screen. */
+const COMPACT = '(max-width: 900px)'
+
+function CloseMark({ size = 22 }: { size?: number }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  )
+}
+
 /**
- * Floating WhatsApp card, pinned open on every page from first load. We run a line
- * per region, so both numbers stay in view rather than guessing which team the
- * visitor wants.
+ * Floating WhatsApp card. On desktop it is pinned open on every page from first load: we run a
+ * line per region, so both numbers stay in view rather than guessing which team the visitor
+ * wants. On phones and tablets only the badge shows until it is tapped.
  */
 export default function WhatsAppButton() {
+  const compact = useMediaQuery(COMPACT)
+  const [open, setOpen] = useState(false)
+  const showCard = !compact || open
   return (
     <aside className={s.root} aria-label="Chat with Smartwatch on WhatsApp">
-      <div className={s.card}>
-        <div className={s.cardTitle}>Chat with us on WhatsApp</div>
-        <p className={s.cardBody}>Pick the line nearest to you.</p>
-        {site.whatsapp.map((line) => (
-          <a key={line.href} href={line.href} target="_blank" rel="noopener noreferrer" className={s.line}>
-            <span className={s.lineCountry}>{line.country}</span>
-            <span className={s.lineNumber}>{line.label}</span>
-          </a>
-        ))}
-      </div>
-      <div className={s.badge} aria-hidden="true">
-        <WhatsAppMark />
-      </div>
+      {showCard && (
+        <div className={s.card} id="whatsapp-card">
+          <div className={s.cardTitle}>Chat with us on WhatsApp</div>
+          <p className={s.cardBody}>Pick the line nearest to you.</p>
+          {site.whatsapp.map((line) => (
+            <a key={line.href} href={line.href} target="_blank" rel="noopener noreferrer" className={s.line}>
+              <span className={s.lineCountry}>{line.country}</span>
+              <span className={s.lineNumber}>{line.label}</span>
+            </a>
+          ))}
+        </div>
+      )}
+      {compact ? (
+        <button
+          type="button"
+          className={cx(s.badge, s.toggle)}
+          aria-expanded={open}
+          aria-controls={open ? 'whatsapp-card' : undefined}
+          aria-label={open ? 'Close the WhatsApp lines' : 'Chat with us on WhatsApp'}
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? <CloseMark /> : <WhatsAppMark />}
+        </button>
+      ) : (
+        <div className={s.badge} aria-hidden="true">
+          <WhatsAppMark />
+        </div>
+      )}
     </aside>
   )
 }

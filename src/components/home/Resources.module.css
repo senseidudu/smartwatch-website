@@ -113,3 +113,19 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 520px) {
+  .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .featureTitle {
+    font-size: 20px;
+  }
+
+  .post {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 12px;
+  }
+}

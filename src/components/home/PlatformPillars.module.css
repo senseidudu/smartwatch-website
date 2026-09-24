@@ -255,3 +255,58 @@
     gap: 32px;
   }
 }
+
+/*
+ * Phones: the seven tabs run as one row that scrolls sideways under the thumb, bleeding to the
+ * screen edges so the next tab peeks in; the strip keeps the selected tab in view itself.
+ */
+@media (max-width: 680px) {
+  .tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--gutter);
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 4px var(--gutter) 8px;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    flex: 0 0 auto;
+    min-width: 156px;
+    scroll-snap-align: start;
+  }
+
+  .strap {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .section {
+    padding: 56px 0;
+  }
+
+  .inner {
+    gap: 36px;
+  }
+
+  .detail {
+    gap: 24px;
+  }
+
+  .detail::before {
+    inset: -20px -12px;
+  }
+
+  .detailBody {
+    font-size: 16px;
+  }
+}

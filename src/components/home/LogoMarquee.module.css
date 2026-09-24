@@ -86,3 +86,14 @@
     display: none;
   }
 }
+
+@media (max-width: 520px) {
+  .item {
+    width: 180px;
+    height: 88px;
+  }
+
+  .logo {
+    max-height: 56px;
+  }
+}

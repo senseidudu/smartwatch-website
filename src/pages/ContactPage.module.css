@@ -36,7 +36,8 @@
 
 .router {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Three across on desktop, two on tablets, one on phones, without a breakpoint of its own. */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
 }
 
@@ -134,7 +135,7 @@
 
 .offices {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
 }
 
@@ -238,11 +239,6 @@
     margin-top: -28px;
   }
 
-  .router,
-  .offices {
-    grid-template-columns: 1fr;
-  }
-
   .support,
   .officesSection {
     padding-top: 56px;
@@ -259,5 +255,30 @@
   .demoGrid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+}
+
+@media (max-width: 520px) {
+  .band {
+    padding: 48px 0 40px;
+  }
+
+  .office,
+  .card {
+    padding: 20px;
+  }
+
+  .support,
+  .officesSection {
+    padding-top: 48px;
+  }
+}
+
+@media (pointer: coarse) {
+  .officeTel,
+  .cardMore {
+    display: inline-block;
+    padding: 6px 0;
+    margin: -6px 0;
   }
 }

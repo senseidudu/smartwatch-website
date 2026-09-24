@@ -467,3 +467,10 @@ export const partnerLogos = [
     height: 120,
   },
 ] satisfies Img[]
+
+/** Finds a partner's logo by its brand name; throws at module load so a typo fails the tests, not a visitor. */
+export function partnerLogo(name: string): Img {
+  const logo = partnerLogos.find((entry) => entry.alt === name)
+  if (!logo) throw new Error(`No partner logo named "${name}"`)
+  return logo
+}

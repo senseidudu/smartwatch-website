@@ -998,13 +998,51 @@
   }
 }
 
+/*
+ * Phones: five stacked cards would run to two screens of decoration, so the grid becomes a
+ * row of cards that snaps sideways, bleeding to the screen edges so the next card peeks in.
+ */
 @media (max-width: 680px) {
   .grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    gap: 12px;
+    width: auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 4px var(--gutter) 12px;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 min(84vw, 360px);
+    min-height: 320px;
+    scroll-snap-align: start;
   }
 
   .wide {
     grid-column: auto;
+  }
+
+  /* The mono labels step up to a legible size on a small, close screen. */
+  .micro,
+  .node span,
+  .metricTrend,
+  .days span,
+  .pill,
+  .live,
+  .logTag,
+  .logTime,
+  .sensorRate .micro,
+  .sensorUnit {
+    font-size: 10px;
   }
 }
 

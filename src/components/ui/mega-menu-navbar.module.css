@@ -142,10 +142,12 @@
 
 .burger {
   display: none;
-  width: 40px;
-  height: 40px;
+  /* A 44px target, pulled out so the icon still sits at the gutter's edge. */
+  width: 44px;
+  height: 44px;
+  margin-right: -8px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   background: transparent;
   align-items: center;
   justify-content: center;
@@ -249,8 +251,10 @@
   position: fixed;
   left: 0;
   right: 0;
-  top: var(--header-h);
-  height: calc(100vh - var(--header-h));
+  /* --drawer-top is the bar's measured bottom edge (set by the component); dvh tracks the browser chrome. */
+  top: var(--drawer-top, var(--header-h));
+  height: calc(100vh - var(--drawer-top, var(--header-h)));
+  height: calc(100dvh - var(--drawer-top, var(--header-h)));
   background: var(--white);
   color: var(--ink);
   border-top: 1px solid var(--line);
@@ -262,6 +266,8 @@
 .drawerScroll {
   flex: 1;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 8px var(--gutter) 24px;
   display: flex;
   flex-direction: column;
@@ -319,10 +325,11 @@
 }
 
 .drawerFooter {
-  height: 74px;
+  min-height: 74px;
   flex-shrink: 0;
   border-top: 1px solid var(--line);
-  padding: 0 var(--gutter);
+  /* Clears the home indicator on phones without a hardware button. */
+  padding: 0 var(--gutter) env(safe-area-inset-bottom, 0px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -373,6 +380,22 @@
   .actions {
     gap: 16px;
   }
+
+  .menu {
+    padding: 24px;
+    gap: 24px;
+    border-radius: 24px;
+  }
+}
+
+/* Short laptop screens: the panel scrolls inside itself rather than running off the bottom. */
+@media (max-height: 760px) {
+  .menu {
+    max-height: calc(100vh - var(--header-h) - 40px);
+    max-height: calc(100dvh - var(--header-h) - 40px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
 }
 
 @media (max-width: 900px) {
@@ -393,5 +416,11 @@
 @media (max-width: 520px) {
   .logo img {
     height: 38px;
+  }
+}
+
+@media (pointer: coarse) {
+  .drawerLink {
+    padding: 11px 0;
   }
 }

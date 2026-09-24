@@ -99,3 +99,25 @@
     gap: 8px;
   }
 }
+
+/* On small screens the badge is the control that opens and closes the card. */
+.toggle {
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggle:hover {
+  background: #1fb85a;
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--green-dark);
+  outline-offset: 3px;
+}
+
+.toggle[aria-expanded='true'] {
+  background: var(--forest);
+}

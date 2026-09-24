@@ -50,6 +50,21 @@ bun run preview    # serve dist/
 - `src/lib/leads.ts` — `submitLead()`, the single place to wire the demo and contact forms to a backend.
 - `public/images/` — the client's approved imagery (WebP).
 
+## Responsive conventions
+
+- Breakpoints, widest first: `1240px` (tighter header and menu spacing), `1100px` (contact link and the
+  menu promo tile go), `900px` (drawer replaces the nav, two-column sections stack, the WhatsApp card
+  folds into its badge), `680px` (the platform tabs and the bento cards become sideways-scrolling
+  strips), `520px` (single-column grids, phone padding), `400px` (display type floors).
+- Touch screens get taller hit areas through `@media (pointer: coarse)`: links take vertical padding
+  and hand it back as negative margin, so the layout does not move. Hover lifts are off under
+  `@media (hover: none)`.
+- The mobile drawer measures the header's real bottom edge (`--drawer-top`) and uses `100dvh`, so it
+  never covers the bar or hides its footer behind browser chrome.
+- Sideways strips (sticky rail, platform tabs, bento) bleed to the screen edges with negative
+  `margin-inline` and `scroll-padding-inline` set to the gutter; the sticky rail fades its right edge
+  while more pills are off-screen (`data-more`).
+
 ## Adding a page
 
 1. Create `src/data/solutions/<slug>.ts` (or `products/`) exporting `page: DetailPage`.
