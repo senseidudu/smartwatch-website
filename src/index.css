@@ -1,23 +1,34 @@
 /*
  * Tokens follow the Smartwatch Solutions Brand Guidelines v1.0 (July 2022).
- * Blue #17315b is the base colour; green #4d9734 is used with restraint as an accent.
- * Secondary colours (sky, yellow, lime) are complementary and used sparingly.
- * Headings: Century Gothic (falls back to Questrial where it is not installed). Body: Open Sans.
+ * White and green, balanced as the guide's pages are: a white ground with grey copy, green titles,
+ * eyebrows, links, ticks and buttons, a green-black ink for small UI labels, pale green tints for
+ * panels and selected states, and green bands only as closers (spotlight, footer). Navy is kept to
+ * the wordmark and the hero's lead line, as the guide's pull-up banners use it. Never a surface.
+ * The platform section and its bento play only in shades of green; sky and yellow stay unused. Headings: Century Gothic (Questrial fallback). Body: Open Sans.
  */
 
 :root {
   /* Primary */
   --navy: #17315b;
-  --navy-2: #10254a;
-  --navy-3: #22406f;
   --green: #4d9734;
   --green-dark: #3e7a2a;
+  --green-deep: #2f5f20;
+  /* Green-black ink for small labels and nav text: reads green, clears 4.5:1 at any size */
+  --forest: #1f3a17;
+
+  /* Tint ladder: the guide's step-down from the brand green */
+  --green-100: #e8f2e3;
+  --green-200: #c9dfc0;
+  --green-300: #a3cb95;
+  --green-400: #7db468;
 
   /* Secondary (complementary) */
   --sky: #03b0dd;
+  --sky-2: #0290b5;
   --yellow: #fccd03;
+  --yellow-2: #d9ad00;
   --lime: #d6e086;
-  /* Accent on blue backgrounds, where the primary green lacks contrast */
+  /* Lime lives in the brand gradient only; on green bands the accent is white (--on-band-accent). */
   --green-bright: var(--lime);
 
   /* Universal */
@@ -25,16 +36,54 @@
   --grey: #636363;
   --white: #ffffff;
 
-  --ink: var(--navy);
+  /* RGB channels for alpha use: rgba(var(--green-rgb), 0.12) */
+  --navy-rgb: 23, 49, 91;
+  --forest-rgb: 31, 58, 23;
+  --green-rgb: 77, 151, 52;
+  --lime-rgb: 214, 224, 134;
+  --green-dark-rgb: 62, 122, 42;
+  --green-300-rgb: 163, 203, 149;
+  --green-400-rgb: 125, 180, 104;
+  --shadow-rgb: 25, 25, 25;
+
+  /* Text and neutrals on the white page: green titles (brand green for large type, a step darker for
+     card titles), green-black ink for labels, greys with no blue cast for copy */
+  --ink: var(--forest);
   --ink-2: #4d4d4d;
   --ink-3: var(--grey);
-  --muted: #b9c1cc;
-  --line: #e4e8ee;
-  --line-2: #cdd3dc;
-  --surface: #f3f5f8;
-  --surface-2: #fafbfc;
-  --stripe-a: #e3e7ed;
-  --stripe-b: #eceff4;
+  --heading: var(--green);
+  --heading-plain: var(--green-dark);
+  --muted: #a8a8a8;
+  --line: #e3e3e3;
+  --line-2: #cfcfcf;
+  --surface: #f5f5f5;
+  --surface-2: #fafafa;
+  --stripe-a: #ebebeb;
+  --stripe-b: #f3f3f3;
+
+  /*
+   * Dark band surfaces. Brand green by default (the product and solution openers). Text-dense bands
+   * (the footer, the hardware spotlight) carry data-band-tone="deep", one step darker so white copy
+   * clears 4.5:1, and the header mirrors the tone it is over as data-tone. --band-3 is the raised step.
+   */
+  --band: var(--green);
+  --band-2: var(--green-dark);
+  --band-3: #5da542;
+  --on-band: var(--white);
+  --on-band-muted: rgba(255, 255, 255, 0.88);
+  --on-band-accent: var(--white);
+  --on-band-line: rgba(255, 255, 255, 0.12);
+  --on-band-line-2: rgba(255, 255, 255, 0.22);
+
+  /* What inverts on a dark band: the primary button and the checklist tick */
+  --btn-bg: var(--green);
+  --btn-bg-hover: var(--green-dark);
+  --btn-fg: var(--white);
+  --check-bg: var(--green);
+  --check-fg: var(--white);
+
+  /* The lime-to-green sweep the guide paints on collateral and the logo sphere */
+  --gradient-brand: linear-gradient(135deg, #a7d439 0%, var(--green) 55%, var(--green-dark) 100%);
 
   --font: 'Open Sans', system-ui, Helvetica, Arial, sans-serif;
   --font-heading: 'Century Gothic', CenturyGothic, 'Questrial', AppleGothic, sans-serif;
@@ -44,9 +93,28 @@
   --gutter: 24px;
   --header-h: 64px;
 
-  --shadow-menu: 0 24px 48px -24px rgba(23, 49, 91, 0.25);
-  --shadow-card: 0 24px 60px -32px rgba(23, 49, 91, 0.25);
-  --shadow-pop: 0 24px 48px -24px rgba(23, 49, 91, 0.3);
+  --shadow-menu: 0 24px 48px -24px rgba(var(--shadow-rgb), 0.25);
+  --shadow-card: 0 24px 60px -32px rgba(var(--shadow-rgb), 0.25);
+  --shadow-pop: 0 24px 48px -24px rgba(var(--shadow-rgb), 0.3);
+}
+
+/* On a dark band the titles, the primary button and the checklist tick invert to white. */
+[data-band='dark'] {
+  --heading: var(--on-band);
+  --heading-plain: var(--on-band);
+  --btn-bg: var(--white);
+  --btn-bg-hover: var(--green-100);
+  --btn-fg: var(--green-dark);
+  --check-bg: var(--on-band);
+  --check-fg: var(--band);
+}
+
+/* Deep bands sit a step darker, so white body copy clears 4.5:1 (white on #4d9734 is 3.6:1). */
+[data-band-tone='deep'],
+[data-tone='deep'] {
+  --band: var(--green-dark);
+  --band-2: var(--green-deep);
+  --band-3: var(--green);
 }
 
 *,
@@ -60,7 +128,7 @@ body {
   margin: 0;
   padding: 0;
   background: var(--white);
-  color: var(--ink);
+  color: var(--ink-2);
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
 }
@@ -83,7 +151,7 @@ a {
 }
 
 a:hover {
-  color: var(--navy);
+  color: var(--green);
 }
 
 h1,
@@ -96,6 +164,14 @@ h4,
 .eyebrow {
   font-family: var(--font-heading);
   font-synthesis: none;
+}
+
+/* Headings, section titles and card titles are green, as the guide's titles are; white on a dark band. */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--heading-plain);
 }
 
 input,
@@ -150,12 +226,34 @@ img {
   color: var(--green-dark);
 }
 
+/* The guide's page label: a grey hairline after the eyebrow that ends in a green dot. */
+.eyebrow--rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow--rule::after {
+  content: '';
+  width: 56px;
+  height: 7px;
+  background:
+    radial-gradient(circle, var(--green) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
+    linear-gradient(var(--line-2), var(--line-2)) left center / calc(100% - 9px) 1px no-repeat;
+}
+
+[data-band='dark'] .eyebrow--rule::after {
+  background:
+    radial-gradient(circle, var(--white) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
+    linear-gradient(var(--on-band-line-2), var(--on-band-line-2)) left center / calc(100% - 9px) 1px no-repeat;
+}
+
 .eyebrow--bright {
-  color: var(--green-bright);
+  color: var(--on-band-accent);
 }
 
 .eyebrow--muted {
-  color: var(--muted);
+  color: var(--ink-3);
 }
 
 .h-display {
@@ -185,6 +283,29 @@ img {
 .h-section--lg {
   font-size: clamp(32px, 3.6vw, 50px);
   line-height: 1.08;
+}
+
+.h-display,
+.h-page,
+.h-section {
+  color: var(--heading);
+}
+
+/* The guide sets titles as a bold and a regular pair: "Digital & Web: Guidelines". */
+.h-light {
+  font-weight: 400;
+}
+
+/* Key sentences in copy are picked out in green bold, as the guide does. */
+.lead strong,
+p strong {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+[data-band='dark'] .lead strong,
+[data-band='dark'] p strong {
+  color: var(--on-band);
 }
 
 .lead {
@@ -219,13 +340,13 @@ img {
 }
 
 .btn--primary {
-  background: var(--navy);
-  color: var(--white);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
 }
 
 .btn--primary:hover {
-  background: var(--navy-2);
-  color: var(--white);
+  background: var(--btn-bg-hover);
+  color: var(--btn-fg);
 }
 
 .btn--outline {
@@ -236,7 +357,7 @@ img {
 }
 
 .btn--outline:hover {
-  border-color: var(--ink);
+  border-color: var(--green);
   color: var(--ink);
 }
 
@@ -298,11 +419,11 @@ img {
 }
 
 .link-arrow--bright {
-  color: var(--green-bright);
+  color: var(--on-band-accent);
 }
 
 .link-arrow--bright:hover {
-  color: var(--white);
+  color: var(--on-band);
 }
 
 /* Check list used on home and product sections */
@@ -330,8 +451,8 @@ img {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--green);
-  color: var(--white);
+  background: var(--check-bg);
+  color: var(--check-fg);
   font-size: 12px;
   display: inline-flex;
   align-items: center;

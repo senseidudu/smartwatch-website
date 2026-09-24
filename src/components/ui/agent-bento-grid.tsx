@@ -17,10 +17,10 @@ import s from './agent-bento-grid.module.css'
  *   - framer-motion becomes CSS transitions and keyframes driven by the same state (path draws use
  *     pathLength + dash offset, springs become an overshooting cubic-bezier); Phosphor icons become
  *     line icons drawn in the site's style; Tailwind and its rainbow palette become a CSS module on
- *     the brand navy/green with one amber and one sky accent
+ *     the brand greens (`deep` for the forest step); the `sky` and `amber` tones map to lighter greens
  *   - the timers only run while the grid is on screen, and not at all under reduced motion, where
  *     each visual rests on its first frame
- *   - surfaces and text run on local tokens, so `dark` repaints the cards for a navy band
+ *   - surfaces and text run on local tokens, so `dark` repaints the cards for a green band
  *   - the visuals are decorative (aria-hidden); each card's heading and copy carry the meaning
  */
 
@@ -154,10 +154,10 @@ type VisualProps = { running: boolean }
 type Step = 'device' | 'gateway' | 'platform' | 'data' | 'api' | 'command'
 const STEPS: Step[] = ['device', 'gateway', 'platform', 'data', 'api', 'command']
 
-type Tone = 'navy' | 'amber' | 'green' | 'sky' | 'mint'
+type Tone = 'deep' | 'amber' | 'green' | 'sky' | 'mint'
 
 const NODES: { id: string; x: number; y: number; glyph?: Glyph; label?: string; tone: Tone }[] = [
-  { id: 'device', x: 50, y: 120, glyph: 'device', label: 'DEVICE', tone: 'navy' },
+  { id: 'device', x: 50, y: 120, glyph: 'device', label: 'DEVICE', tone: 'deep' },
   { id: 'gateway', x: 125, y: 120, tone: 'amber' },
   { id: 'platform', x: 200, y: 120, glyph: 'cloud', label: 'CLOUD', tone: 'green' },
   { id: 'data', x: 280, y: 50, glyph: 'database', label: 'DATA', tone: 'sky' },
@@ -167,12 +167,12 @@ const NODES: { id: string; x: number; y: number; glyph?: Glyph; label?: string; 
 const WIRES = ['M 78 120 L 113 120', 'M 137 120 L 172 120', 'M 200 92 L 200 50 L 252 50', 'M 200 148 L 200 190 L 252 190']
 
 const FLOWS: { d: string; steps: Step[]; tone: Tone }[] = [
-  { d: 'M 78 120 L 113 120', steps: ['device'], tone: 'navy' },
+  { d: 'M 78 120 L 113 120', steps: ['device'], tone: 'deep' },
   { d: 'M 137 120 L 172 120', steps: ['platform'], tone: 'green' },
   { d: 'M 200 92 L 200 50 L 252 50', steps: ['data'], tone: 'sky' },
   { d: 'M 200 148 L 200 190 L 252 190', steps: ['api'], tone: 'mint' },
-  { d: 'M 172 120 L 137 120', steps: ['command'], tone: 'navy' },
-  { d: 'M 113 120 L 78 120', steps: ['command'], tone: 'navy' },
+  { d: 'M 172 120 L 137 120', steps: ['command'], tone: 'deep' },
+  { d: 'M 113 120 L 78 120', steps: ['command'], tone: 'deep' },
 ]
 
 const LIT: Record<Step, string[]> = {
@@ -374,7 +374,7 @@ type Channel = 'erp' | 'fuel' | 'insurer' | 'alerts'
 const CHANNELS: { name: Channel; label: string; glyph: Glyph; tone: Tone; events: number; fill: number }[] = [
   { name: 'erp', label: 'ERP', glyph: 'ledger', tone: 'green', events: 342, fill: 88 },
   { name: 'fuel', label: 'Fuel cards', glyph: 'card', tone: 'sky', events: 218, fill: 56 },
-  { name: 'insurer', label: 'Insurer', glyph: 'shield', tone: 'navy', events: 97, fill: 25 },
+  { name: 'insurer', label: 'Insurer', glyph: 'shield', tone: 'deep', events: 97, fill: 25 },
   { name: 'alerts', label: 'SMS & email', glyph: 'chat', tone: 'amber', events: 54, fill: 14 },
 ]
 
@@ -448,7 +448,7 @@ export function IntegrationsVisual({ running }: VisualProps) {
 
 const SENSORS: { name: string; glyph: Glyph; tone: Tone; rate: number; unit: string }[] = [
   { name: 'GPS', glyph: 'pin', tone: 'green', rate: 60, unit: 'every 1s' },
-  { name: 'CAN bus', glyph: 'engine', tone: 'navy', rate: 42, unit: 'engine data' },
+  { name: 'CAN bus', glyph: 'engine', tone: 'deep', rate: 42, unit: 'engine data' },
   { name: 'Temperature', glyph: 'thermo', tone: 'sky', rate: 12, unit: '±0.5 °C' },
   { name: 'Fuel level', glyph: 'fuel', tone: 'amber', rate: 30, unit: '0.1 L steps' },
 ]
@@ -490,7 +490,7 @@ export function SensorsVisual() {
 
 type GridProps = {
   className?: string
-  /** Repaint the cards for a navy band. */
+  /** Repaint the cards for a dark green band. */
   dark?: boolean
 }
 

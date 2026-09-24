@@ -31,6 +31,7 @@ export const page: DetailPage = {
         'Electronic notifications of upcoming maintenance requirements',
       ],
       mediaLabel: 'vehicle service check',
+      media: img.vehicleServiceCrew,
     },
     {
       kind: 'split',

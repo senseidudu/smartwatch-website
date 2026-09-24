@@ -25,7 +25,8 @@
   color: var(--ink);
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid var(--line);
+  background: var(--green-100);
+  border: 1px solid var(--green-200);
   transition: border-color 0.15s;
 }
 
@@ -66,10 +67,16 @@
   gap: 16px;
   color: var(--ink);
   align-items: center;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--green-100);
+  border: 1px solid var(--green-200);
+  transition: border-color 0.15s;
 }
 
 .post:hover {
   color: var(--green-dark);
+  border-color: var(--green);
 }
 
 .thumb {

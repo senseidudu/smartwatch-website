@@ -8,7 +8,7 @@
 }
 
 .link:hover {
-  background-color: rgba(77, 151, 52, 0.12);
+  background-color: rgba(var(--green-rgb), 0.12);
 }
 
 .link:focus-visible {

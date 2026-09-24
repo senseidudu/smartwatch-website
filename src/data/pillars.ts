@@ -31,6 +31,7 @@ export const pillars: Pillar[] = [
       'Automated trip and driver matching',
       'Driver app for inspections and reports',
     ],
+    image: img.inspectionClipboard,
     imageLabel: 'compliance dashboard screenshot',
   },
   {
@@ -79,6 +80,7 @@ export const pillars: Pillar[] = [
       'Real-time fault alerts',
       'Thorough inspections increase driver accountability',
     ],
+    image: img.vehicleServiceCrew,
     imageLabel: 'maintenance schedule view',
   },
   {
@@ -95,7 +97,7 @@ export const pillars: Pillar[] = [
       'Fewer errors, better resource allocation',
       'Less paperwork, safeguarded information',
     ],
-    image: img.truckRefrigerated,
+    image: img.cargoElockTrailer,
     imageLabel: 'e-lock on shipping container',
   },
   {

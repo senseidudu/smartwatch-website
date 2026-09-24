@@ -33,7 +33,7 @@
 .rows {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
 }
 
 @media (max-width: 900px) {

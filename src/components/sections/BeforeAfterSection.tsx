@@ -8,7 +8,7 @@ export default function BeforeAfterSection({ section }: Props) {
   return (
     <section id={section.id} className={cx('container', s.section)}>
       <div className={s.head}>
-        {section.eyebrow && <div className="eyebrow">{section.eyebrow}</div>}
+        {section.eyebrow && <div className="eyebrow eyebrow--rule">{section.eyebrow}</div>}
         <h2 className="h-section">{section.title}</h2>
         {section.body && <p className="lead">{section.body}</p>}
       </div>

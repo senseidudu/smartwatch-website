@@ -66,6 +66,19 @@ export type Section =
       reverse?: boolean
       cta?: Cta
     })
+  | (Base & {
+      /** A long company story broken into a lede with key facts, themed cards and a named-client row. */
+      kind: 'story'
+      title: string
+      lede: string
+      facts?: { value: string; label: string }[]
+      media?: Img
+      mediaLabel?: string
+      themes: CardItem[]
+      clients?: { title: string; items: string[] }
+      closing?: string
+      cta?: Cta
+    })
   | (Base & { kind: 'stats'; items: Stat[] })
   | (Base & { kind: 'beforeAfter'; title: string; body?: string; before: string[]; after: string[] })
   | (Base & {

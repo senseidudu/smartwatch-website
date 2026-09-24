@@ -90,6 +90,7 @@ export const page: DetailPage = {
         'Extreme acceleration events',
       ],
       mediaLabel: 'driver safety score dashboard',
+      media: img.aiRoadDetection,
     },
     {
       kind: 'split',

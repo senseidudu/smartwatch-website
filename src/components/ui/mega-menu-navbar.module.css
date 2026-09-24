@@ -1,13 +1,13 @@
 /*
  * Chrome for the vendored mega-menu navbar: the sticky bar, triggers, floating panel and
- * mobile drawer. The bar takes the colour of the section under it (data-theme): navy over
- * dark bands, white over light ones. data-solid marks a scrolled page and adds the hairline.
+ * mobile drawer. The bar takes the colour of the section under it (data-theme): the band's
+ * tone (green or deep green, via data-tone) over dark bands, white over light ones. data-solid marks a scrolled page and adds the hairline.
  * The panels' columns, promo card and contact popover live in Header.module.css.
  */
 
 /*
  * Sticky header. Menus are floating white cards that hang beneath the bar; the open item
- * is underlined. The bar is white over light bands and navy over dark ones; data-solid only adds
+ * is underlined. The bar is white over light bands and the band's tone over dark ones; data-solid only adds
  * the hairline once the page has scrolled.
  */
 
@@ -19,22 +19,22 @@
   background: transparent;
   --hdr-fg: var(--ink);
   --hdr-fg-muted: var(--ink-3);
-  --hdr-hover: var(--surface);
+  --hdr-hover: var(--green-100);
   /* No transition: the text colour and the logo swap the instant the theme changes, so the
      background must change with them, or white text sits on a still-white bar mid-fade. */
 }
 
-/* Dark bands paint the bar navy outright: the bar sits above the hero in the flow, over the page's
-   white body, so a transparent bar would put white text on white at the top of a navy-hero page. */
+/* Dark bands paint the bar in their tone outright: the bar sits above the hero in the flow, over the page's
+   white body, so a transparent bar would put white text on white at the top of a dark-hero page. */
 .header[data-theme='dark'] {
   --hdr-fg: var(--white);
-  --hdr-fg-muted: var(--muted);
+  --hdr-fg-muted: var(--on-band-muted);
   --hdr-hover: rgba(255, 255, 255, 0.12);
-  background: var(--navy);
+  background: var(--band);
 }
 
 .header[data-theme='dark'][data-solid] {
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 0 var(--on-band-line);
 }
 
 .header[data-theme='light'] {
@@ -92,6 +92,12 @@
   opacity: 0.75;
 }
 
+/* Over the white page the label greens on hover instead of fading, as the guide's links do. */
+.header:not([data-theme='dark']) .navItem:hover {
+  color: var(--green-dark);
+  opacity: 1;
+}
+
 .navItemOpen,
 .navItemOpen:hover {
   opacity: 1;
@@ -106,6 +112,11 @@
   height: 2px;
   border-radius: 2px;
   background: var(--green);
+}
+
+/* On a green bar the green underline would vanish, so it takes the band's accent there. */
+.header[data-theme='dark'] .navItemOpen::after {
+  background: var(--on-band-accent);
 }
 
 .caret {
@@ -200,7 +211,7 @@
   color: var(--ink);
   border-radius: 32px;
   padding: 32px;
-  box-shadow: 0 30px 80px -20px rgba(10, 24, 48, 0.45);
+  box-shadow: 0 30px 80px -20px rgba(var(--shadow-rgb), 0.45);
   display: flex;
   align-items: stretch;
   gap: 32px;

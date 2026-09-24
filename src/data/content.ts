@@ -5,13 +5,13 @@ import { routes } from './site'
 export const heroWords = [
   {
     word: 'safety',
-    imageLabel: 'dash camera in use',
+    image: img.driverDashcam,
     description: 'AI dash cams and driver scoring flag speeding, harsh braking and fatigue before they turn into incidents.',
     to: routes.product('driver-safety-dash-cameras'),
   },
   {
     word: 'productivity',
-    imageLabel: 'fleet dashboard in use',
+    image: img.tripPlayback,
     description: 'Live tracking, trip history and utilisation reports keep every vehicle and driver on the job.',
     to: routes.product('tracking-and-telematics'),
   },
@@ -40,7 +40,7 @@ export const featuredPost = {
   kind: 'Product',
   title: 'Driver Safety Dash Cameras: AI video, people counting and instant alerts.',
   body: 'Video surveillance, passenger information, AI analytics and people counting, dispatch system and terminal with ticket system.',
-  imageLabel: 'dash camera in use',
+  image: img.driverDashcam,
   to: routes.product('driver-safety-dash-cameras'),
 }
 
@@ -54,7 +54,7 @@ export const posts = [
   {
     kind: 'Product',
     title: 'Save up to 40% on fuel with fleet fuel management',
-    imageLabel: 'fuel tank inspection',
+    image: img.lowerFuelCost,
     to: routes.product('sustainability'),
   },
   {

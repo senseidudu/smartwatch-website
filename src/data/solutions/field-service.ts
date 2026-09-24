@@ -1,3 +1,4 @@
+import { img } from '../images'
 import { anchors, routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -13,6 +14,7 @@ export const page: DetailPage = {
       'Automate field service operations to increase team productivity, reduce expenses and refine customer experience.',
     tone: 'dark',
     mediaLabel: 'field supervisor on site',
+    media: img.fieldEngineerSite,
   },
   sections: [
     {
@@ -73,6 +75,7 @@ export const page: DetailPage = {
       body: 'Improve productivity no matter what vertical you are in. Discover the most cutting-edge solutions for retail and distribution, utilities, medicine, machinery and more.',
       points: ['Retail and distribution', 'Utilities', 'Medicine', 'Machinery'],
       mediaLabel: 'field team job board on a tablet',
+      media: img.fieldTaskBoard,
       cta: { label: 'Request a demo', to: `${routes.contact}#${anchors.demo}` },
     },
     {

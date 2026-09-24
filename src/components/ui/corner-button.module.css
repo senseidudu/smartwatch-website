@@ -1,6 +1,9 @@
 .wrapper {
   --accent: var(--green-dark);
-  --accent-glow: rgba(62, 122, 42, 0.14);
+  --accent-fg: var(--white);
+  --accent-hover: var(--white);
+  --accent-hover-fg: var(--ink);
+  --accent-glow: rgba(var(--green-rgb), 0.14);
   --dot-size: 6px;
   --line-weight: 1px;
   --speed: 0.35s;
@@ -21,10 +24,10 @@
   padding: 6px 8px;
 }
 
-/* Navy pill for secondary actions. Green, used with restraint per the brand guide, is kept for the demo CTA. */
-.navy {
-  --accent: var(--navy);
-  --accent-glow: rgba(23, 49, 91, 0.08);
+/* Forest pill for secondary actions; green is the primary. */
+.deep {
+  --accent: var(--forest);
+  --accent-glow: rgba(var(--forest-rgb), 0.08);
 }
 
 .wrapper:has(.button:hover) {
@@ -51,7 +54,7 @@
   padding: 15px 28px;
   background-color: var(--accent);
   background-image: linear-gradient(#0000, #0002);
-  color: var(--white);
+  color: var(--accent-fg);
   font: inherit;
   font-size: 16px;
   font-weight: 700;
@@ -61,10 +64,10 @@
   border-radius: 30% / 200%;
   box-shadow:
     0 0 0 1px #0002,
-    0 1px 1px rgba(3, 7, 18, 0.02),
-    0 5px 4px rgba(3, 7, 18, 0.04),
-    0 12px 9px rgba(3, 7, 18, 0.06),
-    0 20px 15px rgba(3, 7, 18, 0.08);
+    0 1px 1px rgba(var(--shadow-rgb), 0.02),
+    0 5px 4px rgba(var(--shadow-rgb), 0.04),
+    0 12px 9px rgba(var(--shadow-rgb), 0.06),
+    0 20px 15px rgba(var(--shadow-rgb), 0.08);
   transition:
     background-color 0.2s ease-in-out,
     color 0.2s ease-in-out,
@@ -79,15 +82,15 @@
 }
 
 .button:hover {
-  background-color: var(--white);
-  color: var(--ink);
+  background-color: var(--accent-hover);
+  color: var(--accent-hover-fg);
   transform: scale(1.05);
   border-radius: 10% / 200%;
 }
 
 .button:active {
   background-color: var(--accent);
-  color: var(--white);
+  color: var(--accent-fg);
   transform: scale(0.98);
   border-radius: 20% / 200%;
 }
@@ -275,12 +278,17 @@
   }
 }
 
-/* Navy surfaces (a dark header band, the CTA band, the footer): the frame and dots go light. */
+/* Dark surfaces (a dark header band, a green hero, the footer): the pill inverts to white so it
+   stands off the band (green on green is 1.4:1), and the frame and dots go light. */
 [data-theme='dark'] .wrapper,
 .onDark {
+  --accent: var(--white);
+  --accent-fg: var(--green-dark);
+  --accent-hover: var(--green-dark);
+  --accent-hover-fg: var(--white);
+  --accent-glow: rgba(255, 255, 255, 0.14);
   --dot-color: rgba(255, 255, 255, 0.7);
   --line-color: rgba(255, 255, 255, 0.45);
-  --accent-glow: rgba(214, 224, 134, 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {

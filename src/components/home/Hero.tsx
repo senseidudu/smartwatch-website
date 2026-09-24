@@ -41,16 +41,16 @@ export default function Hero() {
       <div className={cx('container', s.inner)}>
         <div className={s.copy}>
           <h1 className={cx('h-display', s.title)}>
-            <StaggerText>A decade of connecting and protecting fleets.</StaggerText>
+            <StaggerText className={s.titleLead}>A decade of connecting</StaggerText>{' '}
+            <StaggerText delay={0.2}>and protecting fleets.</StaggerText>
           </h1>
           <p className={s.lead} data-enter>
             One platform to help improve the{' '}
-            {heroWords.map(({ word, image, imageLabel, description, to }, i) => (
+            {heroWords.map(({ word, image, description, to }, i) => (
               <Fragment key={word}>
                 <CursorCard
                   to={to}
                   image={image}
-                  imageLabel={imageLabel}
                   description={description}
                   className={cx(s.word, i === active && s.wordOn)}
                 >
@@ -62,7 +62,9 @@ export default function Hero() {
             of your operations across East Africa.
           </p>
           <div className={s.actions} data-enter>
-            <CornerButton to={routes.products} tone="navy" className={s.cta}>Explore products</CornerButton>
+            <CornerButton to={routes.products} className={s.cta}>
+              Explore products
+            </CornerButton>
           </div>
         </div>
 

@@ -13,7 +13,7 @@ export const page: DetailPage = {
     intro:
       'With our telematics technology at your disposal, you can stay within strict budget requirements, track utilisation, meet green goals, manage vehicles, and much more.',
     tone: 'dark',
-    media: img.yardMonitoring,
+    mediaLabel: 'public-sector fleet',
   },
   sections: [
     {

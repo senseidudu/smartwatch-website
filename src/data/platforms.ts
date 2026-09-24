@@ -44,6 +44,7 @@ export const platforms: DetailPage = {
       ],
       points: [`Call ${site.phone}`, `Email ${site.email}`],
       mediaLabel: 'Smartwatch FM on phone, tablet and desktop',
+      media: img.appOnPhone,
       cta: { label: 'Contact support', to: '/contact#support' },
     },
   ],

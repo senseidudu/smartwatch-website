@@ -6,22 +6,23 @@ import Media from '../Media'
 import SmartLink from '../SmartLink'
 import CornerButton from '../ui/corner-button'
 import StaggerText from '../ui/stagger-text'
-import { btnClass, defaultHeroCtas, isDemoCta } from './cta'
+import { btnClass, defaultHeroCtas, isDemoCta, onLight } from './cta'
 import s from './Sections.module.css'
 
 export default function DetailHero({ page }: { page: DetailPage }) {
   const { hero } = page
   const tone = hero.tone ?? 'dark'
   const ctas = hero.ctas ?? defaultHeroCtas(page.kind)
+  // Every hero is the white page design now; only a photo hero paints dark, under its green overlay.
   const photo = tone === 'photo' && hero.media
-  const light = tone === 'light'
+  const light = !photo
   const ref = useRef<HTMLElement>(null)
   // The eyebrow sits still as a label; the headline rises word by word, then the rest follows.
   useEntrance(ref, { delay: 0.3 })
   return (
     <section
       ref={ref}
-      className={cx(s.hero, photo && s.heroPhoto, light && s.heroLight)}
+      className={cx(s.hero, photo && s.heroPhoto)}
       style={photo ? { backgroundImage: `url(${hero.media!.src})` } : undefined}
       data-band={light ? 'light' : 'dark'}
     >
@@ -45,7 +46,7 @@ export default function DetailHero({ page }: { page: DetailPage }) {
                   <SmartLink
                     key={cta.label}
                     to={cta.to}
-                    className={btnClass(light && cta.variant === 'outline-light' ? 'outline' : cta.variant)}
+                    className={btnClass(light ? onLight(cta.variant) : cta.variant)}
                   >
                     {cta.label}
                   </SmartLink>
@@ -61,7 +62,6 @@ export default function DetailHero({ page }: { page: DetailPage }) {
               label={hero.mediaLabel ?? `${page.name} image`}
               ratio="4 / 3"
               radius={24}
-              dark={!light}
               priority
             />
           </div>

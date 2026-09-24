@@ -9,7 +9,7 @@ type Props = { section: Extract<Section, { kind: 'spotlight' }> }
 export default function SpotlightSection({ section }: Props) {
   return (
     <section id={section.id} className={cx('container', s.section)}>
-      <div className={s.spotlight}>
+      <div className={s.spotlight} data-band-tone="deep">
         <Media
           image={section.media}
           label={section.mediaLabel ?? 'hardware product shot'}
@@ -19,7 +19,7 @@ export default function SpotlightSection({ section }: Props) {
           className={s.spotlightMedia}
         />
         <div className={s.spotlightCopy}>
-          <div className="eyebrow eyebrow--bright">{section.eyebrow ?? 'Hardware'}</div>
+          <div className="eyebrow eyebrow--rule eyebrow--bright">{section.eyebrow ?? 'Hardware'}</div>
           <h2 className="h-section">{section.title}</h2>
           <p className={s.spotlightBody}>{section.body}</p>
           {section.specs && (

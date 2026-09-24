@@ -1,7 +1,7 @@
 import { cx } from '../../lib/cx'
 import SmartLink from '../SmartLink'
 import CornerButton from '../ui/corner-button'
-import { btnClass, isDemoCta, type CtaBandProps } from './cta'
+import { btnClass, isDemoCta, onLight, type CtaBandProps } from './cta'
 import s from './Sections.module.css'
 
 export default function CtaBand({ title, body, ctas }: CtaBandProps) {
@@ -15,11 +15,11 @@ export default function CtaBand({ title, body, ctas }: CtaBandProps) {
         <div className={s.ctaActions}>
           {ctas.map((cta) =>
             isDemoCta(cta) ? (
-              <CornerButton key={cta.label} to={cta.to} onDark className={s.ctaCorner}>
+              <CornerButton key={cta.label} to={cta.to} className={s.ctaCorner}>
                 {cta.label}
               </CornerButton>
             ) : (
-              <SmartLink key={cta.label} to={cta.to} className={btnClass(cta.variant)}>
+              <SmartLink key={cta.label} to={cta.to} className={btnClass(onLight(cta.variant))}>
                 {cta.label}
               </SmartLink>
             ),

@@ -29,6 +29,7 @@ export const leadership: DetailPage = {
       'Our team combines industry expertise in information technology and mobile resource management with extensive hands-on experience in their respective fields. The people who run Smartwatch still spend their weeks with customers, vehicles and installers.',
     tone: 'light',
     mediaLabel: 'field supervisor on site',
+    media: img.fieldEngineerSite,
     ctas: [
       { label: 'About Smartwatch', to: routes.about },
       { label: 'Meet the team', to: routes.contact, variant: 'outline-light' },
@@ -55,7 +56,7 @@ export const leadership: DetailPage = {
         'Smartwatch Solutions, established in Uganda and Kenya in 2011, is a leading provider of mobile asset management and fleet management software and services in the East and Horn of Africa region, including Ethiopia and Djibouti.',
         'Serving sectors such as transport, energy and utilities, we support commercial fleets, remote generators and smart metering, with a strong client base of oil and gas firms, telecoms, NGOs and government institutions.',
       ],
-      media: img.yardMonitoring,
+      media: img.truckConvoyHighway,
       cta: { label: 'Read our full heritage', to: `${routes.about}#${anchors.heritage}` },
     },
     { kind: 'related', id: 'related', title: 'More about the company', slugs: [routes.about, routes.careers, routes.partners] },
@@ -102,7 +103,7 @@ export const newsroom: DetailPage = {
       eyebrow: 'Media enquiries',
       title: 'Working on a story?',
       body: 'For interviews, images and background on Smartwatch Solutions, contact our team. We can put you in touch with the right person in Kampala or Nairobi.',
-      media: img.ngo,
+      mediaLabel: 'press and media enquiries',
       cta: { label: 'Contact us', to: routes.contact },
     },
     { kind: 'related', id: 'related', title: 'More about the company', slugs: [routes.about, routes.leadership, routes.blog] },
@@ -127,6 +128,7 @@ export const careers: DetailPage = {
       'Smartwatch builds and supports fleet management for operators across East Africa. We hire engineers, installers, support staff and account managers who like working close to customers and their vehicles.',
     tone: 'light',
     mediaLabel: 'engine diagnostics on a tablet',
+    media: img.teamOnPhone,
     ctas: [{ label: 'Send your application', to: `mailto:${site.email}` }],
   },
   sections: [
@@ -201,7 +203,7 @@ export const partners: DetailPage = {
     intro:
       'Resellers, installers and technology partners extend Smartwatch across the region. Join the programme to offer fleet management, field service and asset monitoring to your own customers, with our platform and support behind you.',
     tone: 'light',
-    media: img.partnerEcosystem,
+    media: img.partnerHands,
     ctas: [{ label: 'Apply to partner', to: routes.contact }],
   },
   sections: [

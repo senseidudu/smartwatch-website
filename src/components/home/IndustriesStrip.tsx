@@ -23,7 +23,7 @@ export default function IndustriesStrip() {
     <section className={cx('container', s.section)}>
       <div className={s.head}>
         <div className={s.headCopy}>
-          <div className="eyebrow">Who we serve</div>
+          <div className="eyebrow eyebrow--rule">Who we serve</div>
           <h2 className="h-section">Solutions for every industry in the physical economy.</h2>
         </div>
         <Link to={routes.solutions} className="link-arrow">

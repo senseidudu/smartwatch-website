@@ -32,7 +32,7 @@ export const page: DetailPage = {
         'Vehicle device disconnection alerts',
       ],
       mediaLabel: 'supervisor checking fleet compliance in the yard',
-      media: img.yardMonitoring,
+      media: img.yardSupervisorTablet,
     },
     {
       kind: 'split',
@@ -44,6 +44,7 @@ export const page: DetailPage = {
         'Sound buzzer alerts drivers before exceeding the speed limit',
       ],
       mediaLabel: 'driver working through the OnTrack app in the cab',
+      media: img.driverInCab,
       reverse: true,
     },
     {

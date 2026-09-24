@@ -18,6 +18,22 @@
   max-width: 640px;
 }
 
+/* The guide's green hairline-and-dot trails the eyebrow. */
+.headCopy :global(.eyebrow) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headCopy :global(.eyebrow)::after {
+  content: '';
+  width: 56px;
+  height: 7px;
+  background:
+    radial-gradient(circle, var(--green) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
+    linear-gradient(var(--green-300), var(--green-300)) left center / calc(100% - 9px) 1px no-repeat;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

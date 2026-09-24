@@ -60,7 +60,7 @@
 
 .popCall {
   display: block;
-  background: var(--navy);
+  background: var(--green);
   color: var(--white);
   font-weight: 600;
   font-size: 14px;
@@ -70,7 +70,7 @@
 }
 
 .popCall:hover {
-  background: var(--navy-2);
+  background: var(--green-dark);
   color: var(--white);
 }
 
@@ -97,7 +97,7 @@
 }
 
 .popHelp:hover {
-  border-color: var(--ink);
+  border-color: var(--green);
   color: var(--ink);
 }
 
@@ -171,8 +171,8 @@
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: var(--navy);
-  color: var(--white);
+  background: var(--green-100);
+  color: var(--green-dark);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -254,7 +254,9 @@
   gap: 10px;
   padding: 16px;
   border-radius: 20px;
-  background: var(--navy);
+  background:
+    radial-gradient(120% 90% at 100% 100%, var(--green-dark) 0%, var(--green) 55%),
+    var(--green);
   color: var(--white);
   transition: transform 0.25s;
 }
@@ -286,7 +288,7 @@
 
 .promoText {
   font-size: 14px;
-  color: var(--muted);
+  color: var(--on-band-muted);
   line-height: 1.5;
 }
 

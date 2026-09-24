@@ -97,9 +97,9 @@
 }
 
 .chipOn {
-  background: var(--navy);
-  color: var(--white);
-  border-color: var(--navy);
+  background: var(--green-100);
+  color: var(--green-dark);
+  border-color: var(--green-300);
 }
 
 .surveySent {

@@ -66,6 +66,8 @@ export interface MegaMenuNavbarProps {
   mobileExtra?: ReactNode
   mobileFooter?: ReactNode
   theme?: 'dark' | 'light'
+  /** Which dark colour the bar paints over a dark band; mirrors the band's data-band-tone. */
+  tone?: 'green' | 'deep'
   /** Paint the bar's own background; off, it is transparent over whatever it starts on. */
   solid?: boolean
   /** Width of a narrow panel, used to keep it inside the viewport. */
@@ -210,6 +212,7 @@ export function MegaMenuNavbar({
   mobileExtra,
   mobileFooter,
   theme = 'light',
+  tone = 'green',
   solid = false,
   narrowWidth = 920,
 }: MegaMenuNavbarProps) {
@@ -292,6 +295,7 @@ export function MegaMenuNavbar({
       ref={navRef}
       className={s.header}
       data-theme={theme}
+      data-tone={tone}
       data-solid={solid || undefined}
       onMouseLeave={scheduleClose}
     >

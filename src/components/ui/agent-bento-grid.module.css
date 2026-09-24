@@ -4,7 +4,7 @@
  */
 
 .grid {
-  /* Surfaces and text; light by default, `.dark` repaints them for a navy band. */
+  /* Surfaces and text; light by default, `.dark` repaints them for a dark band. */
   --g-card: var(--white);
   --g-raised: var(--white);
   --g-stage: var(--surface-2);
@@ -17,10 +17,7 @@
 
   --tone: var(--green);
   --tone-2: var(--green-dark);
-  --sky: #03b0dd;
-  --sky-2: #0290b5;
-  --amber: #fccd03;
-  --amber-2: #d9ad00;
+  --live: var(--green);
   --spring: cubic-bezier(0.34, 1.4, 0.64, 1);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --hatch: repeating-linear-gradient(45deg, transparent 0 6px, var(--g-line) 6px 7px);
@@ -34,23 +31,24 @@
 
 .dark {
   --g-card: rgba(255, 255, 255, 0.05);
-  --g-raised: var(--navy-3);
-  --g-stage: var(--navy-2);
-  --g-sunk: var(--navy);
+  --g-raised: var(--band-3);
+  --g-stage: var(--band-2);
+  --g-sunk: var(--band);
   --g-fg: var(--white);
-  --g-fg-2: rgba(255, 255, 255, 0.82);
-  --g-fg-3: var(--muted);
-  --g-line: rgba(255, 255, 255, 0.1);
-  --g-line-2: rgba(255, 255, 255, 0.2);
+  --g-fg-2: var(--on-band-muted);
+  --g-fg-3: rgba(255, 255, 255, 0.7);
+  --g-line: var(--on-band-line);
+  --g-line-2: var(--on-band-line-2);
+  --live: var(--green-bright);
 }
 
 .wide {
   grid-column: span 2;
 }
 
-.navy {
-  --tone: var(--navy-3);
-  --tone-2: var(--navy);
+.deep {
+  --tone: var(--green-deep);
+  --tone-2: var(--forest);
 }
 .green {
   --tone: var(--green);
@@ -60,13 +58,14 @@
   --tone: var(--green-bright);
   --tone-2: var(--green);
 }
+/* `sky` and `amber` are the vendored component's tone names; here they are two lighter greens. */
 .sky {
-  --tone: var(--sky);
-  --tone-2: var(--sky-2);
+  --tone: var(--green-400);
+  --tone-2: var(--green);
 }
 .amber {
-  --tone: var(--amber);
-  --tone-2: var(--amber-2);
+  --tone: var(--green-300);
+  --tone-2: var(--green-400);
 }
 
 .glyph {
@@ -84,10 +83,10 @@
   line-height: 1;
 }
 
-/* Navy disappears on a navy band, so it lifts to a slate blue there; tags read in the lighter tone. */
-.dark .navy {
-  --tone: #5a80b4;
-  --tone-2: #3d6399;
+/* The deep green sinks into a green band, so it lifts to its tint there; tags read in the lighter tone. */
+.dark .deep {
+  --tone: var(--green-200);
+  --tone-2: var(--green-300);
 }
 
 .dark .pill,
@@ -107,7 +106,7 @@
   background: var(--g-card);
   box-shadow:
     0 0 0 1px var(--g-line),
-    0 2px 4px rgba(23, 49, 91, 0.04);
+    0 2px 4px rgba(var(--shadow-rgb), 0.04);
   overflow: hidden;
   transition: box-shadow 0.3s;
 }
@@ -219,8 +218,8 @@
   gap: 3px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 1px 2px rgba(23, 49, 91, 0.1),
-    0 4px 8px rgba(23, 49, 91, 0.08);
+    0 1px 2px rgba(var(--shadow-rgb), 0.1),
+    0 4px 8px rgba(var(--shadow-rgb), 0.08);
   transition:
     box-shadow 0.3s,
     filter 0.3s;
@@ -239,7 +238,7 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.4),
     0 0 0 4px color-mix(in srgb, var(--tone) 22%, transparent),
-    0 4px 8px rgba(23, 49, 91, 0.08);
+    0 4px 8px rgba(var(--shadow-rgb), 0.08);
 }
 
 .router {
@@ -257,8 +256,8 @@
 }
 
 .routerLit {
-  background: color-mix(in srgb, var(--amber) 20%, var(--g-raised));
-  border-color: var(--amber);
+  background: color-mix(in srgb, var(--green-300) 28%, var(--g-raised));
+  border-color: var(--green-300);
 }
 
 @keyframes turn {
@@ -276,7 +275,7 @@
 }
 
 .routerLit .routerSpin {
-  border-color: var(--amber-2);
+  border-color: var(--green-400);
 }
 
 /* ── 2 · Telemetry ── */
@@ -360,7 +359,7 @@
 }
 
 .down {
-  color: var(--sky);
+  color: var(--ink-3);
 }
 
 .spark {
@@ -434,7 +433,7 @@
   inset: auto 0 0;
   height: var(--h);
   border-radius: 8px 8px 0 0;
-  background: linear-gradient(to bottom, var(--navy-3), var(--navy));
+  background: linear-gradient(to bottom, var(--tone), var(--tone-2));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   animation: breathe ease-in-out infinite both;
 }
@@ -486,7 +485,7 @@
   padding: 10px 12px;
   background: var(--g-raised);
   border-color: var(--g-line-2);
-  box-shadow: 0 6px 16px -8px rgba(23, 49, 91, 0.2);
+  box-shadow: 0 6px 16px -8px rgba(var(--shadow-rgb), 0.2);
 }
 
 .stGreen {
@@ -494,12 +493,12 @@
   --tone-2: var(--green-dark);
 }
 .stSky {
-  --tone: var(--sky);
-  --tone-2: var(--sky-2);
+  --tone: var(--green-400);
+  --tone-2: var(--green);
 }
 .stAmber {
-  --tone: var(--amber);
-  --tone-2: var(--amber-2);
+  --tone: var(--green-300);
+  --tone-2: var(--green-400);
 }
 .stGrey {
   --tone: #8a8a8a;
@@ -660,7 +659,7 @@
   border: 1px solid transparent;
   box-shadow:
     0 0 0 1px var(--g-line),
-    0 2px 4px rgba(23, 49, 91, 0.04);
+    0 2px 4px rgba(var(--shadow-rgb), 0.04);
   transition:
     transform 0.5s var(--spring),
     background 0.4s,
@@ -675,7 +674,7 @@
   border-color: var(--tone-2);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 2px 6px rgba(23, 49, 91, 0.12);
+    0 2px 6px rgba(var(--shadow-rgb), 0.12);
 }
 
 .channelOn .chIcon {
@@ -703,7 +702,7 @@
   height: 6px;
   border-radius: 6px;
   background: var(--g-sunk);
-  box-shadow: inset 0 1px 2px rgba(23, 49, 91, 0.08);
+  box-shadow: inset 0 1px 2px rgba(var(--shadow-rgb), 0.08);
   overflow: hidden;
 }
 
@@ -790,7 +789,7 @@
 @keyframes halo {
   0%,
   100% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--green-bright) 50%, transparent);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--live) 50%, transparent);
   }
   50% {
     box-shadow: 0 0 0 5px transparent;
@@ -801,7 +800,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--green-bright);
+  background: var(--live);
   animation: halo 2s ease-in-out infinite;
 }
 
@@ -910,7 +909,7 @@
   border-radius: 16px;
   border: 1px solid var(--g-line);
   background: var(--g-raised);
-  box-shadow: 0 1px 2px rgba(23, 49, 91, 0.04);
+  box-shadow: 0 1px 2px rgba(var(--shadow-rgb), 0.04);
   animation: rise 0.5s var(--spring) both;
   transition:
     box-shadow 0.3s,
@@ -919,7 +918,7 @@
 
 .sensor:hover {
   border-color: var(--g-line-2);
-  box-shadow: 0 6px 14px -8px rgba(23, 49, 91, 0.2);
+  box-shadow: 0 6px 14px -8px rgba(var(--shadow-rgb), 0.2);
 }
 
 .sensorTop {

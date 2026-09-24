@@ -10,8 +10,11 @@
   margin-bottom: 0;
 }
 
+/* Each cell carries a bar from the guide's tint ladder, stepping from brand green to its palest tint. */
 .cell {
+  --step: var(--green);
   background: var(--white);
+  box-shadow: inset 0 4px 0 var(--step);
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -22,7 +25,7 @@
   font-size: 40px;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--ink);
+  color: var(--green-dark);
   line-height: 1;
 }
 
@@ -30,6 +33,18 @@
   font-size: 14px;
   color: var(--ink-3);
   font-weight: 500;
+}
+
+.cell:nth-child(4n + 2) {
+  --step: var(--green-400);
+}
+
+.cell:nth-child(4n + 3) {
+  --step: var(--green-300);
+}
+
+.cell:nth-child(4n + 4) {
+  --step: var(--green-200);
 }
 
 @media (max-width: 900px) {

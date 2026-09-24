@@ -119,6 +119,7 @@ export const blog: DetailPage = {
       'Product launches, field notes and the numbers behind them, from the team connecting and protecting fleets across East Africa since 2011.',
     tone: 'dark',
     mediaLabel: 'fleet dashboard in use',
+    media: img.aiRoadDetection,
     ctas: [{ label: 'Latest launch', to: featuredPost.to }],
   },
   sections: [
@@ -129,12 +130,11 @@ export const blog: DetailPage = {
       title: 'Recent posts.',
       columns: 3,
       items: [
-        { title: featuredPost.title, body: featuredPost.body, imageLabel: featuredPost.imageLabel, href: featuredPost.to },
+        { title: featuredPost.title, body: featuredPost.body, image: featuredPost.image, href: featuredPost.to },
         ...posts.map((post) => ({
           title: post.title,
           body: `${post.kind} spotlight`,
           image: post.image,
-          imageLabel: post.imageLabel,
           href: post.to,
         })),
         {
@@ -146,7 +146,7 @@ export const blog: DetailPage = {
         {
           title: 'Staying connected beyond cellular coverage',
           body: 'Solution spotlight',
-          imageLabel: 'field vehicle GPS tracking',
+          image: img.ngoConvoy,
           href: routes.solution('ngo-satellite-tracking'),
         },
       ],
@@ -184,6 +184,7 @@ export const guides: DetailPage = {
       'Longer reads on each part of running a fleet well, built from what the platform does and what operators across the region have learned with it.',
     tone: 'dark',
     mediaLabel: 'field team data on a tablet',
+    media: img.fleetFeatureRoad,
     ctas: [{ label: 'Start with compliance', to: routes.product('compliance') }],
   },
   sections: [

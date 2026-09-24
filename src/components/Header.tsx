@@ -122,7 +122,8 @@ const menus: MegaMenu[] = [
           <FeaturedList links={featuredProducts} />
         </Column>
         <Promo
-          imageLabel="dash camera in use"
+          image={img.driverDashcam}
+          contain
           title="Driver Safety Dash Cameras are here."
           body="AI video surveillance, people counting, and instant alerts on violations."
           to={routes.product('driver-safety-dash-cameras')}
@@ -208,7 +209,7 @@ const menus: MegaMenu[] = [
           </div>
         </Column>
         <Promo
-          image={img.ngo}
+          image={img.eaHighwayTraffic}
           title="A decade of connecting and protecting fleets."
           body="Founded in 2011. Offices in Kampala, Nairobi and the Netherlands."
           to={routes.about}
@@ -254,12 +255,13 @@ function ContactAction() {
 
 export default function Header() {
   // The bar takes the colour of the section under it and is always solid, so the logo never sits on the hero video.
-  const theme = useBandTheme()
+  const { band: theme, tone } = useBandTheme()
   const solid = useScrolled()
 
   return (
     <MegaMenuNavbar
       theme={theme}
+      tone={tone}
       solid={solid}
       brandName={site.name}
       logoHref={routes.home}

@@ -15,6 +15,7 @@ export const page: DetailPage = {
       'Live visibility into your operational health, utilization, location, equipment, and assets.',
     tone: 'dark',
     mediaLabel: 'tracked vehicle pinned on a live map',
+    media: img.mapPin,
   },
   sections: [
     {
@@ -70,6 +71,7 @@ export const page: DetailPage = {
         'Data and reports available 24/7 from any internet-enabled computer, smartphone or tablet',
       ],
       mediaLabel: 'trip replay and utilisation report',
+      media: img.tripPlayback,
       reverse: true,
     },
     {

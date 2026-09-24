@@ -17,7 +17,7 @@ export default function Resources() {
       </div>
       <div className={s.grid}>
         <Link to={featuredPost.to} className={s.feature}>
-          <Media label={featuredPost.imageLabel} ratio="16 / 9" radius={0} decorative />
+          <Media image={featuredPost.image} ratio="16 / 9" radius={0} decorative />
           <div className={s.featureBody}>
             <div className="eyebrow">{featuredPost.kind}</div>
             <div className={s.featureTitle}>{featuredPost.title}</div>
@@ -30,7 +30,7 @@ export default function Resources() {
             <Link key={post.title} to={post.to} className={s.post}>
               <Media
                 image={post.image}
-                label={post.imageLabel ?? 'image coming soon'}
+                label="image coming soon"
                 ratio="4 / 3"
                 radius={12}
                 stripe={8}

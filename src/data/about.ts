@@ -17,7 +17,7 @@ export const about: DetailPage = {
     intro:
       "With strategic partners across six countries in Africa and Europe, Smartwatch Solutions is pioneering Africa's telematics industry, achieving the highest quality standards for fleet management.",
     tone: 'light',
-    media: img.ngo,
+    media: img.eaHighwayTraffic,
     ctas: [
       { label: 'Learn about our platforms', to: '/platforms' },
       { label: 'Contact us', to: '/contact', variant: 'outline-light' },
@@ -53,20 +53,48 @@ export const about: DetailPage = {
       ],
     },
     {
-      kind: 'split',
+      kind: 'story',
       id: 'heritage',
       eyebrow: 'Heritage',
       title: "East Africa's leading provider of fleet and mobile asset management solutions.",
-      body: [
-        'Smartwatch Solutions, established in Uganda and Kenya in 2011, is a leading provider of mobile asset management and fleet management software and services in the East and Horn of Africa region, including Ethiopia and Djibouti. Our expertise in delivering successful Software-as-a-Service (SaaS) fleet management solutions and end-to-end IoT smart solutions has positioned us as a reputable player in the industry.',
-        'We offer a comprehensive package of mobile asset and fleet management solutions, catering to various sectors including motorised fleets (commercial vehicles), remote generators, and smart metering for energy and water. Our team combines industry expertise in information technology and mobile resource management with extensive hands-on experience in their respective fields.',
-        'Serving sectors such as transport, energy and utilities, we support commercial fleets, remote generators and smart metering, with a strong client base of oil and gas firms, telecoms, NGOs and government institutions. Our mobile and web-based platforms improve asset utilisation, driver performance and overall operational efficiency.',
-        'Our esteemed client portfolio boasts renowned organisations, prominent telecommunication companies, NGOs and government entities across the East and Horn of Africa region, underscoring our proven track record of delivering exceptional value and service. By consistently exceeding industry benchmarks, we have forged a reputation for unparalleled customer satisfaction and success.',
-        'Our solutions include mobile and web application platforms that collect data from on-board computers to analyse vehicle usage and driver behaviour. We provide individual and group feedback based on comprehensive reports, aiming to drive permanent behavioural change and improve driver performance. Our customisable solution integrates with existing fleet systems, and our efficient business practices have garnered success across the transport industry.',
-        'With a strong commitment to excellence, Smartwatch Solutions continues to deliver cutting-edge fleet management solutions, enabling organisations to optimise their mobile assets and enhance operational efficiency.',
+      lede: 'Established in Uganda and Kenya in 2011, Smartwatch Solutions delivers Software-as-a-Service (SaaS) fleet management and end-to-end IoT smart solutions across the East and Horn of Africa, including Ethiopia and Djibouti.',
+      facts: [
+        { value: '2011', label: 'Founded in Uganda and Kenya' },
+        { value: '4', label: 'Markets across East Africa and the Horn' },
+        { value: 'SaaS + IoT', label: 'End-to-end fleet and smart solutions' },
       ],
-      points: ['Schlumberger', 'Baker Hughes', 'Total Energies', 'British Gas Group', 'CNOOC', 'MTN'],
       mediaLabel: 'Smartwatch FM on phone, tablet and desktop',
+      media: img.appOnPhone,
+      themes: [
+        {
+          icon: 'assets',
+          title: 'What we manage',
+          body: 'A comprehensive package of mobile asset and fleet management solutions.',
+          points: ['Motorised commercial fleets', 'Remote generators', 'Smart metering for energy and water'],
+        },
+        {
+          icon: 'site',
+          title: 'Who we serve',
+          body: 'Transport, energy and utilities, with a strong client base across the region.',
+          points: ['Oil and gas firms', 'Telecoms', 'NGOs', 'Government institutions'],
+        },
+        {
+          icon: 'platform',
+          title: 'How it works',
+          body: 'Mobile and web platforms collect data from on-board computers to analyse vehicle usage and driver behaviour.',
+          points: [
+            'Individual and group feedback from detailed reports',
+            'Permanent change in driver behaviour',
+            'Integrates with your existing fleet systems',
+          ],
+        },
+      ],
+      clients: {
+        title: 'Trusted by',
+        items: ['Schlumberger', 'Baker Hughes', 'Total Energies', 'British Gas Group', 'CNOOC', 'MTN'],
+      },
+      closing:
+        'Our team pairs expertise in information technology and mobile resource management with hands-on field experience, and a record of exceeding industry benchmarks for customer satisfaction.',
       cta: { label: 'View our products and services', to: '/products' },
     },
     {

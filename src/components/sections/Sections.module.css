@@ -32,39 +32,63 @@
 }
 
 .leadLight {
-  color: var(--muted);
+  color: var(--on-band-muted);
 }
 
 /* Hero */
 
+/* Heroes are white like the guide's pages; the logo sphere's soft green glow bleeds in at the right edge,
+   behind the image, and the eyebrow carries the guide's hairline-and-dot. */
 .hero {
-  background:
-    radial-gradient(120% 90% at 100% 100%, var(--navy-3) 0%, var(--navy) 55%),
-    var(--navy);
-  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  color: var(--ink);
   padding: 88px 0 96px;
 }
 
-.heroLight {
-  background: var(--white);
-  color: var(--ink);
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -14vw;
+  width: 62vw;
+  height: 160%;
+  background: radial-gradient(closest-side, var(--green-200) 0%, var(--green-100) 42%, transparent 100%);
+  opacity: 0.85;
+  pointer-events: none;
 }
 
-.heroLight .heroLead {
-  color: var(--ink-2);
+.heroCopy :global(.eyebrow) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.heroCopy :global(.eyebrow)::after {
+  content: '';
+  width: 56px;
+  height: 7px;
+  background:
+    radial-gradient(circle, var(--green) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
+    linear-gradient(var(--line-2), var(--line-2)) left center / calc(100% - 9px) 1px no-repeat;
 }
 
 .heroPhoto {
   background-size: cover;
   background-position: center;
-  position: relative;
+  color: var(--on-band);
 }
 
 .heroPhoto::before {
-  content: '';
-  position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(23, 49, 91, 0.72), rgba(23, 49, 91, 0.9));
+  width: auto;
+  height: auto;
+  opacity: 1;
+}
+
+.heroPhoto::before {
+  background: linear-gradient(180deg, rgba(var(--green-rgb), 0.78), rgba(var(--green-rgb), 0.92));
 }
 
 .heroInner {
@@ -95,9 +119,13 @@
 .heroLead {
   font-size: 18px;
   line-height: 1.55;
-  color: var(--muted);
+  color: var(--ink-2);
   max-width: 560px;
   text-wrap: pretty;
+}
+
+.heroPhoto .heroLead {
+  color: var(--on-band);
 }
 
 .heroActions {
@@ -146,13 +174,13 @@
 }
 
 .railPillOn {
-  background: var(--navy);
-  color: var(--white);
+  background: var(--green-100);
+  color: var(--green-dark);
 }
 
 .railPillOn:hover {
-  background: var(--navy);
-  color: var(--white);
+  background: var(--green-100);
+  color: var(--green-dark);
 }
 
 /* Proof strip */
@@ -298,6 +326,7 @@ ul.bullets {
   letter-spacing: -0.02em;
   font-weight: 700;
   text-wrap: pretty;
+  color: var(--heading);
 }
 
 .points {
@@ -326,6 +355,75 @@ ul.bullets {
   color: var(--ink-3);
 }
 
+/* Story: a long company story as lede and facts, themed cards, then the named clients */
+
+/* Dt sits after dd visually: the figure leads, the label explains it. */
+.storyFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.storyFact {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+  border-top: 2px solid var(--green);
+  padding-top: 10px;
+}
+
+.storyFactValue {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--heading);
+}
+
+.storyFactLabel {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+
+.storyThemes {
+  margin-top: 56px;
+}
+
+.storyClients {
+  margin-top: 40px;
+  padding: 32px;
+  border-radius: 20px;
+  background: var(--green-100);
+}
+
+/* Doubled class outranks .logos, which is declared further down. */
+.logos.storyLogos {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.storyLogos .logo {
+  background: var(--white);
+  border-color: var(--green-200);
+}
+
+.storyClosing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px 32px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.storyClosing .lead {
+  max-width: 720px;
+}
+
 /* Stats */
 
 .stats {
@@ -351,7 +449,7 @@ ul.bullets {
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
-  color: var(--navy);
+  color: var(--ink);
 }
 
 .statLabel {
@@ -380,9 +478,10 @@ ul.bullets {
   background: var(--surface);
 }
 
+/* The improved state sits on a pale green tint; its ticks are the ordinary green ones. */
 .baAfter {
-  background: var(--navy);
-  color: var(--white);
+  background: var(--green-100);
+  color: var(--ink-2);
 }
 
 .baHead {
@@ -397,7 +496,7 @@ ul.bullets {
 }
 
 .baAfter .baHead {
-  color: var(--green-bright);
+  color: var(--green-dark);
 }
 
 .baList {
@@ -455,8 +554,8 @@ ul.bullets {
 
 .tabOn,
 .tabOn:hover {
-  background: var(--navy);
-  color: var(--white);
+  background: var(--green-100);
+  color: var(--green-dark);
 }
 
 .tabPanel {
@@ -498,8 +597,8 @@ ul.bullets {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: var(--navy);
-  color: var(--white);
+  background: var(--green-100);
+  color: var(--green-dark);
   font-family: var(--mono);
   font-size: 12px;
   display: inline-flex;
@@ -520,9 +619,12 @@ ul.bullets {
 
 /* Spotlight */
 
+/* The hardware spotlight is a deep green panel (data-band-tone="deep" in the markup) with white headings. */
 .spotlight {
-  background: var(--navy);
-  color: var(--white);
+  background: var(--band);
+  color: var(--on-band);
+  --heading: var(--on-band);
+  --heading-plain: var(--on-band);
   border-radius: 24px;
   padding: 48px;
   display: grid;
@@ -540,14 +642,14 @@ ul.bullets {
 .spotlightBody {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--on-band-muted);
 }
 
 .specs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid var(--on-band-line);
   padding-top: 18px;
 }
 
@@ -561,12 +663,12 @@ ul.bullets {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--green-bright);
+  color: var(--on-band-accent);
 }
 
 .specLabel {
   font-size: 13px;
-  color: var(--muted);
+  color: var(--on-band-muted);
 }
 
 /* Links */
@@ -745,16 +847,17 @@ ul.bullets {
 }
 
 .logoDark {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--on-band-line);
   background: rgba(255, 255, 255, 0.06);
-  color: var(--muted);
+  color: var(--on-band-muted);
 }
 
 /* CTA band */
 
+/* The closing panel is a pale green tint with a green title and green pill; the deep green footer follows it. */
 .ctaBand {
-  background: var(--navy);
-  color: var(--white);
+  background: var(--green-100);
+  color: var(--ink-2);
   border-radius: 24px;
   padding: 56px 64px;
   display: flex;
@@ -774,7 +877,7 @@ ul.bullets {
 
 .ctaBody {
   font-size: 16px;
-  color: var(--muted);
+  color: var(--ink-2);
   line-height: 1.5;
 }
 
@@ -840,8 +943,14 @@ ul.bullets {
     padding: 36px 28px;
   }
 
-  .logos {
+  .logos,
+  .logos.storyLogos {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .storyThemes {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
   }
 }
 
@@ -855,8 +964,17 @@ ul.bullets {
     grid-template-columns: 1fr;
   }
 
-  .logos {
+  .logos,
+  .logos.storyLogos {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .storyFacts {
+    grid-template-columns: 1fr;
+  }
+
+  .storyClients {
+    padding: 20px;
   }
 
   .tabPanel {
