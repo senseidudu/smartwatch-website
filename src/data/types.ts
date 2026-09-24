@@ -80,7 +80,15 @@ export type Section =
       cta?: Cta
     })
   | (Base & { kind: 'stats'; items: Stat[] })
-  | (Base & { kind: 'beforeAfter'; title: string; body?: string; before: string[]; after: string[] })
+  | (Base & {
+      kind: 'beforeAfter'
+      title: string
+      body?: string
+      before: string[]
+      after: string[]
+      /** Module graphic shown beside the heading. */
+      media?: Img
+    })
   | (Base & {
       kind: 'tabs'
       tabs: { label: string; title?: string; body: string | string[]; points?: string[] }[]

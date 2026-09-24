@@ -92,12 +92,6 @@ export const img = {
     width: 600,
     height: 400,
   },
-  freightHaul: {
-    src: '/images/freight-haul.webp',
-    alt: 'Container truck on a motorway seen from above',
-    width: 1200,
-    height: 800,
-  },
   fleetSunset: {
     src: '/images/fleet-sunset.webp',
     alt: 'Row of haulage trucks parked at sunset',
@@ -168,12 +162,6 @@ export const img = {
     height: 444,
     fit: 'contain',
   },
-  truckParkAerial: {
-    src: '/images/truck-park-aerial.webp',
-    alt: 'Rows of parked articulated trucks in a depot yard, seen from directly above',
-    width: 800,
-    height: 900,
-  },
   evChargingCost: {
     src: '/images/ev-charging-cost.webp',
     alt: 'Charging cable plugged into the port of a white electric car',
@@ -189,12 +177,6 @@ export const img = {
   vanFleetYard: {
     src: '/images/van-fleet-yard.webp',
     alt: 'Row of white delivery vans parked in a depot yard',
-    width: 900,
-    height: 792,
-  },
-  forestRoadAerial: {
-    src: '/images/forest-road-aerial.webp',
-    alt: 'Truck on a winding road through dense forest, seen from above',
     width: 900,
     height: 792,
   },
@@ -318,23 +300,11 @@ export const img = {
     width: 500,
     height: 750,
   },
-  reeferFleetDocks: {
-    src: '/images/reefer-fleet-docks.webp',
-    alt: 'Fleet of refrigerated trucks lined up at warehouse loading docks',
-    width: 600,
-    height: 600,
-  },
   appOnPhone: {
     src: '/images/app-on-phone.webp',
     alt: 'Fleet app on a smartphone with dashboard cards beside a laptop',
     width: 673,
     height: 1200,
-  },
-  fieldEngineerSite: {
-    src: '/images/field-engineer-site.webp',
-    alt: 'Field engineer in a hard hat and hi-vis vest inspecting a telecom mast',
-    width: 426,
-    height: 611,
   },
   teamOnPhone: {
     src: '/images/team-on-phone.webp',
@@ -418,6 +388,133 @@ export const img = {
     alt: 'Smiling driver giving a thumbs up from the cab of a van',
     width: 500,
     height: 331,
+  },
+  cargoPortGantry: {
+    src: '/images/cargo-port-gantry.webp',
+    alt: 'Container trucks lined up under the gantry cranes of a port terminal',
+    width: 735,
+    height: 490,
+  },
+  complianceTrackedTrucks: {
+    src: '/images/compliance-tracked-trucks.webp',
+    alt: 'Convoy of trucks on a highway, each pinned by a live tracking marker',
+    width: 736,
+    height: 736,
+  },
+  driverMirror: {
+    src: '/images/driver-mirror.webp',
+    alt: 'Driver reflected in the side mirror of a truck cab',
+    width: 1200,
+    height: 800,
+  },
+  fieldGeofenceMap: {
+    src: '/images/field-geofence-map.webp',
+    alt: 'Illustrated map with a geofence drawn around field staff, a phone and an office',
+    width: 735,
+    height: 492,
+  },
+  governmentFleetParked: {
+    src: '/images/government-fleet-parked.webp',
+    alt: 'Row of government Land Cruisers parked outside an office',
+    width: 1200,
+    height: 796,
+  },
+  installerLaptop: {
+    src: '/images/installer-laptop.webp',
+    alt: 'Installer fitting a tracker with a laptop open on the passenger seat',
+    width: 736,
+    height: 981,
+  },
+  technicianInCab: {
+    src: '/images/technician-in-cab.webp',
+    alt: 'Technician wiring a device under the dashboard of a vehicle',
+    width: 1000,
+    height: 750,
+  },
+  ngoFleetYard: {
+    src: '/images/ngo-fleet-yard.webp',
+    alt: 'UN trucks and tankers parked in a compound',
+    width: 640,
+    height: 640,
+  },
+  obdTracker: {
+    src: '/images/obd-tracker.webp',
+    alt: 'Plug-in OBDII on-board tracker, four centimetres across',
+    width: 1000,
+    height: 1000,
+  },
+  engineChecklist: {
+    src: '/images/engine-checklist.webp',
+    alt: 'Service checklist on a clipboard resting on an open engine bay',
+    width: 736,
+    height: 1097,
+  },
+  containerTrucksAssets: {
+    src: '/images/container-trucks-assets.webp',
+    alt: 'Container trucks and trailers side by side in a freight yard',
+    width: 563,
+    height: 375,
+  },
+  speedViolationDetection: {
+    src: '/images/speed-violation-detection.webp',
+    alt: 'Vehicles on a highway boxed by AI detection with their speeds flagged',
+    width: 650,
+    height: 698,
+  },
+  fuelSensorTruck: {
+    src: '/images/fuel-sensor-truck.webp',
+    alt: 'Truck chassis with a fuel sensor reading a 70% fuel level',
+    width: 736,
+    height: 736,
+  },
+  fuelTankerTruck: {
+    src: '/images/fuel-tanker-truck.webp',
+    alt: 'Fuel tanker truck on an open road',
+    width: 735,
+    height: 490,
+  },
+  fleetDashboardScreen: {
+    src: '/images/fleet-dashboard-screen.webp',
+    alt: 'Fleet management dashboard on a wall screen above a line of trucks',
+    width: 1200,
+    height: 672,
+  },
+  busPeopleCounterDiagram: {
+    src: '/images/bus-people-counter-diagram.webp',
+    alt: 'Bus fitted with passenger counters feeding a mobile DVR with 4G and GPS',
+    width: 800,
+    height: 800,
+    fit: 'contain',
+  },
+  taxiParkAerial: {
+    src: '/images/taxi-park-aerial.webp',
+    alt: 'Aerial view of minibus taxis packed into a city taxi park',
+    width: 736,
+    height: 920,
+  },
+  tabletFleetDashboard: {
+    src: '/images/tablet-fleet-dashboard.webp',
+    alt: 'Fleet status dashboard open on a tablet',
+    width: 700,
+    height: 440,
+  },
+  newsroomTeam: {
+    src: '/images/newsroom-team.webp',
+    alt: 'Editorial team working through a story around a table with a camera crew',
+    width: 1200,
+    height: 800,
+  },
+  siteTelecomTowers: {
+    src: '/images/site-telecom-towers.webp',
+    alt: 'Microwave dishes on a telecom tower against a blue sky',
+    width: 500,
+    height: 750,
+  },
+  siteTowerTechnician: {
+    src: '/images/site-tower-technician.webp',
+    alt: 'Technician in a hard hat looking up at a telecom mast',
+    width: 426,
+    height: 611,
   },
 } satisfies Record<string, Img>
 
@@ -551,3 +648,73 @@ export const hw = {
 } satisfies Record<string, Img>
 
 export type HwKey = keyof typeof hw
+
+/**
+ * Site Management graphics from smartwatchsolutions.com/site-management/: the six
+ * practical-application composites and the three module mockups, kept with their
+ * transparent backgrounds so they float in their frames.
+ */
+export const site = {
+  energyOptimization: {
+    src: '/images/site/energy-optimization.webp',
+    alt: 'Energy Management dashboard over a solar array beside a telecom mast',
+    width: 450,
+    height: 357,
+    fit: 'contain',
+  },
+  remoteManagement: {
+    src: '/images/site/remote-management.webp',
+    alt: 'Energy Management dashboard beside a laptop and phone showing the live site map',
+    width: 451,
+    height: 356,
+    fit: 'contain',
+  },
+  operationalCostSavings: {
+    src: '/images/site/operational-cost-savings.webp',
+    alt: 'Site Costs dashboard beside an analyst reviewing charts',
+    width: 451,
+    height: 357,
+    fit: 'contain',
+  },
+  overarchingVisibility: {
+    src: '/images/site/overarching-visibility.webp',
+    alt: 'Overarching Visibility map of sites over an aerial view of a solar-powered mast',
+    width: 448,
+    height: 355,
+    fit: 'contain',
+  },
+  energyAssetHealth: {
+    src: '/images/site/energy-asset-health.webp',
+    alt: 'Energy Storage dashboard over a fenced solar installation',
+    width: 450,
+    height: 357,
+    fit: 'contain',
+  },
+  sustainabilityOutlook: {
+    src: '/images/site/sustainability-outlook.webp',
+    alt: 'Sustainability dashboard over a sunlit forest canopy',
+    width: 450,
+    height: 357,
+    fit: 'contain',
+  },
+  generatorMonitoring: {
+    src: '/images/site/generator-monitoring.webp',
+    alt: 'Fuel Consumption Trend chart with a total fuel consumption of 47,400 litres',
+    width: 364,
+    height: 178,
+  },
+  analytics: {
+    src: '/images/site/analytics.webp',
+    alt: 'Analytics chart of site trends with a stacked summary card',
+    width: 394,
+    height: 178,
+  },
+  live: {
+    src: '/images/site/live.webp',
+    alt: 'Live world map of sites with a status panel',
+    width: 330,
+    height: 186,
+  },
+} satisfies Record<string, Img>
+
+export type SiteKey = keyof typeof site

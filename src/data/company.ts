@@ -28,8 +28,8 @@ export const leadership: DetailPage = {
     intro:
       'Our team combines industry expertise in information technology and mobile resource management with extensive hands-on experience in their respective fields. The people who run Smartwatch still spend their weeks with customers, vehicles and installers.',
     tone: 'light',
-    mediaLabel: 'field supervisor on site',
-    media: img.fieldEngineerSite,
+    mediaLabel: 'technician wiring a vehicle from the cab',
+    media: img.technicianInCab,
     ctas: [
       { label: 'About Smartwatch', to: routes.about },
       { label: 'Meet the team', to: routes.contact, variant: 'outline-light' },
@@ -104,6 +104,7 @@ export const newsroom: DetailPage = {
       title: 'Working on a story?',
       body: 'For interviews, images and background on Smartwatch Solutions, contact our team. We can put you in touch with the right person in Kampala or Nairobi.',
       mediaLabel: 'press and media enquiries',
+      media: img.newsroomTeam,
       cta: { label: 'Contact us', to: routes.contact },
     },
     { kind: 'related', id: 'related', title: 'More about the company', slugs: [routes.about, routes.leadership, routes.blog] },

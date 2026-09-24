@@ -81,7 +81,7 @@ export const page: DetailPage = {
         'Operating hours and fuel usage',
       ],
       mediaLabel: 'trailers and containers tracked as movable assets',
-      media: img.portContainerTruck,
+      media: img.containerTrucksAssets,
     },
     {
       kind: 'split',

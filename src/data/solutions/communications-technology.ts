@@ -1,4 +1,4 @@
-import { hw, img } from '../images'
+import { img } from '../images'
 import { routes } from '../site'
 import type { DetailPage } from '../types'
 
@@ -63,8 +63,8 @@ export const page: DetailPage = {
         'OnTrack – the free app for Android and iOS',
         'Data and reports available 24/7',
       ],
-      mediaLabel: 'on-board computer installed in a vehicle',
-      media: hw.monitor,
+      mediaLabel: 'plug-in on-board computer',
+      media: img.obdTracker,
     },
     {
       kind: 'split',
@@ -96,7 +96,8 @@ export const page: DetailPage = {
         'Manage vehicles, odometer readings, licences, certifications, and services',
         'Generate movement, event, trip and utilisation reports',
       ],
-      mediaLabel: 'activity timeline and reports dashboard',
+      mediaLabel: 'fleet dashboard on the operations wall screen',
+      media: img.fleetDashboardScreen,
     },
     {
       kind: 'related',

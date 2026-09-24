@@ -43,7 +43,8 @@ export const page: DetailPage = {
       title: 'Fleet management for the oil & gas sector',
       body: 'Smartwatch FM connects the vehicle, protects the operator and provides actionable insights for fleet managers.',
       points: ['Driver safety', 'Asset tracking', 'Cost control', 'Compliance management'],
-      mediaLabel: 'in-vehicle monitoring system in use on site',
+      mediaLabel: 'fuel tanker on the road',
+      media: img.fuelTankerTruck,
     },
     {
       kind: 'tabs',
@@ -77,7 +78,8 @@ export const page: DetailPage = {
       title: 'Intelligent fuel monitoring',
       body: 'Fuel level change detection, with an alert sent to the central server whenever an abnormal change is triggered.',
       reverse: true,
-      mediaLabel: 'fuel tank checked during a site inspection',
+      mediaLabel: 'fuel level sensor reading on a truck',
+      media: img.fuelSensorTruck,
     },
     {
       kind: 'related',

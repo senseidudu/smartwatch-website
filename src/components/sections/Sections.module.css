@@ -65,6 +65,11 @@
   gap: 12px;
 }
 
+/* The page label ("Products · Tracking & Telematics") reads in the wordmark's navy on the white hero. */
+.hero:not(.heroPhoto) .heroCopy :global(.eyebrow) {
+  color: var(--navy);
+}
+
 .heroCopy :global(.eyebrow)::after {
   content: '';
   width: 56px;
@@ -459,6 +464,36 @@ ul.bullets {
 }
 
 /* Before / after */
+
+/* A module graphic (the source site's dashboard mockups) sits beside the heading at its own size. */
+.baIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.baHeadCopy {
+  margin-bottom: 0;
+}
+
+.baMedia {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .baIntro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .baMedia {
+    max-width: 360px;
+  }
+}
 
 .ba {
   display: grid;

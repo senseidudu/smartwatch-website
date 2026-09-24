@@ -13,8 +13,8 @@ export const page: DetailPage = {
     intro:
       'Automate field service operations to increase team productivity, reduce expenses and refine customer experience.',
     tone: 'dark',
-    mediaLabel: 'field supervisor on site',
-    media: img.fieldEngineerSite,
+    mediaLabel: 'geofenced field team on a map',
+    media: img.fieldGeofenceMap,
   },
   sections: [
     {
