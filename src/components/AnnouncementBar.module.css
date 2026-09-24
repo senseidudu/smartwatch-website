@@ -28,3 +28,18 @@
 .link:hover {
   color: var(--green-100);
 }
+
+@media (max-width: 520px) {
+  .bar {
+    padding: 8px 16px;
+    gap: 2px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (pointer: coarse) {
+  .link {
+    padding: 6px 0;
+    margin: -6px 0;
+  }
+}

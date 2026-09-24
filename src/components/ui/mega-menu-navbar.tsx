@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import type { IconName } from '../../data/types'
 import { cx } from '../../lib/cx'
 import Icon from '../Icon'
@@ -220,6 +220,8 @@ export function MegaMenuNavbar({
   const [anchor, setAnchor] = useState(0)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileSection, setMobileSection] = useState<string | null>(null)
+  /** Where the bar's bottom edge sits while the drawer is open; null falls back to the stylesheet height. */
+  const [drawerTop, setDrawerTop] = useState<number | null>(null)
   const navRef = useRef<HTMLElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const closeTimer = useRef<number | null>(null)
@@ -259,6 +261,22 @@ export function MegaMenuNavbar({
       document.removeEventListener('keydown', onKeyDown)
     }
   }, [])
+
+  /*
+   * The drawer hangs from the bar's real bottom edge, not the stylesheet's header height: at the
+   * top of the page the announcement bar holds the bar lower, and a drawer pinned at the header
+   * height would cover the logo and the close button. Measured before paint so it never jumps.
+   */
+  useLayoutEffect(() => {
+    if (!mobileOpen) return
+    const measure = () => {
+      const bottom = navRef.current?.getBoundingClientRect().bottom ?? 0
+      setDrawerTop(bottom > 0 ? Math.round(bottom) : null)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [mobileOpen])
 
   useEffect(() => {
     if (!mobileOpen) return
@@ -355,7 +373,12 @@ export function MegaMenuNavbar({
       )}
 
       {mobileOpen && (
-        <div className={s.drawer} role="dialog" aria-label="Menu">
+        <div
+          className={s.drawer}
+          role="dialog"
+          aria-label="Menu"
+          style={drawerTop === null ? undefined : ({ '--drawer-top': `${drawerTop}px` } as CSSProperties)}
+        >
           <div className={s.drawerScroll} onClick={closeOnLink(closeAll)}>
             <nav className={s.drawerNav} aria-label="Mobile">
               {mobileGroups.map((group) => (

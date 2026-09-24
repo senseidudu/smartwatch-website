@@ -55,3 +55,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 520px) {
+  .section {
+    padding-top: 56px;
+  }
+}

@@ -9,7 +9,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import { cx } from '../lib/cx'
 import s from './SolutionsPage.module.css'
 
-/** The design closes the page with a customer story band; the dash camera result is the one we can stand behind. */
+/** The design closes the page with a customer story band; the dash camera pillar's headline and body tell it. */
 const story = findPillar('driver-safety-dash-cameras')!
 
 export default function SolutionsPage() {
@@ -45,7 +45,7 @@ export default function SolutionsPage() {
           <div className={cx('container', s.storyGrid)}>
             <Reveal className={s.storyCopy}>
               <div className="eyebrow">Driver safety</div>
-              <h2 className="h-section">{story.points[0]}.</h2>
+              <h2 className="h-section">{story.headline}</h2>
               <p className="lead">{story.body}</p>
               <div>
                 <Link to={story.to} className="link-arrow">

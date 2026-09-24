@@ -341,6 +341,17 @@
   .contact {
     display: none;
   }
+
+  /* Between the drawer and full width the panel is too narrow for three columns; the promo goes first. */
+  .promo {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .drawerLink {
+    padding: 11px 0;
+  }
 }
 
 @media (max-width: 520px) {

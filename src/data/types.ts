@@ -75,7 +75,8 @@ export type Section =
       media?: Img
       mediaLabel?: string
       themes: CardItem[]
-      clients?: { title: string; items: string[] }
+      /** Named clients; a tile shows the logo when one exists and the name otherwise. */
+      clients?: { title: string; items: { name: string; logo?: Img }[] }
       closing?: string
       cta?: Cta
     })

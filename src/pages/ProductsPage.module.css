@@ -92,3 +92,9 @@
     margin-top: -28px;
   }
 }
+
+@media (max-width: 520px) {
+  .hero {
+    padding: 48px 0 72px;
+  }
+}

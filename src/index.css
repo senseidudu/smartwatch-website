@@ -133,6 +133,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html {
+  /* Phones in landscape must not inflate the type on their own; anchors land clear of the sticky bar. */
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 24px);
+}
+
 body {
   min-height: 100vh;
   display: flex;
@@ -200,6 +206,12 @@ ul {
 
 img {
   display: block;
+  max-width: 100%;
+}
+
+video,
+iframe,
+canvas {
   max-width: 100%;
 }
 
@@ -526,7 +538,10 @@ p strong {
 }
 
 .field-check input {
-  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  flex-shrink: 0;
   accent-color: var(--green);
 }
 
@@ -575,5 +590,56 @@ p strong {
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive floors: the smallest phones get a step down in display type and pill padding. */
+
+@media (max-width: 400px) {
+  .h-display {
+    font-size: clamp(34px, 10vw, 40px);
+  }
+
+  .h-page {
+    font-size: clamp(31px, 9.2vw, 36px);
+  }
+
+  .h-section--lg {
+    font-size: clamp(28px, 8.4vw, 32px);
+  }
+
+  .btn {
+    padding: 14px 22px;
+  }
+
+  .btn--outline,
+  .btn--outline-light {
+    padding: calc(14px - 1.5px) calc(22px - 1.5px);
+  }
+}
+
+/*
+ * Touch screens: text links grow a taller hit area without moving in the layout (the margin
+ * hands the padding back), and the slide-in underline stays a hair under the text.
+ */
+@media (pointer: coarse) {
+  .link-arrow,
+  .line-hover {
+    padding: 8px 0;
+    margin: -8px 0;
+  }
+
+  .link-arrow::before,
+  .line-hover::before {
+    top: auto;
+    bottom: 7px;
+  }
+}
+
+/* Hover lifts have nothing to release on a touch screen; a tapped card would stay raised. */
+@media (hover: none) {
+  .lift:hover {
+    transform: none;
+    box-shadow: none;
   }
 }

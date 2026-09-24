@@ -73,3 +73,9 @@
     margin-top: -28px;
   }
 }
+
+@media (max-width: 520px) {
+  .band {
+    padding: 48px 0 64px;
+  }
+}

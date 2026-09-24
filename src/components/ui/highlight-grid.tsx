@@ -41,7 +41,10 @@ export function HighlightGrid({ active, className, highlightClassName, children,
     if (!grid || !highlight || !cell) return
     const rect = cell.getBoundingClientRect()
     const box = grid.getBoundingClientRect()
-    highlight.style.transform = `translate(${rect.left - box.left}px, ${rect.top - box.top}px)`
+    // Offset by the container's own scroll, so a strip that scrolls sideways on phones stays aligned.
+    const x = rect.left - box.left + grid.scrollLeft
+    const y = rect.top - box.top + grid.scrollTop
+    highlight.style.transform = `translate(${x}px, ${y}px)`
     highlight.style.width = `${rect.width}px`
     highlight.style.height = `${rect.height}px`
   }, [])

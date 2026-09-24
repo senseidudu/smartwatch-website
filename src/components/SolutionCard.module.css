@@ -92,3 +92,9 @@
 .card:hover .arrow {
   transform: translateX(4px);
 }
+
+@media (max-width: 520px) {
+  .body {
+    padding: 18px;
+  }
+}
