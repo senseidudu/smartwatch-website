@@ -98,9 +98,9 @@ export const about: DetailPage = {
           { name: 'Total Energies', logo: partnerLogo('TotalEnergies') },
           { name: 'British Gas Group', logo: partnerLogo('British Gas') },
           { name: 'CNOOC', logo: partnerLogo('CNOOC') },
-          // The source site names MTN without ever showing its mark. Give it a logo
-          // in partnerLogos and this tile picks it up.
-          { name: 'MTN' },
+          // The source site names MTN without showing its mark, so this is MTN's
+          // 2022 logo from Wikimedia Commons (File:MTN 2022 logo.svg).
+          { name: 'MTN', logo: { src: '/images/logos/mtn.webp', alt: 'MTN', width: 240, height: 120 } },
         ],
       },
       closing:

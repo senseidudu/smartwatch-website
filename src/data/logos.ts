@@ -4,9 +4,15 @@ import type { Img } from './types'
  * The partner logos from the "Trusted by local and international partners"
  * carousels on smartwatchsolutions.com, trimmed of their baked-in white margins
  * and converted to WebP in public/images/logos. The band runs them as one row,
- * so the order here is the order they scroll past in.
+ * so the order here is the order they scroll past in. KRA leads on purpose.
  */
 export const partnerLogos = [
+  {
+    src: '/images/logos/kenya-revenue-authority.webp',
+    alt: 'Kenya Revenue Authority',
+    width: 420,
+    height: 109,
+  },
   {
     src: '/images/logos/absa.webp',
     alt: 'Absa',
@@ -180,12 +186,6 @@ export const partnerLogos = [
     alt: 'KCB Bank',
     width: 420,
     height: 95,
-  },
-  {
-    src: '/images/logos/kenya-revenue-authority.webp',
-    alt: 'Kenya Revenue Authority',
-    width: 420,
-    height: 109,
   },
   {
     src: '/images/logos/kia.webp',
