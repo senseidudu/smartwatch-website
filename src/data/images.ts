@@ -528,9 +528,9 @@ export type ImgKey = keyof typeof img
 export const hw = {
   aiDashcam: {
     src: '/images/hardware/ai-dashcam.webp',
-    alt: 'Driver-facing AI dash cam on an adjustable windscreen mount',
-    width: 380,
-    height: 240,
+    alt: 'Compact AI dash cam with a lens on the front and an adhesive windscreen mount',
+    width: 760,
+    height: 480,
     fit: 'contain',
   },
   dashboardCamera: {
@@ -542,9 +542,16 @@ export const hw = {
   },
   mdvr: {
     src: '/images/hardware/mdvr.webp',
-    alt: 'Mobile digital video recorder with a card slot and camera channels',
-    width: 380,
-    height: 240,
+    alt: 'Black aluminium mobile digital video recorder with a USB port, antenna sockets and a key lock',
+    width: 760,
+    height: 480,
+    fit: 'contain',
+  },
+  busDriverMonitoring: {
+    src: '/images/hardware/bus-driver-monitoring.webp',
+    alt: 'Dual-lens AI dash cams, one facing the road and one facing the driver, on windscreen mounts',
+    width: 1000,
+    height: 800,
     fit: 'contain',
   },
   gpsTracker: {

@@ -63,8 +63,8 @@ export const page: DetailPage = {
         },
       ],
       reverse: true,
-      mediaLabel: 'multi-channel mobile DVR footage from inside a bus',
-      media: hw.mdvr,
+      mediaLabel: 'road- and driver-facing AI dash cams for buses',
+      media: hw.busDriverMonitoring,
     },
     {
       kind: 'split',
