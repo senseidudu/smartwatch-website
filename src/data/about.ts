@@ -1,3 +1,4 @@
+import { award, kraVendor } from './content'
 import { img } from './images'
 import { partnerLogo } from './logos'
 import { site } from './site'
@@ -5,7 +6,8 @@ import type { DetailPage } from './types'
 
 /**
  * About page. Copy transcribed from the live smartwatchsolutions.com/about/ page:
- * hero, business strategy, vision and mission, heritage, the three tabs and the KPMG award.
+ * hero, business strategy, vision and mission, heritage, the three tabs, and the KPMG award, which
+ * now sits beside the KRA vendor approval.
  */
 export const about: DetailPage = {
   slug: 'about',
@@ -149,13 +151,24 @@ export const about: DetailPage = {
       ],
     },
     {
-      kind: 'split',
+      kind: 'cards',
       id: 'awards',
-      eyebrow: 'Awards',
-      title: 'Recognised by KPMG',
-      body: 'Smartwatch Solutions has been recognised among the KPMG Top 100 Mid-Sized Companies. It is an acknowledgement of the quality standards we hold ourselves to in fleet management, and of the trust our clients and partners across Africa and Europe place in us.',
-      media: img.kpmg,
-      reverse: true,
+      eyebrow: 'Awards & accreditation',
+      title: 'Recognised by KPMG. Approved by KRA.',
+      intro: 'Two marks of the standards we hold ourselves to: one from the auditors, one from the revenue authority.',
+      columns: 2,
+      items: [
+        {
+          title: award.name,
+          body: 'Smartwatch Solutions has been recognised among the KPMG Top 100 Mid-Sized Companies. It is an acknowledgement of the quality standards we hold ourselves to in fleet management, and of the trust our clients and partners across Africa and Europe place in us.',
+          image: { ...img.kpmg, fit: 'contain' },
+        },
+        {
+          title: kraVendor.name,
+          body: kraVendor.body,
+          image: { ...kraVendor.logo, fit: 'contain' },
+        },
+      ],
     },
   ],
   cta: {

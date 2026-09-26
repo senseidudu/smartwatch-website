@@ -15,7 +15,7 @@ export default function CtaBand({ title, body, ctas }: CtaBandProps) {
         <div className={s.ctaActions}>
           {ctas.map((cta) =>
             isDemoCta(cta) ? (
-              <CornerButton key={cta.label} to={cta.to} className={s.ctaCorner}>
+              <CornerButton key={cta.label} to={cta.to} className={s.ctaCorner} onDark>
                 {cta.label}
               </CornerButton>
             ) : (

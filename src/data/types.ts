@@ -102,6 +102,8 @@ export type Section =
       specs?: { value: string; label: string }[]
       media?: Img
       mediaLabel?: string
+      /** A drawn visual in place of the photo: the data-ops flow. */
+      visual?: 'data-ops'
       cta: Cta
     })
   | (Base & { kind: 'links'; columns: { title: string; links: Cta[] }[] })

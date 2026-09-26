@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import CredentialBadge from '../components/CredentialBadge'
 import Media from '../components/Media'
 import Reveal from '../components/Reveal'
 import CardsSection from '../components/sections/CardsSection'
@@ -73,10 +74,13 @@ export default function ProductsPage() {
               Contact us
             </Link>
           </div>
-          <Link to={award.to} className={s.badge} aria-label={award.name}>
-            <Media image={award.image} radius={10} decorative className={s.badgeImage} />
-            <span className={s.badgeLabel}>{award.label}</span>
-          </Link>
+          <div className={s.badges}>
+            <Link to={award.to} className={s.badge} aria-label={award.name}>
+              <Media image={award.image} radius={10} decorative className={s.badgeImage} />
+              <span className={s.badgeLabel}>{award.label}</span>
+            </Link>
+            <CredentialBadge className={s.seal} />
+          </div>
         </div>
       </section>
 

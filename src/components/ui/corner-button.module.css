@@ -1,9 +1,9 @@
 .wrapper {
-  --accent: var(--green-dark);
-  --accent-fg: var(--white);
-  --accent-hover: var(--white);
-  --accent-hover-fg: var(--ink);
-  --accent-glow: rgba(var(--green-rgb), 0.14);
+  --accent: var(--lime);
+  --accent-fg: var(--navy);
+  --accent-hover: var(--lime-2);
+  --accent-hover-fg: var(--navy);
+  --accent-glow: rgba(var(--lime-rgb), 0.18);
   --dot-size: 6px;
   --line-weight: 1px;
   --speed: 0.35s;
@@ -24,10 +24,13 @@
   padding: 6px 8px;
 }
 
-/* Forest pill for secondary actions; green is the primary. */
+/* Navy pill for secondary actions; lime is the primary. */
 .deep {
-  --accent: var(--forest);
-  --accent-glow: rgba(var(--forest-rgb), 0.08);
+  --accent: var(--navy);
+  --accent-fg: var(--white);
+  --accent-hover: var(--navy-3);
+  --accent-hover-fg: var(--white);
+  --accent-glow: rgba(var(--navy-rgb), 0.1);
 }
 
 .wrapper:has(.button:hover) {
@@ -278,17 +281,17 @@
   }
 }
 
-/* Dark surfaces (a dark header band, a green hero, the footer): the pill inverts to white so it
-   stands off the band (green on green is 1.4:1), and the frame and dots go light. */
+/* Dark surfaces (a dark header band, a photo hero, the footer): the pill stays lime, which stands
+   off navy on its own; only the frame's dots and lines lighten. */
 [data-theme='dark'] .wrapper,
 .onDark {
-  --accent: var(--white);
-  --accent-fg: var(--green-dark);
-  --accent-hover: var(--green-dark);
-  --accent-hover-fg: var(--white);
-  --accent-glow: rgba(255, 255, 255, 0.14);
+  --accent-glow: rgba(var(--lime-rgb), 0.2);
   --dot-color: rgba(255, 255, 255, 0.7);
   --line-color: rgba(255, 255, 255, 0.45);
+}
+
+.onDark .button:focus-visible {
+  outline-color: var(--white);
 }
 
 @media (prefers-reduced-motion: reduce) {

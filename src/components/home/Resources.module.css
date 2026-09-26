@@ -25,14 +25,14 @@
   color: var(--ink);
   border-radius: 20px;
   overflow: hidden;
-  background: var(--green-100);
-  border: 1px solid var(--green-200);
+  background: var(--card-bg);
+  border: 1px solid var(--card-line);
   transition: border-color 0.15s;
 }
 
 .feature:hover {
   color: var(--ink);
-  border-color: var(--green);
+  border-color: var(--accent);
 }
 
 .featureBody {
@@ -69,14 +69,14 @@
   align-items: center;
   padding: 12px;
   border-radius: 16px;
-  background: var(--green-100);
-  border: 1px solid var(--green-200);
+  background: var(--card-bg);
+  border: 1px solid var(--card-line);
   transition: border-color 0.15s;
 }
 
 .post:hover {
-  color: var(--green-dark);
-  border-color: var(--green);
+  color: var(--accent-text);
+  border-color: var(--accent);
 }
 
 .thumb {
@@ -89,12 +89,17 @@
   gap: 6px;
 }
 
+/* The post's kind is a lime chip, the one spot of colour on the white card. */
 .kind {
+  align-self: flex-start;
+  padding: 3px 9px;
+  border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  color: var(--on-accent);
+  background: var(--accent);
 }
 
 .postTitle {

@@ -35,7 +35,7 @@
 
 /* Customer story band, as the design closes the page. */
 .story {
-  background: var(--surface);
+  background: var(--surface-alt);
   padding: 96px 0;
 }
 

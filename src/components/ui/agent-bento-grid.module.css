@@ -15,9 +15,12 @@
   --g-line: var(--line);
   --g-line-2: var(--line-2);
 
-  --tone: var(--green);
-  --tone-2: var(--green-dark);
-  --live: var(--green);
+  /* A tone is a pair for gradients, the type on that gradient, and the type it sets on white. */
+  --tone: var(--lime);
+  --tone-2: var(--lime-2);
+  --tone-fg: var(--navy);
+  --tone-text: var(--navy);
+  --live: var(--lime);
   --spring: cubic-bezier(0.34, 1.4, 0.64, 1);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --hatch: repeating-linear-gradient(45deg, transparent 0 6px, var(--g-line) 6px 7px);
@@ -39,33 +42,44 @@
   --g-fg-3: rgba(255, 255, 255, 0.7);
   --g-line: var(--on-band-line);
   --g-line-2: var(--on-band-line-2);
-  --live: var(--green-bright);
+  --live: var(--lime);
 }
 
 .wide {
   grid-column: span 2;
 }
 
+/* `deep` is the navy of the dark bands; `green` and `mint` are lime; `sky` and `amber`, the vendored
+   component's tone names, are two steps of the blue-grey tint ladder. */
 .deep {
-  --tone: var(--green-deep);
-  --tone-2: var(--forest);
+  --tone: var(--band-3);
+  --tone-2: var(--band);
+  --tone-fg: var(--white);
+  --tone-text: var(--navy);
 }
 .green {
-  --tone: var(--green);
-  --tone-2: var(--green-dark);
+  --tone: var(--lime);
+  --tone-2: var(--lime-2);
+  --tone-fg: var(--navy);
+  --tone-text: var(--navy);
 }
 .mint {
-  --tone: var(--green-bright);
-  --tone-2: var(--green);
+  --tone: var(--lime-300);
+  --tone-2: var(--lime);
+  --tone-fg: var(--navy);
+  --tone-text: var(--navy);
 }
-/* `sky` and `amber` are the vendored component's tone names; here they are two lighter greens. */
 .sky {
-  --tone: var(--green-400);
-  --tone-2: var(--green);
+  --tone: var(--tint-400);
+  --tone-2: var(--tint-300);
+  --tone-fg: var(--white);
+  --tone-text: var(--ink-3);
 }
 .amber {
-  --tone: var(--green-300);
-  --tone-2: var(--green-400);
+  --tone: var(--tint-300);
+  --tone-2: var(--tint-400);
+  --tone-fg: var(--white);
+  --tone-text: var(--ink-3);
 }
 
 .glyph {
@@ -83,10 +97,10 @@
   line-height: 1;
 }
 
-/* The deep green sinks into a green band, so it lifts to its tint there; tags read in the lighter tone. */
+/* The navy sinks into a navy band, so it lifts to the blue-grey tints there; tags read in the lighter tone. */
 .dark .deep {
-  --tone: var(--green-200);
-  --tone-2: var(--green-300);
+  --tone: var(--tint-200);
+  --tone-2: var(--tint-300);
 }
 
 .dark .pill,
@@ -210,7 +224,7 @@
   border-radius: 14px;
   border: 1px solid var(--tone-2);
   background: linear-gradient(to bottom, var(--tone), var(--tone-2));
-  color: var(--white);
+  color: var(--tone-fg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -256,8 +270,8 @@
 }
 
 .routerLit {
-  background: color-mix(in srgb, var(--green-300) 28%, var(--g-raised));
-  border-color: var(--green-300);
+  background: color-mix(in srgb, var(--lime-300) 28%, var(--g-raised));
+  border-color: var(--lime-300);
 }
 
 @keyframes turn {
@@ -275,7 +289,7 @@
 }
 
 .routerLit .routerSpin {
-  border-color: var(--green-400);
+  border-color: var(--lime);
 }
 
 /* ── 2 · Telemetry ── */
@@ -355,7 +369,7 @@
 }
 
 .up {
-  color: var(--green-dark);
+  color: var(--accent-text);
 }
 
 .down {
@@ -489,20 +503,28 @@
 }
 
 .stGreen {
-  --tone: var(--green);
-  --tone-2: var(--green-dark);
+  --tone: var(--lime);
+  --tone-2: var(--lime-2);
+  --tone-fg: var(--navy);
+  --tone-text: var(--navy);
 }
 .stSky {
-  --tone: var(--green-400);
-  --tone-2: var(--green);
+  --tone: var(--lime-300);
+  --tone-2: var(--lime);
+  --tone-fg: var(--navy);
+  --tone-text: var(--navy);
 }
 .stAmber {
-  --tone: var(--green-300);
-  --tone-2: var(--green-400);
+  --tone: var(--tint-300);
+  --tone-2: var(--tint-400);
+  --tone-fg: var(--white);
+  --tone-text: var(--ink-3);
 }
 .stGrey {
-  --tone: #8a8a8a;
-  --tone-2: var(--grey);
+  --tone: var(--tint-400);
+  --tone-2: var(--ink-3);
+  --tone-fg: var(--white);
+  --tone-text: var(--ink-3);
 }
 
 .badge {
@@ -513,7 +535,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
+  color: var(--tone-fg);
   border: 1px solid var(--tone-2);
   background: linear-gradient(to bottom, var(--tone), var(--tone-2));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
@@ -569,7 +591,7 @@
   letter-spacing: 0.06em;
   padding: 2px 5px;
   border-radius: 4px;
-  color: var(--tone-2);
+  color: var(--tone-text);
   background: color-mix(in srgb, var(--tone) 14%, transparent);
 }
 
@@ -669,7 +691,7 @@
 
 .channelOn .chIcon,
 .sensorIcon {
-  color: var(--white);
+  color: var(--tone-fg);
   background: linear-gradient(to bottom, var(--tone), var(--tone-2));
   border-color: var(--tone-2);
   box-shadow:
@@ -854,7 +876,7 @@
   text-transform: uppercase;
   padding: 2px 6px;
   border-radius: 5px;
-  color: var(--tone-2);
+  color: var(--tone-text);
   background: color-mix(in srgb, var(--tone) 14%, transparent);
 }
 

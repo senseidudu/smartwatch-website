@@ -13,7 +13,7 @@ export default function DetailHero({ page }: { page: DetailPage }) {
   const { hero } = page
   const tone = hero.tone ?? 'dark'
   const ctas = hero.ctas ?? defaultHeroCtas(page.kind)
-  // Every hero is the white page design now; only a photo hero paints dark, under its green overlay.
+  // Every hero is the white page design now; only a photo hero paints dark, under its navy overlay.
   const photo = tone === 'photo' && hero.media
   const light = !photo
   const ref = useRef<HTMLElement>(null)

@@ -4,6 +4,7 @@ import { routes } from '../../data/site'
 import { cx } from '../../lib/cx'
 import { prefersReducedMotion } from '../../motion/motion'
 import { useEntrance } from '../../motion/useEntrance'
+import CredentialBadge from '../CredentialBadge'
 import CornerButton from '../ui/corner-button'
 import CursorCard from '../ui/cursor-card'
 import StaggerText from '../ui/stagger-text'
@@ -65,6 +66,7 @@ export default function Hero() {
             <CornerButton to={routes.products} className={s.cta}>
               Explore products
             </CornerButton>
+            <CredentialBadge className={s.seal} />
           </div>
         </div>
 

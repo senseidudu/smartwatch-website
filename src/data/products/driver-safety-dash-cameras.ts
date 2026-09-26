@@ -1,3 +1,4 @@
+import { dataOpsSpotlight } from '../data-ops'
 import { hw, img } from '../images'
 import { anchors, routes } from '../site'
 import type { DetailPage } from '../types'
@@ -115,20 +116,7 @@ export const page: DetailPage = {
         { value: 40, suffix: '%', label: 'Potential reduction of fuel costs' },
       ],
     },
-    {
-      kind: 'spotlight',
-      id: 'hardware',
-      title: "Hardware built for Africa's roads",
-      body: 'Our hardware is designed and built for Africa: it is dust and water resistant. Deploy dependable GPS fleet tracking devices alongside AI dash cams, driver-facing dashboard cameras, MDVR recorders and in-cab monitors.',
-      specs: [
-        { value: '4G', label: 'GSM connectivity' },
-        { value: 'GNSS', label: 'Automatic vehicle location' },
-        { value: 'IP-rated', label: 'Dust and water resistant' },
-        { value: 'CANbus', label: 'Vehicle data via OBDII' },
-      ],
-      media: img.device,
-      cta: { label: 'View hardware', to: routes.hardware },
-    },
+    dataOpsSpotlight,
     {
       kind: 'links',
       id: 'resources',

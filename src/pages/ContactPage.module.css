@@ -53,7 +53,7 @@
 }
 
 .cardLink:hover {
-  border-color: var(--green);
+  border-color: var(--accent);
   color: var(--ink);
 }
 
@@ -62,7 +62,7 @@
   height: 40px;
   border-radius: 10px;
   background: var(--surface);
-  color: var(--green-dark);
+  color: var(--accent-text);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +82,7 @@
 .cardMore {
   font-weight: 700;
   font-size: 14px;
-  color: var(--green-dark);
+  color: var(--accent-text);
   margin-top: auto;
   overflow-wrap: anywhere;
 }
@@ -190,12 +190,12 @@
   border-radius: 999px;
   font-size: 13px;
   font-weight: 700;
-  color: var(--green-dark);
+  color: var(--accent-text);
 }
 
 .officeWhatsApp:hover {
-  color: var(--green-dark);
-  border-color: var(--green);
+  color: var(--accent-text);
+  border-color: var(--accent);
   background: var(--surface);
 }
 

@@ -1,42 +1,12 @@
 /*
- * The platform band is the palest step of the guide's green tint ladder, with white cards on it.
- * Colour moves with the visitor, in shades of green only: each tab glows in its own shade where the
- * pointer is, and the selected product's shade runs through the ring, the number tile, the ticks and
- * the panel's wash.
+ * The platform band is the blue-grey ground with white cards on it. Lime moves with the visitor:
+ * each tab glows where the pointer is, and the selected product's lime runs through the ring, the
+ * number tile, the ticks and the panel's wash.
  */
 .section {
-  --accent: var(--green);
-  --accent-rgb: var(--green-rgb);
-  --accent-fg: var(--white);
-  --check-bg: var(--accent);
-  --check-fg: var(--accent-fg);
-  background: var(--green-100);
+  background: var(--surface);
   color: var(--ink);
   padding: 96px 0;
-}
-
-.accentGreen {
-  --accent: var(--green);
-  --accent-rgb: var(--green-rgb);
-  --accent-fg: var(--white);
-}
-
-.accentLight {
-  --accent: var(--green-400);
-  --accent-rgb: var(--green-400-rgb);
-  --accent-fg: var(--ink);
-}
-
-.accentDeep {
-  --accent: var(--green-dark);
-  --accent-rgb: var(--green-dark-rgb);
-  --accent-fg: var(--white);
-}
-
-.accentPale {
-  --accent: var(--green-300);
-  --accent-rgb: var(--green-300-rgb);
-  --accent-fg: var(--ink);
 }
 
 /* Each product fades in as the carousel moves on. */
@@ -64,9 +34,8 @@
   max-width: 760px;
 }
 
-/* The platform headline is set in the wordmark's navy. */
 .intro h2 {
-  color: var(--navy);
+  color: var(--heading);
 }
 
 /* The infrastructure bento sits between the intro and the product tabs; extra room below it
@@ -128,10 +97,10 @@
 
 .tab:hover .tabNum {
   background: var(--accent);
-  color: var(--accent-fg);
+  color: var(--on-accent);
 }
 
-/* The selected tab paints nothing of its own: the green pane glides in underneath it. */
+/* The selected tab paints nothing of its own: the white pane glides in underneath it. */
 .tabOn,
 .tabOn:hover {
   background: transparent;
@@ -158,8 +127,8 @@
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: var(--green-100);
-  color: var(--green-dark);
+  background: var(--surface);
+  color: var(--navy);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -172,7 +141,7 @@
 
 .tabOn .tabNum {
   background: var(--accent);
-  color: var(--accent-fg);
+  color: var(--on-accent);
 }
 
 .tabName {

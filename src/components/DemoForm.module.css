@@ -2,7 +2,10 @@
   background: var(--white);
   border-radius: 20px;
   padding: 36px;
-  box-shadow: var(--shadow-card);
+  /* The lime stroke along the top marks the form as the place to land. */
+  box-shadow:
+    var(--shadow-card),
+    inset 0 4px 0 var(--card-accent);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -36,8 +39,8 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--green);
-  color: var(--white);
+  background: var(--accent);
+  color: var(--on-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,18 +96,18 @@
 }
 
 .chip:hover {
-  border-color: var(--green);
+  border-color: var(--accent);
 }
 
 .chipOn {
-  background: var(--green-100);
-  color: var(--green-dark);
-  border-color: var(--green-300);
+  background: var(--lime-100);
+  color: var(--navy);
+  border-color: var(--lime-300);
 }
 
 .surveySent {
   font-size: 13px;
-  color: var(--green-dark);
+  color: var(--accent-text);
   font-weight: 600;
 }
 

@@ -26,7 +26,7 @@ export const companyLinks: NavLink[] = [
   { name: 'About Smartwatch', short: 'Who we are and what we build', to: routes.about },
   { name: 'Our heritage', short: 'A decade of connected fleets', to: `${routes.about}#${anchors.heritage}` },
   { name: 'Why Smartwatch', short: 'Our trade, our promise, our support', to: `${routes.about}#${anchors.whyUs}` },
-  { name: 'Reviews & awards', short: 'Recognised by KPMG', to: `${routes.about}#${anchors.awards}` },
+  { name: 'Reviews & awards', short: 'KPMG Top 100 · Approved KRA vendor', to: `${routes.about}#${anchors.awards}` },
   { name: 'Leadership', short: 'Smartwatch executives and board', to: routes.leadership },
   { name: 'Newsroom', short: 'Press releases and articles', to: routes.newsroom },
   { name: 'Careers', short: 'Join our team in Kampala or Nairobi', to: routes.careers },

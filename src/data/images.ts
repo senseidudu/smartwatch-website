@@ -53,6 +53,13 @@ export const img = {
     width: 835,
     height: 665,
   },
+  /** The KRA lion on its own, lifted off the white ground of the approved-vendor sign, for the small seals. */
+  kraMark: {
+    src: '/images/logos/kra-mark.webp',
+    alt: 'Kenya Revenue Authority lion mark',
+    width: 160,
+    height: 160,
+  },
   routeMap: {
     src: '/images/route-map.webp',
     alt: 'Fleet routes and delivery stops plotted across a map',

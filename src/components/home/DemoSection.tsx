@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { award, demoBenefits } from '../../data/content'
+import { award, demoBenefits, kraVendor } from '../../data/content'
 import { anchors } from '../../data/site'
 import { cx } from '../../lib/cx'
 import DemoForm from '../DemoForm'
@@ -21,10 +21,15 @@ export default function DemoSection() {
             ))}
           </ul>
           <div className={s.awards}>
-            <div className={s.awardsLabel}>{award.label}</div>
-            <Link to={award.to} className={s.awardTile} aria-label={award.name}>
-              <Media image={award.image} radius={12} decorative className={s.awardImage} />
-            </Link>
+            <div className={s.awardsLabel}>Awards &amp; accreditation</div>
+            <div className={s.awardTiles}>
+              <Link to={award.to} className={s.awardTile} aria-label={award.name}>
+                <Media image={award.image} radius={12} decorative className={s.awardImage} />
+              </Link>
+              <Link to={kraVendor.to} className={cx(s.awardTile, s.awardTileWide)} aria-label={kraVendor.name}>
+                <Media image={kraVendor.logo} radius={12} decorative className={s.awardImage} />
+              </Link>
+            </div>
           </div>
         </div>
         <DemoForm />
