@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 
-/* White, with the sphere's soft green glow at the right edge, as on every other hero. */
+/* White, with a soft blue-grey glow at the right edge, as on every other hero. */
 .hero {
   position: relative;
   overflow: hidden;
@@ -21,7 +21,7 @@
   right: -14vw;
   width: 62vw;
   height: 160%;
-  background: radial-gradient(closest-side, var(--green-200) 0%, var(--green-100) 42%, transparent 100%);
+  background: radial-gradient(closest-side, var(--tint-200) 0%, var(--tint-100) 42%, transparent 100%);
   opacity: 0.85;
   pointer-events: none;
 }
@@ -54,8 +54,22 @@
   justify-content: center;
 }
 
-.badge {
+/* The KPMG badge and the KRA seal, side by side behind a hairline, under the hero's buttons. */
+.badges {
   margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.seal {
+  padding-left: 24px;
+  border-left: 1px solid var(--line-2);
+}
+
+.badge {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -96,5 +110,13 @@
 @media (max-width: 520px) {
   .hero {
     padding: 48px 0 72px;
+  }
+}
+
+@media (max-width: 520px) {
+  /* Stacked on a phone, the seal loses its hairline. */
+  .seal {
+    padding-left: 0;
+    border-left: 0;
   }
 }

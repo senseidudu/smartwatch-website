@@ -44,13 +44,33 @@
   color: var(--ink-3);
 }
 
+/* The KPMG badge and the KRA lockup as two white tiles of one height, each linking to the awards. */
+.awardTiles {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .awardTile {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 120px;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 8px;
+  transition: border-color 0.15s;
+}
+
+.awardTile:hover {
+  border-color: var(--accent);
+}
+
+.awardTileWide {
+  width: 200px;
+  padding: 8px 16px;
 }
 
 .awardImage {

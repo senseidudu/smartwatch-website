@@ -37,7 +37,7 @@
 
 /* Hero */
 
-/* Heroes are white like the guide's pages; the logo sphere's soft green glow bleeds in at the right edge,
+/* Heroes are white; a soft blue-grey glow bleeds in at the right edge,
    behind the image, and the eyebrow carries the guide's hairline-and-dot. */
 .hero {
   position: relative;
@@ -54,7 +54,7 @@
   right: -14vw;
   width: 62vw;
   height: 160%;
-  background: radial-gradient(closest-side, var(--green-200) 0%, var(--green-100) 42%, transparent 100%);
+  background: radial-gradient(closest-side, var(--tint-200) 0%, var(--tint-100) 42%, transparent 100%);
   opacity: 0.85;
   pointer-events: none;
 }
@@ -66,16 +66,12 @@
 }
 
 /* The page label ("Products · Tracking & Telematics") reads in the wordmark's navy on the white hero. */
-.hero:not(.heroPhoto) .heroCopy :global(.eyebrow) {
-  color: var(--navy);
-}
-
 .heroCopy :global(.eyebrow)::after {
   content: '';
   width: 56px;
   height: 7px;
   background:
-    radial-gradient(circle, var(--green) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
+    radial-gradient(circle, var(--accent) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
     linear-gradient(var(--line-2), var(--line-2)) left center / calc(100% - 9px) 1px no-repeat;
 }
 
@@ -93,7 +89,7 @@
 }
 
 .heroPhoto::before {
-  background: linear-gradient(180deg, rgba(var(--green-rgb), 0.78), rgba(var(--green-rgb), 0.92));
+  background: linear-gradient(180deg, rgba(var(--navy-rgb), 0.78), rgba(var(--navy-rgb), 0.9));
 }
 
 .heroInner {
@@ -190,13 +186,13 @@
 }
 
 .railPillOn {
-  background: var(--green-100);
-  color: var(--green-dark);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .railPillOn:hover {
-  background: var(--green-100);
-  color: var(--green-dark);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 /* Proof strip */
@@ -230,9 +226,11 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+/* White cards with a hairline and a lime stroke along the top; the stroke stays through the lift. */
 .card {
-  background: var(--white);
-  border: 1px solid var(--line);
+  background: var(--card-bg);
+  border: 1px solid var(--card-line);
+  box-shadow: inset 0 3px 0 var(--card-accent);
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -242,8 +240,11 @@
 }
 
 .cardLink:hover {
-  border-color: var(--green);
+  border-color: var(--accent);
   color: var(--ink);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 3px 0 var(--card-accent);
 }
 
 .cardIcon {
@@ -251,7 +252,7 @@
   height: 40px;
   border-radius: 10px;
   background: var(--surface);
-  color: var(--green-dark);
+  color: var(--navy);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -295,7 +296,7 @@
 .cardMore {
   font-weight: 700;
   font-size: 14px;
-  color: var(--green-dark);
+  color: var(--accent-text);
   margin-top: auto;
   padding-top: 6px;
 }
@@ -345,6 +346,17 @@ ul.bullets {
   color: var(--heading);
 }
 
+/* Without an eyebrow, a short lime dash opens the copy. */
+.splitTitle:first-child::before {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+  margin-bottom: 16px;
+}
+
 .points {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -356,7 +368,7 @@ ul.bullets {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  border-top: 2px solid var(--green);
+  border-top: 2px solid var(--accent);
   padding-top: 10px;
 }
 
@@ -386,7 +398,7 @@ ul.bullets {
   flex-direction: column-reverse;
   justify-content: flex-end;
   gap: 4px;
-  border-top: 2px solid var(--green);
+  border-top: 2px solid var(--accent);
   padding-top: 10px;
 }
 
@@ -414,7 +426,7 @@ ul.bullets {
   margin-top: 40px;
   padding: 32px;
   border-radius: 20px;
-  background: var(--green-100);
+  background: var(--surface);
 }
 
 /* Doubled class outranks .logos, which is declared further down. */
@@ -427,7 +439,7 @@ ul.bullets {
   height: 84px;
   padding: 0 18px;
   background: var(--white);
-  border-color: var(--green-200);
+  border-color: var(--line);
 }
 
 .logoImg {
@@ -465,6 +477,7 @@ ul.bullets {
 
 .stat {
   background: var(--white);
+  box-shadow: inset 0 4px 0 var(--card-accent);
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -535,9 +548,9 @@ ul.bullets {
   background: var(--surface);
 }
 
-/* The improved state sits on a pale green tint; its ticks are the ordinary green ones. */
+/* The improved state sits on a pale lime tint; its ticks are the ordinary lime ones. */
 .baAfter {
-  background: var(--green-100);
+  background: var(--lime-100);
   color: var(--ink-2);
 }
 
@@ -553,7 +566,7 @@ ul.bullets {
 }
 
 .baAfter .baHead {
-  color: var(--green-dark);
+  color: var(--accent-text);
 }
 
 .baList {
@@ -611,8 +624,8 @@ ul.bullets {
 
 .tabOn,
 .tabOn:hover {
-  background: var(--green-100);
-  color: var(--green-dark);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .tabPanel {
@@ -658,8 +671,8 @@ ul.bullets {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: var(--green-100);
-  color: var(--green-dark);
+  background: var(--accent);
+  color: var(--on-accent);
   font-family: var(--mono);
   font-size: 12px;
   display: inline-flex;
@@ -680,7 +693,7 @@ ul.bullets {
 
 /* Spotlight */
 
-/* The hardware spotlight is a deep green panel (data-band-tone="deep" in the markup) with white headings. */
+/* The hardware spotlight is a navy panel with white headings and lime spec values. */
 .spotlight {
   background: var(--band);
   color: var(--on-band);
@@ -698,6 +711,11 @@ ul.bullets {
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+
+.spotlight :focus-visible,
+.ctaBand :focus-visible {
+  outline-color: var(--on-band-accent);
 }
 
 .spotlightBody {
@@ -741,12 +759,23 @@ ul.bullets {
 }
 
 .linkColTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-3);
   margin-bottom: 12px;
+}
+
+.linkColTitle::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .linkList {
@@ -762,7 +791,7 @@ ul.bullets {
 }
 
 .link:hover {
-  color: var(--green-dark);
+  color: var(--accent-text-hover);
 }
 
 /* FAQ */
@@ -793,14 +822,17 @@ ul.bullets {
 }
 
 .faqBtn:hover {
-  color: var(--green-dark);
+  color: var(--accent-text-hover);
 }
 
-/* The plus makes a quarter turn into a minus as the answer opens. */
+/* A lime disc with a navy plus, which makes a quarter turn into a minus as the answer opens. */
 .faqIcon {
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
@@ -819,16 +851,16 @@ ul.bullets {
 }
 
 .faqIcon::before {
-  left: 0;
-  right: 0;
-  top: 9px;
+  left: 8px;
+  right: 8px;
+  top: 13px;
   height: 2px;
 }
 
 .faqIcon::after {
-  top: 0;
-  bottom: 0;
-  left: 9px;
+  top: 8px;
+  bottom: 8px;
+  left: 13px;
   width: 2px;
 }
 
@@ -915,10 +947,12 @@ ul.bullets {
 
 /* CTA band */
 
-/* The closing panel is a pale green tint with a green title and green pill; the deep green footer follows it. */
+/* The closing panel is navy with white titles and the lime pill; the navy footer follows it. */
 .ctaBand {
-  background: var(--green-100);
-  color: var(--ink-2);
+  --heading: var(--on-band);
+  --heading-plain: var(--on-band);
+  background: var(--band);
+  color: var(--on-band-muted);
   border-radius: 24px;
   padding: 56px 64px;
   display: flex;
@@ -938,7 +972,7 @@ ul.bullets {
 
 .ctaBody {
   font-size: 16px;
-  color: var(--ink-2);
+  color: var(--on-band-muted);
   line-height: 1.5;
 }
 
@@ -1101,7 +1135,7 @@ ul.bullets {
 /*
  * The Products page's platform grid. Seven products wrap four to a row and the short last row sits
  * centred, so no card is left alone at the left edge. Each card leads with a large icon tile that
- * takes the guide's lime-to-green sweep on hover, and closes on the page-label hairline and dot.
+ * turns lime on hover, and closes on the page-label hairline and dot.
  */
 .cards.cardsProduct {
   display: flex;
@@ -1123,16 +1157,16 @@ ul.bullets {
   height: 64px;
   border-radius: 18px;
   margin-bottom: 22px;
-  background: var(--green-100);
-  color: var(--green-dark);
+  background: var(--surface);
+  color: var(--navy);
   transition:
     background 0.25s ease,
     color 0.25s ease;
 }
 
 .cardProduct:hover .cardIcon {
-  background: var(--gradient-brand);
-  color: var(--white);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .cardProduct .cardTitle {
@@ -1159,13 +1193,13 @@ ul.bullets {
   padding-top: 24px;
 }
 
-/* The guide's page-label hairline, ending in its green dot, leads into the link. */
+/* The page-label hairline, ending in its lime dot, leads into the link. */
 .cardProduct .cardMore::before {
   content: '';
   flex: 1;
   height: 7px;
   background:
-    radial-gradient(circle, var(--green) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
+    radial-gradient(circle, var(--accent) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
     linear-gradient(var(--line-2), var(--line-2)) left center / calc(100% - 9px) 1px no-repeat;
 }
 

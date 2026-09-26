@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 export type Band = 'dark' | 'light'
-/** Which dark colour a band paints: the brand green, or one step deeper for text-dense bands. */
+/** Which dark a band paints. Both tones are the same navy today; the hook keeps the distinction for the header. */
 export type BandTone = 'green' | 'deep'
 export type BandTheme = { band: Band; tone: BandTone }
 
@@ -27,7 +27,7 @@ function probeLine(): number {
   return Math.max(bottom, headerHeight())
 }
 
-/** The band's `data-band-tone`, or the brand green when it names none. */
+/** The band's `data-band-tone`, or the default tone when it names none. */
 function toneOf(el: HTMLElement): BandTone {
   const tone = el.dataset.bandTone
   return tone === 'deep' ? tone : 'green'
@@ -59,7 +59,7 @@ function next(current: BandTheme): BandTheme {
 
 /**
  * The colour of the section under the header, so the bar can take its background while the page
- * scrolls: whether the band is dark, and which dark (brand green or deep green) it paints. Pages
+ * scrolls: whether the band is dark, and which tone it paints. Pages
  * open on a light band (the layout's white base), which is the starting value. Lenis owns
  * scrolling and its event is the primary source; the native listener is the fallback, and layout
  * changes that move sections without a scroll (route changes, images loading) are caught as well.

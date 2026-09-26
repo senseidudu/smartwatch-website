@@ -44,7 +44,7 @@ export default function SolutionsPage() {
         <section className={s.story}>
           <div className={cx('container', s.storyGrid)}>
             <Reveal className={s.storyCopy}>
-              <div className="eyebrow">Driver safety</div>
+              <div className="eyebrow eyebrow--chip">Driver safety</div>
               <h2 className="h-section">{story.headline}</h2>
               <p className="lead">{story.body}</p>
               <div>

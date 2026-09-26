@@ -1,15 +1,16 @@
 /*
- * A light footer: near-white ground and hairlines, navy for the statement and the numbers, grey for
- * the links. Green is kept to the small things: a thin rule along the top edge, the column headings,
- * link hovers, the country codes, the demo pill and the regions tag.
+ * A navy footer, the page's closer: white statement and numbers, translucent white for the links and
+ * the news. Lime is kept to the small things: a thin rule along the top edge, the highlighted words
+ * of the statement, the column headings, link hovers, the country codes, the demo pill, the regions
+ * tag and the particle wordmark.
  */
 .footer {
   position: relative;
-  background: var(--surface-2);
-  color: var(--ink);
+  background: var(--band);
+  color: var(--on-band);
   padding: 88px 0 28px;
   overflow: hidden;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--on-band-line);
 }
 
 .footer::before {
@@ -19,7 +20,7 @@
   left: 0;
   width: 160px;
   height: 3px;
-  background: var(--green);
+  background: var(--accent);
 }
 
 /* Top row: the statement on the left, the ways to reach us on the right. */
@@ -31,7 +32,7 @@
   gap: 48px;
   flex-wrap: wrap;
   padding-bottom: 56px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--on-band-line);
 }
 
 .pitch {
@@ -53,14 +54,24 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   text-wrap: balance;
-  color: var(--ink);
+  color: var(--on-band);
+}
+
+.statementHi {
+  color: var(--on-band-accent);
 }
 
 .tagline {
   font-size: 15px;
-  color: var(--ink-3);
+  color: var(--on-band-faint);
   line-height: 1.6;
   max-width: 480px;
+}
+
+/* The KRA seal closes the pitch, the one mark on the navy the site does not colour itself. */
+.seal {
+  margin-top: 4px;
+  align-self: flex-start;
 }
 
 .reach {
@@ -77,14 +88,14 @@
 }
 
 .phone {
-  color: var(--ink);
+  color: var(--on-band);
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .phone:hover {
-  color: var(--green-dark);
+  color: var(--on-band-accent);
 }
 
 .phoneCountry {
@@ -92,15 +103,15 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--green);
+  color: var(--on-band-accent);
 }
 
 .muted {
-  color: var(--ink-3);
+  color: var(--on-band-faint);
 }
 
 a.muted:hover {
-  color: var(--green-dark);
+  color: var(--on-band-accent);
 }
 
 /* Link columns */
@@ -123,12 +134,12 @@ a.muted:hover {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--green-dark);
+  color: var(--on-band-accent);
   margin-bottom: 6px;
 }
 
 .colLink {
-  color: var(--ink-2);
+  color: var(--on-band-muted);
   font-size: 14px;
   /* Hugs its text so the slide-in underline runs the width of the words, not the column. */
   align-self: flex-start;
@@ -136,14 +147,14 @@ a.muted:hover {
 }
 
 .colLink:hover {
-  color: var(--green-dark);
+  color: var(--on-band-accent);
 }
 
 .region {
   margin-top: 8px;
   align-self: flex-start;
-  background: var(--green-100);
-  color: var(--green-dark);
+  background: rgba(var(--lime-rgb), 0.16);
+  color: var(--on-band-accent);
   border-radius: 999px;
   padding: 4px 12px;
   font-size: 13px;
@@ -154,7 +165,7 @@ a.muted:hover {
 
 .news {
   padding-top: 32px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--on-band-line);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -171,18 +182,18 @@ a.muted:hover {
 }
 
 .newsItem {
-  color: var(--ink-3);
+  color: var(--on-band-faint);
   font-size: 14px;
   line-height: 1.5;
 }
 
 .newsItem strong {
-  color: var(--ink);
+  color: var(--on-band);
   font-weight: 700;
   margin-right: 4px;
 }
 
-/* The particle wordmark, in the brand green: same ratio as the image it samples (BAND_RATIO in Footer.tsx). */
+/* The particle wordmark, in lime: same ratio as the image it samples (BAND_RATIO in Footer.tsx). */
 
 .wordmark {
   position: relative;
@@ -207,7 +218,7 @@ a.muted:hover {
   letter-spacing: -0.03em;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(var(--green-rgb), 0.45);
+  -webkit-text-stroke: 1px rgba(var(--lime-rgb), 0.55);
   user-select: none;
 }
 
@@ -216,13 +227,13 @@ a.muted:hover {
 .legal {
   margin-top: 16px;
   padding-top: 24px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--on-band-line);
   display: flex;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
   font-size: 13px;
-  color: var(--ink-3);
+  color: var(--on-band-faint);
   align-items: center;
 }
 
@@ -234,11 +245,11 @@ a.muted:hover {
 }
 
 .legalLink {
-  color: var(--ink-3);
+  color: var(--on-band-faint);
 }
 
 .legalLink:hover {
-  color: var(--green-dark);
+  color: var(--on-band-accent);
 }
 
 .social {

@@ -66,3 +66,14 @@ describe('Home hero', () => {
     expect(screen.getByText('Speed alert cleared')).toBeInTheDocument()
   })
 })
+
+describe('Home hero credentials', () => {
+  test('flexes the KRA vendor approval beside the products button', () => {
+    renderHero()
+    const seal = screen.getByRole('link', { name: /approved kra vendor/i })
+    expect(seal).toHaveAttribute('href', '/about#awards')
+    expect(seal.querySelector('img')).toHaveAttribute('src', '/images/logos/kra-mark.webp')
+    const actions = screen.getByRole('link', { name: /explore products/i }).closest('[data-enter]')!
+    expect(actions).toContainElement(seal)
+  })
+})

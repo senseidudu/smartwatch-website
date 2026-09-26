@@ -1,4 +1,5 @@
 import { img } from './images'
+import { partnerLogo } from './logos'
 import { routes } from './site'
 
 /** The key words in the hero lead; hovering one shows a card previewing the product behind it. */
@@ -24,8 +25,8 @@ export const heroWords = [
 ]
 
 export const proofLine = {
-  text: 'Recognised by KPMG as a Top 100 mid-sized company. Serving fleets across East Africa since 2011.',
-  linkLabel: 'Our awards →',
+  text: 'Approved KRA vendor and recognised by KPMG as a Top 100 mid-sized company. Serving fleets across East Africa since 2011.',
+  linkLabel: 'Our credentials →',
   to: '/about#awards',
 }
 
@@ -69,6 +70,22 @@ export const award = {
   name: 'KPMG Top 100 Mid-Sized Companies',
   label: 'Recognised by KPMG',
   image: img.kpmg,
+  to: '/about#awards',
+}
+
+/**
+ * Smartwatch's standing as an approved vendor of the Kenya Revenue Authority, shown as a seal beside
+ * the KPMG award. The copy stays general about what the approval covers until the client says.
+ */
+export const kraVendor = {
+  name: 'Approved KRA vendor',
+  issuer: 'Kenya Revenue Authority',
+  announcement: 'Smartwatch is now an approved KRA vendor',
+  body: 'Smartwatch Solutions is an approved vendor of the Kenya Revenue Authority. Fleets in Kenya can bring Smartwatch in knowing that our company, hardware and platform meet the standards the authority sets for its suppliers.',
+  /** The lion alone, for the small seals. */
+  mark: img.kraMark,
+  /** The full lockup, for tiles and cards. */
+  logo: partnerLogo('Kenya Revenue Authority'),
   to: '/about#awards',
 }
 

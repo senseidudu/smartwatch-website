@@ -12,10 +12,6 @@ import s from './PlatformPillars.module.css'
 /** How long each product stays up before the carousel moves on. */
 export const ROTATE_INTERVAL = 5000
 
-/** Each product carries one shade of the brand green, in turn; the section takes the selected one. */
-const ACCENTS = [s.accentGreen, s.accentLight, s.accentDeep, s.accentPale]
-const accentOf = (index: number) => ACCENTS[index % ACCENTS.length]
-
 /** Points the tab's glow at the pointer. */
 function trackGlow(event: MouseEvent<HTMLButtonElement>) {
   const box = event.currentTarget.getBoundingClientRect()
@@ -51,7 +47,7 @@ export default function PlatformPillars() {
   }, [active])
 
   return (
-    <section className={cx(s.section, accentOf(active))}>
+    <section className={s.section}>
       <div
         className={cx('container', s.inner)}
         onMouseEnter={() => setPaused(true)}
@@ -79,7 +75,7 @@ export default function PlatformPillars() {
               id={`pillar-tab-${i}`}
               aria-selected={i === active}
               aria-controls="pillar-panel"
-              className={cx(s.tab, accentOf(i), i === active && s.tabOn)}
+              className={cx(s.tab, i === active && s.tabOn)}
               data-highlight-cell
               onClick={() => pick(i)}
               onMouseMove={trackGlow}

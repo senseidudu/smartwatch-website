@@ -18,7 +18,7 @@
   max-width: 640px;
 }
 
-/* The guide's green hairline-and-dot trails the eyebrow. */
+/* A blue-grey hairline and a lime dot trail the eyebrow. */
 .headCopy :global(.eyebrow) {
   display: flex;
   align-items: center;
@@ -30,8 +30,8 @@
   width: 56px;
   height: 7px;
   background:
-    radial-gradient(circle, var(--green) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
-    linear-gradient(var(--green-300), var(--green-300)) left center / calc(100% - 9px) 1px no-repeat;
+    radial-gradient(circle, var(--accent) 2.6px, transparent 3.2px) right center / 7px 7px no-repeat,
+    linear-gradient(var(--tint-300), var(--tint-300)) left center / calc(100% - 9px) 1px no-repeat;
 }
 
 .grid {

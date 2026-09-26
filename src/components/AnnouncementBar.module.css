@@ -1,22 +1,41 @@
 .bar {
-  background: var(--green-dark);
-  color: var(--white);
+  background: var(--accent);
+  color: var(--on-accent);
   font-size: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 14px;
-  padding: 9px 20px;
+  padding: 7px 20px;
   text-align: center;
   flex-wrap: wrap;
 }
 
 .text {
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* The KRA lion in a small white disc, so its red and black read on the lime. */
+.seal {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mark {
+  width: 15px;
+  height: 15px;
 }
 
 .link {
-  color: var(--white);
+  color: var(--on-accent);
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 700;
@@ -26,7 +45,7 @@
 }
 
 .link:hover {
-  color: var(--green-100);
+  color: var(--accent-text-hover);
 }
 
 @media (max-width: 520px) {

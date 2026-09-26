@@ -258,3 +258,14 @@ describe('Header mobile drawer', () => {
     expect(screen.queryByRole('dialog', { name: /menu/i })).not.toBeInTheDocument()
   })
 })
+
+describe('Header credentials', () => {
+  test('Company names the KRA approval beside the KPMG award', async () => {
+    const user = userEvent.setup()
+    renderHeader()
+    await user.hover(screen.getByRole('button', { name: /company/i }))
+    const link = screen.getByRole('link', { name: /reviews & awards/i })
+    expect(link).toHaveAttribute('href', '/about#awards')
+    expect(link).toHaveTextContent('Approved KRA vendor')
+  })
+})

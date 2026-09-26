@@ -5,6 +5,7 @@ const labels: Record<string, string> = {
   benefits: 'Benefits',
   'how-it-works': 'How it works',
   hardware: 'Hardware',
+  'data-ops': 'Data ops',
   resources: 'Resources',
   faq: 'FAQ',
   devices: 'Devices',

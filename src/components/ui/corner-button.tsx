@@ -13,8 +13,8 @@ import s from './corner-button.module.css'
  * Adapted for this site:
  *   - with `to` it renders a SmartLink (router link or external anchor); without, a <button>
  *     so forms can submit through it
- *   - the inline <style> tag becomes a CSS module, and the lime accent the site's green (or
- *     forest green, via `tone`), with white text on the pill instead of the original's translucent black
+ *   - the inline <style> tag becomes a CSS module on the site tokens: a lime pill with navy text (or
+ *     a navy pill via `tone`), instead of the original's translucent black
  *   - the default pencil icon is dropped; an icon can still be passed
  *   - a compact size fits the 64px header, `onDark` lightens the frame on dark surfaces, and
  *     reduced motion keeps only the colour change

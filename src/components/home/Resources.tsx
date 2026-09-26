@@ -19,7 +19,7 @@ export default function Resources() {
         <Link to={featuredPost.to} className={s.feature}>
           <Media image={featuredPost.image} ratio="16 / 9" radius={0} decorative />
           <div className={s.featureBody}>
-            <div className="eyebrow">{featuredPost.kind}</div>
+            <div className="eyebrow eyebrow--chip">{featuredPost.kind}</div>
             <div className={s.featureTitle}>{featuredPost.title}</div>
             <div className={s.featureText}>{featuredPost.body}</div>
             <span className="link-arrow link-arrow--sm">Learn more →</span>

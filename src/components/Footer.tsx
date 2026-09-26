@@ -1,12 +1,13 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/logo.svg'
+import logoWhite from '../assets/logo-white.svg'
 import { news } from '../data/content'
 import { industriesA } from '../data/industries'
 import { pillars } from '../data/pillars'
 import { anchors, routes, site } from '../data/site'
 import { cx } from '../lib/cx'
 import { prefersReducedMotion } from '../motion/motion'
+import CredentialBadge from './CredentialBadge'
 import SmartLink from './SmartLink'
 import CornerButton from './ui/corner-button'
 import s from './Footer.module.css'
@@ -22,6 +23,7 @@ const BAND_RATIO = 4.6
 const company = [
   { name: 'About Smartwatch', to: routes.about },
   { name: 'Our heritage', to: `${routes.about}#${anchors.heritage}` },
+  { name: 'Awards & accreditation', to: `${routes.about}#${anchors.awards}` },
   { name: 'Platform logins', to: routes.platforms },
   { name: 'Contact', to: routes.contact },
 ]
@@ -91,7 +93,7 @@ function ParticleWordmark() {
         <Suspense fallback={null}>
           <InteractiveParticles
             src={src}
-            color="#4d9734" /* --green: the WebGL tint cannot read a CSS token */
+            color="#a7d439" /* --lime: the WebGL tint cannot read a CSS token */
             maxDimension={960}
             size={1.4}
             randomness={1.6}
@@ -111,15 +113,18 @@ function ParticleWordmark() {
 
 export default function Footer() {
   return (
-    <footer className={s.footer} data-band="light">
+    <footer className={s.footer} data-band="dark">
       <div className={cx('container', s.top)}>
         <div className={s.pitch}>
-          <img src={logo} alt={site.name} className={s.logo} />
-          <h2 className={s.statement}>Total peace of mind for every fleet on the road.</h2>
+          <img src={logoWhite} alt={site.name} className={s.logo} />
+          <h2 className={s.statement}>
+            Total peace of mind for <span className={s.statementHi}>every fleet</span> on the road.
+          </h2>
           <p className={s.tagline}>{site.tagline}</p>
+          <CredentialBadge onDark className={s.seal} />
         </div>
         <div className={s.reach}>
-          <CornerButton to={routes.contact} className={s.demo}>
+          <CornerButton to={routes.contact} className={s.demo} onDark>
             Get a demo
           </CornerButton>
           <a href={site.phoneHref} className={s.phone}>

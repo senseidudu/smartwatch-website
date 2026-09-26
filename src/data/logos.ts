@@ -7,11 +7,13 @@ import type { Img } from './types'
  * so the order here is the order they scroll past in. KRA leads on purpose.
  */
 export const partnerLogos = [
+  // Rebuilt at 2x from the approved-vendor sign in design/source-images, with the white ground lifted
+  // so it floats on grey card frames like the KPMG badge does.
   {
     src: '/images/logos/kenya-revenue-authority.webp',
     alt: 'Kenya Revenue Authority',
-    width: 420,
-    height: 109,
+    width: 840,
+    height: 225,
   },
   {
     src: '/images/logos/absa.webp',

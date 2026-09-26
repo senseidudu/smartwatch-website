@@ -1,5 +1,4 @@
-/* White, like the guide's pages. The headline pairs a navy lead with a green close, as the guide's
-   pull-up banners do: the one place navy sits outside the wordmark. */
+/* White ground, navy headline; the three key words carry lime underlines and the button is lime. */
 .hero {
   background: var(--white);
   color: var(--ink);
@@ -24,7 +23,7 @@
 }
 
 .titleLead {
-  color: var(--navy);
+  color: var(--heading);
 }
 
 .lead {
@@ -39,12 +38,12 @@
 
 /* Only the words themselves are emphasised; the commas and the "and" stay in the
    lead's own weight and colour, as punctuation should. Each word links to its product, but
-   keeps its green on hover: the cursor card and its green wash already say so. */
+   keeps its navy on hover: the cursor card and its lime wash already say so. */
 .word,
 .word:hover {
   position: relative;
   white-space: nowrap;
-  color: var(--green-dark);
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -58,7 +57,7 @@
   bottom: -0.12em;
   height: 2px;
   border-radius: 2px;
-  background: var(--green);
+  background: var(--accent);
   opacity: 0;
   transform: scaleX(0);
   transform-origin: right center;
@@ -75,6 +74,7 @@
 
 .actions {
   display: flex;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
 }
@@ -82,6 +82,13 @@
 /* The corner frame sits outside the pill; pull it back so the pill lines up with the copy. */
 .cta {
   margin: -14px -18px;
+}
+
+/* The KRA seal stands beside the button behind a hairline, the way a stamp sits beside a signature. */
+.seal {
+  margin-left: 8px;
+  padding-left: 20px;
+  border-left: 1px solid var(--line-2);
 }
 
 .mediaWrap {
@@ -125,7 +132,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--accent);
   display: inline-block;
 }
 
@@ -181,6 +188,13 @@
 
   .cta > a {
     flex: 1;
+  }
+
+  /* Under the full-width button the seal drops its hairline and sits on its own line. */
+  .seal {
+    margin: 6px 0 0;
+    padding-left: 0;
+    border-left: 0;
   }
 
   .alert {

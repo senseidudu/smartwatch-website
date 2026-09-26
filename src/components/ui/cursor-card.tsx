@@ -18,7 +18,7 @@ import s from './cursor-card.module.css'
  *     transition on an inner panel keyed off `data-open`, so the card stays mounted for its exit
  *     instead of needing AnimatePresence (and GSAP's transform never swallows the scale)
  *   - it renders a SmartLink (router link) instead of a bare anchor
- *   - Tailwind becomes a CSS module on the site tokens: the orange hover wash is the site green
+ *   - Tailwind becomes a CSS module on the site tokens: the orange hover wash is the site lime
  *   - only a mouse opens the card (a tap just follows the link), the card flips above the cursor
  *     near the bottom of the viewport and clamps to its sides, and reduced motion drops the
  *     trailing and the scale, pinning the card straight to the cursor

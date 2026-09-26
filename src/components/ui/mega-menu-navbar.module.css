@@ -1,7 +1,7 @@
 /*
  * Chrome for the vendored mega-menu navbar: the sticky bar, triggers, floating panel and
  * mobile drawer. The bar takes the colour of the section under it (data-theme): the band's
- * tone (green or deep green, via data-tone) over dark bands, white over light ones. data-solid marks a scrolled page and adds the hairline.
+ * tone (navy, via data-tone) over dark bands, white over light ones. data-solid marks a scrolled page and adds the hairline.
  * The panels' columns, promo card and contact popover live in Header.module.css.
  */
 
@@ -19,7 +19,7 @@
   background: transparent;
   --hdr-fg: var(--ink);
   --hdr-fg-muted: var(--ink-3);
-  --hdr-hover: var(--green-100);
+  --hdr-hover: var(--surface);
   /* No transition: the text colour and the logo swap the instant the theme changes, so the
      background must change with them, or white text sits on a still-white bar mid-fade. */
 }
@@ -92,9 +92,9 @@
   opacity: 0.75;
 }
 
-/* Over the white page the label greens on hover instead of fading, as the guide's links do. */
+/* Over the white page the label lifts to a lighter navy on hover instead of fading. */
 .header:not([data-theme='dark']) .navItem:hover {
-  color: var(--green-dark);
+  color: var(--accent-text-hover);
   opacity: 1;
 }
 
@@ -111,10 +111,10 @@
   bottom: 0;
   height: 2px;
   border-radius: 2px;
-  background: var(--green);
+  background: var(--accent);
 }
 
-/* On a green bar the green underline would vanish, so it takes the band's accent there. */
+/* On a navy bar the underline takes the band's lime accent. */
 .header[data-theme='dark'] .navItemOpen::after {
   background: var(--on-band-accent);
 }
@@ -321,7 +321,7 @@
 }
 
 .drawerLink:hover {
-  color: var(--green-dark);
+  color: var(--accent-text-hover);
 }
 
 .drawerFooter {

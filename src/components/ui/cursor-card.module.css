@@ -8,11 +8,11 @@
 }
 
 .link:hover {
-  background-color: rgba(var(--green-rgb), 0.12);
+  background-color: rgba(var(--lime-rgb), 0.18);
 }
 
 .link:focus-visible {
-  outline: 2px solid var(--green);
+  outline: 2px solid var(--navy);
   outline-offset: 2px;
 }
 
