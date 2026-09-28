@@ -13,7 +13,7 @@ export default function DetailHero({ page }: { page: DetailPage }) {
   const { hero } = page
   const tone = hero.tone ?? 'dark'
   const ctas = hero.ctas ?? defaultHeroCtas(page.kind)
-  // Every hero is the white page design now; only a photo hero paints dark, under its navy overlay.
+  // Every hero is the white page design now; only a photo hero paints dark, its photo under a soft neutral shade.
   const photo = tone === 'photo' && hero.media
   const light = !photo
   const ref = useRef<HTMLElement>(null)
@@ -26,7 +26,7 @@ export default function DetailHero({ page }: { page: DetailPage }) {
       style={photo ? { backgroundImage: `url(${hero.media!.src})` } : undefined}
       data-band={light ? 'light' : 'dark'}
     >
-      <div className={cx('container', s.heroInner, photo && s.heroCentered)}>
+      <div className={cx('container', s.heroInner)}>
         <div className={s.heroCopy}>
           <div className={cx('eyebrow', !light && 'eyebrow--bright')}>{hero.eyebrow}</div>
           <h1 className="h-page">
@@ -39,7 +39,7 @@ export default function DetailHero({ page }: { page: DetailPage }) {
             <div className={s.heroActions} data-enter>
               {ctas.map((cta) =>
                 isDemoCta(cta) ? (
-                  <CornerButton key={cta.label} to={cta.to} onDark={!light}>
+                  <CornerButton key={cta.label} to={cta.to} onDark={!light} className={s.heroDemo}>
                     {cta.label}
                   </CornerButton>
                 ) : (
@@ -59,6 +59,7 @@ export default function DetailHero({ page }: { page: DetailPage }) {
           <div data-enter-media>
             <Media
               image={hero.media}
+              video={hero.video}
               label={hero.mediaLabel ?? `${page.name} image`}
               ratio="4 / 3"
               radius={24}

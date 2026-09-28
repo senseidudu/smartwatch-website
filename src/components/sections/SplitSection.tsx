@@ -14,6 +14,7 @@ export default function SplitSection({ section }: Props) {
       <div className={cx(s.split, section.reverse && s.splitReverse)}>
         <Media
           image={section.media}
+          video={section.video}
           label={section.mediaLabel ?? 'image coming soon'}
           ratio="4 / 3"
           className={s.splitMedia}

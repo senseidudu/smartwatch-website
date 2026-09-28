@@ -1,66 +1,71 @@
+/* A full-width band in the exact brand green, flat as the manual paints it: white figures over
+   bars stepping down from white through the pale tints. */
+.band {
+  padding: 72px 0;
+  background: var(--band);
+  color: var(--on-band);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  overflow: hidden;
-  margin-top: 96px;
-  margin-bottom: 0;
+  gap: 24px;
 }
 
-/* Each cell carries a bar from the lime step ladder, brand lime down to its palest tint. */
+/* Each cell carries a bar stepping down from white through the pale green tints. */
 .cell {
-  --step: var(--lime);
-  background: var(--white);
-  box-shadow: inset 0 4px 0 var(--step);
-  padding: 28px;
+  --step: var(--white);
+  box-shadow: inset 0 3px 0 var(--step);
+  padding: 28px 4px 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .value {
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--heading-plain);
+  color: var(--on-band);
   line-height: 1;
 }
 
 .label {
   font-size: 14px;
-  color: var(--ink-3);
+  color: var(--on-band-muted);
   font-weight: 500;
 }
 
 .cell:nth-child(4n + 2) {
-  --step: var(--lime-300);
+  --step: var(--green-100);
 }
 
 .cell:nth-child(4n + 3) {
-  --step: var(--lime-200);
+  --step: var(--green-200);
 }
 
 .cell:nth-child(4n + 4) {
-  --step: var(--lime-100);
+  --step: var(--green-300);
 }
 
 /* Four figures read as a 2×2 block below the desktop row: auto-fit would strand the fourth on its own. */
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 64px;
+    row-gap: 36px;
+  }
+
+  .band {
+    padding: 56px 0;
   }
 }
 
 @media (max-width: 520px) {
   .cell {
-    padding: 20px 18px;
+    padding: 20px 0 0;
   }
 
   .value {
-    font-size: 32px;
+    font-size: 34px;
   }
 }

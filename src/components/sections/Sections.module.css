@@ -37,7 +37,7 @@
 
 /* Hero */
 
-/* Heroes are white; a soft blue-grey glow bleeds in at the right edge,
+/* Heroes are white; a soft pale-green glow bleeds in at the right edge,
    behind the image, and the eyebrow carries the guide's hairline-and-dot. */
 .hero {
   position: relative;
@@ -54,8 +54,8 @@
   right: -14vw;
   width: 62vw;
   height: 160%;
-  background: radial-gradient(closest-side, var(--tint-200) 0%, var(--tint-100) 42%, transparent 100%);
-  opacity: 0.85;
+  background: radial-gradient(closest-side, var(--green-100) 0%, var(--green-50) 42%, transparent 100%);
+  opacity: 0.9;
   pointer-events: none;
 }
 
@@ -77,7 +77,8 @@
 
 .heroPhoto {
   background-size: cover;
-  background-position: center;
+  /* The photo's subject, the truck and its lit e-lock, sits left of the copy column. */
+  background-position: right 55%;
   color: var(--on-band);
 }
 
@@ -88,8 +89,43 @@
   opacity: 1;
 }
 
+/*
+ * No colour wash over the photo: the copy takes the right-hand column, and a shade in the brand black
+ * falls in from that edge only, fading out before the truck and its lit e-lock on the left, which stay
+ * true to life. On narrow screens the copy spans the photo, so the shade covers it all and a light blur
+ * turns the container's stencilled lettering into texture behind the type.
+ */
 .heroPhoto::before {
-  background: linear-gradient(180deg, rgba(var(--navy-rgb), 0.78), rgba(var(--navy-rgb), 0.9));
+  background: linear-gradient(270deg, rgba(10, 11, 9, 0.66) 0%, rgba(10, 11, 9, 0.62) 48%, transparent 55%);
+}
+
+@media (min-width: 901px) {
+  .heroPhoto .heroCopy {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroPhoto {
+    background-position: 40% center;
+  }
+
+  .heroPhoto::before {
+    background: linear-gradient(180deg, rgba(10, 11, 9, 0.7), rgba(10, 11, 9, 0.84));
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
+}
+
+.heroPhoto h1,
+.heroPhoto .heroLead,
+.heroPhoto :global(.eyebrow) {
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.45);
+}
+
+/* Pale green is lost over a busy photo; the page label goes white there. */
+.heroPhoto :global(.eyebrow) {
+  color: var(--on-band);
 }
 
 .heroInner {
@@ -100,21 +136,11 @@
   position: relative;
 }
 
-.heroCentered {
-  grid-template-columns: 1fr;
-  justify-items: center;
-  text-align: center;
-}
-
 .heroCopy {
   display: flex;
   flex-direction: column;
   gap: 22px;
   max-width: 640px;
-}
-
-.heroCentered .heroCopy {
-  align-items: center;
 }
 
 .heroLead {
@@ -127,6 +153,24 @@
 
 .heroPhoto .heroLead {
   color: var(--on-band);
+}
+
+/* A hairline outline vanishes on a photo; a solid white rim and a frosted fill hold it. */
+.heroPhoto :global(.btn--outline-light) {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.heroPhoto :global(.btn--outline-light):hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* The corner frame sits outside the pill; pull it back so the pill lines up with the copy. The right
+   side keeps the frame's room, which spaces the next button. */
+.heroDemo {
+  margin: -14px 0 -14px -18px;
 }
 
 .heroActions {
@@ -186,12 +230,12 @@
 }
 
 .railPillOn {
-  background: var(--accent);
+  background: var(--accent-solid);
   color: var(--on-accent);
 }
 
 .railPillOn:hover {
-  background: var(--accent);
+  background: var(--accent-solid);
   color: var(--on-accent);
 }
 
@@ -226,7 +270,7 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-/* White cards with a hairline and a lime stroke along the top; the stroke stays through the lift. */
+/* White cards with a hairline and a green stroke along the top; the stroke stays through the lift. */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--card-line);
@@ -251,8 +295,8 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: var(--surface);
-  color: var(--navy);
+  background: var(--green-50);
+  color: var(--green);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -346,7 +390,7 @@ ul.bullets {
   color: var(--heading);
 }
 
-/* Without an eyebrow, a short lime dash opens the copy. */
+/* Without an eyebrow, a short green dash opens the copy. */
 .splitTitle:first-child::before {
   content: '';
   display: block;
@@ -548,9 +592,9 @@ ul.bullets {
   background: var(--surface);
 }
 
-/* The improved state sits on a pale lime tint; its ticks are the ordinary lime ones. */
+/* The improved state sits on a pale green tint; its ticks are the ordinary green ones. */
 .baAfter {
-  background: var(--lime-100);
+  background: var(--green-100);
   color: var(--ink-2);
 }
 
@@ -624,7 +668,7 @@ ul.bullets {
 
 .tabOn,
 .tabOn:hover {
-  background: var(--accent);
+  background: var(--accent-solid);
   color: var(--on-accent);
 }
 
@@ -671,7 +715,7 @@ ul.bullets {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: var(--accent);
+  background: var(--accent-solid);
   color: var(--on-accent);
   font-family: var(--mono);
   font-size: 12px;
@@ -693,7 +737,7 @@ ul.bullets {
 
 /* Spotlight */
 
-/* The hardware spotlight is a navy panel with white headings and lime spec values. */
+/* The hardware spotlight is a brand-green panel with white headings and pale green spec values. */
 .spotlight {
   background: var(--band);
   color: var(--on-band);
@@ -825,7 +869,7 @@ ul.bullets {
   color: var(--accent-text-hover);
 }
 
-/* A lime disc with a navy plus, which makes a quarter turn into a minus as the answer opens. */
+/* A green disc with a white plus, which makes a quarter turn into a minus as the answer opens. */
 .faqIcon {
   position: relative;
   width: 28px;
@@ -947,7 +991,7 @@ ul.bullets {
 
 /* CTA band */
 
-/* The closing panel is navy with white titles and the lime pill; the navy footer follows it. */
+/* The closing panel is the brand green with white titles and the white pill; the green footer follows it. */
 .ctaBand {
   --heading: var(--on-band);
   --heading-plain: var(--on-band);
@@ -1135,7 +1179,7 @@ ul.bullets {
 /*
  * The Products page's platform grid. Seven products wrap four to a row and the short last row sits
  * centred, so no card is left alone at the left edge. Each card leads with a large icon tile that
- * turns lime on hover, and closes on the page-label hairline and dot.
+ * turns green on hover, and closes on the page-label hairline and dot.
  */
 .cards.cardsProduct {
   display: flex;
@@ -1157,8 +1201,8 @@ ul.bullets {
   height: 64px;
   border-radius: 18px;
   margin-bottom: 22px;
-  background: var(--surface);
-  color: var(--navy);
+  background: var(--green-50);
+  color: var(--green);
   transition:
     background 0.25s ease,
     color 0.25s ease;
@@ -1193,7 +1237,7 @@ ul.bullets {
   padding-top: 24px;
 }
 
-/* The page-label hairline, ending in its lime dot, leads into the link. */
+/* The page-label hairline, ending in its green dot, leads into the link. */
 .cardProduct .cardMore::before {
   content: '';
   flex: 1;

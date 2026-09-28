@@ -1,3 +1,4 @@
+import CargoSpotlight from '../components/home/CargoSpotlight'
 import Customers from '../components/home/Customers'
 import DemoSection from '../components/home/DemoSection'
 import Hero from '../components/home/Hero'
@@ -13,14 +14,15 @@ import s from './HomePage.module.css'
 export default function HomePage() {
   usePageMeta({
     description:
-      'Smartwatch Solutions: fleet and mobile asset management for East Africa since 2011. Tracking, telematics, dash cameras, compliance, maintenance and cargo security on one platform.',
+      'Smartwatch Solutions: fleet and mobile asset management for East Africa since 2011. Cargo Tracking with electronic locks, plus tracking, telematics, dash cameras, compliance and maintenance on one platform.',
   })
   return (
     <div className={s.home}>
       <Hero />
       <PlatformPillars />
-      <Stats />
+      <CargoSpotlight />
       <Customers />
+      <Stats />
       <WhySmartwatch />
       <IndustriesStrip />
       <Resources />

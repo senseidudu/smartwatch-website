@@ -8,7 +8,8 @@ Visual design and layout from the Claude Design project "Smartwatch website rede
 
 - Vite 8, React 19, TypeScript, bun
 - `react-router-dom` for routing
-- CSS Modules per component; design tokens in `src/index.css`
+- CSS Modules per component; design tokens in `src/index.css` (the brand manual's swatches in sRGB, not its
+  printed hex: green #4a8f42 leads and fills the bands, navy #1b2845 for headings; primaries and green shades only)
 - GSAP (ScrollTrigger) + Lenis for scroll effects and smooth scrolling
 - vitest + Testing Library for behaviour tests (animation libraries are mocked in tests)
 
@@ -43,12 +44,16 @@ bun run preview    # serve dist/
   platform portals; `nav.ts` builds the menus. Edit text here, not in components.
 - `src/data/types.ts` — the `DetailPage` / `Section` types every page is written against.
 - `src/pages/DetailPage.tsx` + `src/components/sections/` — the single template that renders any page.
-- `src/components/home/` — the homepage sections.
+- `src/components/home/` — the homepage sections; `CargoSpotlight.tsx` fronts Cargo Tracking, copy in `cargoFeature`
+  (`src/data/content.ts`).
+- `docs/video/flow-prompts.md` — Google Flow (Veo 3) prompt sets for the brand videos (hero, cargo, e-lock, dash cam).
 - `src/components/Header.tsx` — transparent colour-inverting header (VengeanceUI mega-menu-navbar), mega
   menus, contact popover, drawer; `AnnouncementBar.tsx` sits above it.
 - `src/motion/` and `src/components/Reveal.tsx` — GSAP setup, reveal-on-scroll, hero entrances.
 - `src/lib/leads.ts` — `submitLead()`, the single place to wire the demo and contact forms to a backend.
 - `public/images/` — the client's approved imagery (WebP).
+- `design/build-logo.py` then `design/brand-colours.py` — rebuild the logo from the brand PDF, then convert its CMYK
+  to the manual's colours in sRGB (macOS, uses `sips`; the P3 story is in the script and the 2026-09-28 spec).
 
 ## Responsive conventions
 
@@ -76,3 +81,5 @@ bun run preview    # serve dist/
 - `docs/superpowers/specs/2026-09-17-smartwatch-site-design.md` — first build from the mockup.
 - `docs/superpowers/specs/2026-09-18-motive-structure-content-motion.md` — content migration, Motive-shaped
   structure, motion, and the list of questions the client needs to answer.
+- `docs/superpowers/specs/2026-09-28-brand-green-cargo-marquee.md` — the brand-guideline palette and its colour
+  rules (green leads, AA shades), Cargo Tracking fronting, and the full-width customer marquee.

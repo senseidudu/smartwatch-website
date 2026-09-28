@@ -6,7 +6,10 @@ The layout is expressed in units of D, the mark's diameter, so both files share 
 The PDF's own lockup sets the slogan at 8% of the mark's height, which is 3px tall in the 44px
 header; here it is 16% with a touch of tracking and weight so it reads at that size.
 
-Usage: python3 design/build-logo.py
+pdftocairo converts the PDF's CMYK with a plain formula, so run design/brand-colours.py afterwards:
+it recolours both logos to the colours the brand manual actually shows.
+
+Usage: python3 design/build-logo.py && python3 design/brand-colours.py
 """
 import re, subprocess, tempfile, pathlib
 

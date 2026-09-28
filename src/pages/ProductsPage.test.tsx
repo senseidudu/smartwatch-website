@@ -4,7 +4,7 @@ import { describe, expect, test } from 'vitest'
 import ProductsPage from './ProductsPage'
 
 describe('Products page hero', () => {
-  test('carries the KPMG award and the KRA approval beside the actions', () => {
+  test('carries the KPMG award and the KRA RECTS certification beside the actions', () => {
     render(
       <MemoryRouter>
         <ProductsPage />
@@ -12,6 +12,6 @@ describe('Products page hero', () => {
     )
     const hero = within(screen.getByRole('heading', { level: 1 }).closest('section')!)
     expect(hero.getByRole('link', { name: 'KPMG Top 100 Mid-Sized Companies' })).toHaveAttribute('href', '/about#awards')
-    expect(hero.getByRole('link', { name: /approved kra vendor/i })).toHaveAttribute('href', '/about#awards')
+    expect(hero.getByRole('link', { name: /kra rects certified vendor/i })).toHaveAttribute('href', '/about#awards')
   })
 })

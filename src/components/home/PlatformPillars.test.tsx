@@ -14,11 +14,14 @@ function renderPillars() {
 }
 
 describe('PlatformPillars tabs', () => {
-  test('shows the Compliance pillar first', () => {
+  test('shows the Cargo Tracking pillar first, the product being fronted', () => {
     renderPillars()
-    expect(screen.getByRole('heading', { level: 3, name: /manage compliance better/i })).toBeInTheDocument()
-    expect(screen.getByRole('tab', { name: /compliance/i })).toHaveAttribute('aria-selected', 'true')
-    expect(screen.getByRole('link', { name: /learn more/i })).toHaveAttribute('href', '/products/compliance')
+    expect(screen.getByRole('heading', { level: 3, name: /electromagnetic lock/i })).toBeInTheDocument()
+    expect(screen.getByRole('tab', { name: /cargo tracking/i })).toHaveAttribute('aria-selected', 'true')
+    expect(screen.getByRole('link', { name: /learn more/i })).toHaveAttribute(
+      'href',
+      '/solutions/electronic-cargo-tracking',
+    )
   })
 
   test('clicking a tab shows that pillar and links to its page', async () => {

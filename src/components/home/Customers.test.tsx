@@ -1,4 +1,5 @@
 import { render, screen, within } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, test } from 'vitest'
 import { partnerLogos } from '../../data/logos'
@@ -37,5 +38,24 @@ describe('Customers marquee', () => {
       const hidden = list.querySelectorAll('li[aria-hidden="true"]')
       expect(hidden).toHaveLength(rows[i].length)
     })
+  })
+
+  test('sets each row to travel at a pace per logo, however many it holds', () => {
+    const region = renderCustomers()
+    within(region)
+      .getAllByRole('list')
+      .forEach((list, i) => expect(list.style.getPropertyValue('--count')).toBe(String(rows[i].length)))
+  })
+
+  test('the pause button holds both rows still and plays them again', async () => {
+    const user = userEvent.setup()
+    const region = renderCustomers()
+    const lists = within(region).getAllByRole('list')
+
+    await user.click(screen.getByRole('button', { name: /pause customer logos/i }))
+    lists.forEach((list) => expect(list.className).toMatch(/paused/))
+
+    await user.click(screen.getByRole('button', { name: /play customer logos/i }))
+    lists.forEach((list) => expect(list.className).not.toMatch(/paused/))
   })
 })

@@ -1,6 +1,10 @@
-/* White ground, navy headline; the three key words carry lime underlines and the button is lime. */
+/* White ground washed with pale green behind the video, a navy headline whose key phrase is brand
+   green (large enough to clear contrast), green underlines on the three key words, a green button. */
 .hero {
-  background: var(--white);
+  background:
+    radial-gradient(60% 70% at 88% 45%, var(--green-100), transparent 70%),
+    radial-gradient(40% 50% at 0% 100%, var(--green-50), transparent 70%),
+    var(--white);
   color: var(--ink);
   padding: 88px 0 96px;
 }
@@ -26,6 +30,49 @@
   color: var(--heading);
 }
 
+.titleKey {
+  color: var(--green);
+}
+
+/* The product being fronted, as a slim pill above the headline. */
+.pill {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px 5px 5px;
+  border-radius: 999px;
+  background: var(--green-50);
+  border: 1px solid var(--green-200);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.pill:hover {
+  background: var(--green-100);
+  border-color: var(--green-300);
+  color: var(--ink);
+}
+
+.pillTag {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pillText {
+  text-wrap: pretty;
+}
+
 .lead {
   font-size: 20px;
   line-height: 1.6;
@@ -38,7 +85,7 @@
 
 /* Only the words themselves are emphasised; the commas and the "and" stay in the
    lead's own weight and colour, as punctuation should. Each word links to its product, but
-   keeps its navy on hover: the cursor card and its lime wash already say so. */
+   keeps its green on hover: the cursor card and its green wash already say so. */
 .word,
 .word:hover {
   position: relative;
@@ -82,13 +129,6 @@
 /* The corner frame sits outside the pill; pull it back so the pill lines up with the copy. */
 .cta {
   margin: -14px -18px;
-}
-
-/* The KRA seal stands beside the button behind a hairline, the way a stamp sits beside a signature. */
-.seal {
-  margin-left: 8px;
-  padding-left: 20px;
-  border-left: 1px solid var(--line-2);
 }
 
 .mediaWrap {
@@ -152,6 +192,110 @@
   color: var(--ink-3);
 }
 
+/*
+ * The KRA RECTS certificate: the first thing on the video, in the same white card as the alert chip
+ * below it. It lands just after the video does, so the eye catches it arriving.
+ */
+.cert {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  max-width: calc(100% - 40px);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 12px 16px 12px 12px;
+  box-shadow: 0 12px 32px -12px rgba(var(--shadow-rgb), 0.3);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  animation: certIn 0.5s 0.9s backwards cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.cert:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -12px rgba(var(--shadow-rgb), 0.38);
+}
+
+@keyframes certIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* The lion's red and black are the only colours the site does not own; a white disc keeps them true. */
+.certSeal {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s;
+}
+
+.cert:hover .certSeal {
+  border-color: var(--accent);
+}
+
+.certMark {
+  width: 30px;
+  height: 30px;
+}
+
+.certText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.certTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.certMeta {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.certTick {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  fill: var(--accent);
+  stroke: var(--white);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.certTick path {
+  fill: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert {
+    animation: none;
+    transition: none;
+  }
+
+  .cert:hover {
+    transform: none;
+  }
+}
+
 @media (max-width: 900px) {
   .hero {
     padding: 56px 0 96px;
@@ -164,6 +308,10 @@
 }
 
 @media (max-width: 520px) {
+  .pill {
+    font-size: 13px;
+  }
+
   .hero {
     padding: 40px 0 64px;
   }
@@ -190,16 +338,31 @@
     flex: 1;
   }
 
-  /* Under the full-width button the seal drops its hairline and sits on its own line. */
-  .seal {
-    margin: 6px 0 0;
-    padding-left: 0;
-    border-left: 0;
-  }
-
   .alert {
     left: 12px;
     bottom: 12px;
     padding: 10px 12px;
+  }
+
+  .cert {
+    top: 12px;
+    left: 12px;
+    max-width: calc(100% - 24px);
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .certSeal {
+    width: 36px;
+    height: 36px;
+  }
+
+  .certMark {
+    width: 24px;
+    height: 24px;
+  }
+
+  .certTitle {
+    font-size: 13px;
   }
 }

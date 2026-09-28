@@ -2,7 +2,7 @@
   background: var(--white);
   border-radius: 20px;
   padding: 36px;
-  /* The lime stroke along the top marks the form as the place to land. */
+  /* The green stroke along the top marks the form as the place to land. */
   box-shadow:
     var(--shadow-card),
     inset 0 4px 0 var(--card-accent);
@@ -100,9 +100,9 @@
 }
 
 .chipOn {
-  background: var(--lime-100);
+  background: var(--green-100);
   color: var(--navy);
-  border-color: var(--lime-300);
+  border-color: var(--green-300);
 }
 
 .surveySent {

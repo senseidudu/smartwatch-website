@@ -7,7 +7,7 @@ import type { DetailPage } from './types'
 /**
  * About page. Copy transcribed from the live smartwatchsolutions.com/about/ page:
  * hero, business strategy, vision and mission, heritage, the three tabs, and the KPMG award, which
- * now sits beside the KRA vendor approval.
+ * now sits beside the KRA RECTS certification.
  */
 export const about: DetailPage = {
   slug: 'about',
@@ -154,7 +154,7 @@ export const about: DetailPage = {
       kind: 'cards',
       id: 'awards',
       eyebrow: 'Awards & accreditation',
-      title: 'Recognised by KPMG. Approved by KRA.',
+      title: 'Recognised by KPMG. Certified by KRA.',
       intro: 'Two marks of the standards we hold ourselves to: one from the auditors, one from the revenue authority.',
       columns: 2,
       items: [

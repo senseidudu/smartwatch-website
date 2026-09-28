@@ -1,10 +1,10 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
-import { heroWords } from '../../data/content'
+import { cargoFeature, heroWords, kraVendor } from '../../data/content'
 import { routes } from '../../data/site'
 import { cx } from '../../lib/cx'
 import { prefersReducedMotion } from '../../motion/motion'
 import { useEntrance } from '../../motion/useEntrance'
-import CredentialBadge from '../CredentialBadge'
+import SmartLink from '../SmartLink'
 import CornerButton from '../ui/corner-button'
 import CursorCard from '../ui/cursor-card'
 import StaggerText from '../ui/stagger-text'
@@ -41,9 +41,16 @@ export default function Hero() {
     <section className={s.hero} data-band="light" ref={ref}>
       <div className={cx('container', s.inner)}>
         <div className={s.copy}>
+          <SmartLink to={cargoFeature.to} className={s.pill} data-enter>
+            <span className={s.pillTag}>{cargoFeature.pill.tag}</span>
+            <span className={s.pillText}>{cargoFeature.pill.text}</span>
+            <span aria-hidden="true">→</span>
+          </SmartLink>
           <h1 className={cx('h-display', s.title)}>
-            <StaggerText className={s.titleLead}>A decade of connecting</StaggerText>{' '}
-            <StaggerText delay={0.2}>and protecting fleets.</StaggerText>
+            <StaggerText className={s.titleLead}>A decade of connecting and</StaggerText>{' '}
+            <StaggerText delay={0.2} className={s.titleKey}>
+              protecting fleets.
+            </StaggerText>
           </h1>
           <p className={s.lead} data-enter>
             One platform to help improve the{' '}
@@ -66,7 +73,6 @@ export default function Hero() {
             <CornerButton to={routes.products} className={s.cta}>
               Explore products
             </CornerButton>
-            <CredentialBadge className={s.seal} />
           </div>
         </div>
 
@@ -83,6 +89,26 @@ export default function Hero() {
               preload="metadata"
               aria-hidden="true"
             />
+            <SmartLink to={kraVendor.to} className={s.cert}>
+              <span className={s.certSeal}>
+                <img
+                  src={kraVendor.mark.src}
+                  alt=""
+                  width={kraVendor.mark.width}
+                  height={kraVendor.mark.height}
+                  decoding="async"
+                  className={s.certMark}
+                />
+              </span>
+              <span className={s.certText}>
+                <span className={s.certTitle}>{kraVendor.name}</span>
+                <span className={s.certMeta}>{kraVendor.system}</span>
+              </span>
+              <svg className={s.certTick} viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="12" />
+                <path d="M7 12.5l3.2 3.2L17 9" />
+              </svg>
+            </SmartLink>
             <div className={s.alert}>
               <span className={s.alertDot} aria-hidden="true" />
               <div className={s.alertText}>

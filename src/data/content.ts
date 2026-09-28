@@ -24,8 +24,24 @@ export const heroWords = [
   },
 ]
 
+/** The product the client is fronting: the hero pill and the homepage spotlight both point at it. */
+export const cargoFeature = {
+  to: routes.solution('electronic-cargo-tracking'),
+  pill: { tag: 'New', text: 'Cargo Tracking for transporters and revenue authorities' },
+  eyebrow: 'Cargo Tracking · ECTS',
+  title: 'Giving cargo transporters and government authorities visibility.',
+  body: 'A heavy-duty electromagnetic lock, tracked live from loading bay to bonded warehouse, so cargo in transit stays sealed and accounted for across borders.',
+  points: [
+    'The container opens only at the right place, with the right key, in the right time window',
+    'Real-time location and lock status for every consignment on the corridor',
+    'Faster inspection and clearance at border posts and inland bonded warehouses',
+  ],
+  image: img.cargoElockTrailer,
+  ctaLabel: 'Explore Cargo Tracking',
+}
+
 export const proofLine = {
-  text: 'Approved KRA vendor and recognised by KPMG as a Top 100 mid-sized company. Serving fleets across East Africa since 2011.',
+  text: 'KRA RECTS certified vendor and recognised by KPMG as a Top 100 mid-sized company. Serving fleets across East Africa since 2011.',
   linkLabel: 'Our credentials →',
   to: '/about#awards',
 }
@@ -74,14 +90,17 @@ export const award = {
 }
 
 /**
- * Smartwatch's standing as an approved vendor of the Kenya Revenue Authority, shown as a seal beside
- * the KPMG award. The copy stays general about what the approval covers until the client says.
+ * Smartwatch's certification as a vendor for the Kenya Revenue Authority's Regional Electronic Cargo
+ * Tracking System (RECTS), shown as a certificate card on the home hero and as a seal beside the KPMG
+ * award. The client confirmed the RECTS scope.
  */
 export const kraVendor = {
-  name: 'Approved KRA vendor',
+  name: 'KRA RECTS certified vendor',
   issuer: 'Kenya Revenue Authority',
-  announcement: 'Smartwatch is now an approved KRA vendor',
-  body: 'Smartwatch Solutions is an approved vendor of the Kenya Revenue Authority. Fleets in Kenya can bring Smartwatch in knowing that our company, hardware and platform meet the standards the authority sets for its suppliers.',
+  /** What RECTS stands for, spelled out wherever the acronym leads. */
+  system: 'Regional Electronic Cargo Tracking System',
+  announcement: 'Smartwatch is now a KRA RECTS certified vendor',
+  body: 'Smartwatch Solutions is certified by the Kenya Revenue Authority as a vendor for its Regional Electronic Cargo Tracking System (RECTS). Transporters moving cargo through Kenya can bring Smartwatch in knowing our e-locks, hardware and platform meet the standards KRA sets for the system.',
   /** The lion alone, for the small seals. */
   mark: img.kraMark,
   /** The full lockup, for tiles and cards. */

@@ -17,7 +17,25 @@ export type Pillar = {
   imageLabel: string
 }
 
+/** Cargo Tracking leads: it is the product the client is fronting, so menus, tabs and cards open on it. */
 export const pillars: Pillar[] = [
+  {
+    slug: 'electronic-cargo-tracking',
+    to: routes.solution('electronic-cargo-tracking'),
+    icon: 'cargo',
+    name: 'Cargo Tracking',
+    short: 'Heavy-duty e-lock for secure cargo transit.',
+    headline:
+      'Heavy-duty electromagnetic lock enabling seamless automation of cargo, security, and carrier operations.',
+    body: 'Container access restricted to the correct location, authorized key, and set time.',
+    points: [
+      'Increased cargo security and accountability',
+      'Fewer errors, better resource allocation',
+      'Less paperwork, safeguarded information',
+    ],
+    image: img.cargoElockTrailer,
+    imageLabel: 'e-lock on shipping container',
+  },
   {
     slug: 'compliance',
     to: routes.product('compliance'),
@@ -47,7 +65,7 @@ export const pillars: Pillar[] = [
       'Self-coaching tools and custom safety definitions',
       'Sound buzzer warns drivers before exceeding speed limits',
     ],
-    image: img.cargo,
+    image: img.driverDashcam,
     imageLabel: 'dash camera + in-cab footage',
   },
   {
@@ -82,23 +100,6 @@ export const pillars: Pillar[] = [
     ],
     image: img.vehicleServiceCrew,
     imageLabel: 'maintenance schedule view',
-  },
-  {
-    slug: 'electronic-cargo-tracking',
-    to: routes.solution('electronic-cargo-tracking'),
-    icon: 'cargo',
-    name: 'Electronic Cargo Tracking',
-    short: 'Heavy-duty e-lock for secure cargo transit.',
-    headline:
-      'Heavy-duty electromagnetic lock enabling seamless automation of cargo, security, and carrier operations.',
-    body: 'Container access restricted to the correct location, authorized key, and set time.',
-    points: [
-      'Increased cargo security and accountability',
-      'Fewer errors, better resource allocation',
-      'Less paperwork, safeguarded information',
-    ],
-    image: img.cargoElockTrailer,
-    imageLabel: 'e-lock on shipping container',
   },
   {
     slug: 'sustainability',

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 export type Band = 'dark' | 'light'
-/** Which dark a band paints. Both tones are the same navy today; the hook keeps the distinction for the header. */
+/** Which dark a band paints. Both tones are the same brand green today; the hook keeps the distinction for the header. */
 export type BandTone = 'green' | 'deep'
 export type BandTheme = { band: Band; tone: BandTone }
 

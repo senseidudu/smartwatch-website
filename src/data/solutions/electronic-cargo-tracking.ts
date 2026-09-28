@@ -1,5 +1,5 @@
 import { img } from '../images'
-import { routes } from '../site'
+import { anchors, routes } from '../site'
 import type { DetailPage } from '../types'
 
 export const page: DetailPage = {
@@ -13,8 +13,13 @@ export const page: DetailPage = {
     title: 'Giving cargo transporters and government authorities visibility.',
     intro:
       'A heavy-duty electromagnetic lock integrated with comprehensive commercial vehicle operation services to enable seamless automation of cargo, security, carrier and support operations.',
-    tone: 'dark',
-    media: img.cargoPortGantry,
+    tone: 'photo',
+    media: img.cargoTruckEsealNight,
+    // The flagship product asks for the demo straight away, not only in the closing band.
+    ctas: [
+      { label: 'Get a demo', to: `${routes.contact}#${anchors.demo}`, variant: 'primary' },
+      { label: 'All solutions', to: routes.solutions, variant: 'outline-light' },
+    ],
   },
   sections: [
     {
@@ -63,8 +68,11 @@ export const page: DetailPage = {
         'Faster clearance at border posts, warehouses and along trading corridors',
         'Goods monitored from border entry points to inland bonded warehouses',
       ],
-      mediaLabel: 'live map of cargo in transit along a trading corridor',
-      media: img.portContainerYard,
+      video: {
+        src: '/videos/cargo-tracking.mp4',
+        poster: '/videos/cargo-tracking-poster.webp',
+        alt: 'A sealed cargo truck on the road dissolves into a live map, where its pin travels the corridor and arrives at its destination',
+      },
     },
     {
       kind: 'cards',

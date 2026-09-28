@@ -1,7 +1,7 @@
 /*
  * Chrome for the vendored mega-menu navbar: the sticky bar, triggers, floating panel and
  * mobile drawer. The bar takes the colour of the section under it (data-theme): the band's
- * tone (navy, via data-tone) over dark bands, white over light ones. data-solid marks a scrolled page and adds the hairline.
+ * deep green over dark bands, white over light ones. data-solid marks a scrolled page and adds the hairline.
  * The panels' columns, promo card and contact popover live in Header.module.css.
  */
 
@@ -92,7 +92,7 @@
   opacity: 0.75;
 }
 
-/* Over the white page the label lifts to a lighter navy on hover instead of fading. */
+/* Over the white page the label turns deep green on hover instead of fading. */
 .header:not([data-theme='dark']) .navItem:hover {
   color: var(--accent-text-hover);
   opacity: 1;
@@ -114,7 +114,7 @@
   background: var(--accent);
 }
 
-/* On a navy bar the underline takes the band's lime accent. */
+/* On a green bar the underline takes the band's pale green accent. */
 .header[data-theme='dark'] .navItemOpen::after {
   background: var(--on-band-accent);
 }

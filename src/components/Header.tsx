@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/logo.svg'
 import logoWhite from '../assets/logo-white.svg'
-import { award } from '../data/content'
+import { award, cargoFeature } from '../data/content'
 import { img } from '../data/images'
 import {
   companyLinks,
@@ -122,11 +122,10 @@ const menus: MegaMenu[] = [
           <FeaturedList links={featuredProducts} />
         </Column>
         <Promo
-          image={img.driverDashcam}
-          contain
-          title="Driver Safety Dash Cameras are here."
-          body="AI video surveillance, people counting, and instant alerts on violations."
-          to={routes.product('driver-safety-dash-cameras')}
+          image={cargoFeature.image}
+          title="Cargo Tracking: sealed from loading bay to bonded warehouse."
+          body="Electronic locks tracked live, for transporters and revenue authorities."
+          to={cargoFeature.to}
         />
       </>
     ),

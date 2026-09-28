@@ -396,11 +396,12 @@ export const img = {
     width: 500,
     height: 331,
   },
-  cargoPortGantry: {
-    src: '/images/cargo-port-gantry.webp',
-    alt: 'Container trucks lined up under the gantry cranes of a port terminal',
-    width: 735,
-    height: 490,
+  /** A still from the cargo film: the sealed truck at night, the e-lock's green ring on its doors. */
+  cargoTruckEsealNight: {
+    src: '/images/cargo-truck-eseal-night.webp',
+    alt: 'A container truck parked in a yard at night, its doors sealed with a Smartwatch electronic lock',
+    width: 1745,
+    height: 1080,
   },
   complianceTrackedTrucks: {
     src: '/images/compliance-tracked-trucks.webp',
