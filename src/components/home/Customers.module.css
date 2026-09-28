@@ -33,7 +33,48 @@
 .rows {
   display: flex;
   flex-direction: column;
+  gap: 24px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: -16px;
+}
+
+/* A quiet text control under the strip; it only needs to be findable, not to compete with the logos. */
+.toggle {
+  display: inline-flex;
+  align-items: center;
   gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink-3);
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.toggleIcon {
+  width: 10px;
+  height: 10px;
+  fill: currentColor;
+}
+
+/* Under reduced motion the rows never move, so there is nothing to pause. */
+@media (prefers-reduced-motion: reduce) {
+  .controls {
+    display: none;
+  }
 }
 
 @media (max-width: 900px) {
@@ -41,6 +82,10 @@
     padding-top: 64px;
     padding-bottom: 64px;
     gap: 32px;
+  }
+
+  .rows {
+    gap: 16px;
   }
 }
 

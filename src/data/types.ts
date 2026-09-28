@@ -34,6 +34,14 @@ export type Img = {
   fit?: 'cover' | 'contain'
 }
 
+/** A muted, looping clip that autoplays in place of a still image. */
+export type Video = {
+  src: string
+  poster: string
+  /** Spoken description, like an image's alt. */
+  alt: string
+}
+
 export type Cta = { label: string; to: string; variant?: 'primary' | 'outline' | 'outline-light' }
 
 export type Stat = { value: number; prefix?: string; suffix?: string; label: string }
@@ -62,6 +70,8 @@ export type Section =
       body: string | string[]
       points?: Point[]
       media?: Img
+      /** Takes the media slot when set; `media` is then ignored. */
+      video?: Video
       mediaLabel?: string
       reverse?: boolean
       cta?: Cta
@@ -125,6 +135,8 @@ export type DetailPage = {
     intro: string
     tone?: 'dark' | 'light' | 'photo'
     media?: Img
+    /** Takes the media slot when set; `media` is then ignored (not on `photo` heroes). */
+    video?: Video
     mediaLabel?: string
     ctas?: Cta[]
   }

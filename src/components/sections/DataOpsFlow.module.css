@@ -1,6 +1,6 @@
 /*
- * The data-ops flow on the navy spotlight: a dotted stage one step darker than the panel, nodes as
- * translucent tiles, hairline wires, and a lime pulse that draws each wire and rings each node as
+ * The data-ops flow on the green spotlight: a dotted stage one step darker than the panel, nodes as
+ * translucent tiles, hairline wires, and a pale green pulse that draws each wire and rings each node as
  * the reading passes through. Everything sizes with the SVG's viewBox, so the phone layout is only
  * a different set of coordinates.
  */
@@ -9,7 +9,7 @@
   aspect-ratio: 600 / 380;
   border-radius: 16px;
   border: 1px solid var(--on-band-line);
-  background-color: var(--band-2);
+  background-color: var(--band);
   background-image: radial-gradient(circle at 1.5px 1.5px, rgba(255, 255, 255, 0.14) 0.9px, transparent 1px);
   background-size: 16px 16px;
   overflow: hidden;
@@ -111,9 +111,9 @@
 
 .nodeLit {
   border-color: var(--on-band-accent);
-  background: rgba(var(--lime-rgb), 0.12);
+  background: rgba(var(--green-300-rgb), 0.12);
   color: var(--on-band-accent);
-  box-shadow: 0 0 0 4px rgba(var(--lime-rgb), 0.18);
+  box-shadow: 0 0 0 4px rgba(var(--green-300-rgb), 0.18);
 }
 
 .glyph {
@@ -196,7 +196,7 @@
 
 .readoutDotOn {
   background: var(--on-band-accent);
-  box-shadow: 0 0 0 3px rgba(var(--lime-rgb), 0.25);
+  box-shadow: 0 0 0 3px rgba(var(--green-300-rgb), 0.25);
 }
 
 @media (max-width: 640px) {

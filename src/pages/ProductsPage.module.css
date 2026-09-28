@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 
-/* White, with a soft blue-grey glow at the right edge, as on every other hero. */
+/* White, with a soft pale-green glow at the right edge, as on every other hero. */
 .hero {
   position: relative;
   overflow: hidden;
@@ -21,8 +21,8 @@
   right: -14vw;
   width: 62vw;
   height: 160%;
-  background: radial-gradient(closest-side, var(--tint-200) 0%, var(--tint-100) 42%, transparent 100%);
-  opacity: 0.85;
+  background: radial-gradient(closest-side, var(--green-100) 0%, var(--green-50) 42%, transparent 100%);
+  opacity: 0.9;
   pointer-events: none;
 }
 

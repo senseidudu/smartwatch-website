@@ -18,11 +18,13 @@
 }
 
 .dark {
-  background: repeating-linear-gradient(
-    135deg,
-    var(--band-2) 0 var(--stripe),
-    var(--band-3) var(--stripe) calc(var(--stripe) * 2)
-  );
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 var(--stripe),
+      rgba(255, 255, 255, 0.08) var(--stripe) calc(var(--stripe) * 2)
+    ),
+    var(--band);
   color: var(--on-band-muted);
 }
 

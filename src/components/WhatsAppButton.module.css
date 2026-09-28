@@ -114,7 +114,7 @@
 }
 
 .toggle:focus-visible {
-  outline: 2px solid var(--navy);
+  outline: 2px solid var(--green);
   outline-offset: 3px;
 }
 

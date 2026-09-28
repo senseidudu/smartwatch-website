@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { kraVendor } from '../data/content'
 import s from './AnnouncementBar.module.css'
 
-/** The lime strip above the header carries the latest news: the KRA vendor approval, with its lion. */
+/** The green strip above the header carries the latest news: the KRA RECTS certification, with its lion. */
 export default function AnnouncementBar() {
   return (
     <div className={s.bar}>

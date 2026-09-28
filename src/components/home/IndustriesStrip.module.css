@@ -18,7 +18,7 @@
   max-width: 640px;
 }
 
-/* A blue-grey hairline and a lime dot trail the eyebrow. */
+/* A grey hairline and a green dot trail the eyebrow. */
 .headCopy :global(.eyebrow) {
   display: flex;
   align-items: center;

@@ -68,12 +68,17 @@ describe('Home hero', () => {
 })
 
 describe('Home hero credentials', () => {
-  test('flexes the KRA vendor approval beside the products button', () => {
+  test('pins the KRA RECTS certificate to the video, not beside the products button', () => {
     renderHero()
-    const seal = screen.getByRole('link', { name: /approved kra vendor/i })
-    expect(seal).toHaveAttribute('href', '/about#awards')
-    expect(seal.querySelector('img')).toHaveAttribute('src', '/images/logos/kra-mark.webp')
+    const cert = screen.getByRole('link', { name: /kra rects certified vendor/i })
+    expect(cert).toHaveAttribute('href', '/about#awards')
+    expect(cert).toHaveTextContent('Regional Electronic Cargo Tracking System')
+    const mark = cert.querySelector('img')!
+    expect(mark).toHaveAttribute('src', '/images/logos/kra-mark.webp')
+    expect(mark).toHaveAttribute('alt', '')
+    const media = document.querySelector('video')!.parentElement!
+    expect(media).toContainElement(cert)
     const actions = screen.getByRole('link', { name: /explore products/i }).closest('[data-enter]')!
-    expect(actions).toContainElement(seal)
+    expect(within(actions as HTMLElement).queryByRole('link', { name: /kra/i })).toBeNull()
   })
 })

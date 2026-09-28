@@ -1,6 +1,6 @@
 /*
- * The platform band is the blue-grey ground with white cards on it. Lime moves with the visitor:
- * each tab glows where the pointer is, and the selected product's lime runs through the ring, the
+ * The platform band is the pale neutral ground with white cards on it. Green moves with the visitor:
+ * each tab glows where the pointer is, and the selected product's green runs through the ring, the
  * number tile, the ticks and the panel's wash.
  */
 .section {
@@ -96,7 +96,7 @@
 }
 
 .tab:hover .tabNum {
-  background: var(--accent);
+  background: var(--accent-solid);
   color: var(--on-accent);
 }
 
@@ -140,7 +140,7 @@
 }
 
 .tabOn .tabNum {
-  background: var(--accent);
+  background: var(--accent-solid);
   color: var(--on-accent);
 }
 

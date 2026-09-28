@@ -14,7 +14,7 @@ function renderFooter() {
 describe('Footer', () => {
   test('carries the KRA vendor seal under the statement', () => {
     renderFooter()
-    const seal = screen.getByRole('link', { name: /approved kra vendor/i })
+    const seal = screen.getByRole('link', { name: /kra rects certified vendor/i })
     expect(seal).toHaveAttribute('href', '/about#awards')
     expect(seal.querySelector('img')).toHaveAttribute('src', '/images/logos/kra-mark.webp')
   })

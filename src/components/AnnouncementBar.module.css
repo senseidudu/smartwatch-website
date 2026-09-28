@@ -1,6 +1,7 @@
+/* A brand-green strip over the header, the way the old site opened: white type, a pale green link. */
 .bar {
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--band);
+  color: var(--on-band);
   font-size: 13px;
   display: flex;
   justify-content: center;
@@ -18,7 +19,7 @@
   gap: 8px;
 }
 
-/* The KRA lion in a small white disc, so its red and black read on the lime. */
+/* The KRA lion in a small white disc, so its red and black read on the green. */
 .seal {
   width: 22px;
   height: 22px;
@@ -35,7 +36,7 @@
 }
 
 .link {
-  color: var(--on-accent);
+  color: var(--on-band-accent);
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 700;
@@ -45,7 +46,7 @@
 }
 
 .link:hover {
-  color: var(--accent-text-hover);
+  color: var(--on-band);
 }
 
 @media (max-width: 520px) {

@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { formatStat, stats } from '../../data/site'
+import { cx } from '../../lib/cx'
 import { useCountUp } from '../../motion/useCountUp'
 import s from './Stats.module.css'
 
@@ -7,8 +8,8 @@ export default function Stats() {
   const ref = useRef<HTMLElement>(null)
   useCountUp(ref)
   return (
-    <section className="container" ref={ref}>
-      <div className={s.grid}>
+    <section className={s.band} data-band="dark" ref={ref}>
+      <div className={cx('container', s.grid)}>
         {stats.map((stat) => (
           <div key={stat.label} className={s.cell}>
             <div className={s.value} data-count={stat.value} data-prefix={stat.prefix ?? ''} data-suffix={stat.suffix ?? ''}>

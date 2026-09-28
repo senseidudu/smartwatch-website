@@ -4,7 +4,7 @@ import { cx } from '../lib/cx'
 import s from './CredentialBadge.module.css'
 
 type Props = {
-  /** The badge sits on a navy band: the type goes white, and the seal keeps its white ground. */
+  /** The badge sits on a green band: the type goes white, and the seal keeps its white ground. */
   onDark?: boolean
   className?: string
 }

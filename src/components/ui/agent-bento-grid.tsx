@@ -17,10 +17,11 @@ import s from './agent-bento-grid.module.css'
  *   - framer-motion becomes CSS transitions and keyframes driven by the same state (path draws use
  *     pathLength + dash offset, springs become an overshooting cubic-bezier); Phosphor icons become
  *     line icons drawn in the site's style; Tailwind and its rainbow palette become a CSS module on
- *     the site palette (`deep` is navy, `green` and `mint` lime); the `sky` and `amber` tones map to blue-grey tints
+ *     the brand primaries (`deep` is navy, `green` the brand green) and shades of the green for the
+ *     `sky`, `mint` and `amber` tones
  *   - the timers only run while the grid is on screen, and not at all under reduced motion, where
  *     each visual rests on its first frame
- *   - surfaces and text run on local tokens, so `dark` repaints the cards for a navy band
+ *   - surfaces and text run on local tokens, so `dark` repaints the cards for a green band
  *   - the visuals are decorative (aria-hidden); each card's heading and copy carry the meaning
  */
 
@@ -490,7 +491,7 @@ export function SensorsVisual() {
 
 type GridProps = {
   className?: string
-  /** Repaint the cards for a navy band. */
+  /** Repaint the cards for a green band. */
   dark?: boolean
 }
 

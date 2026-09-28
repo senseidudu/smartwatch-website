@@ -15,12 +15,13 @@
   --g-line: var(--line);
   --g-line-2: var(--line-2);
 
-  /* A tone is a pair for gradients, the type on that gradient, and the type it sets on white. */
-  --tone: var(--lime);
-  --tone-2: var(--lime-2);
-  --tone-fg: var(--navy);
-  --tone-text: var(--navy);
-  --live: var(--lime);
+  /* A tone is a pair for fills (kept equal, so nothing grades below the brand green), the type on
+     that fill, and the type it sets on white. */
+  --tone: var(--green);
+  --tone-2: var(--green);
+  --tone-fg: var(--white);
+  --tone-text: var(--green);
+  --live: var(--green);
   --spring: cubic-bezier(0.34, 1.4, 0.64, 1);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --hatch: repeating-linear-gradient(45deg, transparent 0 6px, var(--g-line) 6px 7px);
@@ -34,52 +35,53 @@
 
 .dark {
   --g-card: rgba(255, 255, 255, 0.05);
-  --g-raised: var(--band-3);
-  --g-stage: var(--band-2);
+  --g-raised: rgba(255, 255, 255, 0.12);
+  --g-stage: rgba(255, 255, 255, 0.06);
   --g-sunk: var(--band);
   --g-fg: var(--white);
   --g-fg-2: var(--on-band-muted);
   --g-fg-3: rgba(255, 255, 255, 0.7);
   --g-line: var(--on-band-line);
   --g-line-2: var(--on-band-line-2);
-  --live: var(--lime);
+  --live: var(--green-300);
 }
 
 .wide {
   grid-column: span 2;
 }
 
-/* `deep` is the navy of the dark bands; `green` and `mint` are lime; `sky` and `amber`, the vendored
-   component's tone names, are two steps of the blue-grey tint ladder. */
+/* Only the two brand primaries and tints of the green, so the grid reads calm: `deep` is the brand
+   navy, `green` the brand green, and the vendored component's `sky`, `mint` and `amber` are lighter
+   and lighter tints of it; the brand green is the darkest green. Type on the tints is navy. */
 .deep {
-  --tone: var(--band-3);
-  --tone-2: var(--band);
+  --tone: var(--navy);
+  --tone-2: var(--navy);
   --tone-fg: var(--white);
   --tone-text: var(--navy);
 }
 .green {
-  --tone: var(--lime);
-  --tone-2: var(--lime-2);
+  --tone: var(--green);
+  --tone-2: var(--green);
+  --tone-fg: var(--white);
+  --tone-text: var(--green);
+}
+.sky {
+  --tone: var(--green-400);
+  --tone-2: var(--green-400);
   --tone-fg: var(--navy);
   --tone-text: var(--navy);
 }
 .mint {
-  --tone: var(--lime-300);
-  --tone-2: var(--lime);
+  --tone: var(--green-300);
+  --tone-2: var(--green-300);
   --tone-fg: var(--navy);
   --tone-text: var(--navy);
 }
-.sky {
-  --tone: var(--tint-400);
-  --tone-2: var(--tint-300);
-  --tone-fg: var(--white);
-  --tone-text: var(--ink-3);
-}
 .amber {
-  --tone: var(--tint-300);
-  --tone-2: var(--tint-400);
-  --tone-fg: var(--white);
-  --tone-text: var(--ink-3);
+  --tone: var(--green-200);
+  --tone-2: var(--green-200);
+  --tone-fg: var(--navy);
+  --tone-text: var(--navy);
 }
 
 .glyph {
@@ -97,7 +99,7 @@
   line-height: 1;
 }
 
-/* The navy sinks into a navy band, so it lifts to the blue-grey tints there; tags read in the lighter tone. */
+/* The forest sinks into a green band, so it lifts to the pale tints there; tags read in the lighter tone. */
 .dark .deep {
   --tone: var(--tint-200);
   --tone-2: var(--tint-300);
@@ -270,8 +272,8 @@
 }
 
 .routerLit {
-  background: color-mix(in srgb, var(--lime-300) 28%, var(--g-raised));
-  border-color: var(--lime-300);
+  background: color-mix(in srgb, var(--green-300) 28%, var(--g-raised));
+  border-color: var(--green-300);
 }
 
 @keyframes turn {
@@ -289,7 +291,7 @@
 }
 
 .routerLit .routerSpin {
-  border-color: var(--lime);
+  border-color: var(--green);
 }
 
 /* ── 2 · Telemetry ── */
@@ -503,22 +505,22 @@
 }
 
 .stGreen {
-  --tone: var(--lime);
-  --tone-2: var(--lime-2);
-  --tone-fg: var(--navy);
-  --tone-text: var(--navy);
+  --tone: var(--green);
+  --tone-2: var(--green);
+  --tone-fg: var(--white);
+  --tone-text: var(--green);
 }
 .stSky {
-  --tone: var(--lime-300);
-  --tone-2: var(--lime);
-  --tone-fg: var(--navy);
+  --tone: var(--navy);
+  --tone-2: var(--navy);
+  --tone-fg: var(--white);
   --tone-text: var(--navy);
 }
 .stAmber {
-  --tone: var(--tint-300);
-  --tone-2: var(--tint-400);
-  --tone-fg: var(--white);
-  --tone-text: var(--ink-3);
+  --tone: var(--green-200);
+  --tone-2: var(--green-200);
+  --tone-fg: var(--navy);
+  --tone-text: var(--navy);
 }
 .stGrey {
   --tone: var(--tint-400);

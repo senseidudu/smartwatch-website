@@ -15,7 +15,11 @@ export const page: DetailPage = {
     intro:
       'Proactively manage fleet safety, deliver documented results, and free up more time in your day. Prevent accidents and exonerate drivers with our most accurate dash cams.',
     tone: 'dark',
-    media: hw.dashboardCamera,
+    video: {
+      src: '/videos/dash-cameras.mp4',
+      poster: '/videos/dash-cameras-poster.webp',
+      alt: 'An in-cab AI dash camera watches the road and the driver, flagging fatigue and distraction alerts in real time',
+    },
   },
   sections: [
     {

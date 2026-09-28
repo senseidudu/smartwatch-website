@@ -55,7 +55,7 @@ describe('Header mega menus', () => {
     await user.hover(screen.getByRole('button', { name: /solutions/i }))
     await user.hover(screen.getByRole('button', { name: /products/i }))
     expect(screen.queryByText('By industry')).not.toBeInTheDocument()
-    expect(screen.getByText('Driver Safety Dash Cameras are here.')).toBeInTheDocument()
+    expect(screen.getByText('Cargo Tracking: sealed from loading bay to bonded warehouse.')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Devices' })).toHaveAttribute('href', '/hardware#devices')
     expect(screen.getByRole('link', { name: /view all products/i })).toHaveAttribute('href', '/products')
   })
@@ -260,12 +260,12 @@ describe('Header mobile drawer', () => {
 })
 
 describe('Header credentials', () => {
-  test('Company names the KRA approval beside the KPMG award', async () => {
+  test('Company names the KRA RECTS certification beside the KPMG award', async () => {
     const user = userEvent.setup()
     renderHeader()
     await user.hover(screen.getByRole('button', { name: /company/i }))
     const link = screen.getByRole('link', { name: /reviews & awards/i })
     expect(link).toHaveAttribute('href', '/about#awards')
-    expect(link).toHaveTextContent('Approved KRA vendor')
+    expect(link).toHaveTextContent('KRA RECTS certified')
   })
 })

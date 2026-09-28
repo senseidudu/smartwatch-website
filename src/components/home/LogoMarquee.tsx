@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import type { Img } from '../../data/types'
 import { cx } from '../../lib/cx'
 import s from './LogoMarquee.module.css'
@@ -7,8 +7,8 @@ type Props = {
   logos: Img[]
   /** Which way the row travels. */
   direction?: 'left' | 'right'
-  /** Seconds for one full pass. Scale it with the number of logos to hold the travel speed. */
-  duration?: number
+  /** Holds the row still, for the section's pause control. */
+  paused?: boolean
 }
 
 /**
@@ -16,8 +16,11 @@ type Props = {
  * -50% translation lands back on an identical frame; the second copy is hidden
  * from assistive tech, and from everyone when the visitor prefers reduced motion
  * (the row becomes a plain horizontal scroller instead).
+ *
+ * The speed is set in the stylesheet as seconds per logo, and the pass takes that times the number
+ * of logos, so every row travels at the same steady pace however many logos it holds.
  */
-export default function LogoMarquee({ logos, direction = 'left', duration = 70 }: Props) {
+export default function LogoMarquee({ logos, direction = 'left', paused = false }: Props) {
   const rowRef = useRef<HTMLDivElement>(null)
   // The row clips its own overflow, so native lazy loading would fetch each logo
   // only as it slid into the gap — blank tiles for most of the first pass. Hold
@@ -64,8 +67,8 @@ export default function LogoMarquee({ logos, direction = 'left', duration = 70 }
   return (
     <div className={s.row} ref={rowRef}>
       <ul
-        className={cx(s.track, direction === 'right' && s.reverse)}
-        style={{ animationDuration: `${duration}s` }}
+        className={cx(s.track, direction === 'right' && s.reverse, paused && s.paused)}
+        style={{ '--count': logos.length } as CSSProperties}
       >
         {logos.map((logo) => render(logo, false))}
         {logos.map((logo) => render(logo, true))}

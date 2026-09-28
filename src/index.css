@@ -1,88 +1,97 @@
 /*
- * Tokens follow the "Website theme color redesign" in Claude Design: white and navy carry the page,
- * lime lands only where the eye should: buttons, ticks, dots, underlines, chips, and the accents on
- * the navy closers (footer, spotlight, CTA band, photo heroes). Neutrals are blue-grey so they sit
- * with the navy; the tint ladder is blue-grey for structure and lime for emphasis. Lime is never a
- * text colour on white (it does not clear contrast), so accent-coloured type is navy.
- * Headings: Century Gothic (Questrial fallback). Body: Open Sans.
+ * Colour follows the Smartwatch Solutions Brand Guidelines v1.0 (July 2022). The manual's swatches
+ * are CMYK; neither the hex codes printed beside them nor a native-value colour pick on a wide-gamut
+ * Mac gives their sRGB values directly (a P3 screen reads the green as 91,141,75 — that same colour
+ * in sRGB, which is what CSS ships, is 74,143,66). design/brand-colours.py renders the swatches the
+ * way Preview does and converts them to sRGB: green #4a8f42 and navy #1b2845, the two primaries,
+ * plus the universal grey and black. The secondaries (cyan, yellow, pale lime) are left out on
+ * purpose; the site runs on the primaries and lighter tints of the green only, and the logo is
+ * converted through the same pipeline so the mark and the bands are one green.
+ *
+ * Green leads, exactly as the manual shows it, and the brand green is the darkest green on the site:
+ * nothing steps below it. It is the flat fill of the bands (announcement bar, stats, cargo spotlight,
+ * CTA band, footer — the manual's own divider pages are this green with white type), of every chip,
+ * tick, icon, stroke and tab, of green type and of the hero's key phrase. White on it, and it on
+ * white, is 3.96:1: fine for large type and graphics, short of AA (4.5:1) for small text. That is the
+ * client's explicit call, matching their collateral. Green links hover to navy. Navy is the heading
+ * colour, the "Smart" half of the wordmark, and, at the client's request, the fill of every button.
+ * Neutrals are faintly green. Headings: Century Gothic (Questrial fallback). Body: Open Sans.
  */
 
 :root {
-  /* Brand */
-  --navy: #0b2a5b;
-  --navy-2: #071d40;
-  --navy-3: #153a75;
-  --lime: #a7d439;
-  --lime-2: #b9e24d;
+  /* Brand green (the manual's swatch, in sRGB), the darkest green used, and its lighter tints on the same hue */
+  --green: #4a8f42;
+  --green-50: #f3f9f3;
+  --green-100: #e8f4e7;
+  --green-200: #d3e9d0;
+  --green-300: #b3daaf;
+  --green-400: #85c37e;
 
-  /* Lime step ladder, the brand lime down to its palest tint; --lime-50 is a ground for story bands */
-  --lime-50: #f3f9dc;
-  --lime-100: #eef7d6;
-  --lime-200: #dcefb0;
-  --lime-300: #c3e37a;
+  /* Brand navy (the manual's swatch, in sRGB), and a deeper step of the same hue for button hovers */
+  --navy: #1b2845;
+  --navy-900: #111a2e;
 
-  /* Blue-grey tint ladder for structure: hairlines, tiles, inactive nodes */
-  --tint-100: #f4f6f9;
-  --tint-200: #e4e7ee;
-  --tint-300: #cfd4df;
-  --tint-400: #9ea9bb;
+  /* Neutral ladder, faintly green: hairlines, tiles, inactive nodes */
+  --tint-100: #f4f7f3;
+  --tint-200: #e3e9e1;
+  --tint-300: #cdd6ca;
+  --tint-400: #9aa897;
 
-  /* Universal */
-  --black: #000000;
+  /* Universal colours (the manual's swatches); body copy is its "70 percent shade of black" */
+  --black: #0a0b09;
+  --grey: #5c5c5a;
+  --black-70: #4d4d4d;
   --white: #ffffff;
 
-  /* RGB channels for alpha use: rgba(var(--lime-rgb), 0.16) */
-  --navy-rgb: 11, 42, 91;
-  --lime-rgb: 167, 212, 57;
+  /* RGB channels for alpha use: rgba(var(--green-rgb), 0.16) */
+  --green-rgb: 74, 143, 66;
+  --green-300-rgb: 179, 218, 175;
+  --navy-rgb: 27, 40, 69;
   --shadow-rgb: 25, 25, 25;
 
-  /* The accent: a lime pill with navy type. Accent-coloured text is navy, a step lighter on hover. */
-  --accent: var(--lime);
-  --accent-hover: var(--lime-2);
-  --accent-rgb: var(--lime-rgb);
-  --on-accent: var(--navy);
-  --accent-text: var(--navy);
-  --accent-text-hover: var(--navy-3);
+  /* The accent is the brand green everywhere: fills, chips and green type alike. Green type hovers to navy. */
+  --accent: var(--green);
+  --accent-solid: var(--green);
+  --accent-rgb: var(--green-rgb);
+  --on-accent: var(--white);
+  --accent-text: var(--green);
+  --accent-text-hover: var(--navy);
 
   /* Text and neutrals on the white page */
   --ink: var(--navy);
-  --ink-2: #3d4a63;
-  --ink-3: #66708a;
+  --ink-2: var(--black-70);
+  --ink-3: var(--grey);
   --heading: var(--navy);
   --heading-plain: var(--navy);
   --line: var(--tint-200);
   --line-2: var(--tint-300);
   --surface: var(--tint-100);
-  --surface-2: #f9fafc;
-  --surface-alt: var(--lime-50);
-  --stripe-a: #eaedf3;
-  --stripe-b: #f3f5f9;
+  --surface-2: #f9fbf8;
+  --surface-alt: var(--green-50);
+  --stripe-a: #e9eee7;
+  --stripe-b: #f3f6f2;
 
-  /* Cards: white with a hairline, and a lime stroke along the top of the ones that should catch the eye */
+  /* Cards: white with a hairline, and a green stroke along the top of the ones that should catch the eye */
   --card-bg: var(--white);
   --card-line: var(--line);
-  --card-accent: var(--lime);
+  --card-accent: var(--green);
 
-  /* Dark bands are navy (footer, spotlight, CTA band, photo heroes); lime is the accent on them. */
-  --band: var(--navy);
-  --band-2: var(--navy-2);
-  --band-3: var(--navy-3);
+  /* Bands are the exact brand green, flat, as the manual's divider pages are; panels inside a band
+     (the data-ops flow, dark placeholders) stay the same green and are set apart by a hairline. */
+  --band: var(--green);
   --on-band: var(--white);
-  --on-band-muted: rgba(255, 255, 255, 0.82);
-  --on-band-faint: rgba(255, 255, 255, 0.62);
-  --on-band-accent: var(--lime);
-  --on-band-line: rgba(255, 255, 255, 0.14);
-  --on-band-line-2: rgba(255, 255, 255, 0.22);
+  --on-band-muted: rgba(255, 255, 255, 0.95);
+  --on-band-faint: rgba(255, 255, 255, 0.85);
+  --on-band-accent: var(--green-100);
+  --on-band-line: rgba(255, 255, 255, 0.22);
+  --on-band-line-2: rgba(255, 255, 255, 0.32);
 
-  /* Buttons and checklist ticks are lime with navy type on every ground */
-  --btn-bg: var(--accent);
-  --btn-bg-hover: var(--accent-hover);
-  --btn-fg: var(--on-accent);
-  --check-bg: var(--accent);
-  --check-fg: var(--on-accent);
-
-  /* The brand sweep, lime into navy */
-  --gradient-brand: linear-gradient(135deg, #c6ea6a 0%, var(--lime) 55%, var(--navy) 100%);
+  /* Buttons are the brand navy with white labels (14.6:1); ticks are green with a white mark. */
+  --btn-bg: var(--navy);
+  --btn-bg-hover: var(--navy-900);
+  --btn-fg: var(--white);
+  --check-bg: var(--green);
+  --check-fg: var(--white);
 
   --font: 'Open Sans', system-ui, Helvetica, Arial, sans-serif;
   --font-heading: 'Century Gothic', CenturyGothic, 'Questrial', AppleGothic, sans-serif;
@@ -97,7 +106,7 @@
   --shadow-pop: 0 24px 48px -24px rgba(var(--shadow-rgb), 0.3);
 }
 
-/* On a dark band the titles go white; the lime button and tick stay as they are. */
+/* On a dark band the titles go white; the green buttons and ticks stay as they are. */
 [data-band='dark'] {
   --heading: var(--on-band);
   --heading-plain: var(--on-band);
@@ -202,7 +211,7 @@ canvas {
 }
 
 :focus-visible {
-  outline: 2px solid var(--navy);
+  outline: 2px solid var(--green);
   outline-offset: 2px;
 }
 
@@ -228,7 +237,7 @@ canvas {
   color: var(--accent-text);
 }
 
-/* The page label: a grey hairline after the eyebrow that ends in a lime dot. */
+/* The page label: a grey hairline after the eyebrow that ends in a green dot. */
 .eyebrow--rule {
   display: inline-flex;
   align-items: center;
@@ -250,12 +259,12 @@ canvas {
     linear-gradient(var(--on-band-line-2), var(--on-band-line-2)) left center / calc(100% - 9px) 1px no-repeat;
 }
 
-/* The chip flavour: a lime pill for a card's or a story's kind. */
+/* The chip flavour: a green pill for a card's or a story's kind. */
 .eyebrow--chip {
   align-self: flex-start;
   padding: 3px 10px;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-solid);
   color: var(--on-accent);
 }
 
@@ -307,7 +316,7 @@ canvas {
   font-weight: 400;
 }
 
-/* Key sentences in copy are picked out in navy bold. */
+/* Key sentences in copy are picked out in green bold. */
 .lead strong,
 p strong {
   color: var(--accent-text);
@@ -335,7 +344,7 @@ p strong {
   gap: 8px;
   border-radius: 999px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18.7px;
   padding: 15px 28px;
   border: 0;
   cursor: pointer;
@@ -393,7 +402,7 @@ p strong {
  * Slide-in underline, the "slide" variant of the VengeanceUI line-hover-link
  * (registry: https://raw.githubusercontent.com/Ashutoshx7/VengeanceUI/main/public/r/line-hover-link.json).
  * The line grows in from the left on hover and focus and collapses to the right on the way out,
- * the same stroke the hero's rotating word draws, and it is lime under navy or white type. Arrow
+ * the same stroke the hero's rotating word draws, and it is green under navy type and pale green on a band. Arrow
  * links carry it by default; anything else opts in with .line-hover.
  */
 .link-arrow,
@@ -517,7 +526,7 @@ p strong {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: var(--navy);
+  border-color: var(--green);
 }
 
 .field-row {

@@ -1,7 +1,18 @@
+/*
+ * A full-width strip, as the client's old site ran it: logos straight on the page with no tiles,
+ * about six across a desktop screen, drifting at roughly 50px a second so each one can be read.
+ * --per-logo is one logo's pitch (width plus gap) divided by that speed; each breakpoint keeps the
+ * ratio, so the pace holds as the logos shrink.
+ */
 .row {
+  --item-w: 200px;
+  --item-h: 100px;
+  --gap: 48px;
+  --per-logo: 5s;
+
   overflow: hidden;
-  /* Dissolve the ends into the page instead of cutting logos off mid-stroke. */
-  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  /* Dissolve the ends into the page instead of cutting logos off at the screen edge. */
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
 
 .track {
@@ -11,6 +22,7 @@
   padding: 0;
   list-style: none;
   animation-name: slide;
+  animation-duration: calc(var(--count) * var(--per-logo));
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -20,28 +32,26 @@
 }
 
 .row:hover .track,
-.row:focus-within .track {
+.row:focus-within .track,
+.track.paused {
   animation-play-state: paused;
 }
 
 .item {
   /* The gap is a margin, not a flex gap, so the two copies measure exactly 50% each. */
-  margin-right: 8px;
+  margin-right: var(--gap);
   flex: 0 0 auto;
-  width: 300px;
-  height: 140px;
-  border-radius: 16px;
-  background: var(--white);
+  width: var(--item-w);
+  height: var(--item-h);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 16px;
 }
 
 .logo {
   max-width: 100%;
   /* Roomy enough that a two-line lockup still sets at a readable size. */
-  max-height: 92px;
+  max-height: 80%;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -57,14 +67,21 @@
 }
 
 @media (max-width: 900px) {
-  .item {
-    width: 220px;
-    height: 104px;
-    padding: 0 16px;
+  .row {
+    --item-w: 160px;
+    --item-h: 80px;
+    --gap: 36px;
+    --per-logo: 4s;
   }
+}
 
-  .logo {
-    max-height: 66px;
+@media (max-width: 520px) {
+  .row {
+    --item-w: 130px;
+    --item-h: 66px;
+    --gap: 28px;
+    --per-logo: 3.2s;
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   }
 }
 
@@ -84,16 +101,5 @@
 
   .row::-webkit-scrollbar {
     display: none;
-  }
-}
-
-@media (max-width: 520px) {
-  .item {
-    width: 180px;
-    height: 88px;
-  }
-
-  .logo {
-    max-height: 56px;
   }
 }

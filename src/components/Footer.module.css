@@ -1,14 +1,14 @@
 /*
- * A navy footer, the page's closer: white statement and numbers, translucent white for the links and
- * the news. Lime is kept to the small things: a thin rule along the top edge, the highlighted words
- * of the statement, the column headings, link hovers, the country codes, the demo pill, the regions
- * tag and the particle wordmark.
+ * A brand-green footer, the page's closer, kept to the old site's height: white statement and numbers,
+ * translucent white for the links. Pale green is kept to the small things: a thin rule along the top
+ * edge, the highlighted words of the statement, the column headings, link hovers, the country codes,
+ * the demo pill and the regions tag.
  */
 .footer {
   position: relative;
   background: var(--band);
   color: var(--on-band);
-  padding: 88px 0 28px;
+  padding: 56px 0 24px;
   overflow: hidden;
   border-top: 1px solid var(--on-band-line);
 }
@@ -31,14 +31,14 @@
   align-items: flex-end;
   gap: 48px;
   flex-wrap: wrap;
-  padding-bottom: 56px;
+  padding-bottom: 36px;
   border-bottom: 1px solid var(--on-band-line);
 }
 
 .pitch {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
   max-width: 620px;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .statement {
-  font-size: clamp(30px, 4vw, 48px);
+  font-size: clamp(24px, 2.4vw, 34px);
   line-height: 1.08;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -68,7 +68,7 @@
   max-width: 480px;
 }
 
-/* The KRA seal closes the pitch, the one mark on the navy the site does not colour itself. */
+/* The KRA seal closes the pitch, the one mark on the green the site does not colour itself. */
 .seal {
   margin-top: 4px;
   align-self: flex-start;
@@ -120,13 +120,13 @@ a.muted:hover {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 40px;
-  padding: 48px 0;
+  padding: 36px 0;
 }
 
 .col {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .colHeading {
@@ -153,7 +153,7 @@ a.muted:hover {
 .region {
   margin-top: 8px;
   align-self: flex-start;
-  background: rgba(var(--lime-rgb), 0.16);
+  background: rgba(var(--green-300-rgb), 0.16);
   color: var(--on-band-accent);
   border-radius: 999px;
   padding: 4px 12px;
@@ -161,72 +161,10 @@ a.muted:hover {
   font-weight: 600;
 }
 
-/* News */
-
-.news {
-  padding-top: 32px;
-  border-top: 1px solid var(--on-band-line);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.news .colHeading {
-  margin-bottom: 0;
-}
-
-.newsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px 32px;
-}
-
-.newsItem {
-  color: var(--on-band-faint);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.newsItem strong {
-  color: var(--on-band);
-  font-weight: 700;
-  margin-right: 4px;
-}
-
-/* The particle wordmark, in lime: same ratio as the image it samples (BAND_RATIO in Footer.tsx). */
-
-.wordmark {
-  position: relative;
-  aspect-ratio: 4.6 / 1;
-  margin-top: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.wordmark > * {
-  position: absolute;
-  inset: 0;
-}
-
-.wordmarkStatic {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: clamp(56px, 18.5vw, 236px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(var(--lime-rgb), 0.55);
-  user-select: none;
-}
-
 /* Legal */
 
 .legal {
-  margin-top: 16px;
-  padding-top: 24px;
+  padding-top: 20px;
   border-top: 1px solid var(--on-band-line);
   display: flex;
   justify-content: space-between;
@@ -259,7 +197,7 @@ a.muted:hover {
 
 @media (max-width: 900px) {
   .footer {
-    padding-top: 64px;
+    padding-top: 48px;
   }
 
   .top {
@@ -274,22 +212,18 @@ a.muted:hover {
 /* Phones keep two link columns: the labels are short, and one long column would double the scroll. */
 @media (max-width: 520px) {
   .footer {
-    padding-top: 56px;
+    padding-top: 40px;
   }
 
   .top {
-    gap: 32px;
-    padding-bottom: 40px;
+    gap: 24px;
+    padding-bottom: 32px;
   }
 
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px 20px;
-    padding: 40px 0;
-  }
-
-  .wordmark {
-    margin-top: 24px;
+    gap: 28px 20px;
+    padding: 32px 0;
   }
 }
 

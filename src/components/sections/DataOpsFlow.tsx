@@ -5,8 +5,8 @@ import { prefersReducedMotion } from '../../motion/motion'
 import s from './DataOpsFlow.module.css'
 
 /**
- * The data-ops flow drawn inside the product pages' navy spotlight: five nodes, Data Source →
- * Init Attribute → IF / THEN → Action → Output, with a lime pulse running a reading through them.
+ * The data-ops flow drawn inside the product pages' green spotlight: five nodes, Data Source →
+ * Init Attribute → IF / THEN → Action → Output, with a pale green pulse running a reading through them.
  * The branch alternates: one pass takes the "true" wire through Action, the next skips to Output
  * along the "false" arc, and a readout under the flow says what each pass did. Phones get the same
  * flow stacked vertically. Decorative (aria-hidden); the copy beside it carries the meaning.
